@@ -54,10 +54,10 @@ Must be completed with your group before workshop 2
     - Credit card statement parsing for areas visited by a patient who tested positive, and automatically upload this data to the database
 *	 This will help you divide up work among your teammates
 *	 Finally, draw 2-3 rough sketch prototypes of some key tasks of your app. Sketch these physically on paper and then scan and add to your repo.
-![image](protosketch/project cpsc436i draws.jpg)
-![image](protosketch/project cpsc436i draws (1).jpg)
-![image](protosketch/project cpsc436i draws (2).jpg)
-![image](protosketch/project cpsc436i draws (3).jpg)
+![sketch0](protosketch/project cpsc436i draws.jpg)<br/>
+![sketch1](protosketch/project cpsc436i draws (1).jpg)<br/>
+![sketch2](protosketch/project cpsc436i draws (2).jpg)<br/>
+![sketch3](protosketch/project cpsc436i draws (3).jpg)<br/>
     
 
 
