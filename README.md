@@ -3,7 +3,7 @@
 **Course**: CPSC 436I &nbsp; <br/>
 **Lab section**: Thursday L1C &nbsp; <br/>
 **May - August 2020**. &nbsp; <br/>
-**Project Name**: TBA <br/>
+**Project Name**: Kokanee (pending for approval from others) <br/>
 **Team Name**:ControlC<br/>
 
 ## Tech
@@ -54,10 +54,11 @@ Must be completed with your group before workshop 2
     - Credit card statement parsing for areas visited by a patient who tested positive, and automatically upload this data to the database
 *	 This will help you divide up work among your teammates
 *	 Finally, draw 2-3 rough sketch prototypes of some key tasks of your app. Sketch these physically on paper and then scan and add to your repo.
-![sketch0](protosketch/project cpsc436i draws.jpg)<br/>
-![sketch1](protosketch/project cpsc436i draws (1).jpg)<br/>
-![sketch2](protosketch/project cpsc436i draws (2).jpg)<br/>
-![sketch3](protosketch/project cpsc436i draws (3).jpg)<br/>
+![sketch 0](https://github.com/kenhyj/cpsc436project/blob/e5c0b/draws.jpg?raw=true)
+![sketch1](protosketch/draws(1).jpg)<br/>
+![sketch2](protosketch/draws(2).jpg)<br/>
+![sketch3](protosketch/draws(3).jpg)<br/>
+
     
 
 
