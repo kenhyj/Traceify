@@ -33,7 +33,9 @@ https://docs.google.com/document/d/18EIdx1Ytu0IXqTDAZWKWwrnbv4uQwJ7OXPdo-ErhpIc/
     - View map, locations, and infected numbers per location visited
     - Filter out by location or date
 *	What is some additional functionality you can add/remove based on time constraints?
-    - Symptom checker: Upon clicking radio buttons, the javascript or library package would calculate whether you would need to go to a clinic for check up or not. 
+    - Symptom checker: Upon clicking radio buttons, the javascript or library package would calculate whether you would need to go to a clinic for check up or not.  we can decide next question according to user’s input instead of listing all possible symptoms. 
+    Our first question can be ” are you experiencing severe breathing difficulties”, if the user answer yes, we should give suggestion about calling 811 or redirect to bc health website.
+    If not, we can continue questionnaires with other possible mild symptoms. And when they finish the checker process, we will give suggestion or redirect to certain page.
 
 ###	 Project task requirements:
 Project Requirements:
@@ -54,7 +56,7 @@ Must be completed with your group before workshop 2
     - Credit card statement parsing for areas visited by a patient who tested positive, and automatically upload this data to the database
 *	 This will help you divide up work among your teammates
 *	 Finally, draw 2-3 rough sketch prototypes of some key tasks of your app. Sketch these physically on paper and then scan and add to your repo.
-![sketch 0](protosketch/draws.jpg)
+![sketch0](protosketch/draws.jpg)
 ![sketch1](protosketch/draws(1).jpg)<br/>
 ![sketch2](protosketch/draws(2).jpg)<br/>
 ![sketch3](protosketch/draws(3).jpg)<br/>
