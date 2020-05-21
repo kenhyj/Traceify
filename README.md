@@ -3,7 +3,7 @@
 **Course**: CPSC 436I &nbsp; <br/>
 **Lab section**: Thursday L1C &nbsp; <br/>
 **May - August 2020**. &nbsp; <br/>
-**Project Name**: Kokanee (pending for approval from others) <br/>
+**Project Name**: Traceify <br/>
 **Team Name**:ControlC<br/>
 
 ## Tech
@@ -33,9 +33,12 @@ https://docs.google.com/document/d/18EIdx1Ytu0IXqTDAZWKWwrnbv4uQwJ7OXPdo-ErhpIc/
     - View map, locations, and infected numbers per location visited
     - Filter out by location or date
 *	What is some additional functionality you can add/remove based on time constraints?
-    - Symptom checker: Upon clicking radio buttons, the javascript or library package would calculate whether you would need to go to a clinic for check up or not.  we can decide next question according to user’s input instead of listing all possible symptoms. 
-    Our first question can be ” are you experiencing severe breathing difficulties”, if the user answer yes, we should give suggestion about calling 811 or redirect to bc health website.
-    If not, we can continue questionnaires with other possible mild symptoms. And when they finish the checker process, we will give suggestion or redirect to certain page.
+    - Symptom checker: Upon clicking radio buttons, the javascript or library package would calculate whether you would need to go to a clinic for check up or not. <br/>  
+    We can decide next question according to user’s input instead of listing all possible symptoms. <br/>
+    Our first question can be ” are you experiencing severe breathing difficulties”, if the user answer yes, we should give suggestion about calling 811 or redirect to bc health website.<br/>
+    If not, we can continue questionnaires with other possible mild symptoms. And when they finish the checker process, we will give suggestion or redirect to certain page. <br/>
+    https://drive.google.com/file/d/1oiruC1mYAAFN7DtbwOGw02uMucLj5MDP/view?usp=sharing this is the visio online version of how we are going to direct people <br/>
+    https://bc.thrive.health/covid19/en example of symptom checker
 
 ###	 Project task requirements:
 Project Requirements:
@@ -45,7 +48,7 @@ Must be completed with your group before workshop 2
     - Admin panel: Admin can submit patient data to be stored on database
     - Q&A page
     - Symptom Checker page
-    - Location of testing centres - list and map
+    - Location of testing centres - list and map : https://experience.arcgis.com/experience/3862560c5a41418e9d78f4f81688e9d0 something like this
     - Google Maps integration to show map data based on the filter selected
 *	3-7 "standard" requirements (will most likely complete)
     - Financial Benefits page (links to CERB, EI, BC Emergency Workers fund, etc.)
