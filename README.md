@@ -63,8 +63,6 @@ Our project aims to help the general public in BC by providing information and k
     - Current geolocation data only visible to Admin: alerts if the person moves out of their neighbourhood
     - Credit card statement parsing for areas visited by a patient who tested positive, and automatically upload this data to the database
 
-*	 Pick 2 of your minimal requirements and break each of them down into ~2-5 smaller tasks!
-
 ## Task Breakdown
 ○ Pick 2 of your minimal requirements and break each of them down into ~2-5 smaller tasks! This will help you divide up work among your teammates.
 
