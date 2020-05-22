@@ -51,15 +51,17 @@ Our project aims to help the general public in BC by providing information and k
 ##	 Project Task Requirements:
 
 *	3-5 minimal requirements (will definitely complete)
-    - Admin panel: Admin can submit patient data to be stored on the database
+    - Admin panel: Admin can submit anonymous patient data to be stored on the database
     - Home page: Google Maps integration to show data on map based on the filter selected
     - Symptom Checker page
+    - A thank you pape for all essential workers and people stay at home
     <br/>
     
 *	3-7 "standard" requirements (will most likely complete)
     - Have I Been Exposed? page
     - Financial Help page (links to CERB, EI, BC Emergency Workers fund, etc.)
     - Retailers Re-Opening Dates
+    - (Historical data visulization), so people can see if the curve has been flattern 
     <br/>
     
 *	2-3 stretch requirements (plan to complete 1)
@@ -82,6 +84,7 @@ Our project aims to help the general public in BC by providing information and k
 <br/>
 
 ## Prototypes
+![Thank you Page](protosketch/thankPage.png)
 ![Home](protosketch/1.jpg)
 ![Symptom Checker](protosketch/2.jpg)
 ![Have I been Exposed?](protosketch/3.jpg)
