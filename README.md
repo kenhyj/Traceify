@@ -1,4 +1,5 @@
-# cpsc436project
+# Traceify
+
 **Collaborators (CSID)**: e5c0b, d2e2b, l0y2b, k0b0b &nbsp; <br/>
 **Course**: CPSC 436I &nbsp; <br/>
 **Lab section**: Thursday L1C &nbsp; <br/>
@@ -6,7 +7,7 @@
 **Project Name**: Traceify <br/>
 **Team Name**:ControlC<br/>
 
-## Tech
+## Tech Stack
 - HTML
 - CSS
 - JS
@@ -20,58 +21,87 @@ TBA
 
 ## Project Description
 https://docs.google.com/document/d/18EIdx1Ytu0IXqTDAZWKWwrnbv4uQwJ7OXPdo-ErhpIc/edit?usp=sharing <br/>
-*	 Project Description: Write 3-5 sentences on your project topic. (try to address all points below)
+
+Our project aims to help the general public in BC by providing information and keeping track of where COVID-19 positive individuals visited within the last three days. The users will be able to view the locations and the infected number of people. In addition, the search can be filtered by a region on a Google Map.
+<br/>
 *	Who is it for?
     - The general public.
 *	What will it do? (What "human activity" will it support?)
-    - It will keep track of COVID19 positive individuals of where they have visited in 3  day intervals. 
+    - It will keep track of COVID-19 positive individuals of where they have visited in 3 day intervals. 
 *	What type of data will it store?
     - Dates and Location of where people who turned out positive visited for the last 3 days
-    - Location: (use Google API to get the address)
-    - Table (Carecard# primary key, name, address) , Table (carecard#, location, date, time), Vancouver (), Burnaby (), North Vancouver
+    - For a detailed description, refer to the Database Schema section below
 *	What will users be able to do with this data?
-    - View map, locations, and infected numbers per location visited
-    - Filter out by location or date
+    - View map, locations, and infected numbers per region
+    - Filter out by location or date or region
+    - If you find yourself at risk, you can isolate yourself at home for 2 weeks
+    - You can avoid traveling to locations where there's higher chance of transmission
 *	What is some additional functionality you can add/remove based on time constraints?
     - Symptom checker: Upon clicking radio buttons, the javascript or library package would calculate whether you would need to go to a clinic for check up or not. <br/>  
-    We can decide next question according to user’s input instead of listing all possible symptoms. <br/>
-    Our first question can be ” are you experiencing severe breathing difficulties”, if the user answer yes, we should give suggestion about calling 811 or redirect to bc health website.<br/>
-    If not, we can continue questionnaires with other possible mild symptoms. And when they finish the checker process, we will give suggestion or redirect to certain page. <br/>
+    We can decide on the next question according to user’s input instead of listing all the possible symptoms. <br/>
+    Our first question can be "Are you experiencing severe breathing difficulties", and if the user answers yes, we should give suggestion about calling 811 or redirect to bc health website.<br/>
+    If not, we can continue questionnaires with other possible mild symptoms. And when they finish the checker process, we will give suggestions or redirect the user to a certain page. <br/>
     https://drive.google.com/file/d/1oiruC1mYAAFN7DtbwOGw02uMucLj5MDP/view?usp=sharing this is the visio online version of how we are going to direct people <br/>
     https://bc.thrive.health/covid19/en example of symptom checker
 
-###	 Project task requirements:
-Project Requirements:
-Must be completed with your group before workshop 2
+##	 Project Task Requirements:
 
 *	3-5 minimal requirements (will definitely complete)
-    - Admin panel: Admin can submit patient data to be stored on database
-    - Q&A page
+    - Admin panel: Admin can submit patient data to be stored on the database
+    - Home page: Google Maps integration to show data on map based on the filter selected
     - Symptom Checker page
-    - Location of testing centres - list and map : https://experience.arcgis.com/experience/3862560c5a41418e9d78f4f81688e9d0 something like this
-    - Google Maps integration to show map data based on the filter selected
+    <br/>
+    
 *	3-7 "standard" requirements (will most likely complete)
-    - Financial Benefits page (links to CERB, EI, BC Emergency Workers fund, etc.)
-    - Wait times of testing centres (employ same technology currently used in all major hospitals: see http://www.edwaittimes.ca/WaitTimes.aspx)
+    - Q&A page
+    - Financial Help page (links to CERB, EI, BC Emergency Workers fund, etc.)
+    - Retailers Re-Opening Dates
+    
 *	2-3 stretch requirements (plan to complete 1!)
-*	 Pick 2 of your minimal requirements and break each of them down into ~2-5 smaller tasks!
+     - Wait times of testing centres (employ same technology currently used in all major hospitals: see     http://www.edwaittimes.ca/WaitTimes.aspx)
+    - Location of testing centres - list and map : https://experience.arcgis.com/experience/3862560c5a41418e9d78f4f81688e9d0 something  like this
     - Current geolocation data only visible to Admin: alerts if the person moves out of their neighbourhood
     - Credit card statement parsing for areas visited by a patient who tested positive, and automatically upload this data to the database
-*	 This will help you divide up work among your teammates
-*	 Finally, draw 2-3 rough sketch prototypes of some key tasks of your app. Sketch these physically on paper and then scan and add to your repo.
+
+*	 Pick 2 of your minimal requirements and break each of them down into ~2-5 smaller tasks!
+
+## Task Breakdown
+○ Pick 2 of your minimal requirements and break each of them down into ~2-5 smaller tasks! This will help you divide up work among your teammates.
+
+* Set-up the database (create mock data, write scripts to populate the database, etc.)
+* Implement Front-end of Admin panel
+* Implement Back-end of Admin panel
+* Implement Front-end of Home page. Research Google Map API and render dots on a map appropriately
+* Implement Back-end of Home page
+
+## Prototypes
 ![sketch0](protosketch/draws.jpg)
+![Home](protosketch/1.jpg)
 ![sketch1](protosketch/draws(1).jpg)<br/>
+![Symptom Checker](protosketch/2.jpg)
 ![sketch2](protosketch/draws(2).jpg)<br/>
+![Have I been Exposed?](protosketch/3.jpg)
 ![sketch3](protosketch/draws(3).jpg)<br/>
+![Financial Help](protosketch/4.jpg)
+![Retail Re-opening Dates](protosketch/4.jpg)
 
     
 
+## Database Schema
 
-## Project Progress after Workshop 1
+* Visited (<ins>carecard: integer, date: Date, location: char(50)</ins>) <br />
+Reason for having all 3 as primary keys: <br />
+Case1: need care card b/c there could be overlapping date/location with a different person. Case2: he/she could’ve visited the same location for two consecutive days <br />
+Foreign key: location references Location_isIn
 
-*	 Must have a repo in github which all group members can access and send us the link on slack. (See instructions “How to hand in” below.)
-*	In order to create a repo, you will need to decide on a project name
+* Location_isIn (<ins>location: char(50)</ins>, regionName: char(20)) <br />
+Ex) (“4700 Kingsway, Burnaby, BC V5H 4N2”, “Burnaby”) or (“4700 Kingsway, Burnaby, BC V5H 4N2”, “Metrotown”) <br />
+Foreign key: regionName references Region
 
-How to hand in:
-Put all of the writing (Project Description, Project Task requirements, task breakdown), as well as your prototypes into the README of your project repo. Send the repo link to your lab TAs in a slack channel along with your group members. ALSO, for each team member, go on slack and edit your profile. In the “What I do” space, put your team name!
+* Region (<ins>regionName: char(20)</ins>)
+
+* Symptom (<ins>symptom: char(20)</ins>)
+
+* Diagnosis (<ins>illness: char(20)</ins>, symptom: char(20))<br />
+Foreign key: symptom references Symptom
 
