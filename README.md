@@ -53,11 +53,12 @@ Our project aims to help the general public in BC by providing information and k
     <br/>
     
 *	3-7 "standard" requirements (will most likely complete)
-    - Q&A page
+    - Have I Been Exposed? page
     - Financial Help page (links to CERB, EI, BC Emergency Workers fund, etc.)
     - Retailers Re-Opening Dates
     
-*	2-3 stretch requirements (plan to complete 1!)
+*	2-3 stretch requirements (plan to complete 1)
+     - Q&A page
      - Wait times of testing centres (employ same technology currently used in all major hospitals: see     http://www.edwaittimes.ca/WaitTimes.aspx)
     - Location of testing centres - list and map : https://experience.arcgis.com/experience/3862560c5a41418e9d78f4f81688e9d0 something  like this
     - Current geolocation data only visible to Admin: alerts if the person moves out of their neighbourhood
