@@ -75,15 +75,11 @@ Our project aims to help the general public in BC by providing information and k
 * Implement Back-end of Home page
 
 ## Prototypes
-![sketch0](protosketch/draws.jpg)
 ![Home](protosketch/1.jpg)
-![sketch1](protosketch/draws(1).jpg)<br/>
 ![Symptom Checker](protosketch/2.jpg)
-![sketch2](protosketch/draws(2).jpg)<br/>
 ![Have I been Exposed?](protosketch/3.jpg)
-![sketch3](protosketch/draws(3).jpg)<br/>
 ![Financial Help](protosketch/4.jpg)
-![Retail Re-opening Dates](protosketch/4.jpg)
+![Retail Re-opening Dates](protosketch/page.png)
 
     
 
