@@ -28,7 +28,7 @@ Our project aims to help the general public in BC by providing information and k
     - The general public.<br/><br/>
     
 *	What will it do? (What "human activity" will it support?)
-    - It will keep track of COVID-19 positive individuals of where they have visited in 3 day intervals. <br/><br/>
+    - It will keep track of COVID-19 positive individuals of where they have visited in 3 day intervals. (Reason for that: some RNA test may need 3-4 days to complete and if a result is positive, the infected person is a carrier that can potentially infect others during this 3 days window) <br/><br/>
     
 *	What type of data will it store?
     - Dates and Location of where people who turned out positive visited for the last 3 days
