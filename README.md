@@ -90,7 +90,7 @@ Our project aims to help the general public in BC by providing information and k
 ![Have I been Exposed?](protosketch/3.jpg)
 ![Financial Help](protosketch/4.jpg)
 ![Retail Re-opening Dates](protosketch/page.png)
-![Admin Panel](protosketch/admin-panel.png)
+![Admin Panel](protosketch/adminpanel.png)
 
     
 
