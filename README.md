@@ -54,7 +54,7 @@ Our project aims to help the general public in BC by providing information and k
     - Admin panel: Admin can submit anonymous patient data to be stored on the database
     - Home page: Google Maps integration to show data on map based on the filter selected
     - Symptom Checker page
-    - A thank you pape for all essential workers and people stay at home
+    - A thank you page for all essential workers and people stay at home
     <br/>
     
 *	3-7 "standard" requirements (will most likely complete)
