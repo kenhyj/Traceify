@@ -52,31 +52,19 @@ export default function PagesBar() {
                     ))}
                 </Toolbar>
                 <Switch>
-                    <Route exact path='/home'>
-                        <Typography variant="h3">
-                            Home
+                <Route exact path ='/'>
+                <Typography variant="h3">
+                            Thank you page
+                        </Typography>
+                </Route>
+                {pages.map((section) => (
+                    <Route exact path ={section.url}>
+                    <Typography variant="h3">
+                            {section.page}
                         </Typography>
                     </Route>
-                    <Route exact path='/checker'>
-                        <Typography variant="h3" gutterBottom>
-                            Sympton checker
-                        </Typography>
-                    </Route>
-                    <Route exact path='/haveI'>
-                        <Typography variant="h3" gutterBottom>
-                            Have I been exposed?
-                        </Typography>
-                    </Route>
-                    <Route exact path='/financial'>
-                        <Typography variant="h3" gutterBottom>
-                            Financial Help
-                        </Typography>
-                    </Route>
-                    <Route exact path='/reopen'>
-                        <Typography variant="h3" gutterBottom>
-                            Reopen date
-                        </Typography>
-                    </Route>
+                ))}
+                   
                 </Switch>
             </Router>
         </React.Fragment>
