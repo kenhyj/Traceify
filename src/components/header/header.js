@@ -1,52 +1,64 @@
 import React from 'react';
+import './header.css';
 import {
-    AppBar,
+    Button,
     Toolbar,
-    ListItem,
-    IconButton,
-    ListItemText,
-    Avatar,
-    Divider,
-    List,
     Typography,
-    Box
+    makeStyles,
+    AppBar
 } from '@material-ui/core';
+import LocalHospitalIco from '@material-ui/icons/LocalHospital';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import PropTypes from 'prop-types';
 
-import {
-    ArrowBack,
-    AssignmentInd,
-    Home,
-    Apps,
-    ContactMail
-} from '@material-ui/icons';
+const useStyles = makeStyles((theme) => ({
+    header: {
+        color: 'seconday'
+    },
+    titleBar: {
+        borderBottom: `1px solid ${theme.palette.divider}`,
+        backgroundColor : '#303f9f',
+        color : 'white'
+    },
+    title: {
+        flex: 1,
+    },
+    headerButton: {
+        color: '#303f9f'
+    }
+}));
 
-const Header = () => {
+export default function Header(props) {
+    const classes = useStyles();
+    const { title } = props;
     return (
-        <Box componnet='header' display = "flex">
-            <AppBar position="static" >
-                <Toolbar>
-                    <IconButton>
-                        <ArrowBack style = {{color:"white"}}/>
-                    </IconButton>
-                    <IconButton>
-                    <Typography style = {{color:"white"}} >Home</Typography>
-                    </IconButton>
-                    <IconButton>
-                    <Typography style = {{color:"white"}} >Symptom Checker</Typography>
-                    </IconButton>
-                    <IconButton>
-                    <Typography style = {{color:"white"}} >Have I been Exposed?</Typography>
-                    </IconButton>
-                    <IconButton>
-                    <Typography style = {{color:"white"}} >Financial Help</Typography>
-                    </IconButton>
-                    <IconButton>
-                    <Typography style = {{color:"white"}} >Reopening Date</Typography>
-                    </IconButton>
-                </Toolbar>
-            </AppBar>
-        </Box>
+        <div>
+            <Toolbar className={classes.titleBar}>
+                <Button
+                    variant="contained"
+                    size="small"
+                    endIcon={<GitHubIcon />}
+                    href="https://github.com/kenhyj/Traceify"
+                    className={classes.headerButton}
+                >Github Link</Button>
+                <Typography
+                    align="center"
+                    className={classes.title}
+                    variant="h4"
+                >{title}</Typography>
+                <Button
+                    variant="contained"
+                    size="small"
+                    endIcon={<LocalHospitalIco />}
+                    className={classes.headerButton}>
+                    Admin Login in
+                    </Button>
+            </Toolbar>
+            
+            </div>
     );
-};
+}
 
-export default Header;
+Header.propTypes = {
+    title: PropTypes.string,
+};
