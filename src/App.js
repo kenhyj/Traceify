@@ -9,7 +9,7 @@ function App() {
         <div>
             <Header  title="Covid 19 - Traceify"/>
             <PagesBar/>
-            <Home/>
+            {/* <Home/> */}
         </div>
     );
 }

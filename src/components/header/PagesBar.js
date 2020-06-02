@@ -9,12 +9,19 @@ import {
     Switch, Route, Link
 } from "react-router-dom";
 
+import Home from '../../pages/home/home';
+import SymptomChecker from '../../pages/symptom-checker/symptom-checker';
+import HaveI from '../../pages/have-i-been-exposed/have-been-exposed';
+import FinancialHelp from '../../pages/financial-help/financial-help';
+import ThankPage from '../../pages/ThankPage';
+
+
 const pages = [
-    { page: 'Home', url: '/home' },
-    { page: 'Sympton Checker', url: '/checker' },
-    { page: 'Have I been Exposed?', url: '/haveI' },
-    { page: 'Financial Help', url: '/financial' },
-    { page: 'Reopening date', url: '/reopen' }
+    { page: 'Home', url: '/home', to: Home },
+    { page: 'Symptom Checker', url: '/checker', to: SymptomChecker },
+    { page: 'Have I been Exposed?', url: '/haveI', to: HaveI },
+    { page: 'Financial Help', url: '/financial', to: FinancialHelp },
+    { page: 'Reopening date', url: '/reopen', to: ThankPage } // TODO: make a reopen page?
 ];
 
 const navBarStyles = makeStyles((theme) => ({
@@ -51,21 +58,32 @@ export default function PagesBar() {
                         </Link>
                     ))}
                 </Toolbar>
-                <Switch>
-                <Route exact path ='/'>
-                <Typography variant="h3">
+                {/* <Switch>
+                    <Route exact path='/'>
+                        <Typography variant="h3">
                             Thank you page
                         </Typography>
-                </Route>
-                {pages.map((section) => (
-                    <Route exact path ={section.url}>
-                    <Typography variant="h3">
-                            {section.page}
-                        </Typography>
                     </Route>
-                ))}
-                   
-                </Switch>
+                    {pages.map((section) => (
+                        <Route exact path={section.url} component={section.to}>
+                            <Typography variant="h3">
+                                {section.page}<br />
+                                {section.url}
+                            </Typography>
+                        </Route>
+                    ))}
+
+                </Switch> */}
+
+                    {pages.map((section) => (
+                        <Route exact path={section.url} component={section.to}>
+                            {/* <Typography variant="h3">
+                                {section.page}<br />
+                                {section.url}
+                            </Typography> */}
+                        </Route>
+                    ))}
+                
             </Router>
         </React.Fragment>
     )
