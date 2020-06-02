@@ -10,6 +10,8 @@ import {
 import LocalHospitalIco from '@material-ui/icons/LocalHospital';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import PropTypes from 'prop-types';
+import logo from '../../components/traceifylogo.png';
+import Home from '../../pages/home/home';
 
 const useStyles = makeStyles((theme) => ({
     header: {
@@ -46,6 +48,7 @@ export default function Header(props) {
                     className={classes.title}
                     variant="h4"
                 >{title}</Typography>
+                <img src={logo} alt="traceifylogo" z-index="0" onClick={Home}></img> {/* TODO: I cannot find out how to make it go home upon clicking the image */}
                 <Button
                     variant="contained"
                     size="small"
