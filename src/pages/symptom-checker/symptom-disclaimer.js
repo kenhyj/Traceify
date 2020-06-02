@@ -1,14 +1,48 @@
 import React from 'react';
 
-class SymptomDisclaimer extends React.Component {
-    render(){
+export class SymptomDisclaimer extends React.Component {
+    constructor() {
+        super();
+        this.state = {};
+
+    }
+
+    render() {
         return (
             <div>
-                <b>Disclaimer:</b> The symptom checker may return an asymptomatic diagnosis. <br/>  
-                This cannot determine virus carrier. This will need a COVID testing from a clinic. <br/>
+                This will be the disclaimer and results component <br />
+                {asymptomatic};
+                {emergency};
             </div>
         );
     }
 }
+
+const please = (
+    <div>
+        Meanwhile, please continue to practice social distancing and wash your hands thoroughly and regularly. <br />
+        Avoid large gatherings and limit outside contact to as limited to shopping groceries and essentials. <br />
+    </div>);
+
+const asymptomatic = (
+        <div>
+            You are asymptomatic. <br />
+            You may be a virus carrier. <br />
+            To be sure that you are virus-free, a COVID testing from a clinic is necessary. <br/>
+            {please}
+        </div>);
+
+const chill = (
+    <div>
+        You are exhibiting some of the more common symptoms of someone who has the virus. <br />
+        {please}
+    </div>);
+
+const emergency = (
+    <div>
+        You are exhibiting some of the more serious symptoms exhibited by those with the COVID virus <br/>
+        {please}
+    </div>
+);
 
 export default SymptomDisclaimer;

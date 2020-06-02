@@ -1,11 +1,16 @@
 import React from 'react';
+import thankpng from '../components/ThankPic.png';
 
-const ThankPage = () => {
-    return (
-        <div>
-            This should be the Thank You page.
-        </div>
-    );
+class ThankPage extends React.Component {
+    render() {
+        return (
+            <div align="center">
+                This is the Thank you Page
+                <br/>
+                <img alt='thankyoupic' src={thankpng}></img>
+            </div>
+        );
+    }
 };
 
 export default ThankPage;

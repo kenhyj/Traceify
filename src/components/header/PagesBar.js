@@ -26,15 +26,15 @@ const pages = [
 
 const navBarStyles = makeStyles((theme) => ({
     pagesBar: {
-        backgroundColor: '#303f9f',
+        backgroundColor: '#000000',
         overflowX: 'auto',
         justifyContent: 'space-between',
-    },
+            },
     pageLink: {
         padding: theme.spacing(0.5),
         flexShrink: 0,
         textDecoration: 'none',
-        color: 'white',
+        color: '#FFFFFF',
         '&:hover': {
             color: 'tomato'
         }

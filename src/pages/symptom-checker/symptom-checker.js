@@ -1,7 +1,11 @@
 import React from 'react';
-// import Home from "./pages/home/home";
-// import Header from "./components/header/header";
-// import PagesBar from "./components/header/PagesBar"
+// import Radio from '@material-ui/core/Radio';
+// import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+
 
 import SymptomDisclaimer from "./symptom-disclaimer";
 
@@ -38,8 +42,7 @@ class SymptomChecker extends React.Component {
     render(){
         return (
             <div>
-                {/* <Header  title="Covid 19 - Traceify"/>
-                <PagesBar/> */}
+                This will be main symptom checker component here <br/>
                 <SymptomDisclaimer/>
             </div>
         );

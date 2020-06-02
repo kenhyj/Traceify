@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
     },
     titleBar: {
         borderBottom: `1px solid ${theme.palette.divider}`,
-        backgroundColor : '#303f9f',
-        color : 'white'
+        backgroundColor : '#F8F8D6',
+        color : '#303f9f'
     },
     title: {
         flex: 1,
