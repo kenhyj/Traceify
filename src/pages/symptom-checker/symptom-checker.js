@@ -1,25 +1,36 @@
 import React from 'react';
 // import Radio from '@material-ui/core/Radio';
 // import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 import SymptomDisclaimer from "./symptom-disclaimer";
 
 class SymptomChecker extends React.Component {
-    constructor(){
+    constructor() {
         super();
-        this.state={point: 0};
+        this.state = { point: 0 };
         // function for calculating
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event) {
+        // TBA
+    }
+    handleSubmit(event) {
+        // TBA
+        event.preventDefault();
+        // use action to submit points to symptom-disclaimer
     }
     common = [
         "fever",
         "dry cough",
         "tiredness"
-
     ];
     rare = [
         "aches and pains",
@@ -39,14 +50,59 @@ class SymptomChecker extends React.Component {
     //  symptomappeardays = 
     // Symptoms may appear 2-14 days after exposure to the virus. People with these symptoms may have COVID-19: Fever or chills
 
-    render(){
+    // commonform = (
+    //     <div>
+    //         {this.common.map(function (object, i) {
+    //             return <FormControlLabel
+    //                 control={<Checkbox onChange={this.handleChange} name="gilad" />}
+    //                 label={this.common[i]}
+    //             />;
+    //         })}
+    //     </div>
+    // )
+
+    render() {
         return (
             <div>
-                This will be main symptom checker component here <br/>
-                <SymptomDisclaimer/>
+                This page will determine level of risks you are at based on these symptoms and criteria. <br />
+                {/* <FormControl component="fieldset" className={classes.formControl}> */}
+                <FormControl>
+                    <FormLabel component="symptoms">Please check all the boxes that pertains to you:</FormLabel>
+                    <FormGroup>
+                        {/* <FormControlLabel
+                            control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
+                            label="Gilad Gray"
+                        /> */}
+                        <FormControlLabel
+                            control={<Checkbox onChange={this.handleChange} name="common0" />}
+                            label={this.common[0]}
+                        />
+                        {/* <FormControlLabel
+                            control={<Checkbox checked={jason} onChange={handleChange} name="jason" />}
+                            label="Jason Killian"
+                        /> */}
+                        <FormControlLabel
+                            control={<Checkbox onChange={this.handleChange} name="common1" />}
+                            label={this.common[1]}
+                        />
+                    </FormGroup>
+                    {/* <FormHelperText>Be careful</FormHelperText> */}
+                </FormControl>
+
+                <SymptomDisclaimer />
             </div>
         );
     }
 }
 
 export default SymptomChecker;
+
+// const mapStateToProps = (state) => {
+//     return { mssgTable: state.mssgTable };
+// }
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         addMessage: (messagePayload) => { dispatch({ type: 'ADD_MESSAGE', payload: messagePayload }) },
+//     };
+// };
+// export default connect(mapStateToProps, mapDispatchToProps)(symptom-checker);

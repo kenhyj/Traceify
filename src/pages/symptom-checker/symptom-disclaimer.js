@@ -1,18 +1,20 @@
 import React from 'react';
 
 export class SymptomDisclaimer extends React.Component {
-    constructor() {
-        super();
-        this.state = {};
-
-    }
+    // constructor() {
+    //     super();
+    //     this.state = {};
+    // }
 
     render() {
         return (
             <div>
-                This will be the disclaimer and results component <br />
-                {asymptomatic};
-                {emergency};
+                <br/><br/>
+                This will be the disclaimer and results component <br/> <br/>
+                {asymptomatic} <br/> 
+                {chill} <br/> 
+                {emergency} <br/> 
+                {complications} <br/>
             </div>
         );
     }
@@ -20,6 +22,7 @@ export class SymptomDisclaimer extends React.Component {
 
 const please = (
     <div>
+        Currently there is no official treatment or cure for COVID-19. <br />
         Meanwhile, please continue to practice social distancing and wash your hands thoroughly and regularly. <br />
         Avoid large gatherings and limit outside contact to as limited to shopping groceries and essentials. <br />
     </div>);
@@ -45,4 +48,21 @@ const emergency = (
     </div>
 );
 
+const complications = (
+    <div>
+        The COVID-19 has put you at an elevated risk of developing health complications from either your pre-existing disorder or current disorder 
+        {please}
+    </div>
+);
+
 export default SymptomDisclaimer;
+
+// const mapStateToProps = (state) => {
+//     return { mssgTable: state.mssgTable };
+// }
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         addMessage: (messagePayload) => { dispatch({ type: 'ADD_MESSAGE', payload: messagePayload }) },
+//     };
+// };
+// export default connect(mapStateToProps, mapDispatchToProps)(symptom-checker);
