@@ -12,3 +12,10 @@ export const deselect = symptom => {
         symptom: symptom
     };
 };
+
+export const chosensymptoms = symptoms => {
+    return {
+        type: 'SELECTED_SYMPTOMS',
+        symptompayload: symptoms
+    }
+}

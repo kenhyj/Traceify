@@ -38,28 +38,46 @@ class SymptomChecker extends React.Component {
         "diarrhea",
         "conjunctivitis",
         "headache",
-        "loss of taste and or smell",
-        "a rash on skin, or discolouration of fingers or toes"
+        "loss of taste",
+        "loss of smell",
+        "a rash on skin",
+        "discolouration of fingers or toes"
     ];
     serious = [
         "difficulty breathing or shortness of breath",
         "chest pain or pressure",
-        "loss of speech or movement"
+        "loss of speech",
+        "loss of movement"
     ];
 
     //  symptomappeardays = 
     // Symptoms may appear 2-14 days after exposure to the virus. People with these symptoms may have COVID-19: Fever or chills
 
-    // commonform = (
-    //     <div>
-    //         {this.common.map(function (object, i) {
-    //             return <FormControlLabel
-    //                 control={<Checkbox onChange={this.handleChange} name="gilad" />}
-    //                 label={this.common[i]}
-    //             />;
-    //         })}
-    //     </div>
-    // )
+    commonform = (
+        <div>
+            {this.common.map(commonsymptoms =>
+                <FormControlLabel
+                    control={<Checkbox onChange={this.handleChange} name={"symptom" + { commonsymptoms }} />}
+                    label={commonsymptoms} />)}
+        </div>
+    );
+
+    rareform = (
+        <div>
+            {this.rare.map(raresymptoms =>
+                <FormControlLabel
+                    control={<Checkbox onChange={this.handleChange} name={"symptom" + { raresymptoms }} />}
+                    label={raresymptoms} />)}
+        </div>
+    );
+    seriousform = (
+        <div>
+            {this.serious.map(serioussymptoms =>
+                <FormControlLabel
+                    control={<Checkbox onChange={this.handleChange} name={"symptom" + { serioussymptoms }} />}
+                    label={serioussymptoms} />)}
+        </div>
+    );
 
     render() {
         return (
@@ -70,21 +88,16 @@ class SymptomChecker extends React.Component {
                     <FormLabel component="symptoms">Please check all the boxes that pertains to you:</FormLabel>
                     <FormGroup>
                         {/* <FormControlLabel
-                            control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
-                            label="Gilad Gray"
-                        /> */}
-                        <FormControlLabel
                             control={<Checkbox onChange={this.handleChange} name="common0" />}
                             label={this.common[0]}
                         />
-                        {/* <FormControlLabel
-                            control={<Checkbox checked={jason} onChange={handleChange} name="jason" />}
-                            label="Jason Killian"
-                        /> */}
                         <FormControlLabel
                             control={<Checkbox onChange={this.handleChange} name="common1" />}
                             label={this.common[1]}
-                        />
+                        /> */}
+                        {this.commonform}
+                        {this.rareform}
+                        {this.seriousform}
                     </FormGroup>
                     {/* <FormHelperText>Be careful</FormHelperText> */}
                 </FormControl>
