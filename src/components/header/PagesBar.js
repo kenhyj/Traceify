@@ -60,9 +60,11 @@ export default function PagesBar() {
                 </Toolbar>
                 <Switch>
                     <Route exact path='/'>
-                        <Typography variant="h3">
-                            <ThankPage/>
-                        </Typography>
+                        {/* <Typography variant="h3"> */}
+                        {/* <Typography>
+                            <Home/>
+                        </Typography> */}
+                        <Home/>
                     </Route>
                     {/* {pages.map((section) => (
                         <Route exact path={section.url} component={section.to}>
