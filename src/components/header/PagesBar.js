@@ -13,7 +13,7 @@ import Home from '../../pages/home/home';
 import SymptomChecker from '../../pages/symptom-checker/symptom-checker';
 import HaveI from '../../pages/have-i-been-exposed/have-been-exposed';
 import FinancialHelp from '../../pages/financial-help/financial-help';
-import ThankPage from '../../pages/ThankPage';
+import ThankPage from '../../pages/thankyou/ThankPage';
 
 
 const pages = [
