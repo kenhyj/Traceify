@@ -1,12 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-const Home = () => {
+const Reopen = () => {
     return (
         <div>
-            This should be the home page.
+            This should be the Reopening Date page.
         </div>
     );
 };
 
-export default withRouter(Home);
+export default withRouter(Reopen);
