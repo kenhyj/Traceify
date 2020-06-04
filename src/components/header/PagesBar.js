@@ -29,7 +29,7 @@ const navBarStyles = makeStyles((theme) => ({
         backgroundColor: '#000000',
         overflowX: 'auto',
         justifyContent: 'space-between',
-            },
+    },
     pageLink: {
         padding: theme.spacing(0.5),
         flexShrink: 0,
@@ -58,32 +58,31 @@ export default function PagesBar() {
                         </Link>
                     ))}
                 </Toolbar>
-                {/* <Switch>
+                <Switch>
                     <Route exact path='/'>
                         <Typography variant="h3">
-                            Thank you page
+                            <ThankPage/>
                         </Typography>
                     </Route>
-                    {pages.map((section) => (
+                    {/* {pages.map((section) => (
                         <Route exact path={section.url} component={section.to}>
                             <Typography variant="h3">
                                 {section.page}<br />
                                 {section.url}
                             </Typography>
                         </Route>
-                    ))}
-
-                </Switch> */}
-
+                    ))} */}
                     {pages.map((section) => (
                         <Route exact path={section.url} component={section.to}>
-                            {/* <Typography variant="h3">
-                                {section.page}<br />
-                                {section.url}
-                            </Typography> */}
                         </Route>
                     ))}
-                
+                </Switch>
+
+                {/* {pages.map((section) => (
+                        <Route exact path={section.url} component={section.to}>
+                        </Route>
+                    ))} */}
+
             </Router>
         </React.Fragment>
     )

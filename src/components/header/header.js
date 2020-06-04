@@ -19,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
     },
     titleBar: {
         borderBottom: `1px solid ${theme.palette.divider}`,
-        backgroundColor : '#F8F8D6',
-        color : '#303f9f'
+        backgroundColor: '#F8F8D6',
+        color: '#303f9f'
     },
     title: {
         flex: 1,
@@ -47,7 +47,10 @@ export default function Header(props) {
                     align="center"
                     className={classes.title}
                     variant="h4"
-                >{/*title*/}<img src={logo} alt="traceifylogo" z-index="0" onClick={Home} ></img> {/* TODO: I cannot find out how to make it go home upon clicking the image */}</Typography>
+                >{/*title*/}
+                    <img src={logo} alt="traceifylogo" z-index="0" onClick={Home}></img>
+                    {/* TODO: I cannot find out how to make it go home upon clicking the image */}
+                </Typography>
                 <Button
                     variant="contained"
                     size="small"
@@ -56,8 +59,8 @@ export default function Header(props) {
                     Admin Login in
                     </Button>
             </Toolbar>
-            
-            </div>
+
+        </div>
     );
 }
 
