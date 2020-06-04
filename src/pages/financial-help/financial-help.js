@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 const FinancialHelp = () => {
     return (
@@ -8,4 +9,4 @@ const FinancialHelp = () => {
     );
 };
 
-export default FinancialHelp;
+export default withRouter(FinancialHelp);

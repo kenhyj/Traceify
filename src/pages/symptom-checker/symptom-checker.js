@@ -7,6 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import { withRouter } from 'react-router-dom';
 
 import SymptomDisclaimer from "./symptom-disclaimer";
 
@@ -95,7 +96,7 @@ class SymptomChecker extends React.Component {
     }
 }
 
-export default SymptomChecker;
+export default withRouter(SymptomChecker);
 
 // const mapStateToProps = (state) => {
 //     return { mssgTable: state.mssgTable };

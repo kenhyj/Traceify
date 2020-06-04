@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 const HaveI = () => {
     return (
@@ -8,4 +9,4 @@ const HaveI = () => {
     );
 };
 
-export default HaveI;
+export default withRouter(HaveI);
