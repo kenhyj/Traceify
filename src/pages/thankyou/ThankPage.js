@@ -19,7 +19,7 @@ class ThankPage extends React.Component {
                 <div className = 'intro-text'>
                 <p className="title">What we can do?</p>
                 <p>- Stay home if you can</p>
-                <p>- Keeping social distancing</p>
+                <p>- Keep social distancing</p>
                 <p>- Wash your hands</p>
                 </div>
             </div>
