@@ -1,28 +1,6 @@
 import React from 'react';
-import {
-    makeStyles,
-    Toolbar,
-    Typography,
-} from '@material-ui/core';
-import {
-    BrowserRouter as Router,
-    Switch, Route, Link
-} from "react-router-dom";
-
-import Home from '../../pages/home/home';
-import SymptomChecker from '../../pages/symptom-checker/symptom-checker';
-import HaveI from '../../pages/have-i-been-exposed/have-been-exposed';
-import FinancialHelp from '../../pages/financial-help/financial-help';
-import ThankPage from '../../pages/ThankPage';
-
-
-const pages = [
-    { page: 'Home', url: '/home', to: Home },
-    { page: 'Symptom Checker', url: '/checker', to: SymptomChecker },
-    { page: 'Have I been Exposed?', url: '/haveI', to: HaveI },
-    { page: 'Financial Help', url: '/financial', to: FinancialHelp },
-    { page: 'Reopening date', url: '/reopen', to: ThankPage } // TODO: make a reopen page?
-];
+import { makeStyles, Toolbar } from '@material-ui/core';
+import { withRouter, Link } from "react-router-dom";
 
 const navBarStyles = makeStyles((theme) => ({
     pagesBar: {
@@ -41,52 +19,20 @@ const navBarStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function PagesBar() {
+function PagesBar() {
     const classes = navBarStyles();
 
     return (
         <React.Fragment>
-            <Router>
                 <Toolbar component="nav" variant="dense" className={classes.pagesBar}>
-                    {pages.map((section) => (
-                        <Link
-                            key={section.page}
-                            to={section.url}
-                            className={classes.pageLink}
-                        >
-                            {section.page}
-                        </Link>
-                    ))}
+                    <Link to='/home' className={classes.pageLink}>Home</Link>
+                    <Link to='/symptom-checker' className={classes.pageLink}>Symptom Checker</Link>
+                    <Link to='/have-i-been-exposed' className={classes.pageLink}>Have I been Exposed?</Link>
+                    <Link to='/financial-help' className={classes.pageLink}>Financial Help</Link>
+                    <Link to='/reopen' className={classes.pageLink}>Reopening Date</Link>
                 </Toolbar>
-                <Switch>
-                    <Route exact path='/'>
-                        {/* <Typography variant="h3"> */}
-                        {/* <Typography>
-                            <Home/>
-                        </Typography> */}
-                        <Home/>
-                    </Route>
-                    {/* {pages.map((section) => (
-                        <Route exact path={section.url} component={section.to}>
-                            <Typography variant="h3">
-                                {section.page}<br />
-                                {section.url}
-                            </Typography>
-                        </Route>
-                    ))} */}
-                    {pages.map((section) => (
-                        <Route exact path={section.url} component={section.to}>
-                        </Route>
-                    ))}
-                </Switch>
-
-                {/* {pages.map((section) => (
-                        <Route exact path={section.url} component={section.to}>
-                        </Route>
-                    ))} */}
-
-            </Router>
         </React.Fragment>
     )
 }
 
+export default withRouter(PagesBar);
