@@ -47,8 +47,7 @@ export default function Header(props) {
                     align="center"
                     className={classes.title}
                     variant="h4"
-                >{title}</Typography>
-                <img src={logo} alt="traceifylogo" z-index="0" onClick={Home}></img> {/* TODO: I cannot find out how to make it go home upon clicking the image */}
+                >{/*title*/}<img src={logo} alt="traceifylogo" z-index="0" onClick={Home} ></img> {/* TODO: I cannot find out how to make it go home upon clicking the image */}</Typography>
                 <Button
                     variant="contained"
                     size="small"

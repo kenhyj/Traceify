@@ -6,7 +6,7 @@ import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
+import { Button } from '@material-ui/core';
 
 import SymptomDisclaimer from "./symptom-disclaimer";
 
@@ -17,6 +17,7 @@ class SymptomChecker extends React.Component {
         // function for calculating
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.typeform = this.typeform.bind(this);
     }
 
     handleChange(event) {
@@ -27,6 +28,7 @@ class SymptomChecker extends React.Component {
         event.preventDefault();
         // use action to submit points to symptom-disclaimer
     }
+
     common = [
         "fever",
         "dry cough",
@@ -53,30 +55,25 @@ class SymptomChecker extends React.Component {
     //  symptomappeardays = 
     // Symptoms may appear 2-14 days after exposure to the virus. People with these symptoms may have COVID-19: Fever or chills
 
+    typeform(symptomtype) {
+        return (        
+        <div>
+            <FormGroup>
+                {symptomtype.map(somesymptoms =>
+                    <FormControlLabel
+                        control={<Checkbox onChange={this.handleChange} name={"symptom" + { somesymptoms }} />}
+                        label={somesymptoms} />)}
+            </FormGroup>
+        </div>)
+    }
     commonform = (
-        <div>
-            {this.common.map(commonsymptoms =>
-                <FormControlLabel
-                    control={<Checkbox onChange={this.handleChange} name={"symptom" + { commonsymptoms }} />}
-                    label={commonsymptoms} />)}
-        </div>
+        this.typeform(this.common)
     );
-
     rareform = (
-        <div>
-            {this.rare.map(raresymptoms =>
-                <FormControlLabel
-                    control={<Checkbox onChange={this.handleChange} name={"symptom" + { raresymptoms }} />}
-                    label={raresymptoms} />)}
-        </div>
+        this.typeform(this.rare)
     );
     seriousform = (
-        <div>
-            {this.serious.map(serioussymptoms =>
-                <FormControlLabel
-                    control={<Checkbox onChange={this.handleChange} name={"symptom" + { serioussymptoms }} />}
-                    label={serioussymptoms} />)}
-        </div>
+        this.typeform(this.serious)
     );
 
     render() {
@@ -86,22 +83,11 @@ class SymptomChecker extends React.Component {
                 {/* <FormControl component="fieldset" className={classes.formControl}> */}
                 <FormControl>
                     <FormLabel component="symptoms">Please check all the boxes that pertains to you:</FormLabel>
-                    <FormGroup>
-                        {/* <FormControlLabel
-                            control={<Checkbox onChange={this.handleChange} name="common0" />}
-                            label={this.common[0]}
-                        />
-                        <FormControlLabel
-                            control={<Checkbox onChange={this.handleChange} name="common1" />}
-                            label={this.common[1]}
-                        /> */}
-                        {this.commonform}
-                        {this.rareform}
-                        {this.seriousform}
-                    </FormGroup>
-                    {/* <FormHelperText>Be careful</FormHelperText> */}
+                    {this.commonform}
+                    {this.rareform}
+                    {this.seriousform}
                 </FormControl>
-
+                {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
                 <SymptomDisclaimer />
             </div>
         );
