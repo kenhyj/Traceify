@@ -11,11 +11,19 @@
     grid-gap: 3px;
     grid-template-columns: repeat(3, 2fr);
   }
+  em{
+    font-size: 1.2em;
+    color: red;
+  }
   
   .intro-left img , .intro-middle img,.intro-right img {
     width: 80%;
     display: block;
     margin: 0 auto;
+  }
+
+  .intro-left img:hover , .intro-middle img:hover ,.intro-right img:hover  {
+    transform: scale(1.1);
   }
   
   .intro-text {

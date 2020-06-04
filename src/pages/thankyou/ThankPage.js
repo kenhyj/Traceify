@@ -10,7 +10,7 @@ class ThankPage extends React.Component {
         return (
             <div>
                 <div align="center">
-                    <h1 className='thank-title'>Thank you to our ESSENTIAL WORKERS and YOU for staying at home!</h1>
+                    <h1 className='thank-title'>Thank you to our <em>Essential Workers</em> and <em>You</em> for staying at home!</h1>
                     <img alt='thankyoupic' src={thankpng} className='thank-pic' style={{ width: '50%' }}></img>
                 </div>
         <div className="page-intro">
