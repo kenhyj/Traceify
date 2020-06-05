@@ -11,6 +11,7 @@ import LocalHospitalIco from '@material-ui/icons/LocalHospital';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import PropTypes from 'prop-types';
 import logo from '../../components/traceifylogo.png';
+import { Link } from "react-router-dom";
 import Home from '../../pages/home/home';
 
 const useStyles = makeStyles((theme) => ({
@@ -47,9 +48,9 @@ export default function Header(props) {
                     align="center"
                     className={classes.title}
                     variant="h4"
-                >{/*title*/}
-                    <img src={logo} alt="traceifylogo" z-index="0" onClick={Home}></img>
-                    {/* TODO: I cannot find out how to make it go home upon clicking the image */}
+                >
+                    {/* {title}                 */}
+                    <Link to="/home"><img src={logo} alt="traceifylogo" /></Link>
                 </Typography>
                 <Button
                     variant="contained"
