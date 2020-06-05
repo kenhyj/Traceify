@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './financial-help.css';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Typography, CardActions, Button } from '@material-ui/core';
@@ -7,6 +7,7 @@ const cardStyles = makeStyles({
     root: {
         maxWidth: 700, // TODO: make responsive
         variant: "outlined",
+        margin: 10,
     },
     content: {
         padding: 24,

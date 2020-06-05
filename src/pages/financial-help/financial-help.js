@@ -7,9 +7,15 @@ import FinancialHelpCard from './financial-help-card';
 const FinancialHelp = () => {
     const helpResources = [
         {
-            title: "Canadian Emergency Response Benefit",
+            title: "Canadian Emergency Response Benefit (CERB)",
             description: "The benefit provided by the Canadian Federal Government for those affected by COVID-19.",
             url: "https://www.canada.ca/en/revenue-agency/services/benefits/apply-for-cerb-with-cra.html",
+            id: 0
+        },
+        {
+            title: "Canadian Emergency Response Benefit (CESB)",
+            description: "The Canada Emergency Student Benefit (CESB) provides financial support to post-secondary students, and recent post-secondary and high school graduates who are unable to find work due to COVID-19.",
+            url: "https://www.canada.ca/en/revenue-agency/services/benefits/emergency-student-benefit.html",
             id: 0
         },
     ];
