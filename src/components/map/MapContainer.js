@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import { GoogleMap, LoadScript } from "@react-google-maps/api";
 
 // NOTE: uncomment this, and comment out the actual api if you don't want to use up loads 

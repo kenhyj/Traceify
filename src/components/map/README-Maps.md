@@ -2,7 +2,7 @@
 
 ## First things first...
 
-You need a [Google Cloud account](https://developers.google.com/) with **billing**, which means you need to input your credit card. It's basically free because you get $200 worth of monthly credit (which is 28,000 loads of the Maps JavaScript API). Even if you pass that, it's $7 per 100,000 loads. See [here](https://cloud.google.com/maps-platform/pricing/sheet).
+You need a [Google Cloud account](https://developers.google.com/) with **billing**, which means you need to input your credit card. It's basically free because you get \$200 worth of monthly credit (which is 28,000 loads of the Maps JavaScript API). Even if you pass that, it's \$7 per 100,000 loads. See [here](https://cloud.google.com/maps-platform/pricing/sheet).
 
 After you get your api key, copy and replace ``123456`` with your key in the file ``.env`` which is located in the **root** folder. I have added it to the git ignore file after pushing it the first time so you shouldn't need to worry about sharing this private key for now.
 
