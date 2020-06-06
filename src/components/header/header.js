@@ -5,7 +5,6 @@ import {
     Toolbar,
     Typography,
     makeStyles,
-    AppBar
 } from '@material-ui/core';
 import LocalHospitalIco from '@material-ui/icons/LocalHospital';
 import GitHubIcon from '@material-ui/icons/GitHub';
@@ -31,11 +30,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Header(props) {
+export default function HeaderTitle(props) {
     const classes = useStyles();
     const { title } = props;
     return (
-        <div>
+        <div className = {classes.headerContainer}>
             <Toolbar className={classes.titleBar}>
                 <Button
                     variant="contained"
@@ -63,6 +62,6 @@ export default function Header(props) {
     );
 }
 
-Header.propTypes = {
+HeaderTitle.propTypes = {
     title: PropTypes.string,
 };
