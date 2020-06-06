@@ -72,15 +72,18 @@ class SymptomChecker extends React.Component {
             </FormGroup>
         </div>)
     }
-    commonform = (
-        this.typeform(this.common)
-    );
-    rareform = (
-        this.typeform(this.rare)
-    );
-    seriousform = (
-        this.typeform(this.serious)
-    );
+    // commonform = (
+    //     // this.typeform(this.common)
+    //     this.typeform(this.props.diagnosis.common)
+    // );
+    // rareform = (
+    //     // this.typeform(this.rare)
+    //     this.typeform(this.props.diagnosis.rare)
+    // );
+    // seriousform = (
+    //     // this.typeform(this.serious)
+    //     this.typeform(this.props.diagnosis.serious)
+    // );
 
     render() {
         return (
@@ -91,9 +94,12 @@ class SymptomChecker extends React.Component {
                     <FormLabel component="symptoms">Please check all the boxes that pertains to you:</FormLabel>
                     {console.log("Hello facebsdfasdf")}
                     {console.log(this.props.diagnosis)}
-                    {this.commonform}
+                    {/* {this.commonform}
                     {this.rareform}
-                    {this.seriousform}
+                    {this.seriousform} */}
+                    {this.typeform(this.props.diagnosis.common)}
+                    {this.typeform(this.props.diagnosis.rare)}
+                    {this.typeform(this.props.diagnosis.serious)}
                 </FormControl>
                 {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
                 <SymptomDisclaimer />

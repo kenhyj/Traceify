@@ -4,7 +4,7 @@ const INITIAL_STATE = {
     symptoms: {},
     common: ["fever",
         "dry cough",
-        "tiredness" ],
+        "tiredness"],
     rare: ["aches and pains",
         "sore throat",
         "diarrhea",
@@ -13,15 +13,15 @@ const INITIAL_STATE = {
         "loss of taste",
         "loss of smell",
         "a rash on skin",
-        "discolouration of fingers or toes" ],
+        "discolouration of fingers or toes"],
     serious: ["difficulty breathing or shortness of breath",
         "chest pain or pressure",
         "loss of speech",
-        "loss of movement"    ]
-    };
+        "loss of movement"]
+};
 
 const diagnosisReducer = (state = INITIAL_STATE, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case 'SELECTED_SYMPTOMS':
             return {
                 ...state,
