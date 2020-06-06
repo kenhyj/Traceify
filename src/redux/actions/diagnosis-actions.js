@@ -13,7 +13,7 @@ export const deselect = symptom => {
     };
 };
 
-export const chosensymptoms = symptoms => {
+export const choosesymptoms = symptoms => {
     return {
         type: 'SELECTED_SYMPTOMS',
         symptompayload: symptoms

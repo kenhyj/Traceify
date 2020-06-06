@@ -7,15 +7,15 @@ import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Button } from '@material-ui/core';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import SymptomDisclaimer from "./symptom-disclaimer";
 
 class SymptomChecker extends React.Component {
     constructor() {
         super();
-        this.state = { point: 0 };
+        // this.state = { point: 0 };
         // function for calculating
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,6 +28,10 @@ class SymptomChecker extends React.Component {
     handleSubmit(event) {
         // TBA
         event.preventDefault();
+        // this.props.diagnosisReducer(
+        //     {
+        //     }
+        // );
         // use action to submit points to symptom-disclaimer
     }
 
@@ -85,6 +89,8 @@ class SymptomChecker extends React.Component {
                 {/* <FormControl component="fieldset" className={classes.formControl}> */}
                 <FormControl>
                     <FormLabel component="symptoms">Please check all the boxes that pertains to you:</FormLabel>
+                    {console.log("Hello facebsdfasdf")}
+                    {console.log(this.props.diagnosis)}
                     {this.commonform}
                     {this.rareform}
                     {this.seriousform}
@@ -96,14 +102,14 @@ class SymptomChecker extends React.Component {
     }
 }
 
-export default withRouter(SymptomChecker);
-
-// const mapStateToProps = (state) => {
-//     return { mssgTable: state.mssgTable };
-// }
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         addMessage: (messagePayload) => { dispatch({ type: 'ADD_MESSAGE', payload: messagePayload }) },
-//     };
-// };
-// export default connect(mapStateToProps, mapDispatchToProps)(symptom-checker);
+const mapStateToProps = (state) => {
+    return { 
+        diagnosis: state.diagnosis
+    };
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        choosesymptoms: (symptoms) => { dispatch({ type: 'SELECTED_SYMPTOMS', symptompayload: symptoms }) },
+    };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SymptomChecker);
