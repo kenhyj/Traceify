@@ -13,15 +13,19 @@ import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 function App() {
     return (
         <Router>
-            <Header  title="Covid 19 - Traceify"/>
-            <PagesBar/>
-            <Route path='/' render={() => <Redirect to="/home"/>}/>
+        <div style = {{position:'fixed', width:'100%',top:'0',height:'20%'}}>
+        <Header  title="Covid 19 - Traceify"/>
+        <PagesBar/>
+        </div>
+        <div style = {{marginTop:'15%'}}>
+            <Route path='/' exact component = {ThankPage}/>
             <Route path='/home' exact component={Home}/>
             <Route path='/have-i-been-exposed' component={HaveI}/>
             <Route path='/financial-help' component={FinancialHelp}/>
             <Route path='/symptom-checker' component={SymptomChecker}/>
             <Route path='/reopen' component={Reopen}/>
-            <ThankPage/>
+            </div>
+            
         </Router>
     );
 }
