@@ -19,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
     },
     titleBar: {
         borderBottom: `1px solid ${theme.palette.divider}`,
-        backgroundColor : '#F8F8D6',
-        color : '#303f9f'
+        backgroundColor: '#F8F8D6',
+        color: '#303f9f'
     },
     title: {
         flex: 1,
@@ -47,8 +47,10 @@ export default function HeaderTitle(props) {
                     align="center"
                     className={classes.title}
                     variant="h4"
-                >{title}</Typography>
-                <Link to="/home"><img src={logo} alt="traceifylogo"/></Link>
+                >
+                    {/* {title}                 */}
+                    <Link to="/home"><img src={logo} alt="traceifylogo" /></Link>
+                </Typography>
                 <Button
                     variant="contained"
                     size="small"
@@ -57,8 +59,8 @@ export default function HeaderTitle(props) {
                     Admin Login in
                     </Button>
             </Toolbar>
-            
-            </div>
+
+        </div>
     );
 }
 

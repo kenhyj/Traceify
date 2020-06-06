@@ -7,7 +7,7 @@ const navBarStyles = makeStyles((theme) => ({
         backgroundColor: '#000000',
         overflowX: 'auto',
         justifyContent: 'space-between',
-            },
+    },
     pageLink: {
         padding: theme.spacing(0.5),
         flexShrink: 0,
