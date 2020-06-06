@@ -15,12 +15,12 @@ import Home from '../../pages/home/home';
 
 const useStyles = makeStyles((theme) => ({
     header: {
-        color: 'seconday'
+        color: 'seconday',
     },
     titleBar: {
         borderBottom: `1px solid ${theme.palette.divider}`,
         backgroundColor: '#F8F8D6',
-        color: '#303f9f'
+        color: '#303f9f',
     },
     title: {
         flex: 1,

@@ -13,11 +13,11 @@ import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 function App() {
     return (
         <Router>
-        <div style = {{position:'fixed', width:'100%',top:'0',height:'20%'}}>
+        <div style = {{position:'sticky', width:'100%',top:'0',height:'100px'}}>
         <Header  title="Covid 19 - Traceify"/>
         <PagesBar/>
         </div>
-        <div style = {{marginTop:'15%'}}>
+        <div style = {{marginTop:'100px', display:'inline-block'}}>
             <Route path='/' exact component = {ThankPage}/>
             <Route path='/home' exact component={Home}/>
             <Route path='/have-i-been-exposed' component={HaveI}/>
