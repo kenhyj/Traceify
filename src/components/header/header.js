@@ -9,7 +9,7 @@ import {
 import LocalHospitalIco from '@material-ui/icons/LocalHospital';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import PropTypes from 'prop-types';
-import logo from '../../components/traceifylogo.png';
+import logo from '../../assets/logoresized.svg';
 import { Link } from "react-router-dom";
 import Home from '../../pages/home/home';
 
