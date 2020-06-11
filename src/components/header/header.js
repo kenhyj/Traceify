@@ -11,7 +11,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import PropTypes from 'prop-types';
 import logo from '../../assets/logoresized.svg';
 import { Link } from "react-router-dom";
-import Home from '../../pages/home/home';
+// import Home from '../../pages/home/home';
 
 const useStyles = makeStyles((theme) => ({
     header: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HeaderTitle(props) {
     const classes = useStyles();
-    const { title } = props;
+    // const { title } = props;
     return (
         <div className = {classes.headerContainer}>
             <Toolbar className={classes.titleBar}>

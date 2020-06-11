@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 export class SymptomDisclaimer extends React.Component {
     // constructor() {
@@ -55,14 +56,16 @@ const complications = (
     </div>
 );
 
-export default SymptomDisclaimer;
+// export default SymptomDisclaimer;
 
-// const mapStateToProps = (state) => {
-//     return { mssgTable: state.mssgTable };
-// }
+const mapStateToProps = (state) => {
+    return { 
+        diagnosis: state.diagnosis
+    };
+}
 // const mapDispatchToProps = (dispatch) => {
 //     return {
-//         addMessage: (messagePayload) => { dispatch({ type: 'ADD_MESSAGE', payload: messagePayload }) },
+//         choosesymptoms: (symptoms) => { dispatch({ type: 'SELECTED_SYMPTOMS', payload: symptoms }) },
 //     };
 // };
-// export default connect(mapStateToProps, mapDispatchToProps)(symptom-checker);
+export default connect(mapStateToProps, null)(SymptomDisclaimer);

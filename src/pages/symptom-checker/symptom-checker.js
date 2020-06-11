@@ -23,16 +23,19 @@ class SymptomChecker extends React.Component {
 
     handleChange(event) {
         this.props.choosesymptoms(
-            // Fixme: the reducer only shows the previous change, not the current change
+            // Fixme: the reducer only shows the previous change, not the current change.
             {[event.target.name]: (event.target.checked)? true : false}
             // {[event.target.name]: !event.target.checked}
         );
         console.log("this.props.diagnosis ");
         console.log(this.props.diagnosis);
+        console.log(this.props.diagnosis);
     }
     handleSubmit(event) {
         console.log("Submitting diagnosis...");
         event.preventDefault();
+        console.log("this.props.diagnosis ");
+        console.log(this.props.diagnosis);
         // Todo:
         // use action to submit points to symptom-disclaimer
     }
