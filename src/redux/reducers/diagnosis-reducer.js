@@ -1,5 +1,3 @@
-
-// set the initial state here
 const commonstate = {
     "fever": false,
     "dry cough": false,
@@ -23,11 +21,20 @@ const seriousstate = {
     "loss of speech": false,
     "loss of movement": false,
 };
+const atriskstate = {
+    "Older than 64": false,
+    "Have Liver Disease": false,
+    "Have HIV or immunocompromised": false,
+    "Diabetic": false,
+    "Undergoing dialysis": false,
+    "BMI 40 and over": false,
+}
 
 const INITIAL_STATE = {
     common: Object.keys(commonstate),
     rare: Object.keys(rarestate),
     serious: Object.keys(seriousstate),
+    atrisk: Object.keys(atriskstate),
     symptoms: {...commonstate, ...rarestate, ...seriousstate},
 };
 

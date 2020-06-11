@@ -29,7 +29,6 @@ class SymptomChecker extends React.Component {
         );
         console.log("this.props.diagnosis ");
         console.log(this.props.diagnosis);
-        console.log(this.props.diagnosis);
     }
     handleSubmit(event) {
         console.log("Submitting diagnosis...");
@@ -65,6 +64,7 @@ class SymptomChecker extends React.Component {
                     {this.typeform(this.props.diagnosis.common)}
                     {this.typeform(this.props.diagnosis.rare)}
                     {this.typeform(this.props.diagnosis.serious)}
+                    {this.typeform(this.props.diagnosis.atrisk)}
                     <Button type="submit" variant="contained" color="primary" endIcon={<Send/>} onClick={this.handleSubmit}>Submit</Button>
                 </FormControl>
                 {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}

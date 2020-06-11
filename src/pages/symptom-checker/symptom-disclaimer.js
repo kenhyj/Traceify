@@ -2,20 +2,47 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 export class SymptomDisclaimer extends React.Component {
-    // constructor() {
-    //     super();
-    //     this.state = {};
-    // }
+    constructor() {
+        super();
+        this.state = {};
+        // this.gimme = this.gimme.bind(this);
+    }
+
+    gimme = () => {
+        const lemmec = this.props.diagnosis;
+        for (let x in lemmec.serious) {
+            if (x) {
+                return {emergency};
+            }
+        } 
+        for (let y in lemmec.rare){
+            if (y) {
+                return {interesting};
+            }
+        }
+        for (let z in lemmec.common) {
+            if (z) {
+                return {chill};
+            }
+        }
+        return {asymptomatic};
+    };
+
+    atrisk = () => {
+        const lemmec = this.props.diagnosis;
+        for (let s in lemmec.atrisk) {
+            if (s) {
+                return {complications};
+            }
+        }
+    }
 
     render() {
         return (
             <div>
                 <br/><br/>
                 This will be the disclaimer and results component <br/> <br/>
-                {asymptomatic} <br/> 
-                {chill} <br/> 
-                {emergency} <br/> 
-                {complications} <br/>
+                {this.gimme}
             </div>
         );
     }
@@ -26,6 +53,8 @@ const please = (
         Currently there is no official treatment or cure for COVID-19. <br />
         Meanwhile, please continue to practice social distancing and wash your hands thoroughly and regularly. <br />
         Avoid large gatherings and limit outside contact to as limited to shopping groceries and essentials. <br />
+        If you are seeing new symptpoims or pre-existing symptoms worsen in the next 2-14 days, check the symptom checker or in case of emergency contact your local 
+        health authorities.
     </div>);
 
 const asymptomatic = (
@@ -38,9 +67,18 @@ const asymptomatic = (
 
 const chill = (
     <div>
-        You are exhibiting some of the more common symptoms of someone who has the virus. <br />
+        You are exhibiting some of the more common symptoms of someone who has the virus. <br/>
+        Do not be alarmed. Some of these are commonly seen in colds and flu <br />
         {please}
     </div>);
+
+const interesting = (
+    <div>
+    You are exhibiting some of the rarest symptoms of someone who has the virus. <br/>
+    Not many individuals who have contracted COVID 19 exhibits these symptoms<br/>
+    {please}
+    </div>
+);
 
 const emergency = (
     <div>
@@ -55,8 +93,6 @@ const complications = (
         {please}
     </div>
 );
-
-// export default SymptomDisclaimer;
 
 const mapStateToProps = (state) => {
     return { 
