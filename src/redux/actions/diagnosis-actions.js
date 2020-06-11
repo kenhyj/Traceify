@@ -16,6 +16,13 @@ export const deselect = symptom => {
 export const choosesymptoms = symptoms => {
     return {
         type: 'SELECTED_SYMPTOMS',
-        symptompayload: symptoms
+        payload: symptoms
+    }
+}
+
+export const calcpoints = something => {
+    return {
+        type: 'CALCULATE_POINTS',
+        payload: something
     }
 }
