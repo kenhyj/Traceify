@@ -6,19 +6,18 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Button } from '@material-ui/core';
 import { connect } from 'react-redux';
-import {Send} from '@material-ui/icons';
+import {Send, Refresh} from '@material-ui/icons';
 
 import SymptomDisclaimer from "./symptom-disclaimer";
 
 class SymptomChecker extends React.Component {
     constructor() {
         super();
-        // this.state = { point: 0 };
-        // this.state = {};
-        // function for calculating
+        // this.state = {risk:false};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.typeform = this.typeform.bind(this);
+        this.retakeTest = this.retakeTest.bind(this);
     }
 
     handleChange(event) {
@@ -35,9 +34,12 @@ class SymptomChecker extends React.Component {
         event.preventDefault();
         console.log("this.props.diagnosis ");
         console.log(this.props.diagnosis);
+        // this.setState({...this.state, risk: true});
         // Todo:
         // use action to submit points to symptom-disclaimer
     }
+
+    retakeTest(event) {}
 
     //  symptomappeardays = 
     // Symptoms may appear 2-14 days after exposure to the virus. People with these symptoms may have COVID-19: Fever or chills
@@ -57,18 +59,20 @@ class SymptomChecker extends React.Component {
     render() {
         return (
             <div>
-                This page will determine level of risks you are at based on these symptoms and criteria. <br />
-                {/* <FormControl component="fieldset" className={classes.formControl}> */}
+                This page will determine the level of risk you are at based to COVID 19 based these symptoms and criteria. <br />
                 <FormControl onSubmit={this.handleSubmit}>
                     <FormLabel component="symptoms">Please check all the boxes that pertains to you:</FormLabel>
                     {this.typeform(this.props.diagnosis.common)}
                     {this.typeform(this.props.diagnosis.rare)}
                     {this.typeform(this.props.diagnosis.serious)}
                     {this.typeform(this.props.diagnosis.atrisk)}
-                    <Button type="submit" variant="contained" color="primary" endIcon={<Send/>} onClick={this.handleSubmit}>Submit</Button>
-                </FormControl>
+                    
+                </FormControl><br/>
+                <Button type="submit" variant="contained" color="primary" endIcon={<Send/>} onClick={this.handleSubmit}>Submit</Button>
+                {/* TODO: clear button */}
+                <Button type="clear" variant="contained" color="secondary" endIcon={<Refresh/> }>Retake the checker</Button> 
                 {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
-                <SymptomDisclaimer />
+               <SymptomDisclaimer/>
             </div>
         );
     }

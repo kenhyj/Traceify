@@ -2,47 +2,54 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 export class SymptomDisclaimer extends React.Component {
-    constructor() {
-        super();
-        this.state = {};
-        // this.gimme = this.gimme.bind(this);
-    }
-
-    gimme = () => {
-        const lemmec = this.props.diagnosis;
-        for (let x in lemmec.serious) {
-            if (x) {
-                return {emergency};
-            }
-        } 
-        for (let y in lemmec.rare){
-            if (y) {
-                return {interesting};
-            }
-        }
-        for (let z in lemmec.common) {
-            if (z) {
-                return {chill};
-            }
-        }
-        return {asymptomatic};
-    };
-
-    atrisk = () => {
-        const lemmec = this.props.diagnosis;
-        for (let s in lemmec.atrisk) {
-            if (s) {
-                return {complications};
-            }
-        }
-    }
+    // constructor() {
+    //     super();
+    //     this.state = {};
+    //     this.gimme = this.gimme.bind(this);
+    // }
 
     render() {
+        const gimme = () => {
+            const lemmec = this.props.diagnosis;
+            for (let d in lemmec.symptoms) {
+                for (let x of lemmec.serious) {
+                    if (d[x]) {
+                        return {emergency};
+                    }
+                } 
+                for (let y of lemmec.rare){
+                    if (d[y]) {
+                        return {interesting};
+                    }
+                }
+                for (let z of lemmec.common) {
+                    if (d[z]) {
+                        return {chill};
+                    }
+                }
+            }
+            return {asymptomatic};
+        };
+    
+        const atrisk = () => {
+            const lemmec = this.props.diagnosis;
+            for (let d of lemmec.symptoms) {
+                for (let s in lemmec.atrisk) {
+                    if (d[s]) {
+                        return {complications};
+                    }
+                }
+            }
+            return null;
+        }
+
         return (
             <div>
                 <br/><br/>
                 This will be the disclaimer and results component <br/> <br/>
-                {this.gimme}
+                {/* {gimme}
+                {atrisk} */}
+                {asymptomatic}
             </div>
         );
     }
