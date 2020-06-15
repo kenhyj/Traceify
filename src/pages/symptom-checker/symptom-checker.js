@@ -13,7 +13,8 @@ import SymptomDisclaimer from "./symptom-disclaimer";
 class SymptomChecker extends React.Component {
     constructor() {
         super();
-        // this.state = {risk:false};
+        this.state = { risk: false };
+        this.disclaimer = null;
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.typeform = this.typeform.bind(this);
@@ -33,12 +34,16 @@ class SymptomChecker extends React.Component {
         event.preventDefault();
         console.log("this.props.diagnosis ");
         console.log(this.props.diagnosis);
-        // this.setState({...this.state, risk: true});
+        this.setState({ ...this.state, risk: true });
+        // this.disclaimer = <SymptomDisclaimer />;
         // Todo:
         // use action to submit points to symptom-disclaimer
     }
 
-    retakeTest(event) { }
+    retakeTest(event) {
+        this.setState({ ...this.state, risk: false });
+        // this.disclaimer = <SymptomDisclaimer />;
+    }
 
     //  symptomappeardays = 
     // Symptoms may appear 2-14 days after exposure to the virus. People with these symptoms may have COVID-19: Fever or chills
@@ -56,6 +61,15 @@ class SymptomChecker extends React.Component {
     }
 
     render() {
+        switch (this.state.risk) {
+            case true:
+                this.disclaimer = <SymptomDisclaimer />
+                break;
+            default:
+                this.disclaimer = null
+                break;
+        }
+
         return (
             <div>
                 This page will determine the level of risk you are at based to COVID 19 based these symptoms and criteria. <br /><br />
@@ -69,9 +83,9 @@ class SymptomChecker extends React.Component {
                 </FormControl><br />
                 <Button type="submit" variant="contained" color="primary" endIcon={<Send />} onClick={this.handleSubmit}>Submit</Button>
                 {/* TODO: clear button */}
-                <Button type="clear" variant="contained" color="secondary" endIcon={<Refresh />}>Retake the checker</Button>
+                <Button type="clear" variant="contained" color="secondary" endIcon={<Refresh />} onClick={this.retakeTest}>Retake the checker</Button>
                 {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
-                <SymptomDisclaimer />
+                {this.disclaimer}
             </div>
         );
     }

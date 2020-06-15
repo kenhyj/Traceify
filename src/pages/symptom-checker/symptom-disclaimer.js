@@ -4,18 +4,48 @@ import { connect } from 'react-redux';
 export class SymptomDisclaimer extends React.Component {
     // constructor() {
     //     super();
-    //     this.state = {};
-    //     this.gimme = this.gimme.bind(this);
+        // this.state = {};
+        // this.gimme = this.gimme.bind(this);
+        // this.atrisk = this.atrisk.bind(this);
     // }
+  
 
     render() {
+        const atrisk = () => {
+            // const lemmec = this.props.diagnosis;
+            for (let s in this.props.diagnosis.atrisk) {
+                if (this.props.diagnosis.symptoms[s] === true) {
+                    console.log(s + "is " + this.props.diagnosis.symptoms[s]);
+                    return { complications };
+                }
+            }
+            return null;
+        }
+        const gimme = () => {
+            // const lemmec = this.props.diagnosis;
+                for (let x of this.props.diagnosis.serious) {
+                    if (this.props.diagnosis.symptoms[x] === true) {
+                        return { emergency };
+                    }
+                }
+                for (let y of this.props.diagnosis.rare) {
+                    if (this.props.diagnosis.symptoms[y] === true) {
+                        return { interesting };
+                    }
+                }
+                for (let z of this.props.diagnosis.common) {
+                    if (this.props.diagnosis.symptoms[z] === true) {
+                        return { chill };
+                    }
+                }
+            return { asymptomatic };
+        }
         return (
             <div>
                 <br /><br />
-                {/* This will be the disclaimer and results component <br /> <br /> */}
+                This will be the disclaimer and results component <br /> <br />
                 {gimme}
                 {atrisk}
-                {/* {asymptomatic} */}
             </div>
         );
     }
@@ -66,36 +96,6 @@ const complications = (
         {please}
     </div>
 );
-
-const atrisk = () => {
-    const lemmec = this.props.diagnosis;
-    for (let s in lemmec.atrisk) {
-        if (lemmec.symptoms[s] === true) {
-            console.log(s + "is " + lemmec.symptoms[s]);
-            return { complications };
-        }
-    }
-    return null;
-}
-const gimme = () => {
-    const lemmec = this.props.diagnosis;
-        for (let x of lemmec.serious) {
-            if (lemmec.symptoms[x] === true) {
-                return { emergency };
-            }
-        }
-        for (let y of lemmec.rare) {
-            if (lemmec.symptoms[y] === true) {
-                return { interesting };
-            }
-        }
-        for (let z of lemmec.common) {
-            if (lemmec.symptoms[z] === true) {
-                return { chill };
-            }
-        }
-    return { asymptomatic };
-}
 
 const mapStateToProps = (state) => {
     return {
