@@ -1,5 +1,4 @@
 import React from 'react';
-import './financial-help.css';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Typography, CardActions, Button } from '@material-ui/core';
 
