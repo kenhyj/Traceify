@@ -12,7 +12,7 @@ const rarestate = {
     "headache": false,
     "loss of taste": false,
     "loss of smell": false,
-    "a rash on skin": false,
+    "rash on skin": false,
     "discolouration of fingers or toes": false,
 };
 const seriousstate = {
@@ -25,6 +25,7 @@ const atriskstate = {
     "Older than 64": false,
     "Have Liver Disease": false,
     "Have HIV or immunocompromised": false,
+    "Undergoing chemotherapy": false,
     "Diabetic": false,
     "Undergoing dialysis": false,
     "BMI 40 and over": false,
@@ -44,8 +45,6 @@ const diagnosisReducer = (state = INITIAL_STATE, action) => {
         case 'SELECTED_SYMPTOMS':
             return {
                 ...state,
-                // symptoms: state.symptoms.push(action.symptom)
-                // fixme: I don't know how to update the symptoms' fields here...
                 symptoms: {...state.symptoms, ...action.payload}
             };
         default:

@@ -6,7 +6,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Button } from '@material-ui/core';
 import { connect } from 'react-redux';
-import {Send, Refresh} from '@material-ui/icons';
+import { Send, Refresh } from '@material-ui/icons';
 
 import SymptomDisclaimer from "./symptom-disclaimer";
 
@@ -22,12 +22,11 @@ class SymptomChecker extends React.Component {
 
     handleChange(event) {
         this.props.choosesymptoms(
-            // Fixme: the reducer only shows the previous change, not the current change.
-            {[event.target.name]: (event.target.checked)? true : false}
+            { [event.target.name]: (event.target.checked) ? true : false }
             // {[event.target.name]: !event.target.checked}
         );
-        console.log("this.props.diagnosis ");
-        console.log(this.props.diagnosis);
+        // console.log("this.props.diagnosis ");
+        // console.log(this.props.diagnosis);
     }
     handleSubmit(event) {
         console.log("Submitting diagnosis...");
@@ -39,47 +38,47 @@ class SymptomChecker extends React.Component {
         // use action to submit points to symptom-disclaimer
     }
 
-    retakeTest(event) {}
+    retakeTest(event) { }
 
     //  symptomappeardays = 
     // Symptoms may appear 2-14 days after exposure to the virus. People with these symptoms may have COVID-19: Fever or chills
 
     typeform(symptomtype) {
-        return (        
-        <div>
-            <FormGroup>
-                {symptomtype.map(somesymptoms =>
-                    <FormControlLabel
-                        control={<Checkbox onChange={this.handleChange} name={ somesymptoms } />}
-                        label={somesymptoms} />)}
-            </FormGroup>
-        </div>)
+        return (
+            <div>
+                <FormGroup>
+                    {symptomtype.map(somesymptoms =>
+                        <FormControlLabel
+                            control={<Checkbox onChange={this.handleChange} name={somesymptoms} />}
+                            label={somesymptoms} />)}
+                </FormGroup>
+            </div>)
     }
 
     render() {
         return (
             <div>
-                This page will determine the level of risk you are at based to COVID 19 based these symptoms and criteria. <br />
+                This page will determine the level of risk you are at based to COVID 19 based these symptoms and criteria. <br /><br />
                 <FormControl onSubmit={this.handleSubmit}>
-                    <FormLabel component="symptoms">Please check all the boxes that pertains to you:</FormLabel>
-                    {this.typeform(this.props.diagnosis.common)}
-                    {this.typeform(this.props.diagnosis.rare)}
-                    {this.typeform(this.props.diagnosis.serious)}
-                    {this.typeform(this.props.diagnosis.atrisk)}
-                    
-                </FormControl><br/>
-                <Button type="submit" variant="contained" color="primary" endIcon={<Send/>} onClick={this.handleSubmit}>Submit</Button>
+                    <FormLabel component="symptoms">Please check all the boxes below that applies to you:</FormLabel>
+                    {this.typeform(this.props.diagnosis.atrisk.sort())}
+                    <br />
+                    <FormLabel component="symptoms">Please check all the boxes below that you've experienced recently eg.last 2-14 days:</FormLabel>
+                    {this.typeform(this.props.diagnosis.common.concat(this.props.diagnosis.rare.concat(this.props.diagnosis.serious)).sort())}
+
+                </FormControl><br />
+                <Button type="submit" variant="contained" color="primary" endIcon={<Send />} onClick={this.handleSubmit}>Submit</Button>
                 {/* TODO: clear button */}
-                <Button type="clear" variant="contained" color="secondary" endIcon={<Refresh/> }>Retake the checker</Button> 
+                <Button type="clear" variant="contained" color="secondary" endIcon={<Refresh />}>Retake the checker</Button>
                 {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
-               <SymptomDisclaimer/>
+                <SymptomDisclaimer />
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    return { 
+    return {
         diagnosis: state.diagnosis
     };
 }
