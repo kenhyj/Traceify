@@ -105,7 +105,7 @@ const mapStateToProps = (state) => {
     return { 
         diagnosis: state.diagnosis
     };
-}
+};
 // const mapDispatchToProps = (dispatch) => {
 //     return {
 //         choosesymptoms: (symptoms) => { dispatch({ type: 'SELECTED_SYMPTOMS', payload: symptoms }) },

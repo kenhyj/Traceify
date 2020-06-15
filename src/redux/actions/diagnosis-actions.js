@@ -1,21 +1,14 @@
-export const choosesymptoms = symptoms => {
+export const submitSymptoms = symptoms => {
     return {
-        type: 'SELECTED_SYMPTOMS',
-        payload: symptoms
+        type: 'SUBMIT_SYMPTOMS',
+        selectedSymptoms: symptoms
     }
-}
+};
 
-export const showdiagnosis = diagnosis => {
+// Note: this will be called when the request to the backend returns
+export const setDiagnosis = diagnosis => {
     return {
-        type: 'SHOW_DIAGNOSIS',
-        payload: diagnosis
+        type: 'SUBMIT_SYMPTOMS',
+        diagnosis: diagnosis
     }
-}
-
-export const hidediagnosis = diagnosis => {
-    return {
-        type: 'HIDE_DIAGNOSIS',
-        payload: diagnosis
-    }
-}
-
+};
