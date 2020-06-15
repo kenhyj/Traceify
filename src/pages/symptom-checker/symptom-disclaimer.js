@@ -1,20 +1,55 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 export class SymptomDisclaimer extends React.Component {
     // constructor() {
     //     super();
     //     this.state = {};
+    //     this.gimme = this.gimme.bind(this);
     // }
 
     render() {
+        const gimme = () => {
+            const lemmec = this.props.diagnosis;
+            for (let d in lemmec.symptoms) {
+                for (let x of lemmec.serious) {
+                    if (d[x]) {
+                        return {emergency};
+                    }
+                } 
+                for (let y of lemmec.rare){
+                    if (d[y]) {
+                        return {interesting};
+                    }
+                }
+                for (let z of lemmec.common) {
+                    if (d[z]) {
+                        return {chill};
+                    }
+                }
+            }
+            return {asymptomatic};
+        };
+    
+        const atrisk = () => {
+            const lemmec = this.props.diagnosis;
+            for (let d of lemmec.symptoms) {
+                for (let s in lemmec.atrisk) {
+                    if (d[s]) {
+                        return {complications};
+                    }
+                }
+            }
+            return null;
+        }
+
         return (
             <div>
                 <br/><br/>
                 This will be the disclaimer and results component <br/> <br/>
-                {asymptomatic} <br/> 
-                {chill} <br/> 
-                {emergency} <br/> 
-                {complications} <br/>
+                {/* {gimme}
+                {atrisk} */}
+                {asymptomatic}
             </div>
         );
     }
@@ -25,6 +60,8 @@ const please = (
         Currently there is no official treatment or cure for COVID-19. <br />
         Meanwhile, please continue to practice social distancing and wash your hands thoroughly and regularly. <br />
         Avoid large gatherings and limit outside contact to as limited to shopping groceries and essentials. <br />
+        If you are seeing new symptpoims or pre-existing symptoms worsen in the next 2-14 days, check the symptom checker or in case of emergency contact your local 
+        health authorities.
     </div>);
 
 const asymptomatic = (
@@ -37,9 +74,18 @@ const asymptomatic = (
 
 const chill = (
     <div>
-        You are exhibiting some of the more common symptoms of someone who has the virus. <br />
+        You are exhibiting some of the more common symptoms of someone who has the virus. <br/>
+        Do not be alarmed. Some of these are commonly seen in colds and flu <br />
         {please}
     </div>);
+
+const interesting = (
+    <div>
+    You are exhibiting some of the rarest symptoms of someone who has the virus. <br/>
+    Not many individuals who have contracted COVID 19 exhibits these symptoms<br/>
+    {please}
+    </div>
+);
 
 const emergency = (
     <div>
@@ -55,14 +101,14 @@ const complications = (
     </div>
 );
 
-export default SymptomDisclaimer;
-
-// const mapStateToProps = (state) => {
-//     return { mssgTable: state.mssgTable };
-// }
+const mapStateToProps = (state) => {
+    return { 
+        diagnosis: state.diagnosis
+    };
+};
 // const mapDispatchToProps = (dispatch) => {
 //     return {
-//         addMessage: (messagePayload) => { dispatch({ type: 'ADD_MESSAGE', payload: messagePayload }) },
+//         choosesymptoms: (symptoms) => { dispatch({ type: 'SELECTED_SYMPTOMS', payload: symptoms }) },
 //     };
 // };
-// export default connect(mapStateToProps, mapDispatchToProps)(symptom-checker);
+export default connect(mapStateToProps, null)(SymptomDisclaimer);
