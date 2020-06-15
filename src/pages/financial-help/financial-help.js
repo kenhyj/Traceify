@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import Card from '../../components/card/CardTitleDescButton';
+import Card from '../../components/card/Card-TitleDescButtonn';
 
 // TODO: are we going to have a separate component for component headers?
 
