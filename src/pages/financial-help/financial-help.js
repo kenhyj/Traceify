@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import FinancialHelpCard from './financial-help-card';
+import Card from '../../components/card/Card-TitleDescButtonn';
 
 // TODO: are we going to have a separate component for component headers?
 
@@ -27,7 +27,7 @@ const FinancialHelp = () => {
             </div>
             <div>
             {helpResources.map(resource => 
-                <FinancialHelpCard key={resource.id} {...resource} />
+                <Card key={resource.id} {...resource} />
             )}
             </div>
         </div>
