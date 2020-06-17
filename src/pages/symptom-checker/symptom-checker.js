@@ -6,7 +6,9 @@ import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { Button } from '@material-ui/core';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import { withRouter } from 'react-router-dom';
 
 import SymptomDisclaimer from "./symptom-disclaimer";
 
@@ -17,6 +19,7 @@ class SymptomChecker extends React.Component {
         // function for calculating
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.typeform = this.typeform.bind(this);
     }
 
     handleChange(event) {
@@ -27,6 +30,7 @@ class SymptomChecker extends React.Component {
         event.preventDefault();
         // use action to submit points to symptom-disclaimer
     }
+
     common = [
         "fever",
         "dry cough",
@@ -38,28 +42,41 @@ class SymptomChecker extends React.Component {
         "diarrhea",
         "conjunctivitis",
         "headache",
-        "loss of taste and or smell",
-        "a rash on skin, or discolouration of fingers or toes"
+        "loss of taste",
+        "loss of smell",
+        "a rash on skin",
+        "discolouration of fingers or toes"
     ];
     serious = [
         "difficulty breathing or shortness of breath",
         "chest pain or pressure",
-        "loss of speech or movement"
+        "loss of speech",
+        "loss of movement"
     ];
 
     //  symptomappeardays = 
     // Symptoms may appear 2-14 days after exposure to the virus. People with these symptoms may have COVID-19: Fever or chills
 
-    // commonform = (
-    //     <div>
-    //         {this.common.map(function (object, i) {
-    //             return <FormControlLabel
-    //                 control={<Checkbox onChange={this.handleChange} name="gilad" />}
-    //                 label={this.common[i]}
-    //             />;
-    //         })}
-    //     </div>
-    // )
+    typeform(symptomtype) {
+        return (        
+        <div>
+            <FormGroup>
+                {symptomtype.map(somesymptoms =>
+                    <FormControlLabel
+                        control={<Checkbox onChange={this.handleChange} name={"symptom" + { somesymptoms }} />}
+                        label={somesymptoms} />)}
+            </FormGroup>
+        </div>)
+    }
+    commonform = (
+        this.typeform(this.common)
+    );
+    rareform = (
+        this.typeform(this.rare)
+    );
+    seriousform = (
+        this.typeform(this.serious)
+    );
 
     render() {
         return (
@@ -68,34 +85,18 @@ class SymptomChecker extends React.Component {
                 {/* <FormControl component="fieldset" className={classes.formControl}> */}
                 <FormControl>
                     <FormLabel component="symptoms">Please check all the boxes that pertains to you:</FormLabel>
-                    <FormGroup>
-                        {/* <FormControlLabel
-                            control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
-                            label="Gilad Gray"
-                        /> */}
-                        <FormControlLabel
-                            control={<Checkbox onChange={this.handleChange} name="common0" />}
-                            label={this.common[0]}
-                        />
-                        {/* <FormControlLabel
-                            control={<Checkbox checked={jason} onChange={handleChange} name="jason" />}
-                            label="Jason Killian"
-                        /> */}
-                        <FormControlLabel
-                            control={<Checkbox onChange={this.handleChange} name="common1" />}
-                            label={this.common[1]}
-                        />
-                    </FormGroup>
-                    {/* <FormHelperText>Be careful</FormHelperText> */}
+                    {this.commonform}
+                    {this.rareform}
+                    {this.seriousform}
                 </FormControl>
-
+                {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
                 <SymptomDisclaimer />
             </div>
         );
     }
 }
 
-export default SymptomChecker;
+export default withRouter(SymptomChecker);
 
 // const mapStateToProps = (state) => {
 //     return { mssgTable: state.mssgTable };

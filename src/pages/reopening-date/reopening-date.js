@@ -1,12 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-const HaveI = () => {
+const Reopen = () => {
     return (
         <div>
-            This should be the Have I been exposed page.
+            This should be the Reopening Date page.
         </div>
     );
 };
 
-export default withRouter(HaveI);
+export default withRouter(Reopen);

@@ -5,22 +5,22 @@ import {
     Toolbar,
     Typography,
     makeStyles,
-    AppBar
 } from '@material-ui/core';
 import LocalHospitalIco from '@material-ui/icons/LocalHospital';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import PropTypes from 'prop-types';
 import logo from '../../components/traceifylogo.png';
+import { Link } from "react-router-dom";
 import Home from '../../pages/home/home';
 
 const useStyles = makeStyles((theme) => ({
     header: {
-        color: 'seconday'
+        color: 'seconday',
     },
     titleBar: {
         borderBottom: `1px solid ${theme.palette.divider}`,
-        backgroundColor : '#F8F8D6',
-        color : '#303f9f'
+        backgroundColor: '#F8F8D6',
+        color: '#303f9f',
     },
     title: {
         flex: 1,
@@ -30,11 +30,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Header(props) {
+export default function HeaderTitle(props) {
     const classes = useStyles();
     const { title } = props;
     return (
-        <div>
+        <div className = {classes.headerContainer}>
             <Toolbar className={classes.titleBar}>
                 <Button
                     variant="contained"
@@ -47,8 +47,10 @@ export default function Header(props) {
                     align="center"
                     className={classes.title}
                     variant="h4"
-                >{title}</Typography>
-                <img src={logo} alt="traceifylogo" z-index="0" onClick={Home}></img> {/* TODO: I cannot find out how to make it go home upon clicking the image */}
+                >
+                    {/* {title}                 */}
+                    <Link to="/home"><img src={logo} alt="traceifylogo" /></Link>
+                </Typography>
                 <Button
                     variant="contained"
                     size="small"
@@ -57,11 +59,11 @@ export default function Header(props) {
                     Admin Login in
                     </Button>
             </Toolbar>
-            
-            </div>
+
+        </div>
     );
 }
 
-Header.propTypes = {
+HeaderTitle.propTypes = {
     title: PropTypes.string,
 };
