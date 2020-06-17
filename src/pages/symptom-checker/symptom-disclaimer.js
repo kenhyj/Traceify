@@ -42,45 +42,46 @@ export class SymptomDisclaimer extends React.Component {
                     The COVID-19 has put you at an elevated risk of developing health complications from either your pre-existing disorder or current disorder
                 </div>),
         };
+        this.atrisk = this.atrisk.bind(this);
+        this.gimme = this.gimme.bind(this);
     }
-  
 
-    render() {
-        const atrisk = () => {
-            // const lemmec = this.props.diagnosis;
-            for (let s in this.props.diagnosis.atrisk) {
-                if (this.props.diagnosis.symptoms[s] === true) {
-                    console.log(s + "is " + this.props.diagnosis.symptoms[s]);
-                    return this.state.complications;
+    atrisk = () => {
+        // const lemmec = this.props.diagnosis;
+        for (let s in this.props.diagnosis.atrisk) {
+            if (this.props.diagnosis.symptoms[s]) {
+                console.log(s + "is " + this.props.diagnosis.symptoms[s]);
+                return this.state.complications;
+            }
+        }
+        return null;
+    }
+    gimme = () => {
+        // const lemmec = this.props.diagnosis;
+            for (let x of this.props.diagnosis.serious) {
+                if (this.props.diagnosis.symptoms[x]) {
+                    return this.state.emergency;
                 }
             }
-            return null;
-        }
-        const gimme = () => {
-            // const lemmec = this.props.diagnosis;
-                for (let x of this.props.diagnosis.serious) {
-                    if (this.props.diagnosis.symptoms[x] === true) {
-                        return this.state.emergency;
-                    }
+            for (let y of this.props.diagnosis.rare) {
+                if (this.props.diagnosis.symptoms[y]) {
+                    return this.state.interesting;
                 }
-                for (let y of this.props.diagnosis.rare) {
-                    if (this.props.diagnosis.symptoms[y] === true) {
-                        return this.state.interesting;
-                    }
+            }
+            for (let z of this.props.diagnosis.common) {
+                if (this.props.diagnosis.symptoms[z]) {
+                    return this.state.chill;
                 }
-                for (let z of this.props.diagnosis.common) {
-                    if (this.props.diagnosis.symptoms[z] === true) {
-                        return this.state.chill;
-                    }
-                }
-            return this.state.asymptomatic;
-        }
+            }
+        return this.state.asymptomatic;
+    }
+
+    render() {
         return (
             <div>
-                <br /><br />
-                This will be the disclaimer and results component <br /> <br />
-                {gimme}
-                {atrisk}
+                {this.gimme}
+                {this.atrisk}
+                <br/><br/>
                 {this.state.please}
             </div>
         );
