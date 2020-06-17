@@ -19,6 +19,17 @@
 ## License
 TBA
 
+## Instruction 
+For first time use, in the terminal run: 
+```bash
+npm install
+```
+Then : 
+```bash
+npm start
+```
+
+
 ## Project Description
 https://docs.google.com/document/d/18EIdx1Ytu0IXqTDAZWKWwrnbv4uQwJ7OXPdo-ErhpIc/edit?usp=sharing <br/>
 

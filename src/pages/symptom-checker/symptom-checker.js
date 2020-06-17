@@ -1,109 +1,88 @@
 import React from 'react';
-// import Radio from '@material-ui/core/Radio';
-// import RadioGroup from '@material-ui/core/RadioGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Button } from '@material-ui/core';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import { withRouter } from 'react-router-dom';
-
-import SymptomDisclaimer from "./symptom-disclaimer";
+import { connect } from 'react-redux';
+import {Send, Refresh} from '@material-ui/icons';
+import { submitSymptoms } from '../../redux/actions/diagnosis-actions';
 
 class SymptomChecker extends React.Component {
     constructor() {
         super();
-        this.state = { point: 0 };
-        // function for calculating
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.typeform = this.typeform.bind(this);
+        this.state = {
+            selectedSymptoms: []
+        }
     }
 
-    handleChange(event) {
-        // TBA
-    }
-    handleSubmit(event) {
-        // TBA
-        event.preventDefault();
-        // use action to submit points to symptom-disclaimer
-    }
+    handleChange = symptom => {
+        let symptoms = this.state.selectedSymptoms;
+        let index = symptoms.indexOf(symptom);
 
-    common = [
-        "fever",
-        "dry cough",
-        "tiredness"
-    ];
-    rare = [
-        "aches and pains",
-        "sore throat",
-        "diarrhea",
-        "conjunctivitis",
-        "headache",
-        "loss of taste",
-        "loss of smell",
-        "a rash on skin",
-        "discolouration of fingers or toes"
-    ];
-    serious = [
-        "difficulty breathing or shortness of breath",
-        "chest pain or pressure",
-        "loss of speech",
-        "loss of movement"
-    ];
+        if (index > -1) {
+            symptoms.splice(index, 1);
+            this.setState({
+                selectedSymptoms: symptoms
+            })
+        } else
+            symptoms.push(symptom)
+    };
+
+    retakeTest = event => {};
 
     //  symptomappeardays = 
     // Symptoms may appear 2-14 days after exposure to the virus. People with these symptoms may have COVID-19: Fever or chills
 
-    typeform(symptomtype) {
+    typeForm = symptomType => {
         return (        
         <div>
             <FormGroup>
-                {symptomtype.map(somesymptoms =>
+                {symptomType.map(symptom =>
                     <FormControlLabel
-                        control={<Checkbox onChange={this.handleChange} name={"symptom" + { somesymptoms }} />}
-                        label={somesymptoms} />)}
+                        control={<Checkbox onChange={this.handleChange(symptom)} name={ symptom } />}
+                        label={symptom} />)}
             </FormGroup>
         </div>)
-    }
-    commonform = (
-        this.typeform(this.common)
-    );
-    rareform = (
-        this.typeform(this.rare)
-    );
-    seriousform = (
-        this.typeform(this.serious)
-    );
+    };
+
+    resetPage = () => {
+      this.forceUpdate();
+    };
 
     render() {
         return (
             <div>
-                This page will determine level of risks you are at based on these symptoms and criteria. <br />
-                {/* <FormControl component="fieldset" className={classes.formControl}> */}
+                This page will determine the level of risk you are at based to COVID 19 based these symptoms and criteria. <br />
                 <FormControl>
                     <FormLabel component="symptoms">Please check all the boxes that pertains to you:</FormLabel>
-                    {this.commonform}
-                    {this.rareform}
-                    {this.seriousform}
-                </FormControl>
+                    {this.typeForm(this.props.common)}
+                    {this.typeForm(this.props.rare)}
+                    {this.typeForm(this.props.serious)}
+                    {this.typeForm(this.props.atrisk)}
+                </FormControl><br/>
+
+                <Button type="submit" variant="contained" color="primary" endIcon={<Send/>} onClick={() => this.props.submitSymptoms(this.state.selectedSymptoms)}>Submit</Button>
+                {/* TODO: clear button */}
+                <Button type="clear" variant="contained" color="secondary" endIcon={<Refresh/>} onClick={() => this.resetPage()}>Retake the checker</Button>
+
                 {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
-                <SymptomDisclaimer />
+                <h3>{this.props.diagnosis}</h3>
             </div>
         );
     }
 }
 
-export default withRouter(SymptomChecker);
+const mapStateToProps = (state) => {
+    return {
+        common: state.diagnosis.common,
+        rare: state.diagnosis.rare,
+        serious: state.diagnosis.serious,
+        atrisk: state.diagnosis.atrisk,
 
-// const mapStateToProps = (state) => {
-//     return { mssgTable: state.mssgTable };
-// }
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         addMessage: (messagePayload) => { dispatch({ type: 'ADD_MESSAGE', payload: messagePayload }) },
-//     };
-// };
-// export default connect(mapStateToProps, mapDispatchToProps)(symptom-checker);
+        diagnosis: state.diagnosis.diagnosis
+    };
+};
+
+export default connect(mapStateToProps, {submitSymptoms})(SymptomChecker);

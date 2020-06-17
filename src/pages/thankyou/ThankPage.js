@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Button, Grid } from "@material-ui/core";
 import './thankyou.css';
-import thankpng from '../../components/ThankPic.png';
+import thankpng from '../../assets/ThankPic.png';
 import socialDis from '../../assets/social-dist.jpg';
 import reopen from '../../assets/reopen.jpg';
 import symptom from '../../assets/symptom.png';

@@ -1,21 +1,14 @@
-export const select = symptom => {
-    // Ex) symptom is the payload that gets passed to the reducer
+export const submitSymptoms = symptoms => {
     return {
-        type: 'SELECT_SYMPTOM',
-        symptom: symptom
-    };
-};
-
-export const deselect = symptom => {
-    return {
-        type: 'DESELECT_SYMPTOM',
-        symptom: symptom
-    };
-};
-
-export const chosensymptoms = symptoms => {
-    return {
-        type: 'SELECTED_SYMPTOMS',
-        symptompayload: symptoms
+        type: 'SUBMIT_SYMPTOMS',
+        selectedSymptoms: symptoms
     }
-}
+};
+
+// Note: this will be called when the request to the backend returns
+export const setDiagnosis = diagnosis => {
+    return {
+        type: 'SUBMIT_SYMPTOMS',
+        diagnosis: diagnosis
+    }
+};

@@ -9,9 +9,10 @@ import {
 import LocalHospitalIco from '@material-ui/icons/LocalHospital';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import PropTypes from 'prop-types';
-import logo from '../../components/traceifylogo.png';
+import logo from '../../assets/logoresized.svg';
 import { Link } from "react-router-dom";
-import Home from '../../pages/home/home';
+import AdminLogin from '../admin-login/admin-login';
+// import Home from '../../pages/home/home';
 
 const useStyles = makeStyles((theme) => ({
     header: {
@@ -32,17 +33,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HeaderTitle(props) {
     const classes = useStyles();
-    const { title } = props;
+    // const { title } = props;
     return (
         <div className = {classes.headerContainer}>
             <Toolbar className={classes.titleBar}>
-                <Button
-                    variant="contained"
-                    size="small"
-                    endIcon={<GitHubIcon />}
-                    href="https://github.com/kenhyj/Traceify"
-                    className={classes.headerButton}
-                >Github Link</Button>
                 <Typography
                     align="center"
                     className={classes.title}
@@ -51,13 +45,7 @@ export default function HeaderTitle(props) {
                     {/* {title}                 */}
                     <Link to="/home"><img src={logo} alt="traceifylogo" /></Link>
                 </Typography>
-                <Button
-                    variant="contained"
-                    size="small"
-                    endIcon={<LocalHospitalIco />}
-                    className={classes.headerButton}>
-                    Admin Login in
-                    </Button>
+                <AdminLogin/>
             </Toolbar>
 
         </div>
