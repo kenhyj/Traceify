@@ -18,7 +18,8 @@ function App() {
                 <Header title="Covid 19 - Traceify" />
                 <PagesBar />
             </div>
-            <div style={{paddingTop: '170px', display: 'inline-block',zIndex : '2'}}>
+            <ThankPage/>
+            <div style={{paddingTop: '80px', display: 'inline-block',zIndex : '2'}}>
                 
                     <Route path='/' exact component={Home} />
                     <Route path='/home' exact component={Home} />
