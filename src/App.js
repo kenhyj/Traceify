@@ -19,7 +19,7 @@ function App() {
                 <PagesBar />
             </div>
             <ThankPage/>
-            <div style={{paddingTop: '80px', display: 'inline-block',zIndex : '2'}}>
+            <div style={{paddingTop: '70px', display: 'inline-block',zIndex : '2'}}>
                 
                     <Route path='/' exact component={Home} />
                     <Route path='/home' exact component={Home} />
