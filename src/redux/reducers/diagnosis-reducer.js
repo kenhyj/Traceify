@@ -29,6 +29,7 @@ const atriskstate = {
     "Diabetic": false,
     "Undergoing dialysis": false,
     "BMI 40 and over": false,
+    "In need of organ transplant": false,
     // https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/people-at-higher-risk.html
 }
 

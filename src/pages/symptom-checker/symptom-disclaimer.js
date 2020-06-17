@@ -7,8 +7,9 @@ export class SymptomDisclaimer extends React.Component {
     // this.state = {};
     // }
 
-    please = () => (
+    please = (
         <div>
+            <br/> <br/>
             Currently there is no official treatment or cure for COVID-19. <br />
             Meanwhile, please continue to practice social distancing and wash your hands thoroughly and regularly. <br />
             Avoid large gatherings and limit outside contact to as limited to shopping groceries and essentials. <br />
@@ -16,20 +17,6 @@ export class SymptomDisclaimer extends React.Component {
             health authorities.
         </div>)
 
-
-    atrisk(simptoms) {
-        const complications = (
-            <div>
-                The COVID-19 has put you at an elevated risk of developing health complications from either your pre-existing disorder or current disorder
-            </div>)
-            
-        for (let s in simptoms.atrisk) {
-            if (simptoms.symptoms[s]) {
-                return complications;
-            }
-        }
-        return null;
-    }
     gimme(simptoms) {
         const asymptomatic = (
             <div>
@@ -76,12 +63,25 @@ export class SymptomDisclaimer extends React.Component {
         }
         return asymptomatic;
     }
+    atrisque(criteria) {
+        const complications = (
+            <div>
+                The COVID-19 will or has put you at an elevated risk of developing health complications from either your pre-existing disorder or current disorder
+            </div>)
+
+        for (let s in criteria.atrisk) {
+            if (criteria.symptoms[s]) {
+                return complications;
+            }
+        }
+        return null;
+    }
 
     render() {
         return (
             <div>
+                {this.atrisque(this.props.diagnosis)} <br/> <br/>
                 {this.gimme(this.props.diagnosis)} <br/> <br/>
-                {this.atrisk(this.props.diagnosis)} <br/> <br/>
             </div>
         )
     }
