@@ -1,23 +1,28 @@
+*{
+  font-size: 16px;
+}
+
+
 .thank-title {
-    width: 60%;
-    padding: 1em;
+    width: 70%;
+    padding: 3%;
+    font-size: 1.4em;
 }
 
 .page-intro {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     text-align: center;
     display: grid;
-    grid-gap: 3px;
-    grid-template-columns: repeat(3, 2fr);
+    grid-template-columns: repeat(3, 1.5fr);
   }
   em{
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: red;
   }
   
   .intro-left img , .intro-middle img,.intro-right img {
-    width: 80%;
+    width: 75%;
     display: block;
     margin: 0 auto;
   }
@@ -28,12 +33,20 @@
   
   .intro-text {
     width: 80%;
-    margin: 10px auto 20px auto;
-    text-align: left;
+    margin: 5px auto 10px auto;
+    text-align: center;
+    font-size: 0.8em;
   }
   
-  
-  
-  .title {
-    font-size: 2rem;
+
+  .modal {
+    width: 100px;
+    height: 100px;
+  }
+
+  .content{
+    margin-left: 20%;
+    width: 65%;
+    height: 90%;
+    background-color: aliceblue;
   }
