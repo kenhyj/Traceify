@@ -1,5 +1,5 @@
 import React from 'react';
-import './financial-help.css';
+// import './financial-help.css';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Typography, CardActions, Button } from '@material-ui/core';
 
@@ -18,13 +18,12 @@ const cardStyles = makeStyles({
     },
 });
 
-const FinancialHelpCard = (props) => {
+const CardTitleDescButton = (props) => {
     const classes = cardStyles();
 
     const { title, description, id, url } = props;
 
     const handleClick = () => {
-        const { url } = props;
         window.open(url);
     };
 
@@ -47,4 +46,4 @@ const FinancialHelpCard = (props) => {
     )
 }
 
-export default FinancialHelpCard;
+export default CardTitleDescButton;
