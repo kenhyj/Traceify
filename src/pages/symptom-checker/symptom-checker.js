@@ -10,6 +10,7 @@ import { Send, Refresh } from '@material-ui/icons';
 
 import SymptomDisclaimer from "./symptom-disclaimer";
 
+
 class SymptomChecker extends React.Component {
     constructor() {
         super();
@@ -45,8 +46,10 @@ class SymptomChecker extends React.Component {
         // this.disclaimer = <SymptomDisclaimer />;
     }
 
+
     //  symptomappeardays = 
     // Symptoms may appear 2-14 days after exposure to the virus. People with these symptoms may have COVID-19: Fever or chills
+
 
     typeform(symptomtype) {
         return (
@@ -59,7 +62,6 @@ class SymptomChecker extends React.Component {
                 </FormGroup>
             </div>)
     }
-
     render() {
         switch (this.state.risk) {
             case true:
@@ -86,6 +88,7 @@ class SymptomChecker extends React.Component {
                 <Button type="clear" variant="contained" color="secondary" endIcon={<Refresh />} onClick={this.retakeTest}>Retake the checker</Button>
                 {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
                 {this.disclaimer}
+
             </div>
         );
     }

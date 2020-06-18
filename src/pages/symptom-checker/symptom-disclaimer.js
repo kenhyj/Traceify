@@ -33,6 +33,7 @@ export class SymptomDisclaimer extends React.Component {
                 {this.please}
             </div>)
 
+
         const interesting = (
             <div>
                 You are exhibiting some of the rarest symptoms of someone who has the virus. <br />
@@ -69,6 +70,7 @@ export class SymptomDisclaimer extends React.Component {
                 The COVID-19 will or has put you at an elevated risk of developing health complications from either your pre-existing disorder or current disorder
             </div>)
 
+
         for (let s of criteria.atrisk) {
             if (criteria.symptoms[s]) {
                 return complications;
@@ -76,7 +78,6 @@ export class SymptomDisclaimer extends React.Component {
         }
         return null;
     }
-
     render() {
         return (
             <div>
@@ -93,3 +94,4 @@ const mapStateToProps = (state) => {
     };
 }
 export default connect(mapStateToProps)(SymptomDisclaimer);
+
