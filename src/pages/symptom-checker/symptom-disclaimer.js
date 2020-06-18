@@ -91,5 +91,15 @@ const mapStateToProps = (state) => {
     return {
         diagnosis: state.diagnosis
     };
+<<<<<<< HEAD
 }
 export default connect(mapStateToProps)(SymptomDisclaimer);
+=======
+};
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         choosesymptoms: (symptoms) => { dispatch({ type: 'SELECTED_SYMPTOMS', payload: symptoms }) },
+//     };
+// };
+export default connect(mapStateToProps, null)(SymptomDisclaimer);
+>>>>>>> origin/mandy

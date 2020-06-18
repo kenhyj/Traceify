@@ -48,7 +48,7 @@ class ThankPage extends React.Component {
                         </div>
                     </div>
                     <Grid container justify="center">
-                        <Button className='button' variant="outlined" size='small' onClick = {this.handleClick}>Enter</Button>
+                        <Button color="primary" className='button' variant="outlined" size='small' onClick = {this.handleClick}>Enter</Button>
                     </Grid>
                 </div>
                 </Modal>

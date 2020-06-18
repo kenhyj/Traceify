@@ -10,8 +10,10 @@ import HaveI from './pages/have-i-been-exposed/have-been-exposed';
 import Reopen from './pages/reopening-date/reopening-date';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import zIndex from '@material-ui/core/styles/zIndex';
+import AdminPage from './pages/admin-page/admin-page';
+import {connect} from "react-redux";
 
-function App() {
+function App(props) {
     return (
         <Router>
             <div style={{ position: 'fixed', width: '100%', top: '0', height: '100px',zIndex : '1'}}>
@@ -19,19 +21,25 @@ function App() {
                 <PagesBar />
             </div>
             <ThankPage/>
-            <div style={{paddingTop: '80px', display: 'inline-block',zIndex : '2'}}>
-                
-                    <Route path='/' exact component={Home} />
-                    <Route path='/home' exact component={Home} />
-                    <Route path='/have-i-been-exposed' component={HaveI} />
-                    <Route path='/financial-help' component={FinancialHelp} />
-                    <Route path='/symptom-checker' component={SymptomChecker} />
-                    <Route path='/reopen' component={Reopen} />
-
+            <div style={{width: '100%', paddingTop: '70px', display: 'inline-block',zIndex : '2'}}>
+              <Route path='/' exact component = {ThankPage}/>
+                <Route path='/home' exact component={Home}/>
+                <Route path='/have-i-been-exposed' component={HaveI}/>
+                <Route path='/financial-help' component={FinancialHelp}/>
+                <Route path='/symptom-checker' component={SymptomChecker}/>
+                <Route path='/reopen' component={Reopen}/>
+                {props.isLoggedIn?
+                    <Route path='/admin' component={AdminPage} /> : <span/>
+                }
             </div>
-
         </Router>
     );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: state.website.isLoggedIn
+    };
+};
+
+export default connect(mapStateToProps)(App);
