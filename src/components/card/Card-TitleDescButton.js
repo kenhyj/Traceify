@@ -1,8 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
-// import './financial-help.css';
-=======
->>>>>>> origin/mandy
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Typography, CardActions, Button } from '@material-ui/core';
 
