@@ -19,13 +19,8 @@ function App(props) {
                 <Header title="Covid 19 - Traceify" />
                 <PagesBar />
             </div>
-<<<<<<< HEAD
-            <ThankPage/>
-            <div style={{width: '100%', paddingTop: '70px', display: 'inline-block',zIndex : '2'}}>
-=======
            <ThankPage/>
             <div style={{paddingTop: '70px', display: 'inline-block',zIndex : '2'}}>
->>>>>>> origin/chaoyu
               <Route path='/' exact component = {ThankPage}/>
                 <Route path='/home' exact component={Home}/>
                 <Route path='/have-i-been-exposed' component={HaveI}/>
