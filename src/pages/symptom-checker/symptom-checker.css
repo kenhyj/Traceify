@@ -22,10 +22,20 @@
     width: 5%;
     margin :0.5em;
     float: right;
+    border-radius: 10px;
 }
 
 .dis-result {
     margin: 2% 5%;
     font-size: 16px;
     color: aliceblue;
+}
+
+.title-container {
+    text-align: center;
+    margin: 2%;
+}
+
+.formLabel{
+    margin: 1%;
 }
