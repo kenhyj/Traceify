@@ -2,6 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './symptom-checker.css';
 
+
+
+
+
 export class SymptomDisclaimer extends React.Component {
 
     constructor(props){
@@ -10,7 +14,7 @@ export class SymptomDisclaimer extends React.Component {
             show: true
         }
     }
-   
+
     please = (
         <div>
             <br/>

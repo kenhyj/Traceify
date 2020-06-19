@@ -4,11 +4,13 @@ import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { Button } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { Send, Refresh } from '@material-ui/icons';
-
+import './symptom-checker.css';
 import SymptomDisclaimer from "./symptom-disclaimer";
+
+
 
 class SymptomChecker extends React.Component {
     constructor() {
@@ -50,14 +52,15 @@ class SymptomChecker extends React.Component {
 
     typeform(symptomtype) {
         return (
-            <div>
-                <FormGroup>
+            <Grid style={{ margin: '1%' }}>
+                <FormGroup row='true'>
                     {symptomtype.map(somesymptoms =>
-                        <FormControlLabel
-                            control={<Checkbox onChange={this.handleChange} name={somesymptoms} />}
-                            label={somesymptoms} />)}
+                        <Grid item xs={3}>
+                            <FormControlLabel
+                                control={<Checkbox onChange={this.handleChange} name={somesymptoms} />}
+                                label={somesymptoms} /></Grid>)}
                 </FormGroup>
-            </div>)
+            </Grid>)
     }
 
     render() {
@@ -72,21 +75,32 @@ class SymptomChecker extends React.Component {
 
         return (
             <div>
-                This page will determine the level of risk you are at based to COVID 19 based these symptoms and criteria. <br /><br />
+                <div className='title-container'>
+                    <h2>This page will determine the level of risk you are at based to COVID 19 based these symptoms and criteria. </h2>
+                </div>
+
                 <FormControl onSubmit={this.handleSubmit}>
-                    <FormLabel component="symptoms">Please check all the boxes below that applies to you:</FormLabel>
+                    <FormLabel className='formLabel' component="symptoms">Please check all the boxes below that applies to you:</FormLabel>
                     {this.typeform(this.props.diagnosis.atrisk.sort())}
                     <br />
-                    <FormLabel component="symptoms">Please check all the boxes below that you've experienced recently eg.last 2-14 days:</FormLabel>
+                    <FormLabel className='formLabel' component="symptoms">Please check all the boxes below that you've experienced recently eg.last 2-14 days:</FormLabel>
                     {this.typeform(this.props.diagnosis.common.concat(this.props.diagnosis.rare.concat(this.props.diagnosis.serious)).sort())}
 
-                </FormControl><br />
-                <Button type="submit" variant="contained" color="primary" endIcon={<Send />} onClick={this.handleSubmit}>Submit</Button>
-                {/* TODO: clear button */}
-                <Button type="clear" variant="contained" color="secondary" endIcon={<Refresh />} onClick={this.retakeTest}>Retake the checker</Button>
+                </FormControl>
+                <Grid container style = {{width:'30%', marginLeft: '35%'}}>
+                    <Grid item xs={6} container justify="center">
+                        <Button type="submit" variant="contained" color="primary" endIcon={<Send />} onClick={this.handleSubmit}>Submit</Button>
+                    </Grid>
+                    <Grid item xs={6} container justify="center">
+                        <Button type="clear" variant="contained" color="secondary" endIcon={<Refresh />} onClick={this.retakeTest}>Retake</Button></Grid>
+
+                    {/* TODO: clear button */}
+
+                </Grid>
+
                 {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
                 {this.disclaimer}
-                
+
             </div>
         );
     }
