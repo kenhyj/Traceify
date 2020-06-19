@@ -4,3 +4,10 @@ export const submitSymptoms = symptoms => {
         selectedSymptoms: symptoms
     }
 }
+
+export const generateResult = symptoms =>{
+    return {
+        type: 'GENERATE_RESULT',
+        symptoms
+    }
+}

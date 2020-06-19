@@ -1,3 +1,31 @@
 .symptomchecker {
     color : white;
 }
+
+.pop-dis {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    height: 300px;
+    width: 600px;
+    border-radius: 15px;
+    text-align: left;
+    background-color: rgb(39, 40, 41);
+    box-shadow: 5px 5px #888888;
+    display: block;
+    transition: background .3s ease;
+    text-align: left;
+}
+
+.dis-button {
+    width: 5%;
+    margin :0.5em;
+    float: right;
+}
+
+.dis-result {
+    margin: 2% 5%;
+    font-size: 16px;
+    color: aliceblue;
+}

@@ -1,12 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import './symptom-checker.css';
 
 export class SymptomDisclaimer extends React.Component {
-    // constructor() {
-    // super();
-    // this.state = {};
-    // }
 
+    constructor(props){
+        super(props);
+        this.state = {
+            show: true
+        }
+    }
+   
     please = (
         <div>
             <br/>
@@ -19,29 +23,29 @@ export class SymptomDisclaimer extends React.Component {
 
     gimme(simptoms) {
         const asymptomatic = (
-            <div>
+            <div className = 'dis-result'>
                 You are asymptomatic. <br />
-                    You may be a virus carrier. <br />
+                You may be a virus carrier. <br />
                     To be sure that you are virus-free, a COVID testing from a clinic is necessary. <br />
                 {this.please}
             </div>)
 
         const chill = (
-            <div>
+            <div className = 'dis-result'>
                 You are exhibiting some of the more common symptoms of someone who has the virus. <br />
                 Do not be alarmed. Some of these are commonly seen in colds and flu <br />
                 {this.please}
             </div>)
 
         const interesting = (
-            <div>
+            <div className = 'dis-result'>
                 You are exhibiting some of the rarest symptoms of someone who has the virus. <br />
             Not many individuals who have contracted COVID 19 exhibits these symptoms<br />
                 {this.please}
             </div>)
 
         const emergency = (
-            <div>
+            <div className = 'dis-result'>
                 You are exhibiting some of the more serious symptoms exhibited by those with the COVID virus <br />
                 {this.please}
             </div>)
@@ -65,7 +69,7 @@ export class SymptomDisclaimer extends React.Component {
     }
     atrisque(criteria) {
         const complications = (
-            <div>
+            <div className = 'dis-result'>
                 The COVID-19 will or has put you at an elevated risk of developing health complications from either your pre-existing disorder or current disorder
             </div>)
 
@@ -77,9 +81,14 @@ export class SymptomDisclaimer extends React.Component {
         return null;
     }
 
+    handleClose = ()=>{
+        this.setState({show:false})
+    }
+
     render() {
         return (
-            <div>
+            <div className = 'pop-dis' style={{ display: this.state.show ? 'block' : 'none' }}>
+            <button className = 'dis-button' onClick = {this.handleClose}>X</button>
                 {this.atrisque(this.props.diagnosis)} <br/>
                 {this.gimme(this.props.diagnosis)} <br/>
             </div>

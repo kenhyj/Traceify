@@ -86,6 +86,7 @@ class SymptomChecker extends React.Component {
                 <Button type="clear" variant="contained" color="secondary" endIcon={<Refresh />} onClick={this.retakeTest}>Retake the checker</Button>
                 {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
                 {this.disclaimer}
+                
             </div>
         );
     }
