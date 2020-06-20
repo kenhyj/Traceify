@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { GoogleMap, LoadScript, Marker, InfoWindow } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import styles from './MapContainer.css';
 
 // NOTE: uncomment this, and comment out the actual api if you don't want to use up loads 
@@ -19,11 +19,6 @@ const locations = [
 class MapContainer extends Component {
     
     render() {
-        // let isInfoWindowOpen = false;
-        // const handleClick = () => {
-        //     isInfoWindowOpen = !isInfoWindowOpen;
-        //     console.log('open = ', isInfoWindowOpen);
-        // }
 
         return (
             <div>
@@ -36,12 +31,6 @@ class MapContainer extends Component {
                             zoom={styles.zoom}
                         >
                             <Marker position={locations[0].location} />
-                            {/* { isInfoWindowOpen && (
-                                <InfoWindow onCloseClick={handleClick}>
-                                    <div>
-                                        <p>some stuff</p>
-                                    </div>
-                                </InfoWindow>) } */}
                         </GoogleMap>
                 </LoadScript>
             </div>
