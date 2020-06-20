@@ -1,20 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './symptom-checker.css';
-
-
-
+import {hideResult} from '../../redux/actions/diagnosis-actions';
 
 
 export class SymptomDisclaimer extends React.Component {
-
-    constructor(props){
-        super(props);
-        this.state = {
-            show: true
-        }
-    }
-
+    
     please = (
         <div>
             <br/>
@@ -85,14 +76,10 @@ export class SymptomDisclaimer extends React.Component {
         return null;
     }
 
-    handleClose = ()=>{
-        this.setState({show:false})
-    }
-
     render() {
         return (
-            <div className = 'pop-dis' style={{ display: this.state.show ? 'block' : 'none' }}>
-            <button className = 'dis-button' onClick = {this.handleClose}>X</button>
+            <div className = 'pop-dis'style={{ display: this.props.diagnosis.showResult ? 'block' : 'none' }}>
+            <button className = 'dis-button' onClick = {()=>this.props.close()}>X</button>
                 {this.atrisque(this.props.diagnosis)} <br/>
                 {this.gimme(this.props.diagnosis)} <br/>
             </div>
@@ -102,7 +89,13 @@ export class SymptomDisclaimer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        diagnosis: state.diagnosis
+        diagnosis: state.diagnosis,
     };
 }
-export default connect(mapStateToProps)(SymptomDisclaimer);
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        close: () => { dispatch({ type: 'HIDE_RESULT'}) },
+    };
+};
+export default connect(mapStateToProps,mapDispatchToProps)(SymptomDisclaimer);
