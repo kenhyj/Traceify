@@ -52,7 +52,7 @@ class MapContainer extends Component {
                             new google.maps.LatLng(49.2589731,-123.2389234),
                             new google.maps.LatLng(49.2644731,-123.0489234),
                         ]}>
-                        </HeatmapLayer>
+                    </HeatmapLayer>
                     {/* <MapHeatLayer /> */}
                 </GoogleMap>
                 {/* </LoadScript> */}
