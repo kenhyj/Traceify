@@ -1,11 +1,10 @@
 /* global google */
-import React, { Component, forwardRef } from "react";
-import { GoogleMap, LoadScript, useLoadScript } from "@react-google-maps/api";
+import React, { Component } from "react";
+import { GoogleMap } from "@react-google-maps/api";
 import styles from "./MapContainer.css";
 import { connect } from "react-redux";
 import MapMarker from "./MapMarker";
 import MapHeatLayer from "./MapHeatLayer";
-import { HeatmapLayer } from "@react-google-maps/api";
 import { withGoogleMaps } from "./MapHOC";
 
 class MapContainer extends Component {
