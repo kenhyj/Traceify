@@ -1,7 +1,7 @@
 export default {
     mapContainerStyle: {
         width: '100%',
-        height: '600px',
+        height: '70vh',
     },
     center: {
         lat: 49.2849418,
