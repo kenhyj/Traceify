@@ -6,10 +6,10 @@ import Sidebar from './sidebar';
 const Home = () => {
     return (
         <div>
-            <h2>Map</h2>
+            {/* <h2>Map</h2> */}
             <div>
-                <MapContainer />
                 <Sidebar />
+                <MapContainer />
             </div>
         </div>
     );
