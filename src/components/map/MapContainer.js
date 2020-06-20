@@ -22,6 +22,7 @@ class MapContainer extends Component {
                     mapContainerStyle={styles.mapContainerStyle}
                     center={styles.center}
                     zoom={styles.zoom}
+                    options={{styles: styles.mapStyle}}
                 >
 
                     {markers.map((marker) => (
