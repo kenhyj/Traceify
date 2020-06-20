@@ -4,8 +4,8 @@ export default {
         height: '600px',
     },
     center: {
-        lat: 49.2827,
-        lng: -123.1207,
+        lat: 49.2849418,
+        lng: -122.8966744,
     },
-    zoom: 10,
+    zoom: 11,
 }
