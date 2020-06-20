@@ -1,74 +1,91 @@
 import React from 'react';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { Button } from '@material-ui/core';
+import {
+    Button, Grid, Checkbox, FormLabel,
+    FormControl, FormGroup, FormControlLabel
+} from '@material-ui/core';
 import { connect } from 'react-redux';
-import {Send, Refresh} from '@material-ui/icons';
-import { submitSymptoms } from '../../redux/actions/diagnosis-actions';
+import { Send, Refresh } from '@material-ui/icons';
+import './symptom-checker.css';
+import SymptomDisclaimer from "./symptom-disclaimer";
+
 
 class SymptomChecker extends React.Component {
     constructor() {
         super();
-        this.state = {
-            selectedSymptoms: []
-        }
+        this.state = { risk: false};
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.typeform = this.typeform.bind(this);
+        this.retakeTest = this.retakeTest.bind(this);
     }
 
-    handleChange = symptom => {
-        let symptoms = this.state.selectedSymptoms;
-        let index = symptoms.indexOf(symptom);
+    handleChange(event) {
+        this.props.choosesymptoms(
+            { [event.target.name]: (event.target.checked) ? true : false }
+        );
+        // console.log({[event.target.name]: !event.target.checked})
+        // console.log("this.props.diagnosis ");
+        // console.log(this.props.diagnosis);
+    }
+    handleSubmit(event) {
+        console.log("Submitting diagnosis...");
+        event.preventDefault();
+        console.log("this.props.diagnosis ");
+        console.log(this.props.diagnosis);
+        this.setState({ ...this.state, risk: true, show: true });
+        this.props.showResult();
+        console.log(this.props.diagnosis);
+    }
 
-        if (index > -1) {
-            symptoms.splice(index, 1);
-            this.setState({
-                selectedSymptoms: symptoms
-            })
-        } else
-            symptoms.push(symptom)
-    };
-
-    retakeTest = event => {};
+    retakeTest(event) {
+        this.setState({ ...this.state, risk: false });
+        // this.disclaimer = <SymptomDisclaimer />;
+    }
 
     //  symptomappeardays = 
     // Symptoms may appear 2-14 days after exposure to the virus. People with these symptoms may have COVID-19: Fever or chills
 
-    typeForm = symptomType => {
-        return (        
-        <div>
-            <FormGroup>
-                {symptomType.map(symptom =>
-                    <FormControlLabel
-                        control={<Checkbox onChange={this.handleChange(symptom)} name={ symptom } />}
-                        label={symptom} />)}
-            </FormGroup>
-        </div>)
-    };
-
-    resetPage = () => {
-      this.forceUpdate();
-    };
+    typeform(symptomtype) {
+        return (
+            <Grid style={{ margin: '1%' }}>
+                <FormGroup row='true'>
+                    {symptomtype.map(somesymptoms =>
+                        <Grid item xs={3}>
+                            <FormControlLabel
+                                control={<Checkbox onChange={this.handleChange} name={somesymptoms} />}
+                                label={somesymptoms} /></Grid>)}
+                </FormGroup>
+            </Grid>)
+    }
 
     render() {
         return (
             <div>
-                This page will determine the level of risk you are at based to COVID 19 based these symptoms and criteria. <br />
-                <FormControl>
-                    <FormLabel component="symptoms">Please check all the boxes that pertains to you:</FormLabel>
-                    {this.typeForm(this.props.common)}
-                    {this.typeForm(this.props.rare)}
-                    {this.typeForm(this.props.serious)}
-                    {this.typeForm(this.props.atrisk)}
-                </FormControl><br/>
+                <div className='title-container'>
+                    <h2>This page will determine the level of risk you are at based to COVID 19 based these symptoms and criteria. </h2>
+                </div>
 
-                <Button type="submit" variant="contained" color="primary" endIcon={<Send/>} onClick={() => this.props.submitSymptoms(this.state.selectedSymptoms)}>Submit</Button>
-                {/* TODO: clear button */}
-                <Button type="clear" variant="contained" color="secondary" endIcon={<Refresh/>} onClick={() => this.resetPage()}>Retake the checker</Button>
+                <FormControl onSubmit={this.handleSubmit}>
+                    <FormLabel className='formLabel' component="symptoms">Please check all the boxes below that applies to you:</FormLabel>
+                    {this.typeform(this.props.diagnosis.atrisk.sort())}
+                    <br />
+                    <FormLabel className='formLabel' component="symptoms">Please check all the boxes below that you've experienced recently eg.last 2-14 days:</FormLabel>
+                    {this.typeform(this.props.diagnosis.common.concat(this.props.diagnosis.rare.concat(this.props.diagnosis.serious)).sort())}
 
+                </FormControl>
+                <Grid container style={{ width: '30%', marginLeft: '35%' }}>
+                    <Grid item xs={6} container justify="center">
+                        <Button type="submit" variant="contained" color="primary" endIcon={<Send />} onClick={this.handleSubmit}>Submit</Button>
+                    </Grid>
+                    <Grid item xs={6} container justify="center">
+                        <Button type="clear" variant="contained" color="secondary" endIcon={<Refresh />} onClick={this.retakeTest}>Retake</Button></Grid>
+
+                    {/* TODO: clear button */}
+
+                </Grid>
                 {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
-                <h3>{this.props.diagnosis}</h3>
+                <SymptomDisclaimer/>
+
             </div>
         );
     }
@@ -76,13 +93,13 @@ class SymptomChecker extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        common: state.diagnosis.common,
-        rare: state.diagnosis.rare,
-        serious: state.diagnosis.serious,
-        atrisk: state.diagnosis.atrisk,
-
-        diagnosis: state.diagnosis.diagnosis
+        diagnosis: state.diagnosis,
+    };
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        choosesymptoms: (symptoms) => { dispatch({ type: 'SELECTED_SYMPTOMS', payload: symptoms }) },
+        showResult: () => { dispatch({ type: 'GENERATE_RESULT' }) },
     };
 };
-
-export default connect(mapStateToProps, {submitSymptoms})(SymptomChecker);
+export default connect(mapStateToProps, mapDispatchToProps)(SymptomChecker);

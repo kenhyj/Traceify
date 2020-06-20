@@ -9,7 +9,6 @@ import FinancialHelp from './pages/financial-help/financial-help';
 import HaveI from './pages/have-i-been-exposed/have-been-exposed';
 import Reopen from './pages/reopening-date/reopening-date';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-import zIndex from '@material-ui/core/styles/zIndex';
 import AdminPage from './pages/admin-page/admin-page';
 import {connect} from "react-redux";
 
@@ -21,7 +20,7 @@ function App(props) {
                 <PagesBar />
             </div>
             <ThankPage/>
-            <div style={{paddingTop: '70px', display: 'inline-block',zIndex : '2'}}>
+            <div style={{width: '100%', paddingTop: '70px', display: 'inline-block',zIndex : '2'}}>
               <Route path='/' exact component = {ThankPage}/>
                 <Route path='/home' exact component={Home}/>
                 <Route path='/have-i-been-exposed' component={HaveI}/>

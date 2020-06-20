@@ -1,36 +1,50 @@
+/* global google */
 import React, { Component } from "react";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
-
-// NOTE: uncomment this, and comment out the actual api if you don't want to use up loads 
-const API_KEY = `${process.env.REACT_APP_GOOGLE_API_KEY}`;
-// const API_KEY = 123456;  
-
-const containerStyle = {
-    width: "800px",
-    height: "800px",
-};
-
-const center = {
-    lat: 49.2827,
-    lng: -123.1207,
-};
+import { GoogleMap } from "@react-google-maps/api";
+import styles from "./MapContainer.css";
+import { connect } from "react-redux";
+import MapMarker from "./MapMarker";
+import MapHeatLayer from "./MapHeatLayer";
+import { withGoogleMaps } from "./MapHOC";
 
 class MapContainer extends Component {
     render() {
+        const markers = this.props.markers;
+
+        const { showMarkers } = this.props.mapReducer;
+
+        // const initialHeatLocations = ;
+
         return (
             <div>
-                <LoadScript googleMapsApiKey={API_KEY}>
-                    <GoogleMap
-                        mapContainerStyle={containerStyle}
-                        center={center}
-                        zoom={10}
-                    >
-                        <></>
-                    </GoogleMap>
-                </LoadScript>
+                <GoogleMap
+                    mapContainerStyle={styles.mapContainerStyle}
+                    center={styles.center}
+                    zoom={styles.zoom}
+                    options={{styles: styles.mapStyle}}
+                >
+
+                    {markers.map((marker) => (
+                        showMarkers && <MapMarker key={marker.id} {...marker} />
+                    ))}
+
+                    <MapHeatLayer />
+                    
+                </GoogleMap>
             </div>
         );
     }
 }
 
-export default MapContainer;
+const mapStateToProps = (state) => {
+    return {
+        mapReducer: state.map,
+        markers: state.map.markers,
+    };
+};
+
+const ConnectedMapContainer = connect(mapStateToProps)(
+    withGoogleMaps(MapContainer)
+);
+
+export default ConnectedMapContainer;
