@@ -34,8 +34,19 @@ class MapMarker extends Component {
             console.log("clicked marker ", id);
         };
 
+        const icon = {
+            path: "M 0, 0 m -5, 0 a 5,5 0 1,0 10,0a 5,5 0 1,0 -10,0",
+            fillColor: "#334CFF",
+            fillOpacity: 1,
+            strokeWeight: 0,
+        };
+
         return (
-            <Marker position={location} onClick={() => this.handleToggleOpen()}>
+            <Marker 
+                position={location} 
+                onClick={() => this.handleToggleOpen()}
+                // icon={icon}
+            >
                 { this.state.isOpen && (
                     <InfoWindow position={location} onCloseClick={() => this.handleToggleClose()}>
                         <div>

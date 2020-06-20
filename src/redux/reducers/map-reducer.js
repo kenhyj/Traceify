@@ -1,21 +1,21 @@
 import * as actions from '../constants/action-types';
 import initialMarkers from './initial-data/initialMarkers';
-// import initialHeatData from './initial-data/initialHeatData';
+// import initialHeatLocations from './initial-data/initialHeatData';
 
 const INITIAL_STATE = {
     activeMarker: {},
     selectedPlace: {},
     infoWindowIsOpen: false,
     markers: initialMarkers,
-    // heatData: initialHeatData,
+    // heatData: initialHeatLocations,
 };
 
 const mapReducer = (state = INITIAL_STATE, action) => {
-    console.log('map reducer action', action);
+    // console.log('map reducer action', action);
     switch (action.type) {
         case actions.SHOW_MAP_INFOWINDOW:
-            console.log('clicked', action.id);
-            console.log('map reducer state markers ', state.markers);
+            // console.log('clicked', action.id);
+            // console.log('map reducer state markers ', state.markers);
             return {
                 ...state,
                 markers: state.markers.map(marker =>
