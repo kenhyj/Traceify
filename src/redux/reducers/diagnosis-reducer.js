@@ -11,7 +11,7 @@ const rarestate = {
     "headache": false,
     "loss of taste": false,
     "loss of smell": false,
-    "a rash on skin": false,
+    "rash on skin": false,
     "discolouration of fingers or toes": false,
 };
 const seriousstate = {
@@ -24,9 +24,11 @@ const atriskstate = {
     "Older than 64": false,
     "Have Liver Disease": false,
     "Have HIV or immunocompromised": false,
+    "Undergoing chemotherapy": false,
     "Diabetic": false,
     "Undergoing dialysis": false,
     "BMI 40 and over": false,
+    "In need of organ transplant": false,
     // https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/people-at-higher-risk.html
 };
 
@@ -73,7 +75,7 @@ const diagnosisReducer = (state = INITIAL_STATE, action) => {
                 result = emergency;
             return {
                 ...state,
-                diagnosis: result
+                symptoms: {...state.symptoms, ...action.payload}
             };
         default:
             return state;

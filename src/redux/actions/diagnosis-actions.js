@@ -3,12 +3,11 @@ export const submitSymptoms = symptoms => {
         type: 'SUBMIT_SYMPTOMS',
         selectedSymptoms: symptoms
     }
-};
+}
 
-// Note: this will be called when the request to the backend returns
-export const setDiagnosis = diagnosis => {
+export const generateResult = symptoms =>{
     return {
-        type: 'SUBMIT_SYMPTOMS',
-        diagnosis: diagnosis
+        type: 'GENERATE_RESULT',
+        symptoms
     }
-};
+}
