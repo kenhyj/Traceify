@@ -12,8 +12,7 @@ import SymptomDisclaimer from "./symptom-disclaimer";
 class SymptomChecker extends React.Component {
     constructor() {
         super();
-        this.state = { risk: false, show: false };
-        // this.disclaimer = null;
+        this.state = { risk: false};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.typeform = this.typeform.bind(this);
@@ -36,9 +35,6 @@ class SymptomChecker extends React.Component {
         this.setState({ ...this.state, risk: true, show: true });
         this.props.showResult();
         console.log(this.props.diagnosis);
-        // this.disclaimer = <SymptomDisclaimer />;
-        // Todo:
-        // use action to submit points to symptom-disclaimer
     }
 
     retakeTest(event) {
@@ -63,15 +59,6 @@ class SymptomChecker extends React.Component {
     }
 
     render() {
-        // switch (this.state.risk) {
-        //     case true:
-        //         this.disclaimer = <SymptomDisclaimer />
-        //         break;
-        //     default:
-        //         this.disclaimer = null
-        //         break;
-        // }
-
         return (
             <div>
                 <div className='title-container'>
@@ -96,7 +83,6 @@ class SymptomChecker extends React.Component {
                     {/* TODO: clear button */}
 
                 </Grid>
-
                 {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
                 <SymptomDisclaimer/>
 
