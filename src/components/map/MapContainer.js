@@ -12,6 +12,8 @@ class MapContainer extends Component {
     render() {
         const markers = this.props.markers;
 
+        const { showMarkers } = this.props.mapReducer;
+
         // const initialHeatLocations = ;
 
         return (
@@ -23,7 +25,7 @@ class MapContainer extends Component {
                 >
 
                     {markers.map((marker) => (
-                        <MapMarker key={marker.id} {...marker} />
+                        showMarkers && <MapMarker key={marker.id} {...marker} />
                     ))}
 
                     <MapHeatLayer />

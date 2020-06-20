@@ -6,11 +6,11 @@ import { connect } from 'react-redux';
 class MapHeatLayer extends Component {
 
     render() {
-        const { markers } = this.props.map; 
+        const { markers, showHeatLayer } = this.props.map; 
         // console.log(markers);
 
         return (
-            <HeatmapLayer 
+            showHeatLayer && <HeatmapLayer 
                 data={markers.map(m => (
                     { location: new google.maps.LatLng(m.location.lat, m.location.lng), weight: m.numInfected }
                 ))}

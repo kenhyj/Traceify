@@ -1,13 +1,13 @@
 import * as actions from '../constants/action-types';
 import initialMarkers from './initial-data/initialMarkers';
-// import initialHeatLocations from './initial-data/initialHeatData';
 
 const INITIAL_STATE = {
     activeMarker: {},
     selectedPlace: {},
     infoWindowIsOpen: false,
     markers: initialMarkers,
-    // heatData: initialHeatLocations,
+    showHeatLayer: true,
+    showMarkers: true,
 };
 
 const mapReducer = (state = INITIAL_STATE, action) => {
@@ -21,6 +21,16 @@ const mapReducer = (state = INITIAL_STATE, action) => {
                 markers: state.markers.map(marker =>
                     marker.id === action.id ? marker.isInfoWindowVisible = !marker.isInfoWindowVisible : marker
             )};
+        case actions.SHOW_HEAT_LAYER:
+            return {
+                ...state,
+                showHeatLayer: !state.showHeatLayer,
+            };
+        case actions.SHOW_MARKERS:
+            return {
+                ...state,
+                showMarkers: !state.showMarkers,
+            }
         default:
             return state;
     }

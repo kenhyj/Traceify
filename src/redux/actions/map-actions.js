@@ -5,3 +5,11 @@ export const showInfoWindow = (id) => ({
     id: id,
     // isInfoWindowVisible: !isInfoWindowVisible,
 });
+
+export const showHeatLayer = () => ({
+    type: actions.SHOW_HEAT_LAYER,
+});
+
+export const showMarkers = () => ({
+    type: actions.SHOW_MARKERS,
+});
