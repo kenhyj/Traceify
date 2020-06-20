@@ -1,3 +1,4 @@
+
 const commonstate = {
     "fever": false,
     "dry cough": false,
@@ -54,8 +55,8 @@ const INITIAL_STATE = {
     atrisk: Object.keys(atriskstate),
     // TODO: is 'symptoms' below necessary?
     symptoms: {...commonstate, ...rarestate, ...seriousstate},
-
-    diagnosis: ''
+    diagnosis: '',
+    showResult:false,
 };
 
 const diagnosisReducer = (state = INITIAL_STATE, action) => {
@@ -77,9 +78,17 @@ const diagnosisReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 symptoms: {...state.symptoms, ...action.payload}
             };
+
+        case 'GENERATE_RESULT':
+            return {...state,showResult:true};
+
+        case 'HIDE_RESULT':
+            return {...state,showResult:false};
+
         default:
             return state;
     }
 };
 
 export default diagnosisReducer;
+

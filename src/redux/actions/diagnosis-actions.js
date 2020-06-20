@@ -5,9 +5,21 @@ export const submitSymptoms = symptoms => {
     }
 }
 
-export const generateResult = symptoms =>{
+export const selectedSymptom = symptom =>{
     return {
-        type: 'GENERATE_RESULT',
-        symptoms
+        type: 'SELECTED_SYMPTOM',
+        symptom
+    }
+}
+
+export const generateResult = () =>{
+    return {
+        type: 'GENERATE_RESULT'
+    }
+}
+
+export const hideResult = () =>{
+    return {
+        type: 'HIDE_RESULT'
     }
 }

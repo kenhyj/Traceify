@@ -1,22 +1,19 @@
 import React from 'react';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { Button, Grid } from '@material-ui/core';
+import {
+    Button, Grid, Checkbox, FormLabel,
+    FormControl, FormGroup, FormControlLabel
+} from '@material-ui/core';
 import { connect } from 'react-redux';
 import { Send, Refresh } from '@material-ui/icons';
 import './symptom-checker.css';
 import SymptomDisclaimer from "./symptom-disclaimer";
 
 
-
 class SymptomChecker extends React.Component {
     constructor() {
         super();
-        this.state = { risk: false };
-        this.disclaimer = null;
+        this.state = { risk: false, show: false };
+        // this.disclaimer = null;
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.typeform = this.typeform.bind(this);
@@ -26,8 +23,8 @@ class SymptomChecker extends React.Component {
     handleChange(event) {
         this.props.choosesymptoms(
             { [event.target.name]: (event.target.checked) ? true : false }
-            // {[event.target.name]: !event.target.checked}
         );
+        // console.log({[event.target.name]: !event.target.checked})
         // console.log("this.props.diagnosis ");
         // console.log(this.props.diagnosis);
     }
@@ -36,7 +33,9 @@ class SymptomChecker extends React.Component {
         event.preventDefault();
         console.log("this.props.diagnosis ");
         console.log(this.props.diagnosis);
-        this.setState({ ...this.state, risk: true });
+        this.setState({ ...this.state, risk: true, show: true });
+        this.props.showResult();
+        console.log(this.props.diagnosis);
         // this.disclaimer = <SymptomDisclaimer />;
         // Todo:
         // use action to submit points to symptom-disclaimer
@@ -64,14 +63,14 @@ class SymptomChecker extends React.Component {
     }
 
     render() {
-        switch (this.state.risk) {
-            case true:
-                this.disclaimer = <SymptomDisclaimer />
-                break;
-            default:
-                this.disclaimer = null
-                break;
-        }
+        // switch (this.state.risk) {
+        //     case true:
+        //         this.disclaimer = <SymptomDisclaimer />
+        //         break;
+        //     default:
+        //         this.disclaimer = null
+        //         break;
+        // }
 
         return (
             <div>
@@ -87,7 +86,7 @@ class SymptomChecker extends React.Component {
                     {this.typeform(this.props.diagnosis.common.concat(this.props.diagnosis.rare.concat(this.props.diagnosis.serious)).sort())}
 
                 </FormControl>
-                <Grid container style = {{width:'30%', marginLeft: '35%'}}>
+                <Grid container style={{ width: '30%', marginLeft: '35%' }}>
                     <Grid item xs={6} container justify="center">
                         <Button type="submit" variant="contained" color="primary" endIcon={<Send />} onClick={this.handleSubmit}>Submit</Button>
                     </Grid>
@@ -99,7 +98,7 @@ class SymptomChecker extends React.Component {
                 </Grid>
 
                 {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
-                {this.disclaimer}
+                <SymptomDisclaimer/>
 
             </div>
         );
@@ -108,12 +107,13 @@ class SymptomChecker extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        diagnosis: state.diagnosis
+        diagnosis: state.diagnosis,
     };
 }
 const mapDispatchToProps = (dispatch) => {
     return {
         choosesymptoms: (symptoms) => { dispatch({ type: 'SELECTED_SYMPTOMS', payload: symptoms }) },
+        showResult: () => { dispatch({ type: 'GENERATE_RESULT' }) },
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SymptomChecker);
