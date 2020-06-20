@@ -1,3 +1,4 @@
+
 const commonstate = {
     "fever": false,
     "dry cough": false,
@@ -41,7 +42,8 @@ const INITIAL_STATE = {
     serious: Object.keys(seriousstate),
     atrisk: Object.keys(atriskstate),
     symptoms: {...commonstate, ...rarestate, ...seriousstate},
-
+    diagnosis: '',
+    showResult:false,
 };
 
 const diagnosisReducer = (state = INITIAL_STATE, action) => {
@@ -51,9 +53,17 @@ const diagnosisReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 symptoms: {...state.symptoms, ...action.payload}
             };
+
+        case 'GENERATE_RESULT':
+            return {...state,showResult:true};
+
+        case 'HIDE_RESULT':
+            return {...state,showResult:false};
+
         default:
             return state;
     }
 };
 
 export default diagnosisReducer;
+
