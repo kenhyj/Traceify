@@ -20,8 +20,16 @@ import {
 } from '@material-ui/core';
 import { MuiPickersUtilsProvider, KeyboardDatePicker, } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+
+const StyledTableRow = withStyles((theme) => ({
+    root: {
+        '&:nth-of-type(odd)': {
+            backgroundColor: theme.palette.action.hover,
+        },
+    },
+}))(TableRow);
 
 export default function RowComponent(props){
     
@@ -40,8 +48,8 @@ export default function RowComponent(props){
     };
 
     return (
-        <TableRow>
-            <TableCell>
+        <StyledTableRow>
+            <TableCell align="center">
                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <KeyboardDatePicker
                         disableToolbar
@@ -57,14 +65,14 @@ export default function RowComponent(props){
                         }}
                     />
                 </MuiPickersUtilsProvider></TableCell>
-            <TableCell><LocationAuto locid = '1' idx = {key}/></TableCell>
-            <TableCell><LocationAuto locid = '2' idx = {key}/></TableCell>
-            <TableCell><LocationAuto locid = '3' idx = {key}/></TableCell>
+            <TableCell align="center"><LocationAuto locid = '1' idx = {key}/></TableCell>
+            <TableCell align="center"><LocationAuto locid = '2' idx = {key}/></TableCell>
+            <TableCell align="center"><LocationAuto locid = '3' idx = {key}/></TableCell>
             <TableCell>
                 <IconButton aria-label="delete" 
                 onClick = {()=>dispatch({type:'DELETE_ROW',idx:props.fieldKey,})}>
                     <DeleteIcon fontSize="small" />
                 </IconButton></TableCell>
-        </TableRow>
+        </StyledTableRow>
     );
 }

@@ -20,7 +20,7 @@ function App(props) {
                 <PagesBar />
             </div>
             <ThankPage/>
-            <div style={{width: '100%', paddingTop: '70px', display: 'inline-block',zIndex : '2'}}>
+            <div style={{width: '100%', paddingTop: '70px', display: 'inline-block',zIndex : '3'}}>
               <Route path='/' exact component = {ThankPage}/>
                 <Route path='/home' exact component={Home}/>
                 <Route path='/have-i-been-exposed' component={HaveI}/>

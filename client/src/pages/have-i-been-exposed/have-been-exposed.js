@@ -29,9 +29,10 @@ const StyledTableCell = withStyles((theme) => ({
     head: {
         backgroundColor: theme.palette.common.black,
         color: theme.palette.common.white,
+        fontSize: 18,
     },
     body: {
-        fontSize: 14,
+        fontSize: 18,
     },
 }))(TableCell);
 
@@ -64,7 +65,7 @@ const HaveI = () => {
     return (
         <Container>
             <br />
-            <AppBar position="sticky" color='transparent'>
+            <AppBar position="sticky" color='transparent' elevation={0}>
                 <Toolbar>
                     <Button
                         variant="outlined"
@@ -80,18 +81,19 @@ const HaveI = () => {
                         endIcon={<PublishIcon />}>Submit</Button>
                 </Toolbar>
             </AppBar>
+            <br/>
             <TableContainer>
-                <Table aria-label='customized table'>
+                <Table aria-label='customized table' className={classes.table}>
                     <TableHead>
-                        <TableRow>
-                            <StyledTableCell>
+                        <StyledTableRow>
+                            <StyledTableCell align = 'center'>
                                 Date
                             </StyledTableCell>
-                            <StyledTableCell>Location</StyledTableCell>
-                            <StyledTableCell>Location</StyledTableCell>
-                            <StyledTableCell>Location</StyledTableCell>
+                            <StyledTableCell align = 'center'>Location</StyledTableCell>
+                            <StyledTableCell align = 'center'>Location</StyledTableCell>
+                            <StyledTableCell align = 'center'>Location</StyledTableCell>
                             <StyledTableCell></StyledTableCell>
-                        </TableRow>
+                        </StyledTableRow>
                     </TableHead>
                     <TableBody>
                         {fields.map((field, idx) => {
