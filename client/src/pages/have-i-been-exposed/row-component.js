@@ -24,15 +24,19 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import DeleteIcon from '@material-ui/icons/Delete';
 
 export default function RowComponent(props){
-    const fields = useSelector(state => state.timeAndLoc)
+    
+    const fields = useSelector(state => state.timeAndLoc);
     const dispatch = useDispatch();
 
-    const key = props.key;
+    console.log(fields);
+    const key = props.fieldKey;
 
-    const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+    const selectedDate = fields[props.fieldKey].date;
+    // const [selectedDate, setSelectedDate] = React.useState(new Date('2020-07-01T21:11:54'));
+
 
     const handleDateChange = (date) => {
-        setSelectedDate(date);
+        dispatch({type:'EDIT_ROW_DATE',idx:props.fieldKey,newDate:date,});
     };
 
     return (
@@ -53,12 +57,12 @@ export default function RowComponent(props){
                         }}
                     />
                 </MuiPickersUtilsProvider></TableCell>
-            <TableCell><LocationAuto/></TableCell>
-            <TableCell>2</TableCell>
-            <TableCell>3</TableCell>
+            <TableCell><LocationAuto locid = '1' idx = {key}/></TableCell>
+            <TableCell><LocationAuto locid = '2' idx = {key}/></TableCell>
+            <TableCell><LocationAuto locid = '3' idx = {key}/></TableCell>
             <TableCell>
                 <IconButton aria-label="delete" 
-                onClick = {()=>dispatch({type:'DELETE_ROW',idx:{key},})}>
+                onClick = {()=>dispatch({type:'DELETE_ROW',idx:props.fieldKey,})}>
                     <DeleteIcon fontSize="small" />
                 </IconButton></TableCell>
         </TableRow>

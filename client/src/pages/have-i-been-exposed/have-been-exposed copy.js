@@ -78,7 +78,7 @@ const HaveI = () => {
                     <TableBody>
                         {fields.map((field, idx) => {
                             return (
-                                <RowComponent key={idx}/>
+                                <RowComponent key = {`${field}-${idx}`} fieldKey={idx}/>
                             )
                         })}
                     </TableBody>
