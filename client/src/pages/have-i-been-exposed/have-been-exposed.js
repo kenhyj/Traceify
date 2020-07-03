@@ -1,97 +1,108 @@
 /* eslint-disable */
+import 'date-fns';
 import React, { useState } from 'react';
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
-import MaterialTable from 'material-table';
-import { forwardRef } from 'react';
-import LocationAuto from './auto-complet';
-import{AddBox,ArrowDownward,Check,ChevronLeft,ChevronRight,Clear,DeleteOutline,
-Edit, FilterList,FirstPage,LastPage,Remove,SaveAlt,ViewColumn} from '@material-ui/icons';
+import {
+    Typography,
+    IconButton,
+    AppBar,
+    Toolbar,
+    Button,
+    Table,
+    TableBody,
+    TableCell,
+    TableRow,
+    TableHead,
+    TableContainer,
+    Paper,
+    Container,
+} from '@material-ui/core';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import RowComponent from './row-component';
+import PublishIcon from '@material-ui/icons/Publish';
+
+// from material ui-- need to customize
+const StyledTableCell = withStyles((theme) => ({
+    head: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    body: {
+        fontSize: 14,
+    },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+    root: {
+        '&:nth-of-type(odd)': {
+            backgroundColor: theme.palette.action.hover,
+        },
+    },
+}))(TableRow);
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    title: {
+        flexGrow: 1,
+        textAlign: 'center'
+    },
+}));
 
 const HaveI = () => {
-    const tableIcons = {
-        Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
-        Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
-        Clear: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
-        Delete: forwardRef((props, ref) => <DeleteOutline {...props} ref={ref} />),
-        DetailPanel: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
-        Edit: forwardRef((props, ref) => <Edit {...props} ref={ref} />),
-        Export: forwardRef((props, ref) => <SaveAlt {...props} ref={ref} />),
-        Filter: forwardRef((props, ref) => <FilterList {...props} ref={ref} />),
-        FirstPage: forwardRef((props, ref) => <FirstPage {...props} ref={ref} />),
-        LastPage: forwardRef((props, ref) => <LastPage {...props} ref={ref} />),
-        NextPage: forwardRef((props, ref) => <ChevronRight {...props} ref={ref} />),
-        PreviousPage: forwardRef((props, ref) => <ChevronLeft {...props} ref={ref} />),
-        ResetSearch: forwardRef((props, ref) => <Clear {...props} ref={ref} />),
-        Search: forwardRef((props, ref) => <Search {...props} ref={ref} />),
-        SortArrow: forwardRef((props, ref) => <ArrowDownward {...props} ref={ref} />),
-        ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
-        ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
-      };
-
-    const[state,setState] = useState({
-        columns : [
-            {title: 'Date', field:'date', type:'date'},
-            {title: 'Location1', field:'location1',
-             editComponent : props=>(
-               <LocationAuto parent = {props}/>
-             )},
-            {title: 'Location2', field:'location2'},
-            {title: 'Location3', field:'location3'},
-        ],
-        data :[
-            {Date: '',
-            Location1: '',
-            Location2: '',
-            Location3: ''}
-        ]
-    });
+    const fields = useSelector(state => state.timeAndLoc)
+    const dispatch = useDispatch();
+    const classes = useStyles();
 
     return (
-        <MaterialTable
-        title = 'Places you went to : '
-        icons={tableIcons}
-        options={{
-            search: false
-          }}
-        columns = {state.columns}
-        data = {state.data}
-        editable={{
-            onRowAdd: (newData) =>
-              new Promise((resolve) => {
-                setTimeout(() => {
-                  resolve();
-                  setState((prevState) => {
-                    const data = [...prevState.data];
-                    data.push(newData);
-                    return { ...prevState, data };
-                  });
-                }, 600);
-              }),
-            onRowUpdate: (newData, oldData) =>
-              new Promise((resolve) => {
-                setTimeout(() => {
-                  resolve();
-                  if (oldData) {
-                    setState((prevState) => {
-                      const data = [...prevState.data];
-                      data[data.indexOf(oldData)] = newData;
-                      return { ...prevState, data };
-                    });
-                  }
-                }, 600);
-              }),
-            onRowDelete: (oldData) =>
-              new Promise((resolve) => {
-                setTimeout(() => {
-                  resolve();
-                  setState((prevState) => {
-                    const data = [...prevState.data];
-                    data.splice(data.indexOf(oldData), 1);
-                    return { ...prevState, data };
-                  });
-                }, 600);
-              }),
-          }}/>
+        <Container>
+            <br />
+            <AppBar position="sticky" color='transparent'>
+                <Toolbar>
+                    <Button
+                        variant="outlined"
+                        color="inherited"
+                        onClick={() => dispatch({ type: 'ADD_ROW' })}
+                        endIcon={<AddCircleOutlineIcon />}>
+                        Add</Button>
+                    <Typography variant="h6" className={classes.title}>
+                        Enter the places you went to
+                    </Typography>
+                    <Button variant="outlined"
+                        color="inherited"
+                        endIcon={<PublishIcon />}>Submit</Button>
+                </Toolbar>
+            </AppBar>
+            <TableContainer>
+                <Table aria-label='customized table'>
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell>
+                                Date
+                            </StyledTableCell>
+                            <StyledTableCell>Location</StyledTableCell>
+                            <StyledTableCell>Location</StyledTableCell>
+                            <StyledTableCell>Location</StyledTableCell>
+                            <StyledTableCell></StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {fields.map((field, idx) => {
+                            return (
+                                <RowComponent key={`${field}-${idx}`} fieldKey={idx} />
+                            )
+                        })}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+        </Container>
     );
 };
 

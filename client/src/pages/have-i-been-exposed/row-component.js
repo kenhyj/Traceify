@@ -28,7 +28,7 @@ export default function RowComponent(props){
     const fields = useSelector(state => state.timeAndLoc);
     const dispatch = useDispatch();
 
-    console.log(fields);
+    // console.log(fields);
     const key = props.fieldKey;
 
     const selectedDate = fields[props.fieldKey].date;
