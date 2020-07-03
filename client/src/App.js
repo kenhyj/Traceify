@@ -6,7 +6,7 @@ import PagesBar from "./components/header/PagesBar"
 import ThankPage from './pages/thankyou/ThankPage';
 import SymptomChecker from './pages/symptom-checker/symptom-checker';
 import FinancialHelp from './pages/financial-help/financial-help';
-import HaveI from './pages/have-i-been-exposed/have-been-exposed';
+import HaveI from './pages/have-i-been-exposed/have-been-exposed copy';
 import Reopen from './pages/reopening-date/reopening-date';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import AdminPage from './pages/admin-page/admin-page';
