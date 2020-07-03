@@ -3,6 +3,7 @@ import 'date-fns';
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import React, { useState } from 'react';
+import LocationAuto from './auto-complet';
 import {
     IconButton,
     AppBar,
@@ -52,7 +53,7 @@ export default function RowComponent(props){
                         }}
                     />
                 </MuiPickersUtilsProvider></TableCell>
-            <TableCell>1</TableCell>
+            <TableCell><LocationAuto/></TableCell>
             <TableCell>2</TableCell>
             <TableCell>3</TableCell>
             <TableCell>
