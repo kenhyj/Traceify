@@ -2,40 +2,18 @@
     color : white;
 }
 
-.pop-dis {
+.pop-result {
     position: fixed;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -40%);
-    height: 310px;
-    width: 600px;
+    height: 700px;
+    width: 800px;
     border-radius: 15px;
     text-align: left;
-    background-color: rgb(39, 40, 41);
+    background-color: aliceblue;
     box-shadow: 5px 5px #888888;
     display: block;
     transition: background .3s ease;
     text-align: left;
-}
-
-.dis-button {
-    width: 5%;
-    margin :0.5em;
-    float: right;
-    border-radius: 10px;
-}
-
-.dis-result {
-    margin: 2% 5%;
-    font-size: 16px;
-    color: aliceblue;
-}
-
-.title-container {
-    text-align: center;
-    margin: 2%;
-}
-
-.formLabel{
-    margin: 1%;
 }
