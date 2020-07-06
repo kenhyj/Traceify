@@ -71,15 +71,18 @@ function renderProvince(obj) {
           backgroundColor: 'rgb(135, 151, 170)',
         }}
       >
-        {obj.province} Current Stage: {obj.current_stage}
+        {obj.province} is currently in Stage {obj.current_stage}
       </h1>
       <table id='provtable'>
         <tr>
           <th>Service</th>
-          <th>Detail and restrictions</th>
+          <th>Detail and restrictions for stage ... </th>
         </tr>
         {renderTableData(obj.phases[current_phase].restrictions)}
       </table>
+      <b>
+        Additional information is located <a href={obj.more}>here.</a>
+      </b>
     </div>
   );
 }
@@ -98,29 +101,6 @@ function renderTableData(restrictions) {
         </tr>
       );
     }
-  });
-}
-
-function renderrestrictionszero(restrictions) {
-  if (typeof restrictions === 'object') {
-    for (const [key, value] of Object.entries(restrictions)) {
-      console.log(`${key}: ${value}`);
-      // TODO: render the table
-    }
-  }
-  return null;
-}
-
-function renderTableDatazero(list) {
-  return list.map((mesage) => {
-    const { province, current_stage, longitude } = mesage; // destructuring
-    return (
-      <tr>
-        <td>{province}</td>
-        <td>{current_stage}</td>
-        <td>{longitude}</td>
-      </tr>
-    );
   });
 }
 
@@ -213,17 +193,25 @@ function Reopen() {
       <b>Disclaimer</b>
       :
       <br />
-      Each province and territory have several phases that consist of unique
-      policies.
+      Each province and territory have several phases or stages that consist of
+      unique policies.
       <br />
       As the COVID-19 cases improves, the province/territory will transition
       into the next phase.
       <br />
+      eg. 1 goes to 2 and 2 goes to 3, etc.
+      <br />
       However, if the COVID-19 cases worsens, it is possible to regress to a
       previous phase.
       <br />
+      eg. 2 reverts to 1.
+      <br />
       Each of these phases are flexible to change according to the COVID-19
       climate. Only the Canadian province British Columbia has been updated.
+      <br />
+      If there is a service you do not see, try checking the previous stages.
+      <br />
+      There are additional information listed at the button of the table.
       <br />
       Please call the specific store location of interest to enquire about
       operating hours. Their hours may have adjusted. They could be closed for

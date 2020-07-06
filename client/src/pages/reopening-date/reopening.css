@@ -7,6 +7,12 @@
   padding: 8px;
   background-color: rgb(188, 213, 243);
 }
+#provtable th:nth-child(1) {
+  white-space: nowrap;
+}
+#provtable th:nth-child(2) {
+  text-align: left;
+}
 #provtable td {
   border: 1px solid rgb(194, 207, 191);
 }
