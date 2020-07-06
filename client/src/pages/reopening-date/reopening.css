@@ -1,0 +1,19 @@
+#provtable {
+  width: 100%;
+}
+#provtable th {
+  text-align: center;
+  border: 2px solid rgb(194, 207, 191);
+  padding: 8px;
+  background-color: rgb(188, 213, 243);
+}
+#provtable td {
+  border: 1px solid rgb(194, 207, 191);
+}
+#provtable td:nth-child(1) {
+  /* text-decoration: underline; */
+  text-align: center;
+}
+#provtable tr:hover {
+  background-color: #ddd;
+}

@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import './reopening.css';
 
 const saskatchewan = {
   province: 'Saskatchewan',
@@ -63,12 +64,16 @@ function renderProvince(obj) {
   const current_phase = obj.current_stage - 1;
   return (
     <div>
-      <h1 style={{ fontSize: '1.5em' }}>
-        {obj.province}
-        <br />
-        Current Stage: {obj.current_stage}
+      <h1
+        style={{
+          textAlign: 'center',
+          fontSize: '1.5em',
+          backgroundColor: 'rgb(135, 151, 170)',
+        }}
+      >
+        {obj.province} Current Stage: {obj.current_stage}
       </h1>
-      <table>
+      <table id='provtable'>
         <tr>
           <th>Service</th>
           <th>Detail and restrictions</th>
@@ -81,13 +86,15 @@ function renderProvince(obj) {
 
 function renderTableData(restrictions) {
   const list = Object.entries(restrictions);
+  // console.log('list, ', list);
   return list.map((mesage) => {
     for (const x of mesage) {
       // TODO: render the table
+      console.log('mesage', mesage);
       return (
         <tr>
           <td>{x.replace(/_/gi, ' ')}</td>
-          <td>:{x}</td>
+          <td>{mesage[1]}</td>
         </tr>
       );
     }
@@ -146,10 +153,21 @@ const dropprovmenu = provterr.map((province) => {
   return <MenuItem value={province}>{province}</MenuItem>;
 });
 
-const phasesmenu = [1, 2, 3, 4].sort();
-const dropphasemenu = phasesmenu.map((service) => {
-  return <MenuItem value={service}>{service}</MenuItem>;
-});
+// const phasesmenu = [1, 2, 3, 4].sort();
+
+const phasesmenu = () => {
+  const retphase = [];
+  for (const x of saskatchewan.phases) {
+    retphase.push(x.phase);
+  }
+  return retphase;
+};
+
+const dropphasemenu = phasesmenu()
+  .sort()
+  .map((service) => {
+    return <MenuItem value={service}>{service}</MenuItem>;
+  });
 
 function Reopen() {
   // BC : https://www2.gov.bc.ca/gov/content/safety/emergency-preparedness-response-recovery/covid-19-provincial-support/bc-restart-plan
@@ -191,7 +209,7 @@ function Reopen() {
   );
   return (
     <div>
-      <h1 style={{ fontSize: '3em' }}>Reopening</h1>
+      <h1 style={{ fontSize: '2.5em', textAlign: 'center' }}>Reopening</h1>
       <b>Disclaimer</b>
       :
       <br />
