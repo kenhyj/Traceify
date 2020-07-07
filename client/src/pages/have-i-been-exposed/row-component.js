@@ -6,17 +6,8 @@ import React, { useState } from 'react';
 import LocationAuto from './auto-complet';
 import {
     IconButton,
-    AppBar,
-    Form,
-    Button,
-    Table,
-    TableBody,
     TableCell,
     TableRow,
-    TableHead,
-    TableContainer,
-    Paper,
-    Container,
 } from '@material-ui/core';
 import { MuiPickersUtilsProvider, KeyboardDatePicker, } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
@@ -36,7 +27,6 @@ export default function RowComponent(props){
     const fields = useSelector(state => state.timeAndLoc);
     const dispatch = useDispatch();
 
-    // console.log(fields);
     const key = props.fieldKey;
 
     const selectedDate = fields[props.fieldKey].date;
@@ -65,9 +55,9 @@ export default function RowComponent(props){
                         }}
                     />
                 </MuiPickersUtilsProvider></TableCell>
+            <TableCell align="center"><LocationAuto locid = '0' idx = {key}/></TableCell>
             <TableCell align="center"><LocationAuto locid = '1' idx = {key}/></TableCell>
             <TableCell align="center"><LocationAuto locid = '2' idx = {key}/></TableCell>
-            <TableCell align="center"><LocationAuto locid = '3' idx = {key}/></TableCell>
             <TableCell>
                 <IconButton aria-label="delete" 
                 onClick = {()=>dispatch({type:'DELETE_ROW',idx:props.fieldKey,})}>

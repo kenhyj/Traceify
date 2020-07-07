@@ -6,7 +6,7 @@ import Card from '../../components/card/Card-TitleDescButton';
 
 export class SymptomDisclaimer extends React.Component {
   please = {
-    title: 'Suggestion',
+    title: 'Suggestions',
     descriptions: [
       'Currently there is no official treatment or cure for COVID-19.',
       'Meanwhile, please continue to practice social distancing and wash your hands thoroughly and regularly.',
@@ -77,7 +77,7 @@ export class SymptomDisclaimer extends React.Component {
 
   atrisque(criteria) {
     const complications = {
-      title: 'You are in risk',
+      title: 'You are at risk',
       descriptions: [
         'The COVID-19 will or has put you at an elevated risk of developing health complications from either your pre-existing disorder or current disorder',
       ],

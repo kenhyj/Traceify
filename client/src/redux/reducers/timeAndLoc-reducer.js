@@ -1,9 +1,7 @@
 const InitialField = [
   {
     date: new Date('2020-07-01T21:11:54'),
-    loc1: '',
-    loc2: '',
-    loc3: '',
+    locations: ['', '', ''],
   },
 ];
 
@@ -14,9 +12,7 @@ const timeAndLocReducer = (fields = InitialField, action) => {
         ...fields,
         {
           date: new Date('2020-07-01T21:11:54'),
-          loc1: '',
-          loc2: '',
-          loc3: '',
+          locations: ['', '', ''],
         },
       ];
     case 'DELETE_ROW':
@@ -40,33 +36,17 @@ const timeAndLocReducer = (fields = InitialField, action) => {
         return oneRow;
       });
     case 'EDIT_ROW_LOC':
-      if (action.locid === '1') {
-        return fields.map((oneRow, index) => {
-          if (index === action.idx) {
-            return {
-              ...oneRow,
-              loc1: action.newLoc,
-            };
-          }
-          return oneRow;
-        });
-      }
-      if (action.locid === '2') {
-        return fields.map((oneRow, index) => {
-          if (index === action.idx) {
-            return {
-              ...oneRow,
-              loc2: action.newLoc,
-            };
-          }
-          return oneRow;
-        });
-      }
-      return fields.map((oneRow, index) => {
-        if (index === action.idx) {
+      return fields.map((oneRow, idx) => {
+        if (idx === action.idx) {
+          const newLocation = oneRow.locations.map((oneLoc, index) => {
+            if (index === action.locid) {
+              return action.newLoc;
+            }
+            return oneLoc;
+          });
           return {
             ...oneRow,
-            loc3: action.newLoc,
+            locations: newLocation,
           };
         }
         return oneRow;

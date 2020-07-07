@@ -35,28 +35,25 @@ export default function LocationAuto(props) {
 
     const fields = useSelector(state => state.timeAndLoc);
     const dispatch = useDispatch();
-    
-    const loc = props.locid === '1'?'loc1':(props.locid === '2'?'loc2':'loc3');
-    const address = fields[props.idx][loc];
-    // const [address, setAddress] = React.useState("");
+  
+    const address = fields[props.idx].locations[props.locid];
 
     const handleSelect = async value => {
-        // setAddress(value);
-        dispatch({type:'EDIT_ROW_LOC',idx:props.idx,locid:props.locid,newLoc:value,})
+        dispatch({type:'EDIT_ROW_LOC',idx:props.idx,locid:parseInt(props.locid),newLoc:value,})
     };
 
     const renderFunc = ({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
         <div>
           <TextField className = {classes.text} {...getInputProps({ label: "Type address", size:'medium'})}/>
     
-          <div style= {{position:'fixed', padding:'0', zIndex: '2', width:'23%'}}>
+          <div style= {{position:'fixed', padding:'0', width:'23%', zIndex: '3'}}>
             {loading ? <div>...loading</div> : null}
             
             <List position = 'sticky' component='nav'>
             {suggestions.map((suggestion,index)=>{
               const primary = suggestion.description;
               return (
-                <ListItem className={classes.listItem} dense = 'true'>
+                <ListItem className={classes.listItem} dense = {true} key = {props.idx + index}>
                 <ListItemIcon><LocationOnIcon size ='small'/></ListItemIcon>
                 <ListItemText {...getSuggestionItemProps(suggestion,{primary})}></ListItemText>
                 </ListItem>

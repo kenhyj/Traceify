@@ -7,8 +7,6 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import {
     Typography,
-    IconButton,
-    AppBar,
     Toolbar,
     Button,
     Table,
@@ -62,14 +60,16 @@ const HaveI = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
 
+    const handleSubmit = ()=> {
+        //send request with row fields data in the react store 
+    }
     return (
-        <Container>
+        <Container fixed>
             <br />
-            <AppBar position="sticky" color='transparent' elevation={0}>
                 <Toolbar>
                     <Button
                         variant="outlined"
-                        color="inherited"
+                        color="inherit"
                         onClick={() => dispatch({ type: 'ADD_ROW' })}
                         endIcon={<AddCircleOutlineIcon />}>
                         Add</Button>
@@ -77,10 +77,11 @@ const HaveI = () => {
                         Enter the places you went to
                     </Typography>
                     <Button variant="outlined"
-                        color="inherited"
+                        color="inherit"
+                        onClick = {handleSubmit}
                         endIcon={<PublishIcon />}>Submit</Button>
                 </Toolbar>
-            </AppBar>
+           
             <br/>
             <TableContainer>
                 <Table aria-label='customized table' className={classes.table}>
