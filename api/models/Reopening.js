@@ -1,20 +1,22 @@
 const mongoose = require('mongoose');
 
-const PostSchema = mongoose.Schema({
+const ReopeningSchema = mongoose.Schema({
   province: {
     type: String,
-    required: true,
   },
   abbr: {
     type: String,
+    required: true,
   },
   current_stage: {
     type: Number,
+    required: false,
   },
-  phases: [{ phase: Number }],
+  phases: [Object],
   more: {
     type: String,
+    required: false,
   },
 });
 
-module.exports = mongoose.model('Reopening', PostSchema);
+module.exports = mongoose.model('Reopening', ReopeningSchema);

@@ -6,12 +6,13 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 7000; // do not use 3000 it's for front end
 
-const postsRoute = require('./routes/posts');
-const reopeningRoute = require('./routes/reopening');
-// Middlewares
 app.use(bodyParser.json());
+const postsRoute = require('./routes/posts');
+const reopeningsRoute = require('./routes/reopenings');
+
+// Middlewares
 app.use('/posts', postsRoute);
-app.use('/reopening', reopeningRoute);
+app.use('/reopenings', reopeningsRoute);
 
 // ROUTES
 app.get('/', (req, res) => {
