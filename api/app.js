@@ -41,13 +41,8 @@ mongoose.connect(
 );
 
 mongoose.connection.on('connected', () => {
-  console.log('mongoose is connected');
+  console.log('mongoDB is connected');
 });
-// mongoose.connection
-// .once("open", () => console.log('mongoose is connected') )
-// .on('error', (error) => {
-//   console.log("db connection failed ", error);
-// });
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
