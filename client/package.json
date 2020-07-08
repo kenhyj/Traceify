@@ -43,8 +43,6 @@
     ]
   },
   "devDependencies": {
-<<<<<<< HEAD:package.json
-=======
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-node": "^4.1.0",
@@ -55,7 +53,6 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.0",
->>>>>>> wwwbin:client/package.json
     "prettier": "^2.0.5"
   }
 }
