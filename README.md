@@ -20,8 +20,20 @@
 TBA
 
 ## Instruction 
+### Front End
 For first time use, in the terminal run: 
 ```bash
+cd client
+npm install
+```
+Then : 
+```bash
+npm start
+```
+### Back End
+For first time use, in the terminal run: 
+```bash
+cd api
 npm install
 ```
 Then : 
