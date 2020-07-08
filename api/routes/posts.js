@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 const Post = require('../models/Post');
 
+// help with mongoose: 
+// https://www.positronx.io/mongoose-schema-types-validation-queries-tutorial-with-examples/
+
+
 /* GET messages listing. */
 /* SAMPLE REST */
 router.get('/', function (req, res, next) {
