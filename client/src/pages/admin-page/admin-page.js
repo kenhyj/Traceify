@@ -8,7 +8,7 @@ import {
     geocodeByPlaceId,
     getLatLng,
 } from 'react-places-autocomplete';
-
+import formatISO from 'date-fns/formatISO';
 import './admin-page.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import Button from '@material-ui/core/Button';
@@ -105,20 +105,34 @@ class AdminPage extends React.Component {
     // };
 
     handleSubmit = () => {
-        // TODO: Check if within , city: ['vancouver', 'north vancouver', 'west vancouver', 'surrey', 'richmond', 'coquitlam', 'burnaby', 'langley']
-        let temp = this.state.submissionObj;
-        console.log(temp);
-        if (temp.title !== '' && temp.location.lat !== 0) {
+        let validCities = ['vancouver', 'north vancouver', 'west vancouver', 'surrey', 'richmond', 'coquitlam', 'burnaby', 'langley'];
+        let validSubmission = false;
+        let title = '';
+        let city = '';
+        let array = this.state.locationSearchField.split(", ");
+        for (let i = 0; i < array.length ; i++) {
+            if (validCities.indexOf(array[i].toLowerCase()) > -1) {
+                city = array[i];
+                validSubmission = true;
+                for (let j = 0; j < i ; j++)
+                    j+1 === i? title += array[j] : title = title + array[j] + ", "
+            }
+        }
+        if (validSubmission) {
+            let temp = this.state.submissionObj;
             temp = {
                 ...temp,
+                title: title,
+                city: city,
                 date: temp.date.toISOString()
             };
+            console.log(temp);
             axios.post('/admins/location-trace', temp).then( () =>
                 alert("Submission Successful")
             ).catch( () =>
                 alert("Submission Failed")
             )
-        } else alert("Please input all the required fields")
+        } else alert("The submission data must be a place within: Vancouver | North Vancouver | West Vancouver | Richmond | Surrey | Coquitlam | Burnaby | Langley")
     };
 
     render () {
@@ -174,6 +188,7 @@ class AdminPage extends React.Component {
                     <label>
                         Date:<br/>
                         <DatePicker
+                            utcOffset={8}
                             selected={this.state.submissionObj.date}
                             onChange={this.handleDateChange}
                         />
