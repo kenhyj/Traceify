@@ -22,7 +22,6 @@ const AdminLogin = props => {
 
     const handleLoginFailure = () => {
         alert('Failed to log in');
-        history.push("/home");
     };
 
     const handleLogoutFailure = () => {
@@ -35,7 +34,10 @@ const AdminLogin = props => {
                 <GoogleLogout
                     clientId={ CLIENT_ID }
                     buttonText='Logout'
-                    onLogoutSuccess={ props.logout }
+                    onLogoutSuccess={ () => {
+                        props.logout();
+                        history.push("/home");
+                    }}
                     onFailure={ handleLogoutFailure }
                 >
                 </GoogleLogout>: <GoogleLogin
