@@ -35,7 +35,7 @@ const fetchReopens = (prov) => (dispatch, getState) => {
 // const fetchReopens = (prov) => (dispatch, getState) => {
 //   dispatch(fetchReopenRequest());
 //   axios
-//     .get('http://localhost:7000/reopenings/getall', { province: prov })
+//     .get('http://localhost:7000/reopenings/getprovince/', { province: prov })
 //     .then((res) => {
 //       dispatch(fetchReopenSuccess(res.data));
 //     })

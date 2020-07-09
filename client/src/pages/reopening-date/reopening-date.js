@@ -9,11 +9,11 @@ import Select from '@material-ui/core/Select';
 import './reopening.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import fetchReopens from '../../redux/actions/reopening-actions';
 
 function renderProvince(obj) {
-  if (obj !== 0) {
+  if (Object.keys(obj).length !== 0) {
     const current_phase = obj.current_stage - 1;
     return (
       <div>
@@ -42,7 +42,7 @@ function renderProvince(obj) {
       </div>
     );
   }
-  return <div></div>;
+  return <div>Utnapishtim</div>;
 }
 
 function getProvinceReopen(region, props) {
@@ -56,11 +56,9 @@ function getProvinceReopen(region, props) {
 
 function renderTableData(restrictions) {
   const list = Object.entries(restrictions);
-  // console.log('list, ', list);
   return list.map((mesage) => {
     for (const x of mesage) {
       // TODO: render the table
-      // console.log('mesage', mesage);
       return (
         <tr>
           <td>{x.replace(/_/gi, ' ').replace(/\n/g, '<br />')}</td>
@@ -82,28 +80,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const provterr = [
-  'Newfoundland',
-  'Prince Edward Island',
-  'Nova Scotia',
-  'New Brunswick',
-  'Quebec',
-  'Ontario',
-  'Manitoba',
-  'Saskatchewan',
-  'Alberta',
-  'British Columbia',
-  'Yukon',
-  'Northwest Territories',
-  'Nunavut',
-].sort();
-const dropprovmenu = provterr.map((province) => {
-  return <MenuItem value={province}>{province}</MenuItem>;
+  { abbr: 'AB', province: 'Alberta' },
+  { abbr: 'BC', province: 'British Columbia' },
+  { abbr: 'MB', province: 'Manitoba' },
+  { abbr: 'NB', province: 'New Brunswick' },
+  { abbr: 'NL', province: 'Newfoundland' },
+  { abbr: 'NT', province: 'Northwest Territories' },
+  { abbr: 'NS', province: 'Nova Scotia' },
+  { abbr: 'NU', province: 'Nunavut' },
+  { abbr: 'ON', province: 'Ontario' },
+  { abbr: 'PE', province: 'Prince Edward Island' },
+  { abbr: 'QC', province: 'Quebec' },
+  { abbr: 'SK', province: 'Saskatchewan' },
+  { abbr: 'YK', province: 'Yukon' },
+];
+const dropprovmenu = provterr.map((list) => {
+  return <MenuItem value={list.abbr}>{list.province}</MenuItem>;
 });
 
 const phasesmenu = (region) => {
   const retphase = [];
-  // console.log('type of region', typeof region);
-  if (region !== 0) {
+  if (Object.keys(region).length > 0) {
     for (const x of region.phases) {
       retphase.push(x.phase);
     }
@@ -112,22 +109,35 @@ const phasesmenu = (region) => {
 };
 
 function dropphasemenu(region) {
-  if (typeof region !== 'number') {
-    phasesmenu(region)
+  if (Object.keys(region).length > 0) {
+    return phasesmenu(region)
       .sort()
       .map((service) => {
         return <MenuItem value={service}>{service}</MenuItem>;
       });
   }
-  return [];
+  return <MenuItem />;
 }
 
 function Reopen(props) {
-  const [prov, setProvince] = useState(0);
-  // console.log('prov is', prov);
+  const [prov, setProvince] = useState({});
+  // useEffect(() => {
+  //   props.fetchReopens();
+  // });
   const classes = useStyles();
+  const axiosgetreopenlist = (target) => {
+    axios
+      .get('http://localhost:7000/reopenings/getprovince/'.concat(target))
+      .then((res) => {
+        setProvince(res.data[0]);
+      })
+      .catch((err) => {
+        console.log('failed to get desired reopen deatil. Error: ', err);
+      });
+  };
   const handleChange = (event) => {
     setProvince(getProvinceReopen(event.target.value, props));
+    axiosgetreopenlist(event.target.value);
   };
   const droprender = (
     <div>
