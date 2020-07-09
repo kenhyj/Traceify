@@ -49,7 +49,7 @@ export default function LocationAuto(props) {
       .then((results) => {
         return getLatLng(results[0]);
       }).then((latLng) => {
-        console.log(latLng);
+        // console.log(latLng);
         dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: {lat:latLng.lat,lng:latLng.lng,loc:value}});
 
       })

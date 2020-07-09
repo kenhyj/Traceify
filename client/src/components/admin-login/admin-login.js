@@ -4,7 +4,7 @@ import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { login, logout } from '../../redux/actions/website-actions';
 import axios from 'axios';
 
-const CLIENT_ID = "319564492744-lpvaf4jeab014b5rrh21qv0ak1aab997.apps.googleusercontent.com";
+const CLIENT_ID = "483742820449-tafi1b6s3ju79ub5b0ut9mvhgf8v2bu8.apps.googleusercontent.com";
 
 const AdminLogin = props => {
 

@@ -28,6 +28,7 @@ const timeAndLocReducer = (fields = InitialField, action) => {
     case 'EDIT_ROW_DATE':
       return fields.map((oneRow, index) => {
         if (index === action.idx) {
+          // console.log(action.newDate.toISOString());
           return {
             ...oneRow,
             date: action.newDate,

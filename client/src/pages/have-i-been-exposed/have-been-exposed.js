@@ -22,6 +22,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RowComponent from './row-component';
 import PublishIcon from '@material-ui/icons/Publish';
 import Result from './result';
+import axios from "axios/index";
 
 // from material ui-- need to customize
 const StyledTableCell = withStyles((theme) => ({
@@ -63,12 +64,26 @@ const HaveI = () => {
 
     const [open, setOpen] = React.useState(false);
 
-    const handleSubmit = () => {
+    const handleSubmit = async() => {
+        let places = [];
+        console.log(fields);
+        for(let i = 0; i< fields.length;i++){
+            let oneRow = fields[i];
+            console.log(oneRow);
+            let oneDate = oneRow.date.toISOString();
+            let oneResult = await axios.post('/expose',{date:oneDate,locations:oneRow.locations});
+            console.log(oneResult);
+            oneResult.data.map((onePlace)=>places.push(onePlace));
+        }
         setOpen(true);
+        console.log(places);
+        
     }
-
+   
     const handleClose = ()=>{
+       
         setOpen(false);
+       
     }
     return (
         <Container fixed>

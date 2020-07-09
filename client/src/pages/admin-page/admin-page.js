@@ -14,10 +14,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Button from '@material-ui/core/Button';
 import axios from "axios/index";
 
-const API_KEY = `${process.env.REACT_APP_GOOGLE_API_KEY}`;
-const script = document.createElement('script');
-script.src="https://maps.googleapis.com/maps/api/js?key="+API_KEY+"&libraries=places";
-document.head.append(script);
+// const API_KEY = `${process.env.REACT_APP_GOOGLE_API_KEY}`;
+// const script = document.createElement('script');
+// script.src="https://maps.googleapis.com/maps/api/js?key="+API_KEY+"&libraries=places";
+// document.head.append(script);
 
 class AdminPage extends React.Component {
     constructor (props) {
