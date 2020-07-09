@@ -101,9 +101,9 @@ class SymptomChecker extends React.Component {
               <Button
                 type='submit'
                 variant='contained'
-                color='primary'
                 endIcon={<Send />}
                 onClick={this.handleSubmit}
+                className="button"
               >
                 Submit
               </Button>
@@ -112,9 +112,9 @@ class SymptomChecker extends React.Component {
               <Button
                 type='clear'
                 variant='contained'
-                color='secondary'
                 endIcon={<Refresh />}
                 onClick={this.retakeTest}
+                className="button"
               >
                 Retake
               </Button>
