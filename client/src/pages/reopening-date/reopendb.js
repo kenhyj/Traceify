@@ -4,6 +4,44 @@ db.reopenings.insertMany([
   {
     province: 'Newfoundland',
     abbr: 'NL',
+    current_stage: 3,
+    phases: [
+      {
+        phase: 1,
+        restrictions: {
+          'lifting long-term public health measures':
+            'evaluation of transmission patterns of COVID-19 \n\
+        availability of an effective vaccine and/or treatment \n\
+        and a strong public health system. ',
+        },
+      },
+      {
+        phase: 2,
+        restrictions: {
+          Public_Spaces_and_Gatherings:
+            'Gatherings at funerals, burials and weddings are expanded to 50 people as long as physical distancing can be maintained. Wakes remain prohibited. \n\
+        Outdoor gatherings of up to 50 people are permitted as long as physical distancing can be maintained. \n\
+        Places of worship are permitted to resume operations with restrictions.',
+          Recreational_Activities:
+            'Gyms and fitness facilities are permitted to open, with restrictions. \n\
+          Arenas can open, with restrictions. \n\
+          Indoor pools can open, however some restrictions apply. \n\
+          Overnight camping is permitted in all forms, including tenting. \n\
+          Playground equipment can be used.',
+          Health_care_services:
+            'Regional health authorities will continue to allow some health care services to resume. \n\
+          Further expansion of visitation in health care to be determined.',
+          Businesses_and_Services:
+            'Bars and lounges are permitted to open with reduced occupancy. \n\
+          Indoor entertainment facilities can reopen with reduced occupancy (e.g. bingo halls, cinemas). \n\
+          Performance spaces can reopen with reduced occupancy.',
+        },
+      },
+      { phase: 3 },
+      { phase: 4 },
+      { phase: 5 },
+    ],
+    more: 'https://www.gov.nl.ca/covid-19/alert-system/',
   },
   {
     province: 'Prince Edward Island',

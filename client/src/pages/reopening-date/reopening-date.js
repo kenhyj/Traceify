@@ -21,13 +21,68 @@ function renderProvince(obj) {
           }}
         >
           {obj.province} is currently in Stage {obj.current_stage}
+          <br />
         </h1>
+        <h2
+          style={{
+            textAlign: 'center',
+            fontSize: 'em',
+          }}
+        >
+          You are looking at details of Stage {obj.current_stage}
+        </h2>
         <table id='provtable'>
           <tr>
             <th>Service</th>
-            <th>Detail and restrictions for stage ... </th>
+            <th>Detail and restrictions {obj.current_stage}</th>
           </tr>
           {renderTableData(obj.phases[current_phase].restrictions)}
+        </table>
+        <b>
+          Additional information is located{' '}
+          <a href={obj.more} target='_blank'>
+            here.
+          </a>
+        </b>
+      </div>
+    );
+  }
+  return <div>Utnapishtim</div>;
+}
+
+function renderProvinceTwo(obj, chosenphase) {
+  if (Object.keys(obj).length !== 0) {
+    if (chosenphase === 0) {
+      return renderProvince(obj);
+    }
+    // const current_phase = obj.current_stage - 1;
+    const clicked_phase = chosenphase - 1;
+    return (
+      <div>
+        <h1
+          style={{
+            textAlign: 'center',
+            fontSize: '1.5em',
+            backgroundColor: 'rgb(135, 151, 170)',
+          }}
+        >
+          {obj.province} is currently in Stage {obj.current_stage}
+        </h1>
+        <h2
+          style={{
+            textAlign: 'center',
+            fontSize: 'em',
+          }}
+        >
+          You are looking at details of Stage {chosenphase}
+        </h2>
+        <table id='provtable'>
+          <tr>
+            <th>Service</th>
+            <th>Detail and Restrictions for Stage {chosenphase}</th>
+          </tr>
+          {/* {renderTableData(obj.phases[current_phase].restrictions)} */}
+          {renderTableData(obj.phases[clicked_phase].restrictions)}
         </table>
         <b>
           Additional information is located{' '}
@@ -45,7 +100,6 @@ function renderTableData(restrictions) {
   const list = Object.entries(restrictions);
   return list.map((mesage) => {
     for (const x of mesage) {
-      // TODO: render the table
       return (
         <tr>
           <td>{x.replace(/_/gi, ' ').replace(/\n/g, '<br />')}</td>
@@ -108,20 +162,24 @@ function dropphasemenu(region) {
 
 function Reopen() {
   const [prov, setProvince] = useState({});
-  const [phase, setPhase] = useState(1);
+  const [phase, setPhase] = useState(0);
   const classes = useStyles();
   const axiosgetreopenlist = (target) => {
     axios
       .get('http://localhost:7000/reopenings/getprovince/'.concat(target))
       .then((res) => {
         setProvince(res.data[0]);
+        // setPhase(res.data[0].current_stage);
       })
       .catch((err) => {
         console.log('failed to get desired reopen deatil. Error: ', err);
       });
   };
-  const handleChange = (event) => {
+  const handleProvinceChange = (event) => {
     axiosgetreopenlist(event.target.value);
+  };
+  const handlePhaseChange = (event) => {
+    setPhase(event.target.value);
   };
   const droprender = (
     <div>
@@ -130,7 +188,7 @@ function Reopen() {
         <Select
           labelId='province-select-label'
           id='service-select-label'
-          onChange={handleChange}
+          onChange={handleProvinceChange}
         >
           {dropprovmenu}
         </Select>
@@ -140,12 +198,13 @@ function Reopen() {
         <Select
           labelId='phases-select-label'
           id='phases-select-label'
-          onChange={handleChange}
+          onChange={handlePhaseChange}
+          // defaultValue={phase}
         >
           {dropphasemenu(prov)}
         </Select>
       </FormControl>
-      {renderProvince(prov)}
+      {renderProvinceTwo(prov, phase)}
     </div>
   );
   return (
