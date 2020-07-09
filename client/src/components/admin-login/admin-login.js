@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { login, logout } from '../../redux/actions/website-actions';
+import axios from 'axios';
 
 const CLIENT_ID = "319564492744-lpvaf4jeab014b5rrh21qv0ak1aab997.apps.googleusercontent.com";
 
@@ -9,7 +10,11 @@ const AdminLogin = props => {
 
     const login = (response) => {
         if(response.wc.access_token){
-            props.login(response.wc.access_token, response.profileObj.name);
+            axios.get(`/admins/${response.profileObj.email}`).then( () =>
+                props.login(response.wc.access_token, response.profileObj.name)
+            ).catch( () =>
+                handleLoginFailure()
+            )
         }
     };
 

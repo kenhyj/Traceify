@@ -6,7 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './redux';
+import axios from 'axios';
 
+axios.defaults.baseURL = 'http://localhost:7000';
 
 ReactDOM.render(
     <Provider store={createStore(reducers)}>

@@ -9,12 +9,12 @@ const mongoose = require('mongoose');
 
 //I think this is the Middleware
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var adminsRouter = require('./routes/admins');
 var postsRouter = require('./routes/posts');
 var reopeningsRouter = require('./routes/reopenings');
 
 var app = express();
-require('dotenv').config({ path: './../.env' });
+require('dotenv').config({ path: './.env' });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use(adminsRouter);
 app.use('/posts', postsRouter);
 app.use('/reopenings', reopeningsRouter);
 app.use(bodyParser.json());
@@ -42,6 +42,13 @@ mongoose.connect(
 
 mongoose.connection.on('connected', () => {
   console.log('mongoDB is connected');
+});
+
+const db = require('./db');
+db.connect(() => {
+    app.listen(process.env.PORT || 5555, function (){
+        console.log(`Listening`);
+    });
 });
 
 // catch 404 and forward to error handler
