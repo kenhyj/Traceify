@@ -25,7 +25,7 @@ class SymptomChecker extends React.Component {
 
   handleChange(event) {
     this.props.choosesymptoms({
-      [event.target.name]: event.target.checked ? true : false,
+      [event.target.name]: !!event.target.checked,
     });
     // console.log({[event.target.name]: !event.target.checked})
     // console.log("this.props.diagnosis ");
@@ -33,13 +33,13 @@ class SymptomChecker extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log('Submitting diagnosis...');
+    // console.log('Submitting diagnosis...');
     event.preventDefault();
-    console.log('this.props.diagnosis ');
-    console.log(this.props.diagnosis);
+    // console.log('this.props.diagnosis ');
+    // console.log(this.props.diagnosis);
     this.setState({ ...this.state, risk: true, show: true });
     this.props.showResult();
-    console.log(this.props.diagnosis);
+    // console.log(this.props.diagnosis);
   }
 
   retakeTest(event) {
@@ -96,33 +96,34 @@ class SymptomChecker extends React.Component {
               )
               .sort()
           )}
-        </FormControl>
-        <Grid container style={{ width: '30%', marginLeft: '35%' }}>
-          <Grid item xs={6} container justify='center'>
-            <Button
-              type='submit'
-              variant='contained'
-              color='primary'
-              endIcon={<Send />}
-              onClick={this.handleSubmit}
-            >
-              Submit
-            </Button>
-          </Grid>
-          <Grid item xs={6} container justify='center'>
-            <Button
-              type='clear'
-              variant='contained'
-              color='secondary'
-              endIcon={<Refresh />}
-              onClick={this.retakeTest}
-            >
-              Retake
-            </Button>
-          </Grid>
+          <Grid container style={{ width: '30%', marginLeft: '35%' }}>
+            <Grid item xs={6} container justify='center'>
+              <Button
+                type='submit'
+                variant='contained'
+                color='primary'
+                endIcon={<Send />}
+                onClick={this.handleSubmit}
+              >
+                Submit
+              </Button>
+            </Grid>
+            <Grid item xs={6} container justify='center'>
+              <Button
+                type='clear'
+                variant='contained'
+                color='secondary'
+                endIcon={<Refresh />}
+                onClick={this.retakeTest}
+              >
+                Retake
+              </Button>
+            </Grid>
 
-          {/* TODO: clear button */}
-        </Grid>
+            {/* TODO: clear button */}
+          </Grid>
+        </FormControl>
+
         {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
         <SymptomDisclaimer />
       </div>

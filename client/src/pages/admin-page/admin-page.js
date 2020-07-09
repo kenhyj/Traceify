@@ -8,16 +8,10 @@ import {
     geocodeByPlaceId,
     getLatLng,
 } from 'react-places-autocomplete';
-import formatISO from 'date-fns/formatISO';
 import './admin-page.css';
 import 'react-datepicker/dist/react-datepicker.css';
 import Button from '@material-ui/core/Button';
 import axios from "axios/index";
-
-const API_KEY = `${process.env.REACT_APP_GOOGLE_API_KEY}`;
-const script = document.createElement('script');
-script.src="https://maps.googleapis.com/maps/api/js?key="+API_KEY+"&libraries=places";
-document.head.append(script);
 
 class AdminPage extends React.Component {
     constructor (props) {
@@ -136,14 +130,29 @@ class AdminPage extends React.Component {
     };
 
     render () {
+        const test = {
+            background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+            border: 0,
+            borderRadius: 3,
+            boxShadow: '0 3px 5px 2px rgba(33, 203, 243, .3)',
+            color: 'white',
+            height: 48,
+            padding: '0 30px',
+            margin: 8,
+        };
+
         return (
-            <div>
-                <h1>ADMIN PAGE</h1> <br /><br />
+            <div className="root">
+                <p className="heading">ADMIN PAGE</p> <br /><br />
+                {/*
                 ACCESSTOKEN: {this.props.accessToken} <br /><br /><br /><br />
-                Welcome, {this.props.user} !!<br /><br />Please input the information of all the places the positive patient visited.<br /><br /><br /><br />
-                <form>
+                */}
+                Welcome, <h1>{this.props.user}</h1>
+                <br /><br />
+                <p className="instruction">Please input the information of the place where the positive patient visited.</p>
+                <form className="form">
                     <label>
-                        Location:
+                        <p className="label">Location</p>
                         <PlacesAutocomplete
                             value={this.state.locationSearchField}
                             onChange={this.handleChange}
@@ -153,7 +162,7 @@ class AdminPage extends React.Component {
                             }}
                         >{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                             <div>
-                                <input
+                                <input className="input"
                                     {...getInputProps({
                                         placeholder: 'Search Places ...',
                                         className: 'location-search-input',
@@ -185,8 +194,8 @@ class AdminPage extends React.Component {
                         )}
                         </PlacesAutocomplete>
                     </label><br/>
-                    <label>
-                        Date:<br/>
+                    <label className="customDatePickerWidth">
+                        <p className="label">Date</p>
                         <DatePicker
                             utcOffset={8}
                             selected={this.state.submissionObj.date}
@@ -195,8 +204,8 @@ class AdminPage extends React.Component {
                     </label>
                     <br/><br/>
                     <label>
-                        Time:<br/>
-                        <select value={this.state.submissionObj.time} onChange={this.handleTimeChange}>
+                        <p className="label">Time</p>
+                        <select value={this.state.submissionObj.time} onChange={this.handleTimeChange}  className="input">
                             <option selected value="12 AM ~ 3 AM">12 AM ~ 3 AM</option>
                             <option value="3 AM ~ 6 AM">3 AM ~ 6 AM</option>
                             <option value="6 AM ~ 9AM">6 AM ~ 9AM</option>
@@ -222,7 +231,7 @@ class AdminPage extends React.Component {
                         </select>
                     </label>
                     */}
-                    <br/><br/><br/><br/>
+                    <br/><br/>
                     <Button className="button" onClick={() => this.handleSubmit()}>SUBMIT</Button>
                 </form>
             </div>
