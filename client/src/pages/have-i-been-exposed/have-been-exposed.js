@@ -15,12 +15,13 @@ import {
     TableRow,
     TableHead,
     TableContainer,
-    Paper,
+    Dialog,
     Container,
 } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RowComponent from './row-component';
 import PublishIcon from '@material-ui/icons/Publish';
+import Result from './result';
 
 // from material ui-- need to customize
 const StyledTableCell = withStyles((theme) => ({
@@ -60,39 +61,45 @@ const HaveI = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
 
-    const handleSubmit = ()=> {
-        //send request with row fields data in the react store 
+    const [open, setOpen] = React.useState(false);
+
+    const handleSubmit = () => {
+        setOpen(true);
+    }
+
+    const handleClose = ()=>{
+        setOpen(false);
     }
     return (
         <Container fixed>
             <br />
-                <Toolbar>
-                    <Button
-                        variant="outlined"
-                        color="inherit"
-                        onClick={() => dispatch({ type: 'ADD_ROW' })}
-                        endIcon={<AddCircleOutlineIcon />}>
-                        Add</Button>
-                    <Typography variant="h6" className={classes.title}>
-                        Enter the places you went to
+            <Toolbar>
+                <Button
+                    variant="outlined"
+                    color="inherit"
+                    onClick={() => dispatch({ type: 'ADD_ROW' })}
+                    endIcon={<AddCircleOutlineIcon />}>
+                    Add</Button>
+                <Typography variant="h6" className={classes.title}>
+                    Enter the places you went to
                     </Typography>
-                    <Button variant="outlined"
-                        color="inherit"
-                        onClick = {handleSubmit}
-                        endIcon={<PublishIcon />}>Submit</Button>
-                </Toolbar>
-           
-            <br/>
+                <Button variant="outlined"
+                    color="inherit"
+                    onClick={handleSubmit}
+                    endIcon={<PublishIcon />}>Submit</Button>
+            </Toolbar>
+
+            <br />
             <TableContainer>
                 <Table aria-label='customized table' className={classes.table}>
                     <TableHead>
                         <StyledTableRow>
-                            <StyledTableCell align = 'center'>
+                            <StyledTableCell align='center'>
                                 Date
                             </StyledTableCell>
-                            <StyledTableCell align = 'center'>Location</StyledTableCell>
-                            <StyledTableCell align = 'center'>Location</StyledTableCell>
-                            <StyledTableCell align = 'center'>Location</StyledTableCell>
+                            <StyledTableCell align='center'>Location</StyledTableCell>
+                            <StyledTableCell align='center'>Location</StyledTableCell>
+                            <StyledTableCell align='center'>Location</StyledTableCell>
                             <StyledTableCell></StyledTableCell>
                         </StyledTableRow>
                     </TableHead>
@@ -105,6 +112,10 @@ const HaveI = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+            <Dialog
+                open={open}
+                onClose={handleClose}
+            ><Result/></Dialog>
         </Container>
     );
 };

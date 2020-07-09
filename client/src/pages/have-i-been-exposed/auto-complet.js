@@ -39,12 +39,9 @@ export default function LocationAuto(props) {
   const fields = useSelector(state => state.timeAndLoc);
   const dispatch = useDispatch();
 
-  // const [address, setAddress] = React.useState("");
-  const address = fields[props.idx].locations[props.locid];
+  const address = fields[props.idx].locations[props.locid].loc;
 
   console.log(fields);
-
-
 
   const handleSelect = async value => {
 
@@ -53,11 +50,11 @@ export default function LocationAuto(props) {
         return getLatLng(results[0]);
       }).then((latLng) => {
         console.log(latLng);
-        dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: value, newLatLng: latLng });
+        dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: {lat:latLng.lat,lng:latLng.lng,loc:value}});
 
       })
       .catch(err=>{
-        dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: value, newLatLng: {}});
+        dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: {lat:''.lat,lng:''.lng,loc:value}});
       })
         
         

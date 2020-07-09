@@ -19,12 +19,17 @@ export const editRowDate = (idx, newDate) => {
   };
 };
 
-export const editRowLoc = (idx, locid, newLoc, newLatLng) => {
+export const editRowLoc = (idx, locid, newLoc) => {
   return {
     type: 'EDIT_ROW_LOC',
     idx,
     locid,
     newLoc,
-    newLatLng,
+  };
+};
+
+export const toggleResult = () => {
+  return {
+    type: 'TOGGLE_RESULT',
   };
 };

@@ -1,8 +1,7 @@
 const InitialField = [
   {
     date: new Date('2020-07-01T21:11:54'),
-    locations: ['', '', ''],
-    latLngs:[{},{},{}],
+    locations: [{ loc: '' }, { loc: '' }, { loc: '' }],
   },
 ];
 
@@ -13,8 +12,7 @@ const timeAndLocReducer = (fields = InitialField, action) => {
         ...fields,
         {
           date: new Date('2020-07-01T21:11:54'),
-          locations: ['', '', ''],
-          latLngs:[{},{},{}],
+          locations: [{ loc: '' }, { loc: '' }, { loc: '' }],
         },
       ];
     case 'DELETE_ROW':
@@ -46,16 +44,9 @@ const timeAndLocReducer = (fields = InitialField, action) => {
             }
             return oneLoc;
           });
-          const newLatLngs = oneRow.latLngs.map((oneLat, index) => {
-            if (index === action.locid) {
-              return action.newLatLng;
-            }
-            return oneLat;
-          });
           return {
             ...oneRow,
             locations: newLocation,
-            latLngs:newLatLngs,
           };
         }
         return oneRow;

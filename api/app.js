@@ -9,8 +9,6 @@ const mongoose = require('mongoose');
 
 //I think this is the Middleware
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var postsRouter = require('./routes/posts');
 var reopeningsRouter = require('./routes/reopenings');
 
 var app = express();

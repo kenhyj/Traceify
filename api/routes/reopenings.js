@@ -62,4 +62,21 @@ router.put('/newprovince', (req, res) => {
     });
 });
 
+
+router.route('/expose').post((req, res) => {
+  const fields = req.body;
+  if(fields.length === 0) res.status(400).json('empty field for querying');
+  let places = [];
+  fields.map((oneRow)=>{
+    oneRow.locations.map(oneLoc=>{
+      if(oneLoc.loc !== ''){
+        Locations.find({date:oneRow.date,lat:oneLoc.lat,lng:oneLoc.lng})
+        .then(()=>{places.push(oneLoc.loc);})
+        .catch(err=>console.log('not found for this row.'))
+      }
+    })
+  });
+  res.json(places);
+});
+
 module.exports = router;
