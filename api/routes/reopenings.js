@@ -8,6 +8,18 @@ router.get('/', function (req, res, next) {
   res.send('this is the Reopening endpoint');
 });
 
+router.get('/getall', (req, res) => {
+  Reopening.find({})
+    .then((data) => {
+      // console.log('Reopening...', data);
+      res.json(data);
+    })
+    .catch((error) => {
+      // console.error("Error", error);
+      res.status(404).json('Error: ' + error);
+    });
+});
+
 /* get specific provincial territorial reopen details 
 one possible debug: your dotenv might be using the wrong database */
 router.get('/getprovince', (req, res) => {
