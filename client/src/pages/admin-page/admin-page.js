@@ -9,32 +9,116 @@ import {
     getLatLng,
 } from 'react-places-autocomplete';
 
+import './admin-page.css';
 import 'react-datepicker/dist/react-datepicker.css';
+import Button from '@material-ui/core/Button';
+import axios from "axios/index";
+
+const API_KEY = `${process.env.REACT_APP_GOOGLE_API_KEY}`;
+const script = document.createElement('script');
+script.src="https://maps.googleapis.com/maps/api/js?key="+API_KEY+"&libraries=places";
+document.head.append(script);
 
 class AdminPage extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
-            date: new Date(),
-            address: ''
+            locationSearchField: '',
+            submissionObj: {
+                title: '',
+                location: {
+                    lat: 0,
+                    lng: 0
+                },
+                city: 'Vancouver',
+                time: '12 AM ~ 3 AM',
+                date: new Date()
+            }
         };
     }
 
     handleDateChange = date => {
-        this.setState({
+        console.log("DATE: "+date.toISOString());
+        let temp = this.state.submissionObj;
+        temp = {
+            ...temp,
             date: date
+        };
+        this.setState({
+            submissionObj: temp
         });
     };
 
     handleChange = address => {
-        this.setState({ address });
+        this.setState({
+            locationSearchField: address
+        })
+    };
+
+    handleTimeChange = event => {
+        let temp = this.state.submissionObj;
+        temp = {
+            ...temp,
+            time: event.target.value
+        };
+        this.setState({
+            submissionObj: temp
+        });
     };
 
     handleSelect = address => {
+        console.log("ADDRESS: "+address);
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
-            .then(latLng => console.log('Success', latLng))
+            .then(latLng => {
+                console.log('Success', latLng);
+                let temp = this.state.submissionObj;
+                temp = {
+                    ...temp,
+                    location: {
+                        lat: latLng.lat,
+                        lng: latLng.lng
+                    }
+                };
+                this.setState({
+                    submissionObj: temp
+                });
+            })
             .catch(error => console.error('Error', error));
+    };
+
+    // handleCityChange = event => {
+    //     let temp = this.state.submissionObj;
+    //     temp = {
+    //         ...temp,
+    //         location: {
+    //             lat: latLng.lat,
+    //             lng: latLng.lng
+    //         }
+    //     };
+    //     this.setState({
+    //         submissionObj: temp
+    //     });
+    //     this.setState({
+    //         city: event.target.value
+    //     })
+    // };
+
+    handleSubmit = () => {
+        // TODO: Check if within , city: ['vancouver', 'north vancouver', 'west vancouver', 'surrey', 'richmond', 'coquitlam', 'burnaby', 'langley']
+        let temp = this.state.submissionObj;
+        console.log(temp);
+        if (temp.title !== '' && temp.location.lat !== 0) {
+            temp = {
+                ...temp,
+                date: temp.date.toISOString()
+            };
+            axios.post('/admins/location-trace', temp).then( () =>
+                alert("Submission Successful")
+            ).catch( () =>
+                alert("Submission Failed")
+            )
+        } else alert("Please input all the required fields")
     };
 
     render () {
@@ -47,9 +131,12 @@ class AdminPage extends React.Component {
                     <label>
                         Location:
                         <PlacesAutocomplete
-                            value={this.state.address}
+                            value={this.state.locationSearchField}
                             onChange={this.handleChange}
                             onSelect={this.handleSelect}
+                            searchOptions={{
+                                componentRestrictions: { country: ['ca'] }
+                            }}
                         >{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                             <div>
                                 <input
@@ -87,29 +174,41 @@ class AdminPage extends React.Component {
                     <label>
                         Date:<br/>
                         <DatePicker
-                            selected={this.state.date}
+                            selected={this.state.submissionObj.date}
                             onChange={this.handleDateChange}
                         />
                     </label>
                     <br/><br/>
                     <label>
                         Time:<br/>
-                        <select>
-                            <option value="grapefruit">12 AM ~ 3 AM</option>
-                            <option value="lime">3 AM ~ 6 AM</option>
-                            <option selected value="coconut">6 AM ~ 9AM</option>
-                            <option value="mango">9 AM ~ 12 PM</option>
-                            <option value="grapefruit">12 PM ~ 3 PM</option>
-                            <option value="lime">3 PM ~ 6 PM</option>
-                            <option selected value="coconut">6 PM ~ 9 PM</option>
-                            <option value="mango">9 PM ~ 12 AM</option>
+                        <select value={this.state.submissionObj.time} onChange={this.handleTimeChange}>
+                            <option selected value="12 AM ~ 3 AM">12 AM ~ 3 AM</option>
+                            <option value="3 AM ~ 6 AM">3 AM ~ 6 AM</option>
+                            <option value="6 AM ~ 9AM">6 AM ~ 9AM</option>
+                            <option value="9 AM ~ 12 PM">9 AM ~ 12 PM</option>
+                            <option value="12 PM ~ 3 PM">12 PM ~ 3 PM</option>
+                            <option value="3 PM ~ 6 PM">3 PM ~ 6 PM</option>
+                            <option value="6 PM ~ 9 PM">6 PM ~ 9 PM</option>
+                            <option value="9 PM ~ 12 AM">9 PM ~ 12 AM</option>
                         </select>
                     </label><br/><br/>
+                    {/*
                     <label>
-                        Region:<br/>
-                        <input/>
-                    </label><br/><br/><br/><br/>
-                    <button>SUBMIT</button>
+                        City:<br/>
+                        <select value={this.state.city} onChange={this.handleCityChange}>
+                            <option selected value="Vancouver">Vancouver</option>
+                            <option value="Burnaby">Burnaby</option>
+                            <option value="North Vancouver">North Vancouver</option>
+                            <option value="West Vancouver">West Vancouver</option>
+                            <option value="Richmond">Richmond</option>
+                            <option value="Surrey">Surrey</option>
+                            <option value="Langley">Langley</option>
+                            <option value="Coquitlam">Coquitlam</option>
+                        </select>
+                    </label>
+                    */}
+                    <br/><br/><br/><br/>
+                    <Button className="button" onClick={() => this.handleSubmit()}>SUBMIT</Button>
                 </form>
             </div>
         );

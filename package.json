@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "concurrently \"cd server && npm run start\" \"cd client && npm run start\""
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "mongoose": "^5.9.21"
+  }
+}
