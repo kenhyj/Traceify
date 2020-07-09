@@ -30,21 +30,25 @@ router.post('/expose',(req,res)=>{
     const oneRow = req.body;
     let places = [];
     // const time = oneRow.date.toISOString().slice(0,10);
-    const time = oneRow.date.slice(0,10);
+    const time = oneRow.date;
+    console.log(time);
     const locations = oneRow.locations;
-    db.get().collection('locationTraces').find({date: {$regex: `/^${time}/i`},location:{lat:locations[0].lat,lng:locations[0].lng}}).toArray()
-    .then(()=>{
-        if(locations[0].loc!==''){
+    return db.get().collection('locationTraces').find({$and:[{date: "2020-03-16T00:00:00Z"},{$and:[{"location.lat":49.260738},{"location.lng":-123.245758}]}]}).toArray()
+    .then((result1)=>{
+        console.log(result1);
+        if(locations[0].loc!=='' && result1.length !== 0){
             places.push(locations[0].loc);
         }
-        return db.get().collection('locationTraces').find({date: {$regex: `/^${time}/i`},location:{lat:locations[1].lat,lng:locations[1].lng}}).toArray()
-    }).then(()=>{
-        if(locations[1].loc!==''){
+        return db.get().collection('locationTraces').find({$or:[{date: {$regex: /^`${time}`/i}},{$and:[{"location.lat":locations[1].lat},{"location.lng":locations[1].lng}]}]}).toArray()
+    }).then((result2)=>{
+        console.log(result2);
+        if(locations[1].loc!=='' && result2.length !== 0){
             places.push(locations[1].loc);
         }
-        return db.get().collection('locationTraces').find({date: {$regex: `/^${time}/i`},location:{lat:locations[2].lat,lng:locations[2].lng}}).toArray()
-    }).then(()=>{
-        if(locations[2].loc!==''){
+        return db.get().collection('locationTraces').find({$and:[{date: {$regex: `/^${time}/i`}},{$and:[{"location.lat":locations[2].lat},{"location.lng":locations[2].lng}]}]}).toArray()
+    }).then((result)=>{
+        console.log(result);
+        if(locations[2].loc!=='' && result.length !== 0){
             places.push(locations[2].loc);
         }
         res.json(places);
