@@ -1,16 +1,12 @@
-// import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-// import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './reopening.css';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import React, { useState, useEffect } from 'react';
-import fetchReopens from '../../redux/actions/reopening-actions';
+import React, { useState } from 'react';
 
 function renderProvince(obj) {
   if (Object.keys(obj).length !== 0) {
@@ -43,15 +39,6 @@ function renderProvince(obj) {
     );
   }
   return <div>Utnapishtim</div>;
-}
-
-function getProvinceReopen(region, props) {
-  for (const x in props.reopen) {
-    if (x.province === region) {
-      return x;
-    }
-  }
-  return {};
 }
 
 function renderTableData(restrictions) {
@@ -119,11 +106,9 @@ function dropphasemenu(region) {
   return <MenuItem />;
 }
 
-function Reopen(props) {
+function Reopen() {
   const [prov, setProvince] = useState({});
-  // useEffect(() => {
-  //   props.fetchReopens();
-  // });
+  const [phase, setPhase] = useState(1);
   const classes = useStyles();
   const axiosgetreopenlist = (target) => {
     axios
@@ -136,7 +121,6 @@ function Reopen(props) {
       });
   };
   const handleChange = (event) => {
-    setProvince(getProvinceReopen(event.target.value, props));
     axiosgetreopenlist(event.target.value);
   };
   const droprender = (
@@ -159,7 +143,6 @@ function Reopen(props) {
           onChange={handleChange}
         >
           {dropphasemenu(prov)}
-          {/* {dropphasemenu(saskatchewan)} */}
         </Select>
       </FormControl>
       {renderProvince(prov)}
@@ -201,17 +184,4 @@ function Reopen(props) {
   );
 }
 
-// export default withRouter(Reopen);
-
-const mapStateToProps = (state) => {
-  return {
-    reopen: state.reopen,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchReopens: bindActionCreators(fetchReopens, dispatch),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Reopen);
+export default withRouter(Reopen);

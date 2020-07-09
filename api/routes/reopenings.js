@@ -52,6 +52,22 @@ router.get('/getprovince/:abbr', (req, res) => {
     });
 });
 
+/* get specific provincial territorial reopen details using abbreviation of province territory
+one possible debug: your dotenv might be using the wrong database */
+router.get('/getprovince/:abbr', (req, res) => {
+  Reopening.find({
+    abbr: req.params.abbr,
+  })
+    .then((data) => {
+      // console.log('Reopening...', data);
+      res.json(data);
+    })
+    .catch((error) => {
+      // console.error("Error", error);
+      res.status(404).json('Error: ' + error);
+    });
+});
+
 // do not use, this is simply there to help test if I'm accessing the proper database and collection //
 router.put('/newprovince', (req, res) => {
   const newPost = new Reopening({
