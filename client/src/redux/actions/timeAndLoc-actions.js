@@ -19,11 +19,12 @@ export const editRowDate = (idx, newDate) => {
   };
 };
 
-export const editRowLoc = (idx, locid, newLoc) => {
+export const editRowLoc = (idx, locid, newLoc, newLatLng) => {
   return {
     type: 'EDIT_ROW_LOC',
     idx,
     locid,
     newLoc,
+    newLatLng,
   };
 };
