@@ -14,15 +14,4 @@ router.get('/admins/:email', function (req, res) {
     });
 });
 
-router.post('/admins/location-trace', function (req, res) {
-    //TODO: Also increment numVisitedByInfected in city collection
-
-    db.get().collection('locationTraces').insertOne(req.body)
-        .then(() => {
-            res.status(200).send("ok");
-        }).catch(() => {
-        res.status(400).send("An error occurred in the database.");
-    });
-});
-
 module.exports = router;

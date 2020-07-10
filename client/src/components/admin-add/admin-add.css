@@ -10,14 +10,6 @@
     margin: 50px;
 }
 
-.heading {
-    margin: auto;
-    font-size: 35px;
-    border-bottom: 2px solid;
-    border-color: #2196F3;
-    width: 30%;
-}
-
 .form {
     padding: 5%;
     width: 30%;
@@ -28,13 +20,6 @@
     width: 100%;
     outline: 0;
     border-width: 0 0 1px;
-}
-
-.instruction {
-    background-color: lightsteelblue;
-    padding: 10px;
-    width: fit-content;
-    margin: auto;
 }
 
 .customDatePickerWidth,
@@ -62,9 +47,4 @@ input {
     padding: 0 30px !important;
     border: 0 !important;
     border-radius: 3px !important;
-}
-
-.tabpanel {
-    width: 100%;
-    margin-right: 15%;
 }

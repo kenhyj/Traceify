@@ -11,3 +11,10 @@ export const logout = () => {
         type: 'LOG_OUT'
     }
 };
+
+export const setLocationTraces = (result) => {
+    return {
+        type: 'SET_LOCATION_TRACES',
+        result: result
+    }
+};

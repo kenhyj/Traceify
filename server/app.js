@@ -11,6 +11,7 @@ const mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var adminsRouter = require('./routes/admins');
 var postsRouter = require('./routes/posts');
+var locationRouter = require('./routes/location-traces');
 var reopeningsRouter = require('./routes/reopenings');
 
 var app = express();
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use(adminsRouter);
+app.use(locationRouter);
 app.use('/posts', postsRouter);
 app.use('/reopenings', reopeningsRouter);
 app.use(bodyParser.json());
