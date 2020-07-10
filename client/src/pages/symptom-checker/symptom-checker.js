@@ -12,6 +12,7 @@ import { connect } from 'react-redux';
 import { Send, Refresh } from '@material-ui/icons';
 import './symptom-checker.css';
 import SymptomDisclaimer from './symptom-disclaimer';
+import PageHeading from '../../components/page-heading/PageHeading';
 
 class SymptomChecker extends React.Component {
   constructor() {
@@ -69,14 +70,27 @@ class SymptomChecker extends React.Component {
     );
   }
 
+  
+
   render() {
+    const heading = "Symptom Checker";
+    const subheading = 
+        <>
+            Wondering if you should get tested? Discover a treatment plan below.
+        </>;
+    const body = 
+      <>
+        <p>This page will determine the level of risk you are at based to COVID
+            19 based these symptoms and criteria. </p>
+        <p>Disclaimer: Use this checker at your own discretion.</p>
+      </>
+      
+    const pageHeadingData = {heading, subheading, body};
+
     return (
       <div>
-        <div className='title-container'>
-          <h2>
-            This page will determine the level of risk you are at based to COVID
-            19 based these symptoms and criteria.{' '}
-          </h2>
+        <div>
+          <PageHeading data={pageHeadingData} />
         </div>
 
         <FormControl onSubmit={this.handleSubmit}>

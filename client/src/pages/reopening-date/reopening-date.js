@@ -9,6 +9,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './reopening.css';
+import PageHeading from '../../components/page-heading/PageHeading';
 
 const bc = {
   province: 'British Columbia',
@@ -282,17 +283,18 @@ function Reopen() {
       {renderProvince(saskatchewan)}
     </div>
   );
-  return (
-    <div>
-      <h1 style={{ fontSize: '2.5em', textAlign: 'center' }}>Reopening</h1>
+
+  const heading = "Reopening Dates";
+  const subheading = <p>
+        
+  </p>;
+  const body = 
+    <>
       <b>Disclaimer</b>
-      :
       <br />
-      Each province and territory have several phases or stages that consist of
-      unique policies.
+      Each province and territory have several phases or stages that consist of unique policies.
       <br />
-      As the COVID-19 cases improves, the province/territory will transition
-      into the next phase.
+      As the COVID-19 cases improves, the province/territory will transition into the next phase.
       <br />
       eg. 1 goes to 2 and 2 goes to 3, etc.
       <br />
@@ -311,9 +313,17 @@ function Reopen() {
       Please call the specific store location of interest to enquire about
       operating hours. Their hours may have adjusted. They could be closed for
       safety.
-      <br />
-      {droprender}
-      <br />
+    </>;
+    const pageHeadingData = {heading, subheading, body};
+
+  return (
+    <div>
+      <div>
+        <PageHeading data={pageHeadingData} />
+      </div>
+      <div>
+        {droprender}
+      </div>
     </div>
   );
 }

@@ -25,13 +25,12 @@ function App(props) {
         }}
       >
         <Header title='Covid 19 - Traceify' />
-        <PagesBar />
       </div>
-      <ThankPage />
+      {/* <ThankPage /> */}
       <div
         style={{
           width: '100%',
-          paddingTop: '70px',
+          paddingTop: '6rem',
           display: 'inline-block',
           zIndex: '2',
         }}

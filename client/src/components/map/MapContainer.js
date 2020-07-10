@@ -13,25 +13,23 @@ class MapContainer extends Component {
 
         const { showMarkers } = this.props.mapReducer;
 
-        // const initialHeatLocations = ;
-
         return (
-            <div>
-                <GoogleMap
-                    mapContainerStyle={styles.mapContainerStyle}
-                    center={styles.center}
-                    zoom={styles.zoom}
-                    options={{styles: styles.mapStyle}}
-                >
+                <div>
+                    <GoogleMap
+                        mapContainerStyle={styles.mapContainerStyle}
+                        center={styles.center}
+                        zoom={styles.zoom}
+                        options={{styles: styles.mapStyle}}
+                    >
 
-                    {markers.map((marker) => (
-                        showMarkers && <MapMarker key={marker.id} {...marker} />
-                    ))}
+                        {markers.map((marker) => (
+                            showMarkers && <MapMarker key={marker.id} {...marker} />
+                        ))}
 
-                    <MapHeatLayer />
-                    
-                </GoogleMap>
-            </div>
+                        <MapHeatLayer />
+                        
+                    </GoogleMap>
+                </div>
         );
     }
 }
