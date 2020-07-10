@@ -1,14 +1,12 @@
-import React from 'react';
 import { withRouter } from 'react-router-dom';
-// import { connect } from 'react-redux';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './reopening.css';
+import React, { useState } from 'react';
 import PageHeading from '../../components/page-heading/PageHeading';
 import { motion } from 'framer-motion';
 import { variants, transitions, pageStyle } from '../motion-settings';
@@ -157,42 +155,97 @@ const saskatchewan = {
 };
 
 function renderProvince(obj) {
-  const current_phase = obj.current_stage - 1;
-  return (
-    <div>
-      <h1
-        style={{
-          textAlign: 'center',
-          fontSize: '1.5em',
-          backgroundColor: 'rgb(135, 151, 170)',
-        }}
-      >
-        {obj.province} is currently in Stage {obj.current_stage}
-      </h1>
-      <table id='provtable'>
-        <tr>
-          <th>Service</th>
-          <th>Detail and restrictions for stage ... </th>
-        </tr>
-        {renderTableData(obj.phases[current_phase].restrictions)}
-      </table>
-      <b>
-        Additional information is located{' '}
-        <a href={obj.more} target='_blank'>
-          here.
-        </a>
-      </b>
-    </div>
-  );
+  if (Object.keys(obj).length !== 0) {
+    const current_phase = obj.current_stage - 1;
+    return (
+      <div>
+        <h1
+          style={{
+            textAlign: 'center',
+            fontSize: '1.5em',
+            backgroundColor: 'rgb(135, 151, 170)',
+          }}
+        >
+          {obj.province} is currently in Stage {obj.current_stage}
+          <br />
+        </h1>
+        <h2
+          style={{
+            textAlign: 'center',
+            fontSize: 'em',
+          }}
+        >
+          You are looking at details of Stage {obj.current_stage}
+        </h2>
+        <table id='provtable'>
+          <tr>
+            <th>Service</th>
+            <th>Detail and restrictions {obj.current_stage}</th>
+          </tr>
+          {renderTableData(obj.phases[current_phase].restrictions)}
+        </table>
+        <b>
+          Additional information is located{' '}
+          <a href={obj.more} target='_blank'>
+            here.
+          </a>
+        </b>
+      </div>
+    );
+  }
+  return <div>Utnapishtim</div>;
+}
+
+function renderProvinceTwo(obj, chosenphase) {
+  if (Object.keys(obj).length !== 0) {
+    if (chosenphase === 1000) {
+      return renderProvince(obj);
+    }
+    // const current_phase = obj.current_stage - 1;
+    const clicked_phase = chosenphase - 1;
+    return (
+      <div>
+        <h1
+          style={{
+            textAlign: 'center',
+            fontSize: '1.5em',
+            backgroundColor: 'rgb(135, 151, 170)',
+          }}
+        >
+          {obj.province} is currently in Stage {obj.current_stage}
+        </h1>
+        <h2
+          style={{
+            textAlign: 'center',
+            fontSize: 'em',
+          }}
+        >
+          You are looking at details of Stage {chosenphase}
+        </h2>
+        <table id='provtable'>
+          <tr>
+            <th>Service</th>
+            <th>Detail and Restrictions for Stage {chosenphase}</th>
+          </tr>
+          {/* {renderTableData(obj.phases[current_phase].restrictions)} */}
+          {renderTableData(obj.phases[clicked_phase].restrictions)}
+        </table>
+        <b>
+          Additional information is located{' '}
+          <a href={obj.more} target='_blank'>
+            here.
+          </a>
+        </b>
+      </div>
+    );
+  }
+  return <div>Utnapishtim</div>;
 }
 
 function renderTableData(restrictions) {
   const list = Object.entries(restrictions);
-  // console.log('list, ', list);
   return list.map((mesage) => {
     for (const x of mesage) {
-      // TODO: render the table
-      console.log('mesage', mesage);
       return (
         <tr>
           <td>{x.replace(/_/gi, ' ').replace(/\n/g, '<br />')}</td>
@@ -214,50 +267,65 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const provterr = [
-  'Newfoundland',
-  'Prince Edward Island',
-  'Nova Scotia',
-  'New Brunswick',
-  'Quebec',
-  'Ontario',
-  'Manitoba',
-  'Saskatchewan',
-  'Alberta',
-  'British Columbia',
-  'Yukon',
-  'Northwest Territories',
-  'Nunavut',
-].sort();
-const dropprovmenu = provterr.map((province) => {
-  return <MenuItem value={province}>{province}</MenuItem>;
+  { abbr: 'AB', province: 'Alberta' },
+  { abbr: 'BC', province: 'British Columbia' },
+  { abbr: 'MB', province: 'Manitoba' },
+  { abbr: 'NB', province: 'New Brunswick' },
+  { abbr: 'NL', province: 'Newfoundland' },
+  { abbr: 'NT', province: 'Northwest Territories' },
+  { abbr: 'NS', province: 'Nova Scotia' },
+  { abbr: 'NU', province: 'Nunavut' },
+  { abbr: 'ON', province: 'Ontario' },
+  { abbr: 'PE', province: 'Prince Edward Island' },
+  { abbr: 'QC', province: 'Quebec' },
+  { abbr: 'SK', province: 'Saskatchewan' },
+  { abbr: 'YK', province: 'Yukon' },
+];
+const dropprovmenu = provterr.map((list) => {
+  return <MenuItem value={list.abbr}>{list.province}</MenuItem>;
 });
 
-// const phasesmenu = [1, 2, 3, 4].sort();
-
-const phasesmenu = () => {
+const phasesmenu = (region) => {
   const retphase = [];
-  for (const x of saskatchewan.phases) {
-    retphase.push(x.phase);
+  if (Object.keys(region).length > 0) {
+    for (const x of region.phases) {
+      retphase.push(x.phase);
+    }
   }
   return retphase;
 };
 
-const dropphasemenu = phasesmenu()
-  .sort()
-  .map((service) => {
-    return <MenuItem value={service}>{service}</MenuItem>;
-  });
+function dropphasemenu(region) {
+  if (Object.keys(region).length > 0) {
+    return phasesmenu(region)
+      .sort()
+      .map((service) => {
+        return <MenuItem value={service}>{service}</MenuItem>;
+      });
+  }
+  return <MenuItem />;
+}
 
 function Reopen() {
-  // BC : https://www2.gov.bc.ca/gov/content/safety/emergency-preparedness-response-recovery/covid-19-provincial-support/bc-restart-plan
-  // ON : https://www.ontario.ca/page/reopening-ontario
-  // AB : https://www.alberta.ca/guidance-documents.aspx
-  // YT: https://yukon.ca/en/health-and-wellness/covid-19-information/latest-updates-covid-19/current-covid-19-situation
-  // SK: https://www.saskatchewan.ca/government/health-care-administration-and-provider-resources/treatment-procedures-and-guidelines/emerging-public-health-issues/2019-novel-coronavirus/re-open-saskatchewan-plan/phases-of-re-open-saskatchewan
-  // MB: https://www.gov.mb.ca/covid19/restoring/future-phases.html
+  const [prov, setProvince] = useState({});
+  const [phase, setPhase] = useState(1000);
   const classes = useStyles();
-  const handleChange = (event) => {
-    // [event.target.name]: event.target.value;
+  const axiosgetreopenlist = (target) => {
+    axios
+      .get('http://localhost:7000/reopenings/getprovince/'.concat(target))
+      .then((res) => {
+        setPhase(res.data[0].current_stage);
+        setProvince(res.data[0]);
+      })
+      .catch((err) => {
+        console.log('failed to get desired reopen detail. Error: ', err);
+      });
+  };
+  const handleProvinceChange = (event) => {
+    axiosgetreopenlist(event.target.value);
+  };
+  const handlePhaseChange = (event) => {
+    setPhase(event.target.value);
   };
   const droprender = (
     <div>
@@ -266,8 +334,7 @@ function Reopen() {
         <Select
           labelId='province-select-label'
           id='service-select-label'
-          // value={age}
-          onChange={handleChange}
+          onChange={handleProvinceChange}
         >
           {dropprovmenu}
         </Select>
@@ -277,13 +344,13 @@ function Reopen() {
         <Select
           labelId='phases-select-label'
           id='phases-select-label'
-          // value={age}
-          onChange={handleChange}
+          onChange={handlePhaseChange}
+          defaultValue={phase}
         >
-          {dropphasemenu}
+          {dropphasemenu(prov)}
         </Select>
       </FormControl>
-      {renderProvince(saskatchewan)}
+      {renderProvinceTwo(prov, phase)}
     </div>
   );
 
