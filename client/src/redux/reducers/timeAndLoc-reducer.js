@@ -17,8 +17,8 @@ const timeAndLocReducer = (fields = InitialField, action) => {
       ];
     case 'DELETE_ROW':
       return fields.filter((oneRow, index) => {
-        console.log(`index${index}`);
-        console.log(`idx:${action.idx}`);
+        // console.log(`index${index}`);
+        // console.log(`idx:${action.idx}`);
         if (index === action.idx) {
           return false;
         }

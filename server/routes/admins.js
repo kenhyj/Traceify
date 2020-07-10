@@ -33,7 +33,8 @@ router.post('/expose',(req,res)=>{
     const time = oneRow.date.slice(0,10);
     console.log(time);
     const locations = oneRow.locations;
-    return db.get().collection('locationTraces').find({$and:[{date: {$regex: new RegExp('^' + time),$options: 'i'}},{$and:[{"location.lat":locations[0].lat},{"location.lng":locations[0].lng}]}]}).toArray()
+    return db.get().collection('locationTraces').find({$and:[{date: {$regex: new RegExp('^' + time)}},
+    {$and:[{"location.lat":locations[0].lat},{"location.lng":locations[0].lng}]}]}).toArray()
     .then((result1)=>{
         console.log(result1);
         if(locations[0].loc!=='' && result1.length !== 0){
@@ -41,7 +42,8 @@ router.post('/expose',(req,res)=>{
                 place: locations[0].loc,
                 date:time,});
         }
-        return db.get().collection('locationTraces').find({$and:[{date: {$regex: new RegExp('^' + time),$options: 'i'}},{$and:[{"location.lat":locations[1].lat},{"location.lng":locations[1].lng}]}]}).toArray()
+        return db.get().collection('locationTraces').find({$and:[{date: {$regex: new RegExp('^' + time)}},
+        {$and:[{"location.lat":locations[1].lat},{"location.lng":locations[1].lng}]}]}).toArray()
     }).then((result2)=>{
         console.log(result2);
         if(locations[1].loc!=='' && result2.length !== 0){
@@ -49,7 +51,8 @@ router.post('/expose',(req,res)=>{
                 place: locations[1].loc,
                 date:time,});
         }
-        return db.get().collection('locationTraces').find({$and:[{date: {$regex: new RegExp('^' + time),$options: 'i'}},{$and:[{"location.lat":locations[2].lat},{"location.lng":locations[2].lng}]}]}).toArray()
+        return db.get().collection('locationTraces').find({$and:[{date: {$regex: new RegExp('^' + time)}},
+        {$and:[{"location.lat":locations[2].lat},{"location.lng":locations[2].lng}]}]}).toArray()
     }).then((result)=>{
         console.log(result);
         if(locations[2].loc!=='' && result.length !== 0){
@@ -59,7 +62,8 @@ router.post('/expose',(req,res)=>{
         }
         res.json(places);
     })
-    .catch(()=> {console.log('didn t find')} )
+    .catch(()=> {console.log('didn t find');
+                  res.status(400).json('error in finding')} )
     
 
 

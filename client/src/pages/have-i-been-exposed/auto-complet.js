@@ -41,7 +41,7 @@ export default function LocationAuto(props) {
 
   const address = fields[props.idx].locations[props.locid].loc;
 
-  console.log(fields);
+  // console.log(fields);
 
   const handleSelect = async value => {
 
