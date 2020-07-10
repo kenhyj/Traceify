@@ -46,7 +46,7 @@ const cardStyles = makeStyles({
 const CardTitleDescButton = (props) => {
   const classes = cardStyles();
 
-  const { title, description, id, url } = props;
+  const { title, descriptions, id, url } = props;
 
   const handleClick = () => {
     window.open(url);
@@ -56,7 +56,9 @@ const CardTitleDescButton = (props) => {
     <Card className={classes.root} id={id}>
       <CardContent>
         <Typography className={classes.title}>{title}</Typography>
-        <Typography>{description}</Typography>
+        {descriptions.map((oneDescription) => {
+          return <Typography>{oneDescription}</Typography>;
+        })}
       </CardContent>
       <CardActions>
         <Button className={classes.btn} onClick={handleClick}>

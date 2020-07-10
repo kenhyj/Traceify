@@ -13,24 +13,27 @@ const FinancialHelp = (props) => {
   const helpResources = [
     {
       title: 'Canadian Emergency Response Benefit (CERB)',
-      description:
+      descriptions: [
         'The Canada Emergency Response Benefit (CERB) gives financial support to employed and self-employed Canadians who are directly affected by COVID-19. If you are eligible, you can receive $2,000 for a 4-week period (the same as $500 a week).',
+      ],
       url:
         'https://www.canada.ca/en/revenue-agency/services/benefits/apply-for-cerb-with-cra.html',
       id: 0,
     },
     {
       title: 'Canadian Emergency Student Benefit (CESB)',
-      description:
+      descriptions: [
         'The Canada Emergency Student Benefit (CESB) provides financial support to post-secondary students, and recent post-secondary and high school graduates who are unable to find work due to COVID-19.',
+      ],
       url:
         'https://www.canada.ca/en/revenue-agency/services/benefits/emergency-student-benefit.html',
       id: 1,
     },
     {
       title: 'B.C. Emergency Benefit for Workers',
-      description:
+      descriptions: [
         'A one-time, tax-free $1,000 payment for B.C. residents whose ability to work has been affected due to COVID-19.',
+      ],
       url:
         'https://www2.gov.bc.ca/gov/content/employment-business/covid-19-financial-supports/emergency-benefit-workers',
       id: 2,
@@ -51,10 +54,17 @@ const FinancialHelp = (props) => {
       continue to confront these challenging times together.”
       <br />
       <p>- Bill Morneau, Minister of Finance</p>
-      Review Canada's economic plan <a href="https://www.canada.ca/en/department-finance/economic-response-plan.html">here</a>.
     </>
   );
-  const body = 'Check here for the financial help resources. Fraud alert: The government will never contact you via text message.';
+  const body = (
+    <>
+      Check here for the financial help resources. Review Canada's economic plan {' '}
+      <a href='https://www.canada.ca/en/department-finance/economic-response-plan.html'>
+        here
+      </a>
+      . Fraud alert: The government will never contact you via text message.
+    </>
+  );
   const pageHeadingData = { heading, subheading, body };
 
   return (
@@ -70,7 +80,7 @@ const FinancialHelp = (props) => {
         <PageHeading data={pageHeadingData} />
       </div>
       <div className='financial-help-body'>
-        <Grid container justify="center">
+        <Grid container justify='center'>
           {helpResources.map((resource) => (
             <Card key={resource.id} {...resource} />
           ))}
