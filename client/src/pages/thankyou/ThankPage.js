@@ -5,6 +5,7 @@ import thankpng from '../../assets/ThankPic.png';
 import socialDis from '../../assets/social-dist.jpg';
 import reopen from '../../assets/reopen.jpg';
 import symptom from '../../assets/symptom.png';
+import './thankyou.css';
 
 class ThankPage extends React.Component {
     constructor(props) {
@@ -48,7 +49,7 @@ class ThankPage extends React.Component {
                         </div>
                     </div>
                     <Grid container justify="center">
-                        <Button color="primary" className='button' variant="outlined" size='small' onClick = {this.handleClick}>Enter</Button>
+                        <Button color="primary" className='buttonz' variant="outlined" size='small' onClick = {this.handleClick}>Enter</Button>
                     </Grid>
                 </div>
                 </Modal>

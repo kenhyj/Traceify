@@ -1,119 +1,102 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
-import PlacesAutocomplete from 'react-places-autocomplete';
-import {
-    geocodeByAddress,
-    geocodeByPlaceId,
-    getLatLng,
-} from 'react-places-autocomplete';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import { connect } from 'react-redux';
+import AdminAdd from '../../components/admin-add/admin-add';
+import AdminDelete from '../../components/admin-delete/admin-delete';
+import './admin-page.css';
+import PageHeader from "../../components/page-header/page-header";
 
-import 'react-datepicker/dist/react-datepicker.css';
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
 
-class AdminPage extends React.Component {
-    constructor (props) {
-        super(props);
-        this.state = {
-            date: new Date(),
-            address: ''
-        };
-    }
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`vertical-tabpanel-${index}`}
+            aria-labelledby={`vertical-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box p={3}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    );
+}
 
-    handleDateChange = date => {
-        this.setState({
-            date: date
-        });
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+    return {
+        id: `vertical-tab-${index}`,
+        'aria-controls': `vertical-tabpanel-${index}`,
+    };
+}
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.paper,
+        display: 'flex',
+        height: 224,
+        width: '100%'
+    },
+    tabs: {
+        borderRight: `1px solid ${theme.palette.divider}`,
+        width: '20%'
+    },
+}));
+
+function AdminPage(props) {
+    const classes = useStyles();
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
     };
 
-    handleChange = address => {
-        this.setState({ address });
-    };
-
-    handleSelect = address => {
-        geocodeByAddress(address)
-            .then(results => getLatLng(results[0]))
-            .then(latLng => console.log('Success', latLng))
-            .catch(error => console.error('Error', error));
-    };
-
-    render () {
-        return (
-            <div>
-                <h1>ADMIN PAGE</h1> <br /><br />
+    return (
+        <div className="root">
+            <PageHeader text='ADMIN PAGE'/>
+            <br />
+            {/*
                 ACCESSTOKEN: {this.props.accessToken} <br /><br /><br /><br />
-                Welcome, {this.props.user} !!<br /><br />Please input the information of all the places the positive patient visited.<br /><br /><br /><br />
-                <form>
-                    <label>
-                        Location:
-                        <PlacesAutocomplete
-                            value={this.state.address}
-                            onChange={this.handleChange}
-                            onSelect={this.handleSelect}
-                        >{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                            <div>
-                                <input
-                                    {...getInputProps({
-                                        placeholder: 'Search Places ...',
-                                        className: 'location-search-input',
-                                    })}
-                                />
-                                <div className="autocomplete-dropdown-container">
-                                    {loading && <div>Loading...</div>}
-                                    {suggestions.map(suggestion => {
-                                        const className = suggestion.active
-                                            ? 'suggestion-item--active'
-                                            : 'suggestion-item';
-                                        // inline style for demonstration purpose
-                                        const style = suggestion.active
-                                            ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                                            : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                                        return (
-                                            <div
-                                                {...getSuggestionItemProps(suggestion, {
-                                                    className,
-                                                    style,
-                                                })}
-                                            >
-                                                <span>{suggestion.description}</span>
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                            </div>
-                        )}
-                        </PlacesAutocomplete>
-                    </label><br/>
-                    <label>
-                        Date:<br/>
-                        <DatePicker
-                            selected={this.state.date}
-                            onChange={this.handleDateChange}
-                        />
-                    </label>
-                    <br/><br/>
-                    <label>
-                        Time:<br/>
-                        <select>
-                            <option value="grapefruit">12 AM ~ 3 AM</option>
-                            <option value="lime">3 AM ~ 6 AM</option>
-                            <option selected value="coconut">6 AM ~ 9AM</option>
-                            <option value="mango">9 AM ~ 12 PM</option>
-                            <option value="grapefruit">12 PM ~ 3 PM</option>
-                            <option value="lime">3 PM ~ 6 PM</option>
-                            <option selected value="coconut">6 PM ~ 9 PM</option>
-                            <option value="mango">9 PM ~ 12 AM</option>
-                        </select>
-                    </label><br/><br/>
-                    <label>
-                        Region:<br/>
-                        <input/>
-                    </label><br/><br/><br/><br/>
-                    <button>SUBMIT</button>
-                </form>
+            */}
+            Welcome, {props.user}
+            <br /><br /><br />
+            <div className={classes.root}>
+                <Tabs
+                    orientation="vertical"
+                    variant="scrollable"
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="Vertical tabs example"
+                    className={classes.tabs}
+                >
+                    <Tab label="Add a New Location" {...a11yProps(0)} />
+                    <Tab label="Delete a Location(s)" {...a11yProps(1)} />
+                </Tabs>
+                <TabPanel value={value} index={0} className="tabpanel">
+                    <AdminAdd />
+                </TabPanel>
+                <TabPanel value={value} index={1} className="tabpanel">
+                    <AdminDelete />
+                </TabPanel>
             </div>
-        );
-    }
+        </div>
+    );
 }
 
 const mapStateToProps = (state) => {

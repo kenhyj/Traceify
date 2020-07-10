@@ -22,13 +22,6 @@
     border-width: 0 0 1px;
 }
 
-.instruction {
-    background-color: lightsteelblue;
-    padding: 10px;
-    width: fit-content;
-    margin: auto;
-}
-
 .customDatePickerWidth,
 .customDatePickerWidth > div.react-datepicker-wrapper,
 .customDatePickerWidth > div > div.react-datepicker__input-container
@@ -54,9 +47,4 @@ input {
     padding: 0 30px !important;
     border: 0 !important;
     border-radius: 3px !important;
-}
-
-.tabpanel {
-    width: 100%;
-    margin-right: 15%;
 }

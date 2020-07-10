@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
+import axios from 'axios';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import reducers from './redux';
 
+axios.defaults.baseURL = 'http://localhost:7000';
+
 ReactDOM.render(
-  <Provider store={createStore(reducers, applyMiddleware(thunk))}>
+  <Provider store={createStore(reducers)}>
     <App />
   </Provider>,
   document.getElementById('root')

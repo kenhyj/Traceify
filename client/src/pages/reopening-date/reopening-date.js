@@ -7,6 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './reopening.css';
 import React, { useState } from 'react';
+import PageHeader from '../../components/page-header/page-header';
 
 function renderProvince(obj) {
   if (Object.keys(obj).length !== 0) {
@@ -209,7 +210,13 @@ function Reopen() {
   );
   return (
     <div>
-      <h1 style={{ fontSize: '2.5em', textAlign: 'center' }}>Reopening</h1>
+      <br />
+      <br />
+      <PageHeader text='REOPENING' />
+      <br />
+      <br />
+      <br />
+      <br />
       <b>Disclaimer</b>
       :
       <br />
