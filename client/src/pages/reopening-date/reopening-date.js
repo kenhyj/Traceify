@@ -8,6 +8,7 @@ import Select from '@material-ui/core/Select';
 import './reopening.css';
 import React, { useState } from 'react';
 import PageHeader from '../../components/page-header/page-header';
+import Instruction from '../../components/instruction/instruction';
 
 function renderProvince(obj) {
   if (Object.keys(obj).length !== 0) {
@@ -215,8 +216,7 @@ function Reopen() {
       <PageHeader text='REOPENING' />
       <br />
       <br />
-      <br />
-      <br />
+      <Instruction text='Choose the province or territory of interest to find its reopening details. By default the current stage or phase of the selected province will be shown. You can see prior or coming phases by selecting the phase or stage.' />
       <b>Disclaimer</b>
       :
       <br />
