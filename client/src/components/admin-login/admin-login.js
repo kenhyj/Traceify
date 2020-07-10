@@ -1,12 +1,14 @@
 import React from 'react';
 import {connect} from "react-redux";
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { useHistory } from "react-router-dom";
 import { login, logout } from '../../redux/actions/website-actions';
 import axios from 'axios';
 
 const CLIENT_ID = "483742820449-tafi1b6s3ju79ub5b0ut9mvhgf8v2bu8.apps.googleusercontent.com";
 
 const AdminLogin = props => {
+    const history = useHistory();
 
     const login = (response) => {
         if(response.wc.access_token){
@@ -19,7 +21,7 @@ const AdminLogin = props => {
     };
 
     const handleLoginFailure = () => {
-        alert('Failed to log in')
+        alert('Failed to log in');
     };
 
     const handleLogoutFailure = () => {
@@ -32,7 +34,10 @@ const AdminLogin = props => {
                 <GoogleLogout
                     clientId={ CLIENT_ID }
                     buttonText='Logout'
-                    onLogoutSuccess={ props.logout }
+                    onLogoutSuccess={ () => {
+                        props.logout();
+                        history.push("/home");
+                    }}
                     onFailure={ handleLogoutFailure }
                 >
                 </GoogleLogout>: <GoogleLogin

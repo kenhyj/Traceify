@@ -1,35 +1,56 @@
-import React, { Component } from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-import styles from './MapContainer.css';
-
-// NOTE: uncomment this, and comment out the actual api if you don't want to use up loads
-const API_KEY = `${process.env.REACT_APP_GOOGLE_LOCATION_KEY}`;
-// const API_KEY = 123456;
-
-const locations = [
-  {
-    name: 'UBC',
-    location: {
-      lat: 49.2606052,
-      lng: -123.2481825,
-    },
-  },
-];
+/* global google */
+import React, { Component } from "react";
+import { GoogleMap } from "@react-google-maps/api";
+import styles from "./MapContainer.css";
+import { connect } from "react-redux";
+import MapMarker from "./MapMarker";
+import MapHeatLayer from "./MapHeatLayer";
+import { withGoogleMaps } from "./MapHOC";
+import PageHeader from "../page-header/page-header";
+import Instruction from "../instruction/instruction";
 
 class MapContainer extends Component {
-  render() {
-    return (
-      <div>
-          <GoogleMap
-            mapContainerStyle={styles.mapContainerStyle}
-            center={styles.center}
-            zoom={styles.zoom}
-          >
-            <Marker position={locations[0].location} />
-          </GoogleMap>
-      </div>
-    );
-  }
+    render() {
+        const markers = this.props.markers;
+
+        const { showMarkers } = this.props.mapReducer;
+
+        // const initialHeatLocations = ;
+
+        return (
+            <div style={{textAlign: 'center'}}>
+                <PageHeader text='HOME'/>
+                <br/><br/>
+                <Instruction text='The map below shows where the positive patients have traveled for the last few days. Click on the buttons on top of the map to change the map view.'/>
+                <br/><br/>
+                <GoogleMap
+                    mapContainerStyle={styles.mapContainerStyle}
+                    center={styles.center}
+                    zoom={styles.zoom}
+                    options={{styles: styles.mapStyle}}
+                >
+
+                    {markers.map((marker) => (
+                        showMarkers && <MapMarker key={marker.id} {...marker} />
+                    ))}
+
+                    <MapHeatLayer />
+                    
+                </GoogleMap>
+            </div>
+        );
+    }
 }
 
-export default MapContainer;
+const mapStateToProps = (state) => {
+    return {
+        mapReducer: state.map,
+        markers: state.map.markers,
+    };
+};
+
+const ConnectedMapContainer = connect(mapStateToProps)(
+    withGoogleMaps(MapContainer)
+);
+
+export default ConnectedMapContainer;

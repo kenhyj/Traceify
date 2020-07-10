@@ -12,6 +12,8 @@ import { connect } from 'react-redux';
 import { Send, Refresh } from '@material-ui/icons';
 import './symptom-checker.css';
 import SymptomDisclaimer from './symptom-disclaimer';
+import PageHeader from "../../components/page-header/page-header";
+import Instruction from "../../components/instruction/instruction";
 
 class SymptomChecker extends React.Component {
   constructor() {
@@ -71,15 +73,22 @@ class SymptomChecker extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className='title-container'>
+      <div style={{margin: '0 10% 10%'}}>
+          <br/><br/>
+          <PageHeader text='SYMPTOM CHECKER'/>
+          <br/><br/>
+          <Instruction text='Please follow the instructions below to determine the level of COVID-19 risk you are at
+            based on symptoms and criteria.'/>
+          <br/><br/>
+          {/*
+          <div className='title-container'>
           <h2>
             This page will determine the level of risk you are at based to COVID
             19 based these symptoms and criteria.{' '}
           </h2>
         </div>
-
-        <FormControl onSubmit={this.handleSubmit}>
+          */}
+          <FormControl onSubmit={this.handleSubmit}>
           <FormLabel className='formLabel' component='symptoms'>
             Please check all the boxes below that applies to you:
           </FormLabel>
@@ -96,14 +105,15 @@ class SymptomChecker extends React.Component {
               )
               .sort()
           )}
+          <br/><br/>
           <Grid container style={{ width: '30%', marginLeft: '35%' }}>
             <Grid item xs={6} container justify='center'>
               <Button
                 type='submit'
                 variant='contained'
-                color='primary'
                 endIcon={<Send />}
                 onClick={this.handleSubmit}
+                className="button"
               >
                 Submit
               </Button>
@@ -112,9 +122,9 @@ class SymptomChecker extends React.Component {
               <Button
                 type='clear'
                 variant='contained'
-                color='secondary'
                 endIcon={<Refresh />}
                 onClick={this.retakeTest}
+                className="button"
               >
                 Retake
               </Button>

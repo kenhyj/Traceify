@@ -27,6 +27,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Alert from '@material-ui/lab/Alert';
+import './have-been-exposed.css';
+import PageHeader from "../../components/page-header/page-header";
+import Instruction from "../../components/instruction/instruction";
 
 // from material ui-- need to customize
 const StyledTableCell = withStyles((theme) => ({
@@ -112,9 +115,14 @@ const HaveI = () => {
     }
     return (
         <Container fixed>
-            <br />
+            <br/><br/>
+            <PageHeader text='HAVE I BEEN EXPOSED?'/>
+            <br/><br/>
+            <Instruction text='Enter the date and the places you have visited to check whether your paths crossed with any of the positive patients.'/>
+            <br/><br/><br/><br/>
             <Toolbar>
                 <Button
+                    className="buttonz"
                     variant="outlined"
                     color="inherit"
                     onClick={() => dispatch({ type: 'ADD_ROW' })}
@@ -123,7 +131,7 @@ const HaveI = () => {
                 <Typography variant="h6" className={classes.title}>
                     Enter the places you went to
                     </Typography>
-                <Button variant="outlined"
+                <Button variant="outlined" className="buttonz"
                     color="inherit"
                     onClick={handleSubmit}
                     endIcon={<PublishIcon />}>Submit</Button>

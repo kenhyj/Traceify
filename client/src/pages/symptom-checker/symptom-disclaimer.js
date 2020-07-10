@@ -112,12 +112,12 @@ export class SymptomDisclaimer extends React.Component {
 
             <Button
               color="primary"
-              className="button"
+              className="buttons"
               variant="outlined"
               size="small"
               onClick={() => this.props.close()}
             >
-              X
+              Close
             </Button>
           </Grid>
           </div>
