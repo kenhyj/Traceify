@@ -4,6 +4,128 @@ db.reopenings.insertMany([
   {
     province: 'Newfoundland',
     abbr: 'NL',
+    current_stage: 3,
+    phases: [
+      {
+        phase: 1,
+        restrictions: {
+          'lifting long-term public health measures':
+            'evaluation of transmission patterns of COVID-19 \n\
+        availability of an effective vaccine and/or treatment \n\
+        and a strong public health system. ',
+        },
+      },
+      {
+        phase: 2,
+        restrictions: {
+          Public_Spaces_and_Gatherings:
+            'Gatherings at funerals, burials and weddings are expanded to 50 people as long as physical distancing can be maintained. Wakes remain prohibited. \n\
+        Outdoor gatherings of up to 50 people are permitted as long as physical distancing can be maintained. \n\
+        Places of worship are permitted to resume operations with restrictions.',
+          Recreational_Activities:
+            'Gyms and fitness facilities are permitted to open, with restrictions. \n\
+          Arenas can open, with restrictions. \n\
+          Indoor pools can open, however some restrictions apply. \n\
+          Overnight camping is permitted in all forms, including tenting. \n\
+          Playground equipment can be used.',
+          Health_care_services:
+            'Regional health authorities will continue to allow some health care services to resume. \n\
+          Further expansion of visitation in health care to be determined.',
+          Businesses_and_Services:
+            'Bars and lounges are permitted to open with reduced occupancy. \n\
+          Indoor entertainment facilities can reopen with reduced occupancy (e.g. bingo halls, cinemas). \n\
+          Performance spaces can reopen with reduced occupancy.',
+        },
+      },
+      {
+        phase: 3,
+        restrictions: {
+          Public_Spaces_and_Gatherings:
+            'Gatherings at funerals, burials and weddings are expanded to 20 people as long as physical distancing can be maintained. \n\
+            Visitations are permitted, with restrictions. Wakes remain prohibited. \n\
+            Outdoor gatherings of up to 20 people are permitted as long as physical distancing can be maintained.',
+          Recreational_Activities:
+            'Campsites are permitted to open for limited overnight camping, with restrictions. \n\
+            Summer day camps can operate, with restrictions. \n\
+            Medium-risk outdoor recreational activities can resume (e.g., sports). Spectators must maintain physical distancing. \n\
+            Outdoor pools can operate with a limited number of people. \n\
+            Large playgrounds in municipal parks must not be used. \n\
+            Gym and fitness facilities, yoga studios, tennis and squash facilities, arenas, dance studios and performance spaces remain closed. \n\
+            Outdoor activities, including walking, hiking, or riding your bike, are encouraged as long as physical distancing can be maintained and you are not required to self-isolate for any reason.',
+          Health_care_services:
+            'Private health care clinics can reopen in accordance with guidelines. \n\
+            Regional health authorities will continue to allow some health care services to resume. \n\
+            Visitation in health care is expanded. \n\
+            Orders for long term care, personal care homes, and assisted living facilities remain in place.',
+          Businesses_and_Services:
+            'Retail stores, including those in shopping malls, can open with restrictions. \n\
+            Retail stores are permitted to sell scratch and break open lotto tickets in store. \n\
+            Personal service establishments, including spas, esthetic services, hair salons, body piercing, tattooing and tanning salons, can open in accordance with guidelines. \n\
+            Animal grooming facilities can resume operations. \n\
+            Further expansion of daycare operations. \n\
+            Restaurants can re-open at reduced occupancy; buffets remain prohibited. \n\
+            Bars, lounges and cinemas remain closed.',
+        },
+      },
+      {
+        phase: 4,
+        restrictions: {
+          Public_Spaces_and_Gatherings:
+            'Gatherings at funerals, burials and weddings are restricted to no more than 10 people, as long as physical distancing can be maintained. \n\
+            Visitations and wakes remain prohibited.',
+          Recreational_Activities:
+            'Recreational angling and hunting are permitted. \n\
+            Golf courses can open with restrictions in place. \n\
+            Municipal parks are open. \n\
+            Playground equipment in municipal parks is not to be used. \n\
+            Campsites remain closed. \n\
+            Gym and fitness facilities, yoga studios, tennis and squash facilities, arenas, dance studios and performance spaces remain closed. \n\
+            Outdoor activities, including walking, hiking, or riding your bike, are encouraged as long as physical distancing can be maintained and you are not required to self-isolate for any reason.',
+          Health_care_services:
+            'Regional health authorities will begin to allow some health care services to resume. \n\
+            Private health care clinics are closed, except those of physicians and nurse practitioners. Closed clinics can offer urgent and emergent care, and virtual options can be offered for non-urgent care. \n\
+            All visitor restrictions in health care remain in place. \n\
+            Orders for long term care, personal care homes, and assisted living facilities remain in place.',
+          Businesses_and_Services:
+            'Limited expansion of child care services. \n\
+            Professional services such as accounting firms, law firms, and financial services can offer in-person services. Work from home policies are encouraged, where possible. \n\
+            In-person worker and workplace safety training will be permitted (e.g. Standard First Aid, Basic Safety Training, food safety, etc.). \n\
+            Gardening centres can open for in-person sales and service. \n\
+            Landscaping and lawn care services can operate. \n\
+            Animal daycares can resume operations. \n\
+            Retail stores that do not offer essential services, bars and lounges, cinemas, and personal service establishments remain closed. \n\
+            Restaurants remain closed for in-person dining.',
+        },
+      },
+      {
+        phase: 5,
+        restrictions: {
+          Public_Spaces_and_Gatherings:
+            'Gatherings of more than 5 people are prohibited. \n\
+            Funerals, wakes and visitations are prohibited. \n\
+            Burials and weddings are limited to no more than 5 people, including the officiant.',
+          Recreational_Activities:
+            'Campsites in municipal and privately owned parks are closed. \n\
+            Playground equipment in municipal parks are closed. \n\
+            Gym and fitness facilities are closed, including yoga studios, tennis and squash facilities, and arenas. \n\
+            Dance studios and performance spaces are closed. \n\
+            Outdoor activities, including walking, hiking, or riding your bike, are encouraged as long as physical distancing can be maintained and you are not required to self-isolate for any reason.',
+          Health_care_services:
+            'Private health care clinics are closed, except those of physicians and nurse practitioners. Closed clinics can offer urgent and emergent care, and virtual options can be offered for non-urgent care. \n\
+            Visitor restrictions in health care are in place. \n\
+            Orders for long term care, personal care homes, and assisted living facilities are in place. \n\
+            Regional health authorities have postponed or cancelled some health care services.',
+          Businesses_and_Services:
+            'Retail stores that do not provide services essential to life, health or personal safety of individuals and animals are closed to in-person service, but can offer online/telephone sales with delivery or curbside pick-up options. \n\
+            Retail stores that are permitted to remain open are not permitted to sell scratch or break open lotto tickets in store. \n\
+            Restaurants are closed for in-person dining (take-out, delivery and drive-thru options are still permitted). \n\
+            Bars and lounges are closed. \n\
+            Cinemas are closed. \n\
+            Personal service establishments, including spas, esthetic services, hair salons, body piercing, tattooing and tanning salons, are closed.',
+        },
+      },
+    ],
+    more: 'https://www.gov.nl.ca/covid-19/alert-system/',
   },
   {
     province: 'Prince Edward Island',
