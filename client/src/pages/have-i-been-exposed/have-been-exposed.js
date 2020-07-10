@@ -30,6 +30,10 @@ import Alert from '@material-ui/lab/Alert';
 import './have-been-exposed.css';
 import PageHeader from "../../components/page-header/page-header";
 import Instruction from "../../components/instruction/instruction";
+import { motion } from 'framer-motion';
+import { variants, transitions, pageStyle } from '../motion-settings';
+import PageHeading from '../../components/page-heading/PageHeading';
+
 
 // from material ui-- need to customize
 const StyledTableCell = withStyles((theme) => ({
@@ -63,6 +67,22 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center'
     },
 }));
+
+const heading = 'Have I Been Exposed?';
+const subheading = (
+  <>Wondering if you've been exposed? You can check it here.</>
+);
+const body = (
+  <>
+    <p>
+        Enter the date and the places you have visited to check whether your paths crossed with any of the positive patients anonymously. We won't collect
+      your data.
+    </p>
+  </>
+);
+
+const pageHeadingData = { heading, subheading, body };
+
 
 const HaveI = () => {
     const fields = useSelector(state => state.timeAndLoc)
@@ -114,12 +134,19 @@ const HaveI = () => {
 
     }
     return (
+        <motion.div
+      exit='out'
+      animate='in'
+      initial='initial'
+      variants={variants}
+      transition={transitions}
+      style={pageStyle}
+    >
+      <div>
+        <PageHeading data={pageHeadingData} />
+      </div>
+      <div>
         <Container fixed>
-            <br/><br/>
-            <PageHeader text='HAVE I BEEN EXPOSED?'/>
-            <br/><br/>
-            <Instruction text='Enter the date and the places you have visited to check whether your paths crossed with any of the positive patients.'/>
-            <br/><br/><br/><br/>
             <Toolbar>
                 <Button
                     className="buttonz"
@@ -177,6 +204,8 @@ const HaveI = () => {
                 })}
             </Dialog>
         </Container>
+        </div>
+    </motion.div>
     );
 };
 

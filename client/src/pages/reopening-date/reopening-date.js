@@ -8,6 +8,9 @@ import Select from '@material-ui/core/Select';
 import './reopening.css';
 import React, { useState } from 'react';
 import PageHeader from '../../components/page-header/page-header';
+import PageHeading from '../../components/page-heading/PageHeading';
+import { motion } from 'framer-motion';
+import { variants, transitions, pageStyle } from '../motion-settings';
 
 function renderProvince(obj) {
   if (Object.keys(obj).length !== 0) {
@@ -161,6 +164,38 @@ function dropphasemenu(region) {
   return <MenuItem />;
 }
 
+const heading = "Reopening Dates";
+  const subheading = <p>
+        
+  </p>;
+  const body = 
+    <>
+      <b>Disclaimer</b>
+      <br />
+      Each province and territory have several phases or stages that consist of unique policies.
+      <br />
+      As the COVID-19 cases improves, the province/territory will transition into the next phase.
+      <br />
+      eg. 1 goes to 2 and 2 goes to 3, etc.
+      <br />
+      However, if the COVID-19 cases worsens, it is possible to regress to a
+      previous phase.
+      <br />
+      eg. 2 reverts to 1.
+      <br />
+      Each of these phases are flexible to change according to the COVID-19
+      climate. Only the Canadian province British Columbia has been updated.
+      <br />
+      If there is a service you do not see, try checking the previous stages.
+      <br />
+      There are additional information listed at the button of the table.
+      <br />
+      Please call the specific store location of interest to enquire about
+      operating hours. Their hours may have adjusted. They could be closed for
+      safety.
+    </>;
+    const pageHeadingData = {heading, subheading, body};
+
 function Reopen() {
   const [prov, setProvince] = useState({});
   const [phase, setPhase] = useState(1000);
@@ -209,44 +244,22 @@ function Reopen() {
     </div>
   );
   return (
+    <motion.div
+    exit='out'
+    animate='in'
+    initial='initial'
+    variants={variants}
+    transition={transitions}
+    style={pageStyle}
+  >
     <div>
-      <br />
-      <br />
-      <PageHeader text='REOPENING' />
-      <br />
-      <br />
-      <br />
-      <br />
-      <b>Disclaimer</b>
-      :
-      <br />
-      Each province and territory have several phases or stages that consist of
-      unique policies.
-      <br />
-      As the COVID-19 cases improves, the province/territory will transition
-      into the next phase.
-      <br />
-      eg. 1 goes to 2 and 2 goes to 3, etc.
-      <br />
-      However, if the COVID-19 cases worsens, it is possible to regress to a
-      previous phase.
-      <br />
-      eg. 2 reverts to 1.
-      <br />
-      Each of these phases are flexible to change according to the COVID-19
-      climate. Only the Canadian province British Columbia has been updated.
-      <br />
-      If there is a service you do not see, try checking the previous stages.
-      <br />
-      There are additional information listed at the button of the table.
-      <br />
-      Please call the specific store location of interest to enquire about
-      operating hours. Their hours may have adjusted. They could be closed for
-      safety.
-      <br />
+      <PageHeading data={pageHeadingData} />
+    </div>
+    <div>
       {droprender}
       <br />
     </div>
+    </motion.div>
   );
 }
 
