@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 import MapContainer from '../../components/map/MapContainer';
 import Sidebar from './sidebar';
 import PageHeading from '../../components/page-heading/PageHeading';
+import { motion } from 'framer-motion';
+import { variants, transitions, pageStyle } from '../motion-settings';
 
 const Home = () => {
   const heading = 'Interactive Contact Tracing Map';
@@ -12,7 +14,14 @@ const Home = () => {
   const pageHeadingData = { heading, subheading, body };
 
   return (
-    <div>
+    <motion.div
+      exit='out'
+      animate='in'
+      initial='initial'
+      variants={variants}
+      transition={transitions}
+      style={pageStyle}
+    >
       <div>
         <PageHeading data={pageHeadingData} />
       </div>
@@ -20,7 +29,7 @@ const Home = () => {
         <Sidebar />
         <MapContainer />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

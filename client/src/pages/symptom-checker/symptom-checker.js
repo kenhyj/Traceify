@@ -13,6 +13,8 @@ import { Send, Refresh } from '@material-ui/icons';
 import './symptom-checker.css';
 import SymptomDisclaimer from './symptom-disclaimer';
 import PageHeading from '../../components/page-heading/PageHeading';
+import { motion } from 'framer-motion';
+import { variants, transitions, pageStyle } from '../motion-settings';
 
 class SymptomChecker extends React.Component {
   constructor() {
@@ -70,25 +72,32 @@ class SymptomChecker extends React.Component {
     );
   }
 
-  
-
   render() {
-    const heading = "Symptom Checker";
-    const subheading = 
-        <>
-            Wondering if you should get tested? Discover a treatment plan below.
-        </>;
-    const body = 
+    const heading = 'Symptom Checker';
+    const subheading = (
+      <>Wondering if you should get tested? Discover a treatment plan below.</>
+    );
+    const body = (
       <>
-        <p>This page will determine the level of risk you are at based to COVID
-            19 based these symptoms and criteria. </p>
+        <p>
+          This page will determine the level of risk you are at based to COVID
+          19 based these symptoms and criteria.{' '}
+        </p>
         <p>Disclaimer: Use this checker at your own discretion.</p>
       </>
-      
-    const pageHeadingData = {heading, subheading, body};
+    );
+
+    const pageHeadingData = { heading, subheading, body };
 
     return (
-      <div>
+      <motion.div
+        exit='out'
+        animate='in'
+        initial='initial'
+        variants={variants}
+        transition={transitions}
+        style={pageStyle}
+      >
         <div>
           <PageHeading data={pageHeadingData} />
         </div>
@@ -139,7 +148,7 @@ class SymptomChecker extends React.Component {
         </Grid>
         {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
         <SymptomDisclaimer />
-      </div>
+      </motion.div>
     );
   }
 }

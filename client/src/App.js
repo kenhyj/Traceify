@@ -8,9 +8,10 @@ import SymptomChecker from './pages/symptom-checker/symptom-checker';
 import FinancialHelp from './pages/financial-help/financial-help';
 import HaveI from './pages/have-i-been-exposed/have-been-exposed';
 import Reopen from './pages/reopening-date/reopening-date';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import AdminPage from './pages/admin-page/admin-page';
 import { connect } from 'react-redux';
+import { AnimatePresence } from 'framer-motion';
 
 function App(props) {
   return (
@@ -27,25 +28,26 @@ function App(props) {
         <Header title='Covid 19 - Traceify' />
       </div>
       <ThankPage />
-      <div
-        style={{
-          width: '100%',
-          // paddingTop: '6rem',
-          display: 'inline-block',
-          zIndex: '2',
-        }}
-      >
-        <Route path='/' exact component={ThankPage} />
-        <Route path='/home' exact component={Home} />
-        <Route path='/have-i-been-exposed' component={HaveI} />
-        <Route path='/financial-help' component={FinancialHelp} />
-        <Route path='/symptom-checker' component={SymptomChecker} />
-        <Route path='/reopen' component={Reopen} />
-        {props.isLoggedIn ? (
-          <Route path='/admin' component={AdminPage} />
-        ) : (
-          <span />
-        )}
+      <div className="App-main">
+        {/* <Route render={({ location }) => ( */}
+          <AnimatePresence exitBeforeEnter>
+            {/* <Switch location={location} key={location.pathname}> */}
+              <Route path='/' exact component={ThankPage} />
+              <Route path='/home' exact component={Home} />
+              <Route path='/have-i-been-exposed' component={HaveI} />
+              <Route path='/financial-help' component={FinancialHelp} />
+              <Route path='/symptom-checker' component={SymptomChecker} />
+              <Route path='/reopen' component={Reopen} />
+              {props.isLoggedIn ? (
+                <Route path='/admin' component={AdminPage} />
+              ) : (
+                <span />
+              )}
+            {/* </Switch> */}
+          </AnimatePresence>
+
+        {/* )} */}
+        {/* /> */}
       </div>
     </Router>
   );
