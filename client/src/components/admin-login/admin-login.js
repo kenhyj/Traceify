@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { useHistory } from "react-router-dom";
 import { login, logout } from '../../redux/actions/website-actions';
 import axios from 'axios';
 import { Button, makeStyles } from '@material-ui/core';

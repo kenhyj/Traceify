@@ -15,6 +15,8 @@ import SymptomDisclaimer from './symptom-disclaimer';
 import PageHeading from '../../components/page-heading/PageHeading';
 import { motion } from 'framer-motion';
 import { variants, transitions, pageStyle } from '../motion-settings';
+import PageHeader from "../../components/page-header/page-header";
+import Instruction from "../../components/instruction/instruction";
 
 class SymptomChecker extends React.Component {
   constructor() {
@@ -28,7 +30,7 @@ class SymptomChecker extends React.Component {
 
   handleChange(event) {
     this.props.choosesymptoms({
-      [event.target.name]: event.target.checked ? true : false,
+      [event.target.name]: !!event.target.checked,
     });
     // console.log({[event.target.name]: !event.target.checked})
     // console.log("this.props.diagnosis ");
@@ -36,13 +38,13 @@ class SymptomChecker extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log('Submitting diagnosis...');
+    // console.log('Submitting diagnosis...');
     event.preventDefault();
-    console.log('this.props.diagnosis ');
-    console.log(this.props.diagnosis);
+    // console.log('this.props.diagnosis ');
+    // console.log(this.props.diagnosis);
     this.setState({ ...this.state, risk: true, show: true });
     this.props.showResult();
-    console.log(this.props.diagnosis);
+    // console.log(this.props.diagnosis);
   }
 
   retakeTest(event) {
@@ -101,8 +103,8 @@ class SymptomChecker extends React.Component {
         <div>
           <PageHeading data={pageHeadingData} />
         </div>
-
-        <FormControl onSubmit={this.handleSubmit}>
+          */}
+          <FormControl onSubmit={this.handleSubmit}>
           <FormLabel className='formLabel' component='symptoms'>
             Please check all the boxes below that applies to you:
           </FormLabel>
@@ -119,33 +121,35 @@ class SymptomChecker extends React.Component {
               )
               .sort()
           )}
-        </FormControl>
-        <Grid container style={{ width: '30%', marginLeft: '35%' }}>
-          <Grid item xs={6} container justify='center'>
-            <Button
-              type='submit'
-              variant='contained'
-              color='primary'
-              endIcon={<Send />}
-              onClick={this.handleSubmit}
-            >
-              Submit
-            </Button>
-          </Grid>
-          <Grid item xs={6} container justify='center'>
-            <Button
-              type='clear'
-              variant='contained'
-              color='secondary'
-              endIcon={<Refresh />}
-              onClick={this.retakeTest}
-            >
-              Retake
-            </Button>
-          </Grid>
+          <br/><br/>
+          <Grid container style={{ width: '30%', marginLeft: '35%' }}>
+            <Grid item xs={6} container justify='center'>
+              <Button
+                type='submit'
+                variant='contained'
+                endIcon={<Send />}
+                onClick={this.handleSubmit}
+                className="button"
+              >
+                Submit
+              </Button>
+            </Grid>
+            <Grid item xs={6} container justify='center'>
+              <Button
+                type='clear'
+                variant='contained'
+                endIcon={<Refresh />}
+                onClick={this.retakeTest}
+                className="button"
+              >
+                Retake
+              </Button>
+            </Grid>
 
-          {/* TODO: clear button */}
-        </Grid>
+            {/* TODO: clear button */}
+          </Grid>
+        </FormControl>
+
         {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
         <SymptomDisclaimer />
       </motion.div>

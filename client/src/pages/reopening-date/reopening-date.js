@@ -12,6 +12,7 @@ import './reopening.css';
 import PageHeading from '../../components/page-heading/PageHeading';
 import { motion } from 'framer-motion';
 import { variants, transitions, pageStyle } from '../motion-settings';
+import PageHeader from "../../components/page-header/page-header";
 
 const bc = {
   province: 'British Columbia',

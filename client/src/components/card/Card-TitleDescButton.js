@@ -10,12 +10,12 @@ import {
 
 const cardStyles = makeStyles({
   root: {
-    maxWidth: 700, // TODO: make responsive
+    maxWidth: 800, // TODO: make responsive
     variant: 'outlined',
     margin: 10,
   },
   content: {
-    padding: 24,
+    padding: 20,
   },
   title: {
     fontSize: 20,
