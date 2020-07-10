@@ -1,5 +1,5 @@
 .financial-help-body {
-    display: flex;
-    justify-content: center;
+    width: 100%;
     align-items: center;
+    justify-content: center;
 }
