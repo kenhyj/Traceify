@@ -52,7 +52,7 @@ function renderProvince(obj) {
 
 function renderProvinceTwo(obj, chosenphase) {
   if (Object.keys(obj).length !== 0) {
-    if (chosenphase === 0) {
+    if (chosenphase === 1000) {
       return renderProvince(obj);
     }
     // const current_phase = obj.current_stage - 1;
@@ -162,17 +162,17 @@ function dropphasemenu(region) {
 
 function Reopen() {
   const [prov, setProvince] = useState({});
-  const [phase, setPhase] = useState(0);
+  const [phase, setPhase] = useState(1000);
   const classes = useStyles();
   const axiosgetreopenlist = (target) => {
     axios
       .get('http://localhost:7000/reopenings/getprovince/'.concat(target))
       .then((res) => {
+        setPhase(res.data[0].current_stage);
         setProvince(res.data[0]);
-        // setPhase(res.data[0].current_stage);
       })
       .catch((err) => {
-        console.log('failed to get desired reopen deatil. Error: ', err);
+        console.log('failed to get desired reopen detail. Error: ', err);
       });
   };
   const handleProvinceChange = (event) => {
@@ -199,7 +199,7 @@ function Reopen() {
           labelId='phases-select-label'
           id='phases-select-label'
           onChange={handlePhaseChange}
-          // defaultValue={phase}
+          defaultValue={phase}
         >
           {dropphasemenu(prov)}
         </Select>
