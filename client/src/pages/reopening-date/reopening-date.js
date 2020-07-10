@@ -9,6 +9,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './reopening.css';
+import PageHeader from "../../components/page-header/page-header";
 
 const bc = {
   province: 'British Columbia',
@@ -284,7 +285,9 @@ function Reopen() {
   );
   return (
     <div>
-      <h1 style={{ fontSize: '2.5em', textAlign: 'center' }}>Reopening</h1>
+        <br/><br/>
+        <PageHeader text='REOPENING'/>
+        <br/><br/><br/><br/>
       <b>Disclaimer</b>
       :
       <br />

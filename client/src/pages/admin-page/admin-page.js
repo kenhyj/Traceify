@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import AdminAdd from '../../components/admin-add/admin-add';
 import AdminDelete from '../../components/admin-delete/admin-delete';
 import './admin-page.css';
+import PageHeader from "../../components/page-header/page-header";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -68,10 +69,11 @@ function AdminPage(props) {
 
     return (
         <div className="root">
-            <p className="heading">ADMIN PAGE</p> <br />
+            <PageHeader text='ADMIN PAGE'/>
+            <br />
             {/*
                 ACCESSTOKEN: {this.props.accessToken} <br /><br /><br /><br />
-        */}
+            */}
             Welcome, {props.user}
             <br /><br /><br />
             <div className={classes.root}>

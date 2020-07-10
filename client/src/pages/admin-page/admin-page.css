@@ -10,14 +10,6 @@
     margin: 50px;
 }
 
-.heading {
-    margin: auto;
-    font-size: 35px;
-    border-bottom: 2px solid;
-    border-color: #2196F3;
-    width: 30%;
-}
-
 .form {
     padding: 5%;
     width: 30%;

@@ -6,6 +6,8 @@ import { connect } from "react-redux";
 import MapMarker from "./MapMarker";
 import MapHeatLayer from "./MapHeatLayer";
 import { withGoogleMaps } from "./MapHOC";
+import PageHeader from "../page-header/page-header";
+import Instruction from "../instruction/instruction";
 
 class MapContainer extends Component {
     render() {
@@ -16,7 +18,11 @@ class MapContainer extends Component {
         // const initialHeatLocations = ;
 
         return (
-            <div>
+            <div style={{textAlign: 'center'}}>
+                <PageHeader text='HOME'/>
+                <br/><br/>
+                <Instruction text='The map below shows where the positive patients have traveled for the last few days. Click on the buttons on top of the map to change the map view.'/>
+                <br/><br/>
                 <GoogleMap
                     mapContainerStyle={styles.mapContainerStyle}
                     center={styles.center}

@@ -23,6 +23,8 @@ import RowComponent from './row-component';
 import PublishIcon from '@material-ui/icons/Publish';
 import Result from './result';
 import './have-been-exposed.css';
+import PageHeader from "../../components/page-header/page-header";
+import Instruction from "../../components/instruction/instruction";
 
 // from material ui-- need to customize
 const StyledTableCell = withStyles((theme) => ({
@@ -73,7 +75,11 @@ const HaveI = () => {
     }
     return (
         <Container fixed>
-            <br />
+            <br/><br/>
+            <PageHeader text='HAVE I BEEN EXPOSED?'/>
+            <br/><br/>
+            <Instruction text='Enter the date and the places you have visited to check whether your paths crossed with any of the positive patients.'/>
+            <br/><br/><br/><br/>
             <Toolbar>
                 <Button
                     className="buttonz"

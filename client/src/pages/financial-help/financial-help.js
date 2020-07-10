@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import Card from '../../components/card/Card-TitleDescButton';
+import PageHeader from "../../components/page-header/page-header";
+import Instruction from "../../components/instruction/instruction";
 
 // TODO: are we going to have a separate component for component headers?
 
@@ -21,14 +23,16 @@ const FinancialHelp = () => {
     ];
 
     return (
-        <div>
-            <div>
-                <h2>Financial Help Resources</h2>
-            </div>
-            <div>
-            {helpResources.map(resource => 
-                <Card key={resource.id} {...resource} />
-            )}
+        <div style={{textAlign: 'center'}}>
+            <br/><br/>
+            <PageHeader text='FINANCIAL HELP RESOURCES'/>
+            <br/><br/>
+            <Instruction text='Click on the links below to navigate to its corresponding help site.'/>
+            <br/><br/><br/><br/>
+            <div style={{textAlign: 'left'}}>
+                {helpResources.map(resource =>
+                    <Card key={resource.id} {...resource} />
+                )}
             </div>
         </div>
     );
