@@ -72,7 +72,7 @@ const HaveI = () => {
     const [result, setResult] = React.useState([]);
 
     const setAlert = (num)=>{
-        if(num > 5) {
+        if(num > 4) {
             setAl('error');
             setText("You are at risk for being exposed");
         }

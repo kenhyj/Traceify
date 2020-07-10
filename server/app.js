@@ -12,6 +12,7 @@ var indexRouter = require('./routes/index');
 var adminsRouter = require('./routes/admins');
 var postsRouter = require('./routes/posts');
 var reopeningsRouter = require('./routes/reopenings');
+var exposeRouter = require('./routes/expose');
 
 var app = express();
 require('dotenv').config({ path: './.env' });
@@ -28,6 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use(exposeRouter);
 app.use(adminsRouter);
 app.use('/posts', postsRouter);
 app.use('/reopenings', reopeningsRouter);
