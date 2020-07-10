@@ -26,11 +26,11 @@ function App(props) {
       >
         <Header title='Covid 19 - Traceify' />
       </div>
-      {/* <ThankPage /> */}
+      <ThankPage />
       <div
         style={{
           width: '100%',
-          paddingTop: '6rem',
+          // paddingTop: '6rem',
           display: 'inline-block',
           zIndex: '2',
         }}
