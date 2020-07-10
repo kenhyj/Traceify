@@ -103,7 +103,6 @@ class SymptomChecker extends React.Component {
         <div>
           <PageHeading data={pageHeadingData} />
         </div>
-          */}
           <FormControl onSubmit={this.handleSubmit}>
           <FormLabel className='formLabel' component='symptoms'>
             Please check all the boxes below that applies to you:
