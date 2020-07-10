@@ -26,7 +26,7 @@ router.post('/admins/location-trace', function (req, res) {
     });
 });
 
-router.post('/expose',(req,res)=>{
+router.put('/expose',(req,res)=>{
     const oneRow = req.body;
     let places = [];
     // const time = oneRow.date.toISOString().slice(0,10);
