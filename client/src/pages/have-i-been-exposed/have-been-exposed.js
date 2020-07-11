@@ -22,6 +22,11 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RowComponent from './row-component';
 import PublishIcon from '@material-ui/icons/Publish';
 import Result from './result';
+import axios from "axios/index";
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Alert from '@material-ui/lab/Alert';
 import './have-been-exposed.css';
 import PageHeader from "../../components/page-header/page-header";
 import Instruction from "../../components/instruction/instruction";
@@ -84,14 +89,49 @@ const HaveI = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
 
+    const [al,setAl] = React.useState("error");
+    const [text,setText] = React.useState("");
     const [open, setOpen] = React.useState(false);
+    const [result, setResult] = React.useState([]);
 
-    const handleSubmit = () => {
+    const setAlert = (num)=>{
+        if(num > 4) {
+            setAl('error');
+            setText("You are at risk for being exposed");
+        }
+        else if (num>0) {
+            setAl('warning');
+            setText("You may be at risk for being exposed");
+        } 
+        else {
+            setAl('success');
+            setText("You are safe.");
+        }
+    }
+
+    const handleSubmit = async () => {
+        let places = [];
+        console.log(fields);
+        for (let i = 0; i < fields.length; i++) {
+            let oneRow = fields[i];
+            console.log(oneRow);
+            let oneDate = oneRow.date.toISOString();
+            let oneResult = await axios.put('/expose', { date: oneDate, locations: oneRow.locations });
+            console.log(oneResult);
+            oneResult.data.map((onePlace) => places.push(onePlace));
+        }
+        
+        console.log(places);
+        setResult(places);
+        setAlert(places.length);
         setOpen(true);
     }
 
-    const handleClose = ()=>{
+
+    const handleClose = () => {
+
         setOpen(false);
+
     }
     return (
         <motion.div
@@ -150,7 +190,19 @@ const HaveI = () => {
             <Dialog
                 open={open}
                 onClose={handleClose}
-            ><Result/></Dialog>
+            >
+            
+            <DialogTitle><Alert severity={al}>{text}</Alert></DialogTitle>
+                {result.map((one,index) => {
+                    return (
+                        <DialogContent key = {one.date + index}>
+                            <DialogContentText>
+                                You visited {one.place} on {one.date}
+                            </DialogContentText>
+                        </DialogContent>
+                    )
+                })}
+            </Dialog>
         </Container>
         </div>
     </motion.div>

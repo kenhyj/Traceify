@@ -13,7 +13,7 @@ var adminsRouter = require("./routes/admins");
 var postsRouter = require("./routes/posts");
 var locationRouter = require("./routes/location-traces");
 var reopeningsRouter = require("./routes/reopenings");
-
+var exposeRouter = require('./routes/expose');
 var app = express();
 require("dotenv").config({ path: "./.env" });
 
@@ -28,7 +28,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
+app.use('/', indexRouter);
+app.use(exposeRouter);
 app.use(adminsRouter);
 app.use(locationRouter);
 app.use("/posts", postsRouter);
