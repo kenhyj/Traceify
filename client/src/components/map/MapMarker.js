@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import MapInfoWindow from "../map/MapInfoWindow";
 import * as actions from "../../redux/constants/action-types";
 import { showInfoWindow } from "../../redux/actions/map-actions";
+import bluePinImg from '../../assets/blue-pin.svg';
 
 class MapMarker extends Component {
 
@@ -27,31 +28,25 @@ class MapMarker extends Component {
     }
 
     render() {
-        const { location, id, isInfoWindowVisible, title, numInfected } = this.props;
+        const { location, id, isInfoWindowVisible, title, time, date } = this.props;
 
         const handleMarkerClick = () => {
             this.props.dispatch(showInfoWindow(id));
             console.log("clicked marker ", id);
         };
 
-        const icon = {
-            path: "M 0, 0 m -5, 0 a 5,5 0 1,0 10,0a 5,5 0 1,0 -10,0",
-            fillColor: "#334CFF",
-            fillOpacity: 1,
-            strokeWeight: 0,
-        };
-
         return (
             <Marker 
                 position={location} 
                 onClick={() => this.handleToggleOpen()}
-                // icon={icon}
+                icon={bluePinImg}
             >
                 { this.state.isOpen && (
                     <InfoWindow position={location} onCloseClick={() => this.handleToggleClose()}>
                         <div>
                             <h1>{title}</h1>
-                            <p>Number infected: {numInfected}</p>
+                            <p>Time visited: {time}</p>
+                            <p>Date visited: {date}</p>
                         </div>
                     </InfoWindow>
                 )}

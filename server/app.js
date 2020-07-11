@@ -14,6 +14,7 @@ var postsRouter = require("./routes/posts");
 var locationRouter = require("./routes/location-traces");
 var reopeningsRouter = require("./routes/reopenings");
 var exposeRouter = require('./routes/expose');
+var locationOutbreakRouter = require('./routes/location-outbreak');
 var app = express();
 require("dotenv").config({ path: "./.env" });
 
@@ -32,6 +33,7 @@ app.use('/', indexRouter);
 app.use(exposeRouter);
 app.use(adminsRouter);
 app.use(locationRouter);
+app.use(locationOutbreakRouter);
 app.use("/posts", postsRouter);
 app.use("/reopenings", reopeningsRouter);
 app.use(bodyParser.json());

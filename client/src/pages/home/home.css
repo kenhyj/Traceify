@@ -2,5 +2,50 @@
 }
 
 .sidebar {
-    margin: 1rem
+    margin: 1rem;
+}
+
+.sidebar-legend-heatmap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 320px;
+    background-color: #F2F4F7;
+    padding: 1rem;
+    border-radius: 3px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-legend-markers {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 320px;
+    background-color: #F2F4F7;
+    padding: 1rem;
+    border-radius: 3px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-legend-heatmap-low {
+    display: inline-block;
+    justify-content: left;
+    width: 50%;
+    text-align: left;
+    font-size: 0.5rem;
+}
+
+.sidebar-legend-heatmap-high {
+    display: inline-block;
+    justify-content: right;
+    width: 50%;
+    text-align: right;
+    font-size: 0.5rem;
+}
+
+.sidebar-legend-heatmap-words {
+    display: inline-flex;
+    width: inherit;
 }

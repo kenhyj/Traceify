@@ -59,7 +59,7 @@ const FinancialHelp = (props) => {
   const body = (
     <>
       Check here for the financial help resources. Review Canada's economic plan {' '}
-      <a href='https://www.canada.ca/en/department-finance/economic-response-plan.html'>
+      <a target='_blank' href='https://www.canada.ca/en/department-finance/economic-response-plan.html'>
         here
       </a>
       . Fraud alert: The government will never contact you via text message.
