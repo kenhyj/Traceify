@@ -38,8 +38,7 @@ import PageHeading from '../../components/page-heading/PageHeading';
 // from material ui-- need to customize
 const StyledTableCell = withStyles((theme) => ({
     head: {
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
+        backgroundColor: '#b0c4de',
         fontSize: 18,
     },
     body: {
