@@ -7,13 +7,17 @@ import axios from 'axios';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import reducers from './redux';
+import { ThemeProvider } from '@material-ui/core';
+import theme from './MuiTheme';
 
 axios.defaults.baseURL = 'http://localhost:7000';
 
 ReactDOM.render(
-  <Provider store={createStore(reducers)}>
-    <App />
-  </Provider>,
+  <ThemeProvider theme={theme}>
+    <Provider store={createStore(reducers)}>
+      <App />
+    </Provider>
+  </ThemeProvider>,
   document.getElementById('root')
 );
 

@@ -12,3 +12,20 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.App-main {
+  width: 100%;
+  display: inline-block;
+  z-index: 2;
+  /* overflow-x: hidden; */
+  /* position: relative; */
+}
+
+{/* This doesn't work for some reason...*/}
+.App-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 100px;
+  z-index: 1;
+}

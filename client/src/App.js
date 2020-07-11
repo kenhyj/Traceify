@@ -11,6 +11,7 @@ import Reopen from './pages/reopening-date/reopening-date';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import AdminPage from './pages/admin-page/admin-page';
 import { connect } from 'react-redux';
+import { AnimatePresence } from 'framer-motion';
 
 function App(props) {
   return (
@@ -25,28 +26,22 @@ function App(props) {
         }}
       >
         <Header title='Covid 19 - Traceify' />
-        <PagesBar />
       </div>
       <ThankPage />
-      <div
-        style={{
-          width: '100%',
-          paddingTop: '70px',
-          display: 'inline-block',
-          zIndex: '2',
-        }}
-      >
-        <Route path='/' render={() => <Redirect to="/home"/>} />
-        <Route path='/home' component={Home} />
-        <Route path='/have-i-been-exposed' component={HaveI} />
-        <Route path='/financial-help' component={FinancialHelp} />
-        <Route path='/symptom-checker' component={SymptomChecker} />
-        <Route path='/reopen' component={Reopen} />
-        {props.isLoggedIn ? (
-          <Route path='/admin' component={AdminPage} />
-        ) : (
-          <span />
-        )}
+      <div className='App-main'>
+        <AnimatePresence exitBeforeEnter>
+            <Route path='/' render={() => <Redirect to="/home"/>} />
+          <Route path='/home' component={Home} />
+          <Route path='/have-i-been-exposed' component={HaveI} />
+          <Route path='/financial-help' component={FinancialHelp} />
+          <Route path='/symptom-checker' component={SymptomChecker} />
+          <Route path='/reopen' component={Reopen} />
+          {props.isLoggedIn ? (
+            <Route path='/admin' component={AdminPage} />
+          ) : (
+            <span />
+          )}
+        </AnimatePresence>
       </div>
     </Router>
   );

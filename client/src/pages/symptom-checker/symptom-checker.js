@@ -12,6 +12,9 @@ import { connect } from 'react-redux';
 import { Send, Refresh } from '@material-ui/icons';
 import './symptom-checker.css';
 import SymptomDisclaimer from './symptom-disclaimer';
+import PageHeading from '../../components/page-heading/PageHeading';
+import { motion } from 'framer-motion';
+import { variants, transitions, pageStyle } from '../motion-settings';
 import PageHeader from "../../components/page-header/page-header";
 import Instruction from "../../components/instruction/instruction";
 
@@ -72,22 +75,34 @@ class SymptomChecker extends React.Component {
   }
 
   render() {
+    const heading = 'Symptom Checker';
+    const subheading = (
+      <>Wondering if you should get tested? Discover a treatment plan below.</>
+    );
+    const body = (
+      <>
+        <p>
+          This page will determine the level of risk you are at based to COVID
+          19 based these symptoms and criteria.{' '}
+        </p>
+        <p>Disclaimer: Use this checker at your own discretion.</p>
+      </>
+    );
+
+    const pageHeadingData = { heading, subheading, body };
+
     return (
-      <div style={{margin: '0 10% 10%'}}>
-          <br/><br/>
-          <PageHeader text='SYMPTOM CHECKER'/>
-          <br/><br/>
-          <Instruction text='Please follow the instructions below to determine the level of COVID-19 risk you are at
-            based on symptoms and criteria.'/>
-          <br/><br/>
-          {/*
-          <div className='title-container'>
-          <h2>
-            This page will determine the level of risk you are at based to COVID
-            19 based these symptoms and criteria.{' '}
-          </h2>
+      <motion.div
+        exit='out'
+        animate='in'
+        initial='initial'
+        variants={variants}
+        transition={transitions}
+        style={pageStyle}
+      >
+        <div>
+          <PageHeading data={pageHeadingData} />
         </div>
-          */}
           <FormControl onSubmit={this.handleSubmit}>
           <FormLabel className='formLabel' component='symptoms'>
             Please check all the boxes below that applies to you:
@@ -136,7 +151,7 @@ class SymptomChecker extends React.Component {
 
         {/* TODO: SymptomDisclaimer will show results based on points obtained by the forms clicked */}
         <SymptomDisclaimer />
-      </div>
+      </motion.div>
     );
   }
 }

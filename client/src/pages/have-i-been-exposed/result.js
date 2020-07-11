@@ -6,12 +6,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 export default function Result(props) {
   return (
     <div>
-      <DialogTitle>Your risk to hand is high</DialogTitle>
-      <DialogContent>
-        <DialogContentText>
-          You have been to the places:
-        </DialogContentText>
-      </DialogContent>
+      
     </div>
   );
 }
