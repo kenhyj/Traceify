@@ -30,8 +30,8 @@ function App(props) {
       <ThankPage />
       <div className='App-main'>
         <AnimatePresence exitBeforeEnter>
-          <Route path='/' exact component={ThankPage} />
-          <Route path='/home' exact component={Home} />
+            <Route path='/' render={() => <Redirect to="/home"/>} />
+          <Route path='/home' component={Home} />
           <Route path='/have-i-been-exposed' component={HaveI} />
           <Route path='/financial-help' component={FinancialHelp} />
           <Route path='/symptom-checker' component={SymptomChecker} />
