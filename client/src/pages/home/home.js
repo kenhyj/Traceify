@@ -27,8 +27,10 @@ const Home = () => {
         <PageHeading data={pageHeadingData} />
       </div>
       <div className="Home-main-body">
-        <Sidebar />
-        <MapContainer />
+        <Sidebar className="Home-main-body-sidebar" />
+        <div style={{width: `${window.innerWidth - (window.innerWidth)*0.3}px`}}>
+          <MapContainer className="Home-main-body-map" />
+        </div>
       </div>
     </motion.div>
   );

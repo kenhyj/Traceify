@@ -8,6 +8,7 @@ import MapOutbreakMarker from '../../../components/map/MapOutbreakMarker';
 import MapHeatLayer from '../../../components/map/MapHeatLayer';
 import { withGoogleMaps } from './MapHOC';
 import { fetchLocations } from '../../../redux/actions/map-actions';
+import '../home.css';
 
 class MapContainer extends Component {
   componentDidMount() {
@@ -24,7 +25,7 @@ class MapContainer extends Component {
     const { showMarkers, showOutbreakMarkers } = this.props.mapReducer;
 
     return (
-      <div>
+      <>
         <GoogleMap
           mapContainerStyle={styles.mapContainerStyle}
           center={styles.center}
@@ -44,7 +45,7 @@ class MapContainer extends Component {
 
           <MapHeatLayer />
         </GoogleMap>
-      </div>
+      </>
     );
   }
 }

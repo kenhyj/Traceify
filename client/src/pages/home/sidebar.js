@@ -27,15 +27,15 @@ const Sidebar = (props) => {
   return (
     <div className='sidebar'>
       <div className='sidebar-chips'>
-        <h2>Toggle Views</h2>
+      <div className='sidebar-title'>Toggle Views</div>
         <Chip label='All Data Points' onClick={toggleMarkers} />
         <Chip label='Heat Map' onClick={toggleHeat} />
         <Chip label='Outbreaks' onClick={toggleOutbreakMarkers} />
       </div>
       <div className='sidebar-legend'>
-        <h2>Legend</h2>
+        <div className='sidebar-title'>Legend</div>
         <div className='sidebar-legend-heatmap'>
-          <p>Heatmap</p>
+          <p><b>Heatmap</b></p>
           <HeatmapGradient />
           <div className='sidebar-legend-heatmap-words'>
             <div className='sidebar-legend-heatmap-low'>low</div>
@@ -43,7 +43,7 @@ const Sidebar = (props) => {
           </div>
         </div>
         <div className='sidebar-legend-markers'>
-          <p>Markers</p>
+          <p><b>Markers</b></p>
           <div>
             <Grid container spacing={2}>
               <Grid item xs={6}>
