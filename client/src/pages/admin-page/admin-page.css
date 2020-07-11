@@ -1,0 +1,62 @@
+.button {
+    background: linear-gradient(45deg, #2196F3 30%, #21CBF3 90%);
+    box-shadow: 0 3px 5px 2px rgba(33, 203, 243, .3);
+    height: 48px;
+    width: 50%;
+}
+
+.root {
+    text-align: center;
+    margin: 50px;
+}
+
+.form {
+    padding: 5%;
+    width: 30%;
+    margin: auto;
+}
+
+.input {
+    width: 100%;
+    outline: 0;
+    border-width: 0 0 1px;
+}
+
+.instruction {
+    background-color: lightsteelblue;
+    padding: 10px;
+    width: fit-content;
+    margin: auto;
+}
+
+.customDatePickerWidth,
+.customDatePickerWidth > div.react-datepicker-wrapper,
+.customDatePickerWidth > div > div.react-datepicker__input-container
+.customDatePickerWidth > div > div.react-datepicker__input-container input {
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    outline: 0;
+    border-width: 0 0 1px;
+}
+
+.label {
+    border-bottom: 1px solid;
+    border-color: #2196F3;
+    width: 25%;
+    text-align: left;
+}
+
+.MuiButton-root {
+    color: white !important;
+    padding: 0 30px !important;
+    border: 0 !important;
+    border-radius: 3px !important;
+}
+
+.tabpanel {
+    width: 100%;
+    margin-right: 15%;
+}
