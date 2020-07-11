@@ -54,6 +54,7 @@ const AdminLogin = (props) => {
   }));
 
   const classes = adminStyles();
+    const history = useHistory();
 
   return (
     <div>
@@ -61,7 +62,10 @@ const AdminLogin = (props) => {
         <GoogleLogout
           clientId={CLIENT_ID}
           buttonText='Logout'
-          onLogoutSuccess={props.logout}
+          onLogoutSuccess={ () => {
+              props.logout();
+              history.push("/home");
+          }}
           onFailure={handleLogoutFailure}
           icon={false}
           render={(renderProps) => (
