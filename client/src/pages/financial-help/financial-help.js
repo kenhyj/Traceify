@@ -43,6 +43,7 @@ const FinancialHelp = (props) => {
   const heading = 'Financial Help';
   const subheading = (
     <>
+    <p>
       “We know that people are worried about their health, their jobs and their
       financial situations. Our government is doing whatever it takes to protect
       the health and safety of Canadians, and to support workers, families and
@@ -52,6 +53,7 @@ const FinancialHelp = (props) => {
       during this difficult period. Canadians can rest assured that the
       government stands ready to take any and all necessary actions as we
       continue to confront these challenging times together.”
+      </p>
       <br />
       <p>- Bill Morneau, Minister of Finance</p>
     </>

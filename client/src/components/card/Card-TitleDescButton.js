@@ -21,26 +21,27 @@ const cardStyles = makeStyles({
     fontSize: 20,
     fontWeight: 700,
   },
-  btn: {
-    fontWeight: '700',
-    backgroundColor: '#00a1c0',
-    color: '#ffffff',
-    display: 'inline-flex',
-    alignItems: 'center',
-    boxShadow: 'rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px',
-    padding: '0px',
-    borderRadius: '3',
-    border: '1px solid transparent',
-    '&:hover, &.Mui-focusVisible': {
-      backgroundColor: '#00a1c0',
-      opacity: '0.7',
-      cursor: 'pointer',
-      transition: '0.7s',
-    },
-  },
-  btnSpan: {
-    padding: '0.5rem',
-  },
+  // btn: {
+  //   fontWeight: '700',
+  //   backgroundColor: '#00a1c0',
+  //   color: '#ffffff',
+  //   display: 'inline-flex',
+  //   alignItems: 'center',
+  //   boxShadow:
+  //     'rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px',
+  //   padding: '0px',
+  //   borderRadius: '3',
+  //   border: '1px solid transparent',
+  //   '&:hover, &.Mui-focusVisible': {
+  //     backgroundColor: '#00a1c0',
+  //     opacity: '0.7',
+  //     cursor: 'pointer',
+  //     transition: '0.7s',
+  //   },
+  // },
+  // btnSpan: {
+  //   padding: '0.5rem',
+  // },
 });
 
 const CardTitleDescButton = (props) => {
@@ -61,8 +62,14 @@ const CardTitleDescButton = (props) => {
         })}
       </CardContent>
       <CardActions>
-        <Button className={classes.btn} onClick={handleClick}>
-          <span className={classes.btnSpan}>Find out more</span>
+        <Button
+          color='primary'
+          className='buttonz'
+          variant='outlined'
+          onClick={handleClick}
+          style={{width:'40%'}}
+        >
+          Find out more
         </Button>
       </CardActions>
     </Card>

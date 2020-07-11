@@ -43,6 +43,8 @@ class MapOutbreakMarker extends Component {
     //   path: iconPath,
     // };
 
+    const formattedDate = new Date(date).toLocaleDateString();
+
     return (
       <Marker
         position={location}
@@ -60,7 +62,7 @@ class MapOutbreakMarker extends Component {
               </h1>
               <h1>{title}</h1>
               <p>
-                Date Declared: {date}
+                Date Declared (M/D/Y): {formattedDate}
               </p>
             </div>
           </InfoWindow>

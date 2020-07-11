@@ -9,9 +9,9 @@ import './home.css';
 
 const Home = () => {
   const heading = 'Interactive Contact Tracing Map';
-  const subheading = <p>Data when you need it the most.</p>;
+  const subheading = <p>Helping Canadians stay safe.</p>;
   const body =
-    'You can view the current cases of COVID-19 by interacting with the map below.';
+    'See where individuals who have tested positive for COVID-19 have been recently by interacting with the map below.';
   const pageHeadingData = { heading, subheading, body };
 
   return (
