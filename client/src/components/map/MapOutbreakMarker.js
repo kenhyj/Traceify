@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Marker, InfoWindow } from '@react-google-maps/api';
 import { connect } from 'react-redux';
-import MapInfoWindow from '../map/MapInfoWindow';
+import MapInfoWindow from './MapInfoWindow';
 import * as actions from '../../redux/constants/action-types';
 import { showInfoWindow } from '../../redux/actions/map-actions';
-import bluePinImg from '../../assets/blue-pin.svg';
+import virusImg from '../../assets/virus.svg';
 
-class MapMarker extends Component {
+class MapOutbreakMarker extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,17 +27,20 @@ class MapMarker extends Component {
   };
 
   render() {
-    const { location, id, isInfoWindowVisible, title, time, date } = this.props;
+    const { location, id, isInfoWindowVisible, title, date } = this.props;
 
     const handleMarkerClick = () => {
       this.props.dispatch(showInfoWindow(id));
-      // console.log("clicked marker ", id);
+      console.log('clicked marker ', id);
     };
 
     // const icon = {
-    //     path: 'M0-48c-9.8 0-17.7 7.8-17.7 17.4 0 15.5 17.7 30.6 17.7 30.6s17.7-15.4 17.7-30.6c0-9.6-7.9-17.4-17.7-17.4z',
-    //     color: '21CBF3',
-    //     fillOpacity: 1,
+    //     path: virusImg,
+    // };
+    // const s = new XMLSerializer();
+    // const iconPath = s.serializeToString(virusImg);
+    // const icon = {
+    //   path: iconPath,
     // };
 
     const formattedDate = new Date(date).toLocaleDateString();
@@ -46,7 +49,7 @@ class MapMarker extends Component {
       <Marker
         position={location}
         onClick={() => this.handleToggleOpen()}
-        icon={bluePinImg}
+        icon={virusImg}
       >
         {this.state.isOpen && (
           <InfoWindow
@@ -54,9 +57,13 @@ class MapMarker extends Component {
             onCloseClick={() => this.handleToggleClose()}
           >
             <div>
+              <h1>
+                <b>Outbreak!</b>
+              </h1>
               <h1>{title}</h1>
-              <p>Time visited: {time}</p>
-              <p>Date visited (M/D/Y): {formattedDate}</p>
+              <p>
+                Date Declared (M/D/Y): {formattedDate}
+              </p>
             </div>
           </InfoWindow>
         )}
@@ -78,9 +85,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const ConnectedMapMarker = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MapMarker);
-
-export default ConnectedMapMarker;
+export default connect(mapStateToProps, mapDispatchToProps)(MapOutbreakMarker);

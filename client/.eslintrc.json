@@ -20,7 +20,11 @@
     "class-methods-use-this": "off",
     "jsx-quotes": "warn",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+<<<<<<< HEAD
     "camelcase": "off",
     "no-multi-str": "warn"
+=======
+    "camelcase": "off"
+>>>>>>> project_4
   }
 }

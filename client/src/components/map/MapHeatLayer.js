@@ -1,42 +1,41 @@
 /* global google */
 import React, { Component } from 'react';
-import { HeatmapLayer } from "@react-google-maps/api";
+import { HeatmapLayer } from '@react-google-maps/api';
 import { connect } from 'react-redux';
 
 class MapHeatLayer extends Component {
+  render() {
+    const { data, showHeatLayer } = this.props.map;
+    // console.log(markers);
 
-    render() {
-        const { markers, showHeatLayer } = this.props.map; 
-        // console.log(markers);
-
-        return (
-            showHeatLayer && <HeatmapLayer 
-                data={markers.map(m => (
-                    { location: new google.maps.LatLng(m.location.lat, m.location.lng), weight: m.numInfected }
-                ))}
-            >
-            </HeatmapLayer>
-        );
-    }
-};
+    return (
+      showHeatLayer && (
+        <HeatmapLayer
+          data={data.map((m) => ({
+            location: new google.maps.LatLng(m.location.lat, m.location.lng),
+            weight: m.numInfected,
+          }))}
+          options={
+            {radius: 30}
+          }
+        ></HeatmapLayer>
+      )
+    );
+  }
+}
 
 // export default MapHeatLayer;
 
 const mapStateToProps = (state, ownProps) => {
-    return {
-        map: state.map,
-    };
+  return {
+    map: state.map,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        dispatch,
-    };
+  return {
+    dispatch,
+  };
 };
 
-const ConnectedMapHeatLayer = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(MapHeatLayer);
-
-export default ConnectedMapHeatLayer;
+export default connect(mapStateToProps, mapDispatchToProps)(MapHeatLayer);

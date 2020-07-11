@@ -9,9 +9,9 @@ import './home.css';
 
 const Home = () => {
   const heading = 'Interactive Contact Tracing Map';
-  const subheading = <p>Data when you need it the most.</p>;
+  const subheading = <p>Helping Canadians stay safe.</p>;
   const body =
-    'You can view the current cases of COVID-19 by interacting with the map below.';
+    'See where individuals who have tested positive for COVID-19 have been recently by interacting with the map below.';
   const pageHeadingData = { heading, subheading, body };
 
   return (
@@ -27,8 +27,10 @@ const Home = () => {
         <PageHeading data={pageHeadingData} />
       </div>
       <div className="Home-main-body">
-        <Sidebar />
-        <MapContainer />
+        <Sidebar className="Home-main-body-sidebar" />
+        <div style={{width: `${window.innerWidth - (window.innerWidth)*0.3}px`}}>
+          <MapContainer className="Home-main-body-map" />
+        </div>
       </div>
     </motion.div>
   );

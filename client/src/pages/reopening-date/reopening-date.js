@@ -7,10 +7,14 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './reopening.css';
 import React, { useState } from 'react';
-import PageHeader from '../../components/page-header/page-header';
 import PageHeading from '../../components/page-heading/PageHeading';
 import { motion } from 'framer-motion';
 import { variants, transitions, pageStyle } from '../motion-settings';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 function renderProvince(obj) {
   if (Object.keys(obj).length !== 0) {
@@ -35,13 +39,19 @@ function renderProvince(obj) {
         >
           You are looking at details of Stage {obj.current_stage}
         </h2>
-        <table id='provtable'>
-          <tr>
-            <th>Service</th>
-            <th>Detail and restrictions {obj.current_stage}</th>
-          </tr>
-          {renderTableData(obj.phases[current_phase].restrictions)}
-        </table>
+        <Table id='provtable'>
+          <TableHead>
+            <TableRow>
+              <TableCell>Service</TableCell>
+              <TableCell>
+                Detail and Restriction for Stage {current_phase}
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {renderTableDataMUI(obj.phases[current_phase].restrictions)}
+          </TableBody>
+        </Table>
         <b>
           Additional information is located{' '}
           <a href={obj.more} target='_blank'>
@@ -59,7 +69,6 @@ function renderProvinceTwo(obj, chosenphase) {
     if (chosenphase === 1000) {
       return renderProvince(obj);
     }
-    // const current_phase = obj.current_stage - 1;
     const clicked_phase = chosenphase - 1;
     return (
       <div>
@@ -80,35 +89,36 @@ function renderProvinceTwo(obj, chosenphase) {
         >
           You are looking at details of Stage {chosenphase}
         </h2>
-        <table id='provtable'>
-          <tr>
-            <th>Service</th>
-            <th>Detail and Restrictions for Stage {chosenphase}</th>
-          </tr>
-          {/* {renderTableData(obj.phases[current_phase].restrictions)} */}
-          {renderTableData(obj.phases[clicked_phase].restrictions)}
-        </table>
-        <b>
-          Additional information is located{' '}
-          <a href={obj.more} target='_blank'>
-            here.
-          </a>
-        </b>
+        <Table id='provtable'>
+          <TableHead>
+            <TableRow>
+              <TableCell>Service</TableCell>
+              <TableCell>
+                Detail and Restriction for Stage {chosenphase}
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {renderTableDataMUI(obj.phases[clicked_phase].restrictions)}
+          </TableBody>
+        </Table>
       </div>
     );
   }
   return <div>Utnapishtim</div>;
 }
 
-function renderTableData(restrictions) {
+function renderTableDataMUI(restrictions) {
   const list = Object.entries(restrictions);
   return list.map((mesage) => {
     for (const x of mesage) {
       return (
-        <tr>
-          <td>{x.replace(/_/gi, ' ').replace(/\n/g, '<br />')}</td>
-          <td>{mesage[1]}</td>
-        </tr>
+        <TableRow>
+          <TableCell>
+            {x.replace(/_/gi, ' ').replace(/\n/g, '<br />')}
+          </TableCell>
+          <TableCell>{mesage[1]}</TableCell>
+        </TableRow>
       );
     }
   });
