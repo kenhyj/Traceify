@@ -147,7 +147,7 @@ const provterr = [
   { abbr: 'PE', province: 'Prince Edward Island' },
   { abbr: 'QC', province: 'Quebec' },
   { abbr: 'SK', province: 'Saskatchewan' },
-  { abbr: 'YK', province: 'Yukon' },
+  { abbr: 'YT', province: 'Yukon' },
 ];
 const dropprovmenu = provterr.map((list) => {
   return <MenuItem value={list.abbr}>{list.province}</MenuItem>;

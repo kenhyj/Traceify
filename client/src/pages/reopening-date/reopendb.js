@@ -130,31 +130,488 @@ db.reopenings.insertMany([
   {
     province: 'Prince Edward Island',
     abbr: 'PE',
+    current_stage: 4,
+    phases: [
+      {
+        phase: 1,
+        restrictions: {
+          'Angling season and licenses':
+            'Location: Online and private vendors. \n Open May 1. ',
+          'Carbon Capture Tree Planting Program':
+            'Location: Properities of private woodlot owners. \n Open May 1. ',
+          'Forest Enhancement Program':
+            'Location: Properities of private woodlot owners. \n Open May 1. ',
+          'Protected Areas Program':
+            'Locations:183 Upton Road (and virtual meetings). \n Open May 1. ',
+          'Watershed Management Program':
+            'Locations: 	Watersheds across PEI. \n Open May 1. ',
+          'Wildlife Inventory and Monitoring':
+            'Locations: Across PEI. \n Open May 1. ',
+          'Slemon Park Corporation - On The Fly Retail Store and Postal Outlet':
+            'Location: Slemon Park. \n Open May 1. ',
+          'Slemon Park Corporation - Residential Leasing, Commercial Leasing, Property Management, and Administration':
+            'Location: Slemon Park. \n Open May 1. ',
+          "Crown Attorneys' Office - Queens and Kings County":
+            'Location: 50 Water Street, Charlottetown. \n Open May 1. ',
+          "Crown Attorneys' Office - Prince County":
+            'Location: 243 Heather Moyse Drive, Summerside. \n Open May 1. ',
+          'PEI Legal Aid Offices':
+            'Locations: \n 40 Great George St, Charlottetown. \n 120 Heather Moyse Drive, Summerside. \n Open May 1 by appointment. ',
+          'PEI Legal Aid Family Office':
+            'Location: 1 Harbourside Access Road, Charlottetown. \n Open May 1 by appointment. ',
+          'Feed Lab Services':
+            'Location: PEI Analytical Lab Biocommons Park. \n Open May 3. ',
+          'Efficiency PEI':
+            'Location: 69 Belvedere Avenue, Charlottetown. \n Open May 11. ',
+          'Soil Health Lab Services':
+            'Location: PEI Analytical Lab Biocommons Park. \n Open May 11. ',
+          'Educational Services':
+            'Location: Enman Crescent. \n Open May 14 by appointment. ',
+          "Access PEI Services (except driver's testing)":
+            "Locations: Souris Charlottetown, Summerside, O'Leary. \n Open	May 12.",
+          'Educational Assistant Support for Students':
+            'Locations: Souris, Morell, Montague, Charlottetown, Kensington, West Prince. \n Open May 14 by appointment. ',
+          'Brudenell Golf Course': 'Location: Roseneath. \n Open May 15. ',
+          'Links at Crowbush Cove': 'Location: Morell. \n Open May 15. ',
+          'Class 7 written exams (previously cancelled)':
+            'All open Access PEI locations. \n Open May 18. ',
+          'Fish Inspection Services':
+            'Inspections occur on wharves/harbours across PEI. \n Open May 18. ',
+          'Lobster Resource Monitoring Program':
+            'Sampling occurs on PEI commercial fishing vessels \n A portion of the program, the index fishery, will begin the week of May 18 ',
+          IWMC:
+            'Waste Watch Drop-Off Centers and the East Prince Waste Management Facility will begin to accept household compost, waste and recyclables (disposal fees apply), mattresses/box springs, and recyclables (blue bag #1 and #2) from businesses. \n Open May 19 ',
+        },
+      },
+      {
+        phase: 2,
+        restrictions: {
+          'Municipal advisory services':
+            'Location: Aubin Arseneault Building, Charlottetown. \n Some services offered virtually; all other services to begin week of May 22 ',
+          'Burning permits': 'Location: online. \n Open May 22',
+          'Fire Weather Index': 'Location: online	\n Open May 22',
+          'Hunter Safety Practical Testing':
+            'Location: 183 Upton Road \n Open May 22 by appointment',
+          'Wildlife cards Wildlife permits':
+            'Location: 183 Upton Road \n Open	May 22 by appointment',
+          'PEI Cannabis stores': 'All locations \n	Open May 22',
+          'Dundarave Golf Course': 'Location: Roseneath \n Open	May 22',
+          'Maintenance Enforcement Office':
+            'Location: Harbourside \n	Open May 22 by appointment',
+          'Child Support Guidelines Office':
+            'Location: Harbourside \n	Open May 22 by appointment',
+          'Family Court Counsellors Office':
+            'Location: Harbourside \n	Open May 22 by appointment',
+          'Access and Privacy Services Office':
+            'Location: Harbourside \n	Open May 22 by appointment',
+          'Public Guardian and Public Trustee Office':
+            'Location: Harbourside \n	Open May 22 by appointment',
+          'Office of the Children’s Lawyer':
+            'Location: Harbourside \n	Open May 22 by appointment',
+          'Access and Privacy Offices':
+            'Location: 1st Sullivan Building, Charlottetown. \n Open	May 25 by appointment',
+          'Slemon Park Corporation Cafeteria':
+            'Location: Slemon Park \n	Open May 25, for training guests only',
+          'PEILCC Liquor sales and services': 'All 17 locations \n	Open May 25',
+          'Marriage licences':
+            'Location: 126 Douses Road, Montague \n	Open May 25 by appointment only',
+          'Change of name':
+            'Location: 126 Douses Road, Montague \n	Open May 25 by appointment only',
+          'Day programs for people with disabilities (delivered by NGOs and private companies)':
+            'Location: Various locations across PEI \n	Open May 25',
+          "Educational Services: Registrar's Office":
+            'Location: Holman Building, Summerside \n	Open May 25',
+          'Educational Services: Finance / Administration':
+            'Location: Holman Building, Summerside \n	Open May 25',
+          'In-person filing of documents (e.g. Employment Standards Act Complaints, Labour Relations Board applications)':
+            'Location: Sherwood Business Center, 2nd Floor. \n	Open May 25',
+          'Forest, Fish and Wildlife - Resource Inventory and Mapping Services':
+            '183 Upton Road \n	Open May 25',
+          'Taxation and Property Records':
+            'Location: 1st Floor Shaw S, Charlottetown. \n	Open May 25',
+          'Aphid Alert Service':
+            'Location: PEI Analytical Lab, Biocommons Park. \n	Open May 25',
+          'Driver testing, class 1,2,3,4, 6':
+            "Location: Charlottetown, Summerside, O'Leary and Souris \n	Open May 26",
+          'Driver improvement programss':
+            'All open Access PEI locations \n	Open May 25',
+          'Highway Safety Administration': 'Charlottetown \n	Open May 26',
+          'Tender opening for building construction projects':
+            '1st Floor Jones, Charlottetown \n	First tender closing May 28',
+        },
+      },
+      {
+        phase: 3,
+        restrictions: {
+          Pension_Office_and_Counselling_Service: 'Open June 1',
+          PEI_Public_Libraries: 'Open June 1. \n Curbside pickup only.',
+          Day_use_provincial_parks: 'Open June 5',
+          Novice_driver_course_for_newcomers: 'Open June 6',
+          Slemon_Park_Corporation:
+            'Open June 6. \n For training and essential services guests only',
+          Slemon_Park_Hotel:
+            'Open June 6. \n For training and essential services guests only',
+          PEI_Public_Libraries: 'Open June 8. \n Curbside pickup only',
+          Plant_Health_Lab: 'Open June 8',
+          Oyster_Monitoring_program: 'Open June 8',
+          PEI_Public_Libraries:
+            'Open June 12. \n Curbside pickup only. \n Counter service only',
+          Victim_Services_client_meetings: 'Open June 12 by appointment only',
+          Probation_Services_client_meetings:
+            'Open June 12 by appointment only',
+          'Youth Justice Services client meetings':
+            'Open June 12 by appointment only',
+          'One-on one-counselling (sexual deviancy, anger management, mental health counselling, Indigenous supports)':
+            'Open June 12',
+          'Occupational health and safety inspections':
+            'Open June 12 pending risk assessment',
+          'WCB occupational therapy visits and vocational rehabilitation':
+            'Open June 12 pending risk assessment',
+          'WCB client drop-in service': 'Open June 12 pending risk assessment',
+          'Visitor Information Centres': 'Open June 12',
+          'PEI Liquor Control Commission / PEI Cannabis Management Corporation head office':
+            'Open June 15',
+          'Island Investment Development Inc. (Office of Immigration)':
+            'Open June 15, recommend appointments be booked to allow for screening',
+          'Finance PEI':
+            'June 15, recommend appointments be booked to allow for screening',
+          'Investor / consumer complaints and inquiries': 'Open June 15',
+          'JPS licensing, securities, insurance and registry services':
+            'Open June 15',
+          'Vital Statistics services (Marriage Licenses; Birth & Death Certificates; Change of Name)':
+            'Open June 15 \n Recommend appointments be booked to allow for screening',
+          'Lobster Resource Monitoring Program':
+            '	At-sea sampling (remaining portion of program) to begin week of June 15',
+          'PEI Marine Science Organization Inc.':
+            '	Research activities can begin week of June 15',
+          'Northside Windmill Enhancement Fund': 'Open 	June 15',
+          'Driver testing class 5': 'Open	June 15',
+          'Class 7 written exams': 'Open June 15',
+          'Foreign driver licence': 'Open	June 15',
+          'Novice driver course': 'Open June 15',
+          'Public safety courses': 'Open June 15',
+          'Building and development permits': 'Open June 15',
+          'Subdivision applications': 'Open June 15',
+          'Boiler inspections': 'Open June 15',
+          'Electrical permits and licensing': 'Open June 15',
+          'Plumbing permits and licensing': 'Open June 15',
+          'LP gas permits and licensing': 'Open June 15',
+          'Mechanical contracts': 'Open June 15',
+          'Ozone depleting substance licensing': 'Open June 15',
+          'Power engineer licensing': 'Open June 15',
+          'Underground storage tank': 'Open June 15',
+          'Welding/brazer registration and licensing': 'Open June 15',
+          'In-person services: Social Assistance': 'Open June 15',
+          'In-person services: Seniors Independence Initiative': 'Open June 15',
+          'In-person services: AccessAbility supports  (and home visits for clinical assessments)':
+            'Open June 15',
+          'In-person services: Child Care Subsidy': 'Open June 15',
+          'Employment services for social program clients': 'Open June 15',
+          'Innovation PEI':
+            'Open June 15. \n recommend appointments be booked to allow for screening',
+          'PEI Museum and Heritage sites': 'Open June 15',
+          'Authentication of documents service': 'Open June 22',
+          'Provincial campgrounds': 'Open June 26',
+        },
+      },
+      {
+        phase: 4,
+        restrictions: {
+          Provincial_campgrounds:
+            'Sites across PEI. \n Proposed to open June 26 - open to seasonal campers only.',
+          PEI_Museum_and_Heritage_sites:
+            'Basin Head Fisheries Museum Elmira Railway Museum. \n Proposed to open June 29.',
+          Medical_unfit_driver_testing:
+            'All open Access PEI locations and residential. \n Proposed to open August 3',
+          Safety_courses_public:
+            'All open Access PEI locations and residential. \n Proposed to open August 3',
+          PEI_Agricultural_Insurance_Corporation_Kensington_Office:
+            '7 Gerald McCarville Drive, Kensington \n Open date: To be determined',
+          Youth_Justice_Services_client_meetings:
+            'Access PEI sites and RCMP / police detachments. \n Open date: To be determined',
+        },
+      },
+    ],
+    more:
+      'https://www.princeedwardisland.ca/en/information/health-and-wellness/re-openings',
   },
   {
     province: 'Nova Scotia',
     abbr: 'NS',
+    current_stage: 10,
+    phases: [
+      {
+        phase: 1,
+        restrictions: {
+          Parks: 'Provincial and municipal parks can reopen',
+          Trails: 'can reopen',
+          Gardens:
+            'Community gardens can reopen. \n Garden centres, nurseries and similar businesses can open',
+          Camping:
+            'Private campgrounds can open for seasonal lot renters (renters with fixed RVs) that don’t require the use of onsite amenities like washroom facilities, store, restaurant, activity center, playground and picnic tables',
+          Fishing: 'Sportfishing from shore or boat is permitted',
+          Cottages:
+            'Residents can use their cottages, with their family or household unit',
+          Sails_and_Boats:
+            'Sailing and boating clubs can open to allow people to prepare their boats for the season (food service in marinas is limited to takeout)',
+          Golf:
+            'Golf courses can begin maintenance work to prepare for the season.\n Golf driving ranges can reopen, including those on golf courses',
+          Religious_services: 'Drive-in religious services are allowed',
+          School:
+            'School grounds and sports fields can reopen (children’s playgrounds remain closed)',
+        },
+        date: 'May 1, 2020',
+      },
+      {
+        phase: 2,
+        restrictions: {
+          Gathering:
+            'Family household bubbles are permitted and exempt from the gathering limit and social distancing',
+        },
+        date: 'May 15, 2020',
+      },
+      {
+        phase: 3,
+        restrictions: {
+          Golf: 'Golf courses can reopen',
+          Beaches: 'Provincial and municipal beaches can reopen',
+          Outdoor_sports_facilities:
+            'Outdoor sports facilities for archery, equestrian, golf, paddling, sailing, boating and tennis are permitted to open (no organized sports, classes, lessons, coaching, competitions, tournaments or practices at facilities)',
+          Fishing:
+            'Sportfishing from provincial and municipal beaches is permitted',
+          Gathering:
+            'social gatherings outside your family household bubble are permitted (you need to follow social distancing guidelines and gathering restrictions)',
+        },
+        date: 'May 16, 2020',
+      },
+      {
+        phase: 4,
+        restrictions: {
+          Gatheirng: 'Gathering limit is no more than 10 people',
+          Weddings:
+            'weddings and funerals is no more than 10 people indoors or 15 people outdoors (excluding the person conducting the ceremony)',
+          Funerals:
+            'weddings and funerals is no more than 10 people indoors or 15 people outdoors (excluding the person conducting the ceremony)',
+          Camping:
+            'Privately operated campgrounds can open for seasonal lot renters (renters with fixed RVs) and temporary campers.',
+          Sport_training: 'Sport training is permitted',
+          Pools: 'Pools can begin maintenance work to prepare for the season',
+          Summer_camps: 'Overnight summer camps are cancelled for 2020',
+        },
+        date: 'May 29, 2020',
+      },
+      {
+        phase: 5,
+        restrictions: {
+          Casino:
+            'Casino Nova Scotia (Halifax and Sydney) can reopen if they follow the Health Protection Act Order and their sector-specific plan.',
+          Business_owners:
+            'Business owners can operate video lottery terminals (VLTs) if they follow the Health Protection Act Order and their sector-specific plan.',
+          Restaurants:
+            'Restaurants can reopen for table service (dine-in) if they follow the Health Protection Act Order and their sector-specific plan.',
+          Liquor:
+            'Liquor licensed (drinking) establishments (like bars, wineries, distillery tasting rooms and craft taprooms) can reopen if they follow the Health Protection Act Order and their sector-specific plan.',
+          'Personal services (hair salons, barber shops, spas, nail salons and body art establishments)':
+            'can reopen if they follow the Health Protection Act Order and their sector-specific plans.',
+          'Fitness establishments (gyms, yoga studios and climbing facilities)':
+            'can reopen if they follow the Health Protection Act Order and their sector-specific plans.',
+          'Self-regulated health professions':
+            'They can provide in-person or virtual care services if they follow the Health Protection Act Order and their sector-specific plans.',
+          'Unregulated (non-regulated) health professions':
+            'They can provide in-person or virtual care services if they follow the Health Protection Act Order and their sector-specific plans.',
+          Animal_care:
+            'Veterinarians can reopen for in-person care to animals if they follow the Health Protection Act Order and their sector-specific plan.',
+          Camping:
+            'Privately operated campgrounds can open for all types of campers if they follow the Health Protection Act Order and their sector-specific plan.',
+          Graduation:
+            'Outdoor community celebration of graduates are allowed in June 2020 if they follow the Health Protection Act Order and meet all required conditions.',
+        },
+        date: 'June 5, 2020',
+      },
+      {
+        phase: 6,
+        restrictions: {
+          Summer_day_camps:
+            'can open with up to 10 people in each individual camp group within the summer day camp if they follow the Health Protection Act Order and their sector-specific plans. \n Sector-specific plans should follow guidance from Public Health.',
+        },
+        date: 'June 12, 2020',
+      },
+      {
+        phase: 7,
+        restrictions: {
+          Camping: 'Provincial campgrounds open at a reduced capacity',
+          'Family daycare homes under a family home daycare agency (licensed childcare providers)':
+            'They can reopen if they follow the Health Protection Act Order and their sector-specific plan. \n The sector-specific plan should follow guidance from Public Health.',
+          'Daycare facilities (licensed daycare facilities)':
+            'They can reopen if they follow the Health Protection Act Order and their sector-specific plan. The sector-specific plan should follow guidance from Public Health.',
+          Long_term_care_facilities:
+            'Outdoor visits can resume at long-term care facilities if visitors stay two metres (6 feet) away from residents and staff.',
+        },
+        date: 'June 15, 2020',
+      },
+      {
+        phase: 8,
+        restrictions: {
+          Outdoor_playgrounds: 'can reopen',
+          'Family household bubbles':
+            '10-person gathering limit without social distancing. \n Individuals may gather together in close social groups of up to 10 persons per group without adhering to the physical distancing requirements of two metres or six feet',
+          Gathering:
+            'Gathering limit increased to 50 people for indoor and outdoor gatherings with social distancing',
+        },
+        date: 'June 18, 2020',
+      },
+      {
+        phase: 9,
+        restrictions: {
+          Camping:
+            'Privately operated campgrounds can operate at 100% capacity if they follow the Health Protection Act Order and their sector-specific plan.',
+          Pools:
+            'Public pools can reopen if they follow the Health Protection Act Order and the Nova Scotia Lifesaving Society plan for change rooms and washrooms. \n\
+          Public pools must meet all conditions in the Health Protection Act Order, including: \n\
+          maintaining a minimum physical distance of 2 metres (6 feet) for lane swimming and aquafit classes \n\
+          allowing 1 or more groups of 10 for other activities based on pool size',
+          Restaurnts:
+            'Restaurants can reopen table service (dine-in) if they follow the Health Protection Act Order and their sector-specific plan. Restaurants can continue to offer take-out and delivery service.\n See the sector-specific plan for the Restaurant Association of Nova Scotia. \n Restaurants must meet all conditions in the Health Protection Act Order, including: \n Maintaining a minimum physical distance of 2 metres (6 feet) or a physical barrier between tables, booths and single seats \n Not exceeding 100% of the restaurant’s capacity \n Not permitting any single group within the restaurant to exceed 10 people. \n Stopping service by midnight \n closing by 1am',
+          Liquor:
+            'Liquor licensed (drinking) establishments (like bars, wineries, distillery tasting rooms and craft taprooms) can reopen if they follow the Health Protection Act Order and their sector-specific plan. \n Liquor licensed (drinking) establishments must meet all conditions in the Health Protection Act Order, including: \n Maintaining a minimum physical distance of 2 metres (6 feet) or a physical barrier between tables, booths and single seats \n Not exceeding 100% of the establishment’s capacity. \n Not permitting any single group within the establishment to exceed 10 people. \n Providing food and alcohol for in-seat service only, delivered to the table by staff, and ensuring food and alcohol is kept at the table. \n Ensuring patrons comply with physical distancing requirements \n Stopping service by midnight. \n Closing by 1am',
+        },
+        date: 'June 26, 2020',
+      },
+      {
+        phase: 10,
+        restrictions: {
+          Travel:
+            'Travel within Nova Scotia, New Brunswick, Prince Edward Island and Newfoundland and Labrador is permitted without the requirement to self-isolate for Atlantic Canadian residents (Atlantic travel bubble)',
+          'Social events, faith gatherings, weddings, funerals, and arts and culture events':
+            'If any of these are run by a recognized business or organization can have 250 people outdoors or 50% of the venue’s capacity to a maximum of 200 indoors',
+        },
+        date: 'July 3, 2020',
+      },
+    ],
+    more: 'https://novascotia.ca/coronavirus/restriction-updates/',
   },
   {
     province: 'New Brunswick',
     abbr: 'NB',
+    current_stage: 1,
+    phases: [{ phase: 1, restrictions: {} }],
+    more: '',
   },
   {
     province: 'Quebec',
     abbr: 'QC',
+    current_stage: 1,
+    phases: [{ phase: 1, restrictions: {} }],
+    more: '',
   },
   {
     province: 'Ontario',
     abbr: 'ON',
     current_stage: 2,
-    phases: [{ phase: 1 }, { phase: 2 }, { phase: 3 }],
+    phases: [
+      {
+        phase: 1,
+        restrictions: {},
+      },
+      {
+        phase: 2,
+        restrictions: {},
+      },
+      {
+        phase: 3,
+        restrictions: {
+          Workplace:
+            'Reopening most remaining workplaces and community spaces, while carefully and gradually lifting restrictions.',
+          Community_spaces:
+            'Reopening most remaining workplaces and community spaces, while carefully and gradually lifting restrictions.',
+          Gathering: 'Large public gatherings will continue to be restricted.',
+        },
+      },
+    ],
     more: 'https://www.ontario.ca/page/reopening-ontario',
   },
   {
     province: 'Manitoba',
     abbr: 'MB',
     current_stage: 3,
-    phases: [{ phase: 1 }, { phase: 2 }, { phase: 3 }],
+    phases: [
+      {
+        phase: 1,
+        restrictions: {
+          public_gathering:
+            'Public gatherings such as social gatherings, worship, weddings and funerals will continue to be restricted to 10 persons. \n If virus activity remains low, we will give serious consideration in mid-May to easing the restrictions on group size',
+          government_offices:
+            'Government offices continue to be safe and, unless otherwise determined by management, remain open to staff.',
+          'Restart of non-urgent surgery and diagnostic procedures':
+            'On April 24, health officials moved to restart elective surgeries and other non-emergent health services. ',
+          'therapeutic or health care businesses':
+            'Effective May 4. Businesses may open and are required to limit occupancy to 50 per cent of normal business levels or one person per 10 square metres, whichever is lower. \n  Businesses may continue to provide goods by delivery or pick-up that have been ordered online, by telephone or other remote means. \n Refer to page 22 of the "Restoring Safe Services Phase 1" for detailed guidelines.',
+          retail:
+            'Effective May 4. Businesses may open and are required to limit occupancy to 50 per cent of normal business levels or one person per 10 square metres, whichever is lower. \n  Businesses may continue to provide goods by delivery or pick-up that have been ordered online, by telephone or other remote means. \n Refer to page 23 of the "Restoring Safe Services Phase 1" for detailed guidelines',
+          restaurant:
+            'Effective May 4.  Businesses may open and are required to limit occupancy to 50 per cent of normal business levels or one person per 10 square metres, whichever is lower. \n  Businesses may continue to provide goods by delivery or pick-up that have been ordered online, by telephone or other remote means.\n Refer to page 24 of the "Restoring Safe Services Phase 1" for detailed guidelines',
+          barbers_and_hair_stylists:
+            'Effective May 4.  Services will be limited to hair washes, cuts, colouring and styling. No other personal services will be allowed. \n Businesses may open and are required to limit occupancy to 50 per cent of normal business levels or one person per 10 square metres, whichever is lower. \n  Businesses may continue to provide goods by delivery or pick-up that have been ordered online, by telephone or other remote means.\n Refer to page 25 of the "Restoring Safe Services Phase 1" for detailed guidelines',
+          'Museums, galleries, libraries':
+            'Effective May 4, museums, galleries and libraries may reopen if the organization can maintain an occupancy level to allow staff and customers to maintain a physical distance of at least two metres, except for brief exchanges \n Refer to page 26 of the "Restoring Safe Services Phase 1" for detailed guidelines"',
+          'Outdoor recreation facilities and golf courses':
+            'Effective May 4, playgrounds, skate parks, golf courses, tennis courts, driving ranges, marinas, drive-in movie theatres and other similar recreation facilities may reopen if people maintain a distance of at least two metres, except for brief exchanges. \n All businesses will be required to limit occupancy to 50 per cent of normal business levels or one person per 10 square metres, whichever is lower \n Refer to page 27 of the "Restoring Safe Services Phase 1" for detailed guidelines',
+          'Parks, campgrounds, yurts and vacation cabins':
+            'Effective May 4, parks, campgrounds, yurts and vacation cabins may open if people maintain a distance of at least two metres, except for brief exchanges. \n Refer to page 28 of the "Restoring Safe Services Phase 1" for detailed guidelines',
+          day_camps:
+            'Day camps may operate if they maintain occupancy and activity levels that allow people to maintain a physical distance of at least two metres, except for brief exchanges. The maximum number of children per site is 16. \n Overnight camps are not permitted. \n Refer to page 29 of the "Restoring Safe Services Phase 1" for detailed guidelines ',
+          enforcement:
+            'Officials will continue with the system of escalating enforcement, including education, warnings and tickets',
+        },
+      },
+      { phase: 2, restrictions: {} },
+      {
+        phase: 3,
+        restrictions: {
+          gathering:
+            ' Indoor gathering limits are increased to up to 50 and outdoor gathering limits are increased to up to 100 people',
+          travel:
+            'Residents of Western Canada and Northwestern Ontario do not need to self-isolate for 14 days when entering Manitoba. Otherwise, 14 days of self isolation is mandatory',
+          professional_sports_team:
+            'People employed by or affiliated with a professional sports team based in Manitoba may enter Manitoba without self-isolating for 14 days if they are not displaying any symptoms of COVID-19.',
+          personal_services:
+            'further opening will be considered in the coming weeks of June 30, 2020',
+          gyms_and_recreation_facilities:
+            'further opening will be considered in the coming weeks of June 30, 2020',
+          'Visits in personal care and long term care settings':
+            'The health system will continue to review visitation policies and processes to ensure the safety of residents in these facilities. Changes may be made to further ease visitation restrictions in the coming weeks of June 30, 2020',
+          travel:
+            'Public health officials may consider extending self-isolation exemptions to people returning to Canada – if they have self-isolated outside of Manitoba,',
+          casino:
+            'The opening of casinos will be considered in the coming weeks of June 30, 2020.',
+          'gathering, events, and peforming art venus':
+            'There will be no large gatherings or events until at least September 2020',
+          camps:
+            'No overnight camps will be permitted in the foreseeable future',
+        },
+      },
+      {
+        phase: 4,
+        restrictions: {
+          personal_services:
+            'Further opening of these businesses, including manicurists and pedicurists, tattoo parlours, estheticians, cosmetologists, electrologists and tanning parlours, will be considered in the coming weeks.',
+          gyms_and_recreation_facilities:
+            'Further opening of public/private indoor and outdoor swimming pools (private residential pools are not restricted), spas, fitness clubs and gyms will be considered in the coming weeks.',
+          Performance_and_Movie_Theatres:
+            'Stage performance and movie theatres may provide plans that address physical distancing and control of areas where patrons may congregate between shows, performances or acts of a play, along with similar scenarios.',
+          'Visits In Personal Care and Long-Term Care Settings':
+            'The health system will continue to review visitation policies and processes to ensure the safety of residents in these facilities. Changes may be made to further ease visitation restrictions in the coming weeks.',
+          Travel:
+            'Public health officials may consider extending self-isolation exemptions to people returning to Canada - if they have self-isolated outside of Manitoba, in accordance with the federal Quarantine Act upon their return to the country. In addition, exemptions to self-isolation requirements from other low-risk jurisdictions will be considered going forward.',
+          Casino:
+            'The opening of casinos will be considered in the coming weeks.',
+          Gathering:
+            'There will be no large gatherings or events until at least September 2020.',
+          Camping:
+            'No overnight camps will be permitted in the foreseeable future, as it may be difficult to maintain public health requirements for ongoing physical distancing.',
+        },
+      },
+    ],
     more: 'https://www.gov.mb.ca/covid19/restoring/index.html',
   },
   {
@@ -210,6 +667,93 @@ db.reopenings.insertMany([
     province: 'Alberta',
     abbr: 'AB',
     current_stage: 2,
+    phases: [
+      {
+        phase: 1,
+        restrictions: {
+          'Campgrounds (private/municipal)': 'Open June 30',
+          'Day camps': 'Open June 22',
+          'Daycare & out of school care': 'Open June 11',
+          'Disability service providers': 'Open June 8',
+          'Dog parks': 'Open June 18',
+          "Farmers' markets": 'Open June 18',
+          'Food processing facilities': 'Open June 18',
+          'Funeral homes': 'Open June 18',
+          'Golf course and driving range operators': 'Open June 18',
+          'Gondolas, trams and chairlifts': 'Open June 18',
+          'Graduation ceremonies': 'Open June 30',
+          'Grocery stores': 'Open June 30',
+          'Health non-essential services':
+            'Record of decision of the Chief Medical Officer of Health amending a previous order (CMOH Order 07-2020) and allowing for the resumption of non-essential health services to Albertans. \n This order is under conditions outlined in Appendix A, Workplace Guidance for Community Health Care Settings. \n Effective June 12, 2020, this order was rescinded by CMOH Order 25-2020.',
+          'Hotels, motels, bed and breakfast, and vacation rentals':
+            'Open June 30',
+          'Hunting and fishing lodges, camps and outfitters': 'Open June 30',
+          'Industrial work camps': 'Open June 5',
+          'Interpretive attractions': 'Open June 18',
+          'Malls and shopping centres': 'June 18',
+          'Multi-family dwellings, condos and apartment buildings': 'June 18',
+          'Outdoor events': 'Open June 30',
+          'Outdoor fitness': 'Open June 22',
+          'Places of worship': 'Open June 22',
+          Playgrounds: 'Open June 18',
+          'Post-secondary institutions': 'Open June 22',
+          Preschools: 'Open June 11',
+          'Restaurants, cafes, pubs, and bars': 'Open June 29',
+          Retail: 'Open June 18',
+          'Shooting (firearm) ranges': 'Open June 18',
+          'Taxis, limos, rideshares and commuting': 'Open June 29',
+        },
+      },
+      {
+        phase: 2,
+        restrictions: {
+          'Animals and pets': 'Open June 22',
+          'Bingo halls': 'Open June 25',
+          'Casinos and racing centres': 'Open June 17',
+          'Chartered tour buses, multi-city buses and passenger trains':
+            'Open June 13',
+          'Drive-in events': 'Open June 30',
+          'Family day homes': 'Open June 11',
+          'Food catering': 'Open June 11',
+          'Home-based, mobile and door-to-door operations': 'Open June 23',
+          'Horse racing parks and motor raceways': 'Open June 30',
+          'Indoor entertainment recreation': 'Open June 9',
+          'Indoor events': 'Open June 23',
+          'Large production facility rapid response plans': 'Open June 15',
+          Libraries: 'Open June 9',
+          'Live music, dance and theatre': 'Open June 25',
+          'Movie theatres': 'Open June 9',
+          'Office buildings': 'Open June 12',
+          'Personal services': 'Open June 9',
+          'Public rallies, marches, parades and demonstrations': 'Open June 30',
+          'Public transit': 'Open July 8',
+          Rodeos: 'Open June 30',
+          'School (K-12) re-entry guidance': 'Open June 10',
+          'Screen-based production industry': 'Open June 12',
+          'Seniors centres and seniors serving organizations': 'Open June 13',
+          'Sport, physical activity and recreation': 'Open June 30',
+          'Spray parks and wading pools': 'Open June 9',
+          'Summer school': 'Open June 10',
+          'Swimming pools and whirlpools': 'Open June 12',
+          'Video lottery terminal retailers': 'Open June 17',
+          Warehouses: 'Open June 15',
+          'Wellness services': 'Open June 30',
+        },
+      },
+      {
+        phase: 3,
+        restrictions: {
+          'All businesses and services':
+            'fully reopening all businesses and services, with some restrictions',
+          'larger gatherings': 'permitted (number of people to be determined)',
+          'arts and culture festivals, vocal concerts and major sporting events':
+            'will be permitted with restrictions',
+          nightclubs: 'will reopen, with restrictions',
+          'industry conferences': 'can resume, with restrictions',
+          travel: 'no restrictions on non-essential travel',
+        },
+      },
+    ],
     more: 'https://www.alberta.ca/guidance-documents.aspx',
   },
   {
@@ -307,15 +851,76 @@ db.reopenings.insertMany([
     province: 'Yukon',
     abbr: 'YT',
     current_stage: 2,
+    phases: [
+      {
+        phase: 1,
+        restrictions: {
+          travel:
+            'Restricted entry to Yukon continued. \n Mandatory 14-day self-isolation continued.\n Limit travel to communities. \n Travel respectfully within Yukon and to communities.',
+          Gatherings:
+            'Indoor 10 or fewer. \n Outdoor: 10 or fewer. \n Funerals and religious services may have relaxed restrictions subject to public health assessment.',
+          Restaurants: 'restaurants can offer 50% capacity dine-in services',
+          Personal_care: 'personal care services can reopen',
+          Bars: 'bars can reopen from June 19.',
+          Recreation_and_entertainment:
+            '. \n Recreation centres and libraries reopen in limited capacity following guidelines',
+          Education_and_childcare:
+            'Daycares are open to children of all workers. \n ',
+          Camping:
+            'Public campgrounds reopen June 4 following guidelines\n Overnight camps are not permitted. \n Summer day camps can operate following guidelines',
+        },
+      },
+      {
+        phase: 2,
+        restrictions: {
+          travel:
+            'Expanded entry to Yukon for residents of Canada. \n Mandatory 14-day self-isolation continues for some people arriving in Yukon. \n Limit travel to communities. \n Travel respectfully within Yukon and to communities. \n May have relaxed restrictions subject to public health assessment and community engagement.',
+          gathering:
+            'Indoor: 10 or fewer. \n Outdoor: 50 or fewer if physical distancing can be maintained.',
+          restaurants:
+            'Restaurants can offer full capacity dine-in services, with physical distancing.',
+          bars: 'Bars are open, following guidelines.',
+          Education_and_childcare:
+            'Resumption of in-person K-12 education for the 2020-2021 school year. \n Return to Yukon University campus to be determined in consultation with Yukon University Board. ',
+        },
+      },
+      {
+        phase: 3,
+        restrictions: {
+          travel:
+            'Limit travel to communities continued. \n Travel respectfully within Yukon and to communities. \n May have relaxed restrictions subject to public health assessment and community engagement.',
+          gathering:
+            'No size restrictions if physical distancing can be maintained.',
+          Education_and_childcare:
+            'TBD in consultation with the Department of Education and Yukon University Board.',
+        },
+      },
+      {
+        phase: 4,
+        restrictions: {
+          All_services:
+            'This is the post-vaccine stage. There will be no restrictions',
+        },
+      },
+    ],
     more:
-      'https://yukon.ca/en/health-and-wellness/covid-19-information/latest-updates-covid-19/current-covid-19-situation',
+      'https://yukon.ca/en/health-and-wellness/covid-19-information/summary-yukons-plan-lifting-covid-19-restrictions',
   },
   {
     province: 'Northwest Territories',
     abbr: 'NT',
+    current_stage: 1,
+    phases: [{ phase: 1, restrictions: {} }],
+    more: '',
   },
   {
     province: 'Nunavut',
     abbr: 'NU',
+    current_stage: 2,
+    phases: [
+      { phase: 1, restrictions: {} },
+      { phase: 2, restrictions: {} },
+    ],
+    more: '',
   },
 ]);
