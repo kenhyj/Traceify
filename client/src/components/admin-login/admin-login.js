@@ -13,7 +13,7 @@ const AdminLogin = (props) => {
   const login = (response) => {
     if (response.wc.access_token) {
       axios
-        .get(`/admins/${response.profileObj.email}`)
+        .get(`/api/admins/${response.profileObj.email}`)
         .then(() =>
           props.login(response.wc.access_token, response.profileObj.name)
         )

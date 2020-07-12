@@ -3,7 +3,7 @@ var router = express.Router();
 const db = require('../db');
 var mongodb = require('mongodb');
 
-router.get('/location-outbreak', function (req, res) {
+router.get('/api/location-outbreak', function (req, res) {
   db.get().collection('locationOutbreak').find({}).toArray()
       .then((result) => {
           if (result.toString() !== '') res.status(200).send(result);

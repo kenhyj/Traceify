@@ -105,7 +105,7 @@ class AdminAdd extends React.Component {
                 date: temp.date.toISOString()
             };
             console.log(temp);
-            axios.post('/location-trace', temp).then( () =>
+            axios.post('/api/location-trace', temp).then( () =>
                 alert("Submission Successful")
             ).catch( () =>
                 alert("Submission Failed")
