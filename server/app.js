@@ -48,7 +48,7 @@ mongoose.connection.on("connected", () => {
 
 const db = require("./db");
 db.connect(() => {
-  app.listen(process.env.PORT || 5555, function () {
+  app.listen(process.env.DB_PORT || 5555, function () {
     console.log(`Listening`);
   });
 });
