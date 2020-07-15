@@ -564,9 +564,10 @@ db.reopenings.insertMany([
             'Officials will continue with the system of escalating enforcement, including education, warnings and tickets',
         },
       },
-      { phase: 2, restrictions: {} },
+      { phase: 2, restrictions: {} source: 'https://manitoba.ca/asset_library/en/proactive/2020_2021/restoring-safe-services-phase-2.pdf',},
       {
         phase: 3,
+        source: 'https://www.gov.mb.ca/asset_library/en/proactive/2020_2021/restoring-safe-services-phase-3.pdf', 
         restrictions: {
           gathering:
             ' Indoor gathering limits are increased to up to 50 and outdoor gathering limits are increased to up to 100 people',
@@ -909,9 +910,120 @@ db.reopenings.insertMany([
   {
     province: 'Northwest Territories',
     abbr: 'NT',
-    current_stage: 1,
-    phases: [{ phase: 1, restrictions: {} }],
-    more: '',
+    current_stage: 2,
+    phases: [
+      {
+        phase: 1,
+        restrictions: {
+          indoor_gathering:
+            'Each household can have up to five people they don’t live with come over and be inside their house. A maximum of 10 people in total can be inside the house at any time.',
+          outdoor_gathering:
+            'gathering limits of 25 or less – which would include everyone doing or watching the activities at any given time. \n Physical distance of two metres can be maintained. \n Appropriate hand-washing or sanitizing can occur. \n Travel happens by household group, and \n No shared food or beverages.',
+          funeral: 'see outdoor gathering',
+          wedding: 'see outdoor gathering',
+          'Baseball and softball': 'see "outdoor gathering"',
+          Beaches: 'see "outdoor gathering"',
+          Boat_launches: 'see "outdoor gathering"',
+          Community_gardens: 'see "outdoor gathering"',
+          Cricket: 'see "outdoor gathering"',
+          Gun_ranges: 'see "outdoor gathering"',
+          Golf_courses: 'see "outdoor gathering"',
+          Outdoor_soccer: 'see "outdoor gathering"',
+          Outdoor_ultimate_frisbee: 'see "outdoor gathering"',
+          Outdoor_summer_camps_or_day_programming: 'see "outdoor gathering"',
+          'Outdoor faith-based gatherings': 'see "outdoor_gathering"',
+          playground:
+            'open, but disinfection control protocols must be in-place.',
+          personal_service_establishment: 'can open if requirements are met',
+          tourism: 'can open if requirements are met',
+          museum_and_art_galleries: 'can open if requirements are met',
+          bottle_depot: 'can open if requirements are met',
+          'gyms and fitness centres (only for personal training and outdoor classes)':
+            'can open if requirements are met. ',
+          shuttle_bus: 'can open if requirements are met',
+          dine_ins: 'cannot open',
+          theatres: 'cannot open',
+          bars: 'cannot open',
+          night_clubs: 'cannot open',
+          'K-12 schools':
+            'Class size limits. \n Non-medical mask use for those over the age of 2 (except in rare circumstances). \n Physical distancing. \n Enhanced hand-washing and infection control must be in-place. \n No communal or self-serve food',
+          'Territorial Park day-use areas and cook shelters': 'begin opening',
+          'Indoor Fields and Community Gyms (excluding pools, arenas, and gymnastics gyms)':
+            'Begin opening. Capacity limits, enhanced handwashing and infection control protocols must be in-place. ',
+          Libraries: 'begin opening',
+        },
+      },
+      {
+        phase: 2,
+        restrictions: {
+          'Indoor get-togethers':
+            '25 or less allowed. No communal food or beverage provision',
+          gymnastics:
+            'Gymnastics clubs are higher risk and cannot open during this phase.',
+          'Indoor sports and day programming':
+            'Allowed so long as 25 people or less in the space and disinfection protocols in place',
+          'Outdoor get-togethers': '50 or less allowed',
+          'Organized outdoor activities (sports)':
+            'Allowed with physical distancing, disinfection protocol in place. \n Maximum capacity in these spaces grows to 50 or less in line with relaxed limits on outdoor gatherings. \n Sports leagues should comply with national sport association guidelines and have liability insurance in place.',
+          Public_outdoor_events:
+            '50 people or less for the following: \n Community feasts and barbecues, \n Farmer’s Markets(with prior approval from the CPHO) \n Small concerts (with prior approval from the CPHO) \n Outdoor bingos',
+          funerals: '50 or less allowed',
+          tourism:
+            'May now accommodate 50 or less people, and 25 or less inside of a vehicle as long as appropriate physical distancing and/or protective equipment is available.',
+          movie_theatre:
+            'May open with 25 customers per theatre: A WSCC risk assessment will determine what measures must be in-place to safely operate.',
+          restaurants_and_lounges:
+            'May seat 25 customers inside plus staff: A WSCC risk assessment will determine what measures must be in place to safely operate.\n Dance floors are prohibited and there can be no live music',
+          bars: 'See resturants and lounges',
+          Offices:
+            'Open to public. Capacity restricted to 25 people per floor for office workers with physical distancing measures, handwashing, and infection control processes must be in-place.',
+          community_and_youth_centres:
+            'Open to the public. \n  Capacity restricted to 25 or less staff and clients. \n Physical distancing, handwashing, and infection control processes must be in-place.',
+          indoor_faith_based_and_spiritual_gathering:
+            'May resume so long as these following are followed: Capacity restricted to 25 total, with the ability to apply to the CPHO to seat more \n All efforts must be made to keep the congregation physically distant. \n Handwashing and infection control protocols and equipment must be in-place.',
+          fitness_centres:
+            'Classes may start running. A WSCC risk assessment will determine class size limits and mitigation measures based on the space and equipment',
+          camping:
+            'Overnight camping is open. \n Shower facilities and cook shelters may operate with enhanced disinfection protocols in place',
+          pools:
+            'open for instructor certification. \n Allow for limited use of pools in order to train and certify staff, and prepare the facilities for re-opening in the future.',
+        },
+      },
+      {
+        phase: 3,
+        restrictions: {
+          'Outdoor get-togethers':
+            'Physical distance of two metres must be maintained. \n Appropriate handwashing or sanitizing must occur. \n Travel must be done by household group or friendship circle. \n No shared food or beverage.',
+          funerals:
+            'Physical distance of two metres must be maintained. \n Appropriate handwashing or sanitizing must occur. \n Travel must be done by household group or friendship circle. \n No shared food or beverage.',
+          Choirs_and_band_classes:
+            'Can begin to run. Physical distance of two metres must be maintained. \n Appropriate handwashing or sanitizing must occur.',
+          tourism:
+            'All capacity limits removed. \n Physical distancing and infection control measures must be inplace.',
+          performance_theatres:
+            'A WSCC risk assessment will determine what measures must be in-place to safely operate. \n No self-serve or communal food can be served.',
+          'Music and community festivals':
+            'A WSCC risk assessment will determine what measures must be in-place to safely operate. \n Capacity limits based on location will be required.',
+          colleges_and_post_secondary:
+            'A WSCC risk assessment will determine what measures must be in-place to safely operate',
+          pools:
+            'Capacity will be limited based on the facility. \n Handwashing and infection control protocols must be enhanced. \n Physical distancing must be maintained as much as possible. \n Saunas, steam rooms, and hot tubs will remain closed.',
+          gyms:
+            'Capacity will be limited based on the facility. \n Physical distancing must be maintained as much as possible \n Enhanced hand-washing and infection control processes must be inplace.',
+        },
+      },
+      {
+        phase: 4,
+        restrictions: {
+          Lifting_All_restrictions:
+            'Restrictions are lifted if a vaccine for COVID-19 has been approved and produced and implemented in the seniors population, those with compromised immune systems due to other diseases. Those who already have long-term illnesses',
+          Reimplementing_measures:
+            'Cases resulting from breached protocols, evidence of community spread where the source could not be tracked, or cluster outbreaks may force the province back into previous phases.',
+        },
+      },
+    ],
+    more:
+      'https://www.gov.nt.ca/covid-19/en/services/public-health-orders/emerging-wisely',
   },
   {
     province: 'Nunavut',
@@ -921,6 +1033,6 @@ db.reopenings.insertMany([
       { phase: 1, restrictions: {} },
       { phase: 2, restrictions: {} },
     ],
-    more: '',
+    more: 'https://www.gov.nu.ca/health/information/covid-19-novel-coronavirus',
   },
 ]);

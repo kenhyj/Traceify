@@ -194,7 +194,7 @@ const body = (
     eg. 2 reverts to 1.
     <br />
     Each of these phases are flexible to change according to the COVID-19
-    climate. Only the Canadian province British Columbia has been updated.
+    climate. Ontario, Quebec, Nunvaut, New Brunswick, Manitoba are not updated.
     <br />
     If there is a service you do not see, try checking the previous stages.
     <br />
