@@ -13,6 +13,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Button from '@material-ui/core/Button';
 import Instruction from '../instruction/instruction';
 import axios from "axios/index";
+import { withGoogleMaps } from '../../pages/home/map/MapHOC';
 
 class AdminAdd extends React.Component {
     constructor (props) {
@@ -77,6 +78,9 @@ class AdminAdd extends React.Component {
                 };
                 this.setState({
                     submissionObj: temp
+                });
+                this.setState({
+                    locationSearchField: address
                 });
             })
             .catch(error => console.error('Error', error));
@@ -198,4 +202,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default withRouter(connect(mapStateToProps)(AdminAdd));
+export default withRouter(connect(mapStateToProps)(withGoogleMaps(AdminAdd)));

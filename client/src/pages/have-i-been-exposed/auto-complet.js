@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import TextField from '@material-ui/core/TextField';
 import { List, ListItem, ListItemText, Menu, ListItemIcon } from "@material-ui/core";
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import { withGoogleMaps } from '../home/map/MapHOC';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,9 +34,8 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-export default function LocationAuto(props) {
+function LocationAuto(props) {
   const classes = useStyles();
-
   const fields = useSelector(state => state.timeAndLoc);
   const dispatch = useDispatch();
 
@@ -51,47 +51,49 @@ export default function LocationAuto(props) {
         return getLatLng(results[0]);
       }).then((latLng) => {
         // console.log(latLng);
-        dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: {lat:latLng.lat,lng:latLng.lng,loc:value}});
-        
+        dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: { lat: latLng.lat, lng: latLng.lng, loc: value } });
+
       })
-      .catch(err=>{
-        dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: {lat:''.lat,lng:''.lng,loc:value}});
+      .catch(err => {
+        dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: { lat: ''.lat, lng: ''.lng, loc: value } });
       })
-        
-        
-       
-};
 
-const renderFunc = ({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-  <div>
-    <TextField className={classes.text} {...getInputProps({ label: "Type address", size: 'medium' })} />
 
-    <div style={{ position: 'fixed', padding: '0', width: '23%', zIndex: '3' }}>
-      {loading ? <div>...loading</div> : null}
 
-      <List position='sticky' component='nav'>
-        {suggestions.map((suggestion, index) => {
-          const primary = suggestion.description;
-          return (
-            <ListItem className={classes.listItem} dense={true} key={props.idx + index}>
-              <ListItemIcon><LocationOnIcon size='small' /></ListItemIcon>
-              <ListItemText {...getSuggestionItemProps(suggestion, { primary })}></ListItemText>
-            </ListItem>
-          )
-        })}
-      </List>
+  };
+
+  const renderFunc = ({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+    <div>
+      <TextField className={classes.text} {...getInputProps({ label: "Type address", size: 'medium' })} />
+
+      <div style={{ position: 'fixed', padding: '0', width: '23%', zIndex: '3' }}>
+        {loading ? <div>...loading</div> : null}
+
+        <List position='sticky' component='nav'>
+          {suggestions.map((suggestion, index) => {
+            const primary = suggestion.description;
+            return (
+              <ListItem className={classes.listItem} dense={true} key={props.idx + index}>
+                <ListItemIcon><LocationOnIcon size='small' /></ListItemIcon>
+                <ListItemText {...getSuggestionItemProps(suggestion, { primary })}></ListItemText>
+              </ListItem>
+            )
+          })}
+        </List>
+      </div>
     </div>
-  </div>
-);
+  );
 
-return (
-  <div>
-    <PlacesAutocomplete
-      value={text}
-      onChange={setText}
-      onSelect={handleSelect}
-    >{renderFunc}
-    </PlacesAutocomplete>
-  </div>
-);
+  return (
+    <div>
+      <PlacesAutocomplete
+        value={text}
+        onChange={setText}
+        onSelect={handleSelect}
+      >{renderFunc}
+      </PlacesAutocomplete>
+    </div>
+  );
 }
+
+export default withGoogleMaps(LocationAuto);
