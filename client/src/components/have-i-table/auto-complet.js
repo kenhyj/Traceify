@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import TextField from '@material-ui/core/TextField';
 import { List, ListItem, ListItemText, Menu, ListItemIcon } from "@material-ui/core";
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import { withGoogleMaps } from '../home/map/MapHOC';
+import { withGoogleMaps } from '../../pages/home/map/MapHOC';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   listItem: {
     backgroundColor: theme.palette.background.paper,
-    width: '70%',
+    width: '200px',
     textAlign: "left",
     '&:hover': {
       color: 'tomato',
