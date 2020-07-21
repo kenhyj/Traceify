@@ -493,38 +493,370 @@ db.reopenings.insertMany([
   {
     province: 'New Brunswick',
     abbr: 'NB',
-    current_stage: 1,
-    phases: [{ phase: 1, restrictions: {} }],
-    more: '',
+    current_stage: 3,
+    phases: [
+      {
+        phase: 1,
+        restrictions: {
+          Distancing:
+            'Frequent hand washing, surface cleaning and physical distancing (2m)',
+          Masks:
+            'Community face masks (facial coverings) in public when physical distancing cannot be maintained (required)',
+          'Social gathering': 'No social gatherings',
+          'Public spaces':
+            'Health screenings, handwashing stations, barriers, and reduced maximum occupancies required for public spaces',
+          Businesses:
+            'Only businesses or activities deemed essential that can ensure physical distancing are open (with strict controls)',
+          'Visits to vulnerable population': 'allowed (with strict controls)',
+          Daycares: 'Daycares available for essential workers',
+          'Schools and post-secondary institutions': 'available virtually',
+        },
+      },
+      {
+        phase: 2,
+        restrictions: {
+          'Elective surgeries and other non-emergency health services':
+            'allowed',
+          'Two-household bubble': 'allowed',
+          Gatherings: 'Allowed with physical distancing of 10 or fewer',
+          'Golf courses, outdoor tennis courts, marinas': 'allowed',
+          Carpooling: 'allowed',
+          'Outdoor religious services': 'allowed',
+          'Recreational fishing and hunting': 'allowed',
+          'Post-secondary education and some cultural venues': 'allowed',
+          Offices: 'allowed',
+          Retail_businesses: 'allowed',
+          Restaurants: 'allowed',
+          'Campgrounds and outdoor recreational activities': 'allowed',
+          'Daycare, childcare and day camps': 'allowed',
+          ATV_trails: 'allowed',
+        },
+      },
+      {
+        phase: 3,
+        restrictions: {
+          'Family and friends bubble': 'allowed',
+          'Non-regulated health professionals/businesses': 'allowed',
+          'Personal services businesses': 'allowed',
+          'Outdoor gatherings in uncontrolled venues with physical distancing of 50 or fewer':
+            'allowed',
+          'Religious services, weddings and funerals with physical distancing':
+            'allowed',
+          'Outdoor and indoor visitation with physical distancing and controls in long-term care facilities':
+            'allowed',
+          'Increase in elective surgeries and other non-emergency health care services':
+            'allowed',
+          'Swimming pools, saunas and waterparks': 'allowed',
+          'Gyms, yoga and dance studios': 'allowed',
+          'Rinks and indoor recreational facilities subject to the gathering':
+            'allowed',
+          'Pool halls and bowling alleys': 'allowed',
+          'Organized sports': 'allowed',
+          'Overnight camps': 'allowed',
+          'Canadian residents owning property in New Brunswick':
+            'will be permitted to enter the province provided they self-isolate for 14 days, or the duration of the visit if shorter than 14 days',
+          'Casinos and bingo halls': 'allowed',
+          'Amusement centres and arcades': 'allowed',
+          'Cinemas, bars (without seating) and large live performance venues':
+            'allowed',
+          'Trade shows and conferences': 'allowed',
+        },
+      },
+      {
+        phase: 4,
+        restrictions: {
+          Detail:
+            'This transition to a new normal includes the reopening of all businesses and activities, with increased health and safety practices remaining part of daily life. \n All conditions are lifted with the exception of community face masks (facial coverings), which remain required to wear in public when ill.',
+        },
+      },
+    ],
+    more:
+      'https://www2.gnb.ca/content/gnb/en/corporate/promo/covid-19/recovery.html',
   },
   {
     province: 'Quebec',
     abbr: 'QC',
     current_stage: 1,
-    phases: [{ phase: 1, restrictions: {} }],
-    more: '',
+    phases: [
+      {
+        phase: 1,
+        restrictions: {
+          'Reopening of Economic Activities':
+            'All economic activity sectors are authorized to resume their acitivities except: \n\
+          Festivals and major events. \n\
+          Regular vacation camps with accommodation.',
+          School:
+            'The government has presented its plan for the start of the fall season in the school system and in higher education, for all regions of Québec. This school start will be carried out in compliance with the directives of the public health authorities.',
+          Gathering:
+            'The instructions for outdoor and indoor gatherings have been relaxed in recent weeks. \n More changes are effective, mainly concerning physical distancing during indoor gatherings in public places, and physical distancing between children aged 16 and under.',
+          'Tourist activities':
+            'Tourism industry businesses and establishments are authorized to resume their activities, under certain conditions.\n Maritime excursions will also be able to resume their activities starting from July 1, 2020.',
+          'Cultural sector':
+            'The Québec government is authorizing the gradual reopening of cultural establishments, except for festivals and major events.\n In addition, the government has adopted a recovery plan to stimulate creation and the offering of Québec cultural products available. The amounts invested aim to ensure that this sector will resume its activities on a sustainable basis and regain its place as an engine of economic and social development.',
+          'Day Camps and summer camps':
+            'The Gouvernement du Québec authorizes the day camps available throughout the territory to open for the summer, starting from June 22. \n However, the municipalities and organizations responsible for holding the day camps will have to arrange for activities that foster compliance with the distancing rule, and that enable the enforcement of stricter hygiene measures. \n For summer camps, since they require additional measures to be applied that will be difficult to respect, the opening of camps of this type is postponed until the summer of 2021. However, in order to provide some respite for families and natural caregivers, specialized residential camps for persons with disabilities will be allowed to operate during the summer of 2020.',
+          'Unsupervised outings for the residents of private seniors’ residences':
+            'The residents of private seniors’ residences can again go outside unsupervised. \n However, they must be sure to always maintain 2 m between themselves and other people. \n Moreover, loved ones can meet the residents outside but must observe physical distancing. \n This measure covers private seniors’ residences throughout Québec, including the territory of the Communauté métropolitaine de Montréal.',
+          'More compassionate palliative and end-of-life care':
+            'The prohibition has been lifted on visits to the palliative care units in residential and long-term care centres, private seniors’ residences, and intermediate and family-type resources.',
+          'Broadening of visits by informal caregivers':
+            'Since May 11, 2020, significant informal caregivers who were present on a regular basis before the pandemic can offer support to a person in an intermediate and family-type resource, or a private seniors’ residences. \n However, the informal caregivers must abide by certain instructions. \n This measure was already permitted in residential and long-term care centres (CHSLD).',
+          'Physical disability, intellectual disability, autism spectrum disorder and physical rehabilitation':
+            'Since May 22, 2020, people with a disability or autism spectrum disorder who live in the following environments: \n\
+            Intermediate and family-type resources. \n\
+            Ongoing assistance residences. \n\
+            Boarding schools and group homes. \n\
+            Other, as designated. \n\
+            Are authorized to go out for the following reasons (subject to certain conditions and specific measures): \n\
+            Attending school. \n\
+            Working in sectors authorized by the Gouvernement du Québec. \n\
+            Going outside in proximity to their quarters, commensurate with their condition (with or without supervision). \n\
+            Temporary leave (with or without sleepover) in the family or any other environment listed in the treatment plan. \n\
+            If major home support services for the individual are required during temporary leave, the institution may refuse authorization for safety reasons. \n\
+            Visits by family members and/or friends are maintained on condition that the visitor understands all associated risks and promises to abide by the recommended instructions from public health authorities and those that are determined by management.\n\
+            With respect to physical health and disability rehabilitation environments, only visits by a family member or friend are permitted and only when the person’s stay extends beyond 14 days and the visitor understands the associated risks and promises to abide by the recommended instructions from public health authorities and those that are determined by management. \n\
+            However, temporary leave, outings and visits come with conditions and specific exceptional measures aimed at limiting the spread of COVID‑19. \n\
+            In cases where leave, visits and/or outings cannot be authorized, other distance socialization solutions will be offered so as to maintain the connection between individuals and their families. \n\
+            Resumption of internships and workplace daily activities in sectors that have been authorized by the Gouvernement du Québec is also permitted on a gradual basis and per the capacity of the health and social services facility and available resources.',
+          'Withdrawal of checkpoints in the regions':
+            'The Gouvernement du Québec is gradually reopening the regions. Despite the reopening of most of the regions, every person is requested, as much as possible, to avoid travelling from one region to another or from one city to another.\n At present, access is allowed to all regions of Québec, with the exception of the following territories: \n the Cree Territory of James Bay \n & Nunavik.',
+          'Preschools, elementary and secondary schools':
+            'Since May 11, preschools and elementary schools have been gradually reopening their doors to students in all regions of Québec, with the exception of those located in the Montréal metropolitain community (CMM), the regional county municipality of Joliette and the town of l’Épiphanie, which will remain closed until late August. \n Secondary schools will also remain closed until the end of August. However, some specialized schools offering regional or supraregional educational services and private schools dedicated to providing special education remain open, as do those that welcome students registered in one of the Work-Oriented Training Path courses. Distance learning will nevertheless continue as a result of improved pedagogical support.\n Starting June 8, 2020, certain elementary and secondary schools may open their doors to host learning camps for young people. These camps will last a minimum of three weeks and are intended to support the educational success of students with learning difficulties. Organizations that wish to continue to deliver these services throughout the summer may do so.\n Some Secondary IV and V students may also receive services by attending summer classes in person.',
+          'Educational childcare services':
+            'Since May 11, 2020,childcare services, including non-subsidized daycare centres and recognized and non‑recognized family daycare centres, have been gradually reopening in all regions of Québec, except for those in the territory of the Communauté métropolitaine de Montréal (CMM) and the Municipalité régionale de comté (MRC) de Joliette. \n Childcare services in the CMM and the MRC de Joliette are reopen since June 1. \n Starting on these dates, all children will return to the daycare they had attended before the closure of March 13, 2020.',
+        },
+      },
+    ],
+    more:
+      'https://www.quebec.ca/en/health/health-issues/a-z/2019-coronavirus/gradual-resumption-activities-covid19-related-pause/',
   },
   {
     province: 'Ontario',
     abbr: 'ON',
-    current_stage: 2,
+    current_stage: 3,
     phases: [
       {
         phase: 1,
-        restrictions: {},
+        restrictions: {
+          Construction:
+            'All construction activities or projects and related services that support construction activities or projects, including demolition services resume and essential workplace limits lifted. \n Includes land surveyors',
+          Retail:
+            'In addition to retail operating online, or curbside pickup and delivery, all businesses that sell or rent consumer products that open onto a street or exterior sidewalk can operate under the following restrictions and guidelines: \n\
+          No indoor malls. \n\
+          Persons in the place of business shall maintain physical distancing of at least two metres from each other at all times by: \n\
+          Using curb side pick-up or delivery,\n\
+          Providing in-store access by appointment, \n\
+          Limiting customers so that they are able to stay two metres apart. \n\
+          Only fitting rooms with doors would be used, not curtains, to facilitate disinfecting. \n Retailers would restrict use to every second fitting room at any one time to allow for cleaning and disinfecting after each use and ensure physical distancing.',
+          Vehicle_dealerships_and_retailers:
+            'Vehicle dealerships and retailers, including: \n\
+          Motor vehicles, including cars, trucks and motorcycles. \n\
+          Recreational vehicles, including motor homes. \n\
+          Trailers and travel trailers. \n\
+          Boats and other watercraft. \n\
+          Other motorized vehicles, including power-assisted bicycles, golf carts, scooters, snowmobiles and all-terrain vehicles',
+          Media_industries:
+            'Sound recording, production, publishing and distribution businesses. \n\
+          Film and television post-production, visual effects and animation studios. \n\
+          Book and periodical production, publishing and distribution. \n\
+          Interactive digital media businesses, including, computer system software or application developers and publishers, and video game developers and publishers. \n\
+          Media activities that can be completed while working remotely have been encouraged to continue during the Restart phase. \n\
+          Filming or other on-site activities, especially those that require the gathering of workers, performers or others are not permitted to resume in Stage 1.',
+          'Health_services_- Non_emergency_diagnostic_imaging_and_surgeries':
+            'Non-emergency diagnostic imaging and surgeries in public hospitals, private hospitals and independent health facilities, clinics, and private practices to resume based on ability to meet specified pre-conditions including the framework: A Measured Approach to Planning for Surgeries and Procedures During the COVID‑19 Pandemic, which contains clear criteria that must be met before hospitals can resume scheduled surgeries.',
+          'Health services - in-person counselling and in-person services':
+            'Certain health and medical services to resume, such as in-person counselling and in-person services, in addition to ongoing virtual services, delivered by health professionals, all based on the ability to meet pre-specified conditions. \n\
+            In-person counselling to resume including psychotherapy and other mental health and support services, based on the ability to meet pre-specified conditions. Some of these services continue to be available in-person for urgent needs. \n\
+            For example:Addiction counselling. \n Crisis intervention. \n Family counselling. \n Offender rehabilitation. \n Palliative care counselling. \n Parenting services. \n Rape crisis centres. \n Refugee services',
+          Community_services:
+            'Libraries for pick-up or delivery \n Religious services for drive-in only',
+          Outdoor_recreational_amenities:
+            'Golf courses and outdoor golf driving ranges are open to the public. \n\
+          Any clubhouse or recreational amenity (pools, fitness centres etc.) must remain closed except for washrooms and first aid facilities. Restaurants on the premises may provide food by take out or delivery. \n\
+          Marinas, and boat clubs (e.g.yacht clubs) are authorized to be open to the public. Any clubhouse, or recreational amenity must remain closed, except for washrooms and first aid facilities. \n\
+          Marinas/ boat clubs may operate generally including by providing grocery or convenience stores, provide fuel supplies, provide watercraft repair and servicing, and provide watercraft docking and launching services to the public. Restaurants on the premises may provide food by take out or delivery. \n\
+          Private campgrounds are authorized to be open to prepare for the upcoming season. \n\
+          They may also allow people who have a full season lease on a trailer or RV with water/electric hook ups in the park to use their trailer. Common amenities and recreational facilities remain closed. \n\
+          Pools will remain closed',
+          Individual_outdoor_recreational_sports:
+            'Facilities for outdoor sports and activities will open for individual activities with physical distance of at least two metres from any other person (i.e., not team or contact sports) with limited access to facilities (i.e., no locker rooms, no change rooms, no showers and no clubhouses ­‑ washrooms and emergency aid only): \n\
+          Baseball diamonds, \n Soccer fields, \n Frisbee golf. \n Tennis, platform tennis, table tennis and pickleball courts \n\
+          Basketball courts, \n BMX parks, \n Skate parks, \n Motorsport tracks, \n Cycling tracks and bike trails, \n Horse riding facilities, \n Shooting ranges, including those operated by rod and gun clubs, \n\
+          Indoor shooting ranges including those operated by rod and gun clubs, indoor golf driving ranges, and indoor horse-riding facilities with similar restrictions (i.e., no team or contact sport, physical distancing and limited facilities). \n\
+          Equipment renting services will be available for the sports that are resuming.',
+          Individual_sports_competitions_without_spectators:
+            'Facilities, other than pools, can be used if they are used to train amateur or professional athletes or to run amateur or professional athletic competitions if they are being used by one or more of the following organizations, leagues or clubs: \n\
+          A national sport organization recognized by Sport Canada or a member club of such an organization. \n\
+          A provincial sport or multi-sport organization recognized by the Ministry of Heritage, Sport, Tourism and Culture Industries or a member club of such an organization. \n\
+          A professional sport league or a member club of such a league. \n\
+          Team sports and sports that are likely to result in individuals coming within two metres of each other are not allowed. \n\
+          Horse racing tracks are open with no access to the public (i.e., no spectators).',
+          Professional_services_related_to_research_and_development:
+            'Professional services related to conducting research and experimental development in physical, engineering and life sciences including electronics, computers, chemistry, oceanography, geology, mathematics, physics, environmental, medicine, health, biology, botany, biotechnology, agriculture, fisheries, forestry, pharmacy, veterinary and other allied subjects. \n\
+          For example: \n\
+          Agriculture, food research, horticulture or botany, entomological, forestry, livestock, veterinary research and development laboratories. \n\
+          Bacteriological, biotechnology, chemical, nanobiotechnology, pharmacy, genetics, genomics, computational biology, research and development laboratories. \n\
+          Computer and related hardware, electronic, telecommunication research and development services. \n\
+          Geology, oceanographic, pollution research and development, and astronomical observatories. \n\
+          Mathematics research and development. \n\
+          Industrial research and development laboratories.',
+          Emissions_inspection_facilities:
+            'All emissions inspection facilities for heavy diesel commercial motor vehicles, including mobile inspection facilities',
+          Veterinary_services:
+            'Veterinary services can resume all services by appointment.',
+          Animal_services:
+            'Pet grooming services. \n Pet sitting services. \n Pet walking services. \n Pet training services. \n Training and provision of service animals. \n Effective May 16, 2020, businesses that board animals (e.g., stables) may allow boarders to visit, care for, or ride their animal',
+          Indoor_and_outdoor_household_services:
+            'Private households could now employ workers on or about the premises in activities primarily concerned with the operation of the household such as: \n\
+          Domestic services: housekeepers, cooks, maids, butlers, personal affairs management, nanny services, babysitters, other domestic personnel, etc. \n\
+          Cleaning and maintenance service: house cleaning, indoor/outdoor painting, window cleaning, pool cleaning, general repairs.',
+          Maintenance:
+            'Maintenance, repair and property management services that manage and maintain the safety, security, sanitation and operation of institutional, commercial, industrial and residential properties and buildings can resume, and are no longer limited to "strictly necessary" maintenance.',
+        },
       },
       {
         phase: 2,
-        restrictions: {},
+        restrictions: {
+          Personal_care_services: '',
+          Personal_services:
+            "Businesses primarily engaged in providing other personal services can open with the proper health and safety protocols in place. All services must be provided with physical distancing of at least two metres. \n\
+          Examples include: \n\
+          House sitting. \n\
+          Party, wedding planning and consulting services. \n\
+          Personal organizer services. \n\
+          Personal physical fitness trainer and sports trainers (outside of gyms only). \n\
+          Personal shopping services. \n\
+          Porter services. \n\
+          Shoe services (e.g., shining, repair). \n\
+          Check room services (e.g., coat check, suitcase storage). \n\
+          Wedding chapels. \n\
+          Businesses should also consider operating by appointment and/or record each patron's name and contact information for the purpose of contact tracing.",
+          Restaurants_and_bars:
+            'Restaurants, bars, food trucks and other food and drink establishments (e.g., wineries, breweries and distilleries) can open for dining in outdoor areas only, such as patios, curbside, parking lots and adjacent premises.\n\
+          Establishments must take appropriate measures to keep patrons and workers safe: \n\
+          Patrons must be seated when eating or drinking in the establishment \n\
+          The outdoor dining area must be configured to ensure physical distancing of at least two metres between patrons from different tables unless separated by plexiglass or some other impermeable barrier. \n\
+          No buffet-style service may be provided \n\
+          Access to indoor facilities is limited to patio/outdoor dining area access, food pickup, payment, washrooms or other health and safety purposes.',
+          Shopping_malls_and_centres:
+            'In addition to providing online, curbside pickup and delivery services, all shopping centres, malls and markets may open. Stores in these facilities must follow the same guidance as those set out for other retail services. \n\
+          Food services and restaurants with mall-only entrances may open for outdoor dining spaces, delivery and takeout. Dine-in at indoor food courts is prohibited. \n\
+          Entertainment amenities not permitted in Stages 1 or 2, such as movie theatres and waterparks, remain closed. \n\
+          Malls may need to institute the policies that were put in place by retail outlets that remained open as essential businesses or were permitted to reopen during Stage 1, including engineering and administrative controls, such as: \n\
+          Alternative operating hours to address increased cleaning demands. \n\
+          Enhanced security and limiting entrances. \n\
+          Creation and enforcement of walking traffic patterns. \n\
+          Operating by appointment or reservation. \n\
+          Limiting the number of people who may be in one business at any one time. \n\
+          Restricting fitting room access and implementing cleaning process between fitting room customers. \n\
+          General building management, including signage and hand sanitizer at the entrance of building, and removing gathering settings (e.g., benches). \n\
+          Industry associations recommend that efforts to screen people for COVID-19 symptoms at shopping malls is best performed at the entry point of the shopping centre rather than at individual shops.',
+          Photography:
+            'All photography studios and services, including portrait, aerial, special event, commercial and industrial photography can reopen. \n\
+          Physical distancing must be maintained between all individuals on set whenever possible and must be taken into consideration when organizing the layout of the set.',
+          Film_and_TV:
+            'All film and television production activities will be allowed to resume. \n\
+          Physical distancing must be maintained between all individuals on set whenever possible and must be taken into consideration when organizing the layout of the set.',
+          Tour_and_guide_services:
+            "Indoor and outdoor tour and guide services will be allowed to resume. \n\
+          This includes: \n\
+          Resource-based tours (e.g., hunting, fishing and similar excursions) \n\
+          Tastings and tours for operators of on-site retail stores at manufacturing sites (e.g., wineries, breweries and distilleries) \n\
+          Trail riding, walking and bike tours \n\
+          Motor vehicle and boat tours (e.g., for sightseeing) \n\
+          Businesses should consider operating by appointment and must record each patron's name and contact information for the purpose of contact tracing. \n\
+          Patrons must adhere to physical distancing measures and limits to public gatherings. \n\
+          Equipment may be rented as needed as part of the tours. Equipment must be properly cleaned and disinfected in between rentals. \n\
+          Access to production areas for tours of food and beverage manufacturing sites is permitted, as long as operators can follow workplace guidance and public health advice to ensure quality and cleanliness of products. Eating or drinking can occur in licensed outdoor spaces but is not permitted indoors.",
+          Water_recreational_facilities:
+            'All indoor and outdoor swimming pools and outdoor splash pads and wading pools may open to the public with no access to high-contact aquatic features such as slides and climbing structures. \n\
+          This includes public pools as well as pools situated in hotels, motels, condo parks, resorts and other private facilities. \n\
+          Waterparks, wave pools and water slides will not be permitted to reopen in Stage 2. \n\
+          Any locker rooms, change rooms, showers and washrooms must be cleaned and disinfected as frequently as is necessary to maintain a sanitary environment. \n\
+          Persons in the place of business shall maintain physical distancing of at least two metres from each other at all times by: \n\
+          Reducing resting areas and pool capacity. \n\
+          Limiting and distancing pool-side seating. \n\
+          Timed entry (e.g., appointment only). \n\
+          Equipment rented or loaned must be disinfected or quarantined appropriately between uses. \n\
+          Aquatic activities such as fitness classes and swim lessons must be in line with physical distancing measures. For example, only other household members can assist swimmers with physical contact.',
+          Outdoor_recreational_facilities:
+            'Outdoor-only recreational facilities that operate low-contact attractions and activities will be allowed to reopen. \n\
+          This includes activities such as paintball, mini-golf, archery ranges, go-cart tracks and other adventure activities. \n\
+          Locker rooms, change rooms, showers and clubhouses will remain closed, except to the extent they provide access to a washroom or a portion of the facility that is used to provide first aid. \n\
+          Equipment rented, loaned or utilized for outdoor adventure elements (e.g., ladders, ziplines, hand cables) must be disinfected or quarantined appropriately between uses. Activities where equipment cannot be sanitized are not permitted. \n\
+          Recreational activities or areas that do not allow for two-metre physical distancing between patrons are not permitted. \n\
+          Indoor recreational activities are not permitted except for indoor driving ranges and rod and gun clubs. \n\
+          Amusement parks and waterparks (including those attached to hotels) will remain closed. \n\
+          Playgrounds, play structures and outdoor fitness equipment will remain closed.',
+          Beaches_and_parks_and_camping:
+            "In Stage 1, Ontario Parks opened limited backcountry camping including paddle and portage routes, access points and hiking trails. In Stage 2, Ontario Parks campgrounds and private campgrounds can also open for recreational vehicle, car camping and all other types of camping. \n\
+          Campers must adhere to social gathering size restrictions and maintain two-metre physical distancing with people outside their household or social circle and when outside of their campsites. \n\
+          Beach access at Ontario Parks will be permitted as part of Ontario Parks' gradual reopening, although measures including limited capacity will be taken at some parks to enable physical distancing.",
+          Outdoor_recreational_team_sports:
+            'Outdoor team sports may resume, if physically distanced, for training only and with no scrimmages or games. \n\
+          This includes limited access to facilities (e.g., no locker rooms, no change rooms and no showers). \n\
+          Access to clubhouse and other amenities will be limited to washrooms, emergency aid and equipment management. \n\
+          On June 27th, Ontario removed certain restrictions for indoor sports and recreational fitness activities facilities, enabling these facilities to be used by more businesses and organizations to train amateur or professional athletes, or to run certain non-contact amateur or professional athletic competitions.',
+          Drive_in_and_drive_thru_venues:
+            'All existing and new drive-in and drive-thru venues can open for a variety of purposes, such as theatres, concerts, animal attractions and cultural appreciation, such as art installations. \n\
+          Food services are restricted to delivery to vehicles and drive-thru only. \n\
+          Operators must have in place procedures for staff to ensure people remain in their cars except for using the washroom or in an emergency. \n\
+          In addition to other workplace and public health measures, drive-ins and drive-thru venues should: \n\
+          Limit the number of vehicles and how they are parked to ensure physical distancing. \n\
+          Ensure that any washrooms open for use are cleaned and disinfected as frequently as is necessary to maintain a sanitary environment.',
+          Weddings_and_funerals_and_similar_gatherings:
+            'Venues not otherwise restricted can open to conduct wedding ceremonies, funerals and similar gatherings within existing public health restrictions. \n\
+          Ceremonies and services for weddings, funerals and other similar ceremonies are subject to gathering limits of 30% of capacity for the venue if indoors, or up to 50 people if it occurs outdoors. \n\
+          Social gatherings related to the ceremony or service (e.g. a wedding reception) are subject to limit of gatherings of up to 10 people. \n\
+          Dine-in and bar services must be in-line with the related guidelines and restrictions. \n\
+          Indoor and outdoor venues may open for weddings, funerals and similar gatherings, with limited access to facilities. \n\
+          Guests that are not part of the same household should follow physical distancing guidelines.',
+          Libraries:
+            'All libraries can reopen with limited on-site services, such as computer access and contactless book pickup and drop-off. \n\
+          Patrons are not permitted to handle books or materials on shelves. \n\
+          Libraries should operate in adherence with public health guidelines on physical distancing, capacity and hygiene procedures (e.g., disinfecting returns and high-touch areas like computers).',
+          Community_centres:
+            'Community centres can reopen to the public with limited or modified on-site programs and services that follow workplace guidance and public health advice. \n\
+          Recreational activities are restricted at indoor facilities, but these spaces can be used for other programs and services. \n\
+          Examples of physically distanced programs and services include in-person counselling, group counselling, computer access, education and tutoring. \n\
+          Food services are restricted to takeout, delivery and outdoor dining spaces. \n\
+          Indoor pools may open (see water recreational facilities). \n\
+          Access to locker rooms, change rooms, showers and communal kitchen areas is not allowed.',
+          Attractions_and_heritage_institutions:
+            "Museums, galleries, aquariums, zoos outdoor heritage institutions (e.g., landmarks, outdoor historic sites, botanical gardens), and other establishments primarily engaged in preserving and exhibiting objects, sites and natural wonders of historical, cultural and educational value are permitted to reopen with restrictions. \n\
+          Interactive and high-contact exhibits within establishments, amusement parks, water parks and conference centres will remain closed in Stage 2. \n\
+          Lockers will remain closed. \n\
+          The opening of commercial areas (e.g., restaurant, cafe, bookshop, giftshop) are subject to the related guidelines and restrictions. \n\
+          Persons in the place of business shall maintain physical distancing of at least two metres from each other at all times by: \n\
+          Timed entry \n\
+          A limited number of visitors allowed in a place at one time \n\
+          Managed visitor flow (e.g., one-way flow) \n\
+          Establishments should consider operating by appointment and/or record each patron's name and contact information for the purpose of contact tracing.",
+          Small_outdoor_events:
+            'Non-essential in-person gatherings of any size continue to be strongly discouraged. Small outdoor events, such as cultural celebrations, animal shows and fundraisers will be permitted in line with gathering-size restrictions, subject to local public health requirements. \n\
+          Event organizers should have in place measures to enable physical distancing for people when in the event space and while waiting to enter, such as one-way traffic, marked lineup areas, and timed entry and length of stay. \n\
+          Large outdoor events, such as concerts, large festivals, parades and amusement fairs, are not permitted.',
+          Places_of_worship:
+            'Effective Friday, June 12 all places of worship in Ontario were permitted to open with physical distancing in place and attendance limited to no more than 30 per cent of the building capacity to ensure the safety of worshippers.',
+          Child_care_centres:
+            'Licensed child care centres are permitted to reopen across Ontario as part of Stage 2 of reopening, while operating under enhanced health and safety requirements.',
+          Summer_day_camps:
+            'Summer day camp programs across the province can reopen this summer with health and safety protocols in place.',
+        },
       },
       {
         phase: 3,
         restrictions: {
+          'Amusement parks and water parks':
+            'Amusement parks and water parks are not yet permitted to open in Stage 3.',
           Workplace:
             'Reopening most remaining workplaces and community spaces, while carefully and gradually lifting restrictions.',
           Community_spaces:
             'Reopening most remaining workplaces and community spaces, while carefully and gradually lifting restrictions.',
-          Gathering: 'Large public gatherings will continue to be restricted.',
+          Gathering:
+            'As regions enter Stage 3, the following gathering limits apply: \n\
+          Indoor gathering limits will increase to a maximum of 50 people, subject to physical distancing of at least two metres with people from outside their households or social circles \n\
+          Outdoor gathering limits will increase to a maximum of 100 people, subject to physical distancing of at least two metres with people from outside their households or social circles',
         },
       },
     ],
@@ -564,10 +896,51 @@ db.reopenings.insertMany([
             'Officials will continue with the system of escalating enforcement, including education, warnings and tickets',
         },
       },
-      { phase: 2, restrictions: {} source: 'https://manitoba.ca/asset_library/en/proactive/2020_2021/restoring-safe-services-phase-2.pdf',},
+      {
+        phase: 2,
+        restrictions: {
+          'OUTDOOR DRIVE-IN EVENTS':
+            'Effective June 1. \n Religious organizations, other organizations and drive-in movie theatres may hold outdoor events without limitation on numbers if people stay in their vehicles, or stand outside on the left side of their vehicles, as long as the windows of the vehicle next to them are closed and as long as people remain two metres apart at all times. ',
+          'OUTDOOR VISITS IN PERSONAL CARE AND LONG-TERM CARE SETTINGS':
+            'Effective May 29. \n Residents in these facilities may receive visitors in an outdoor setting where all individuals are reasonably able to maintain a separation of at least two metres from others. ',
+          'PUBLIC GATHERINGS':
+            'Effective May 22. \n Change: Indoor gatherings are increased to 25 and outdoor gatherings allowed up to 50 people.',
+          'DAY CAMPS':
+            'Effective June 1. \n Change: Group size increased to 24.',
+          CHILD_CARE_SERVICES:
+            'Effective June 1. \n Change: Groups can increase to a maximum of 24 children plus staffing',
+          SCHOOLS:
+            'Effective June 1. \n Facility use at schools permitted. Classroom learning will remain suspended for the remainder of the school year. \n However, schools are now open for staff and specific programs. \n As well, students will be able to meet with teachers for the purpose of assessment and planning for the resumption of classes in September. \n Occupancy must be based on maintaining physical distancing of two metres/six feet in individual rooms, with no more than 25 people per room',
+          'POST-SECONDARY INSTITUTIONS AND VOCATIONAL COLLEGES':
+            ' Facilities may reopen to provide limited instruction. \n Check with your post secondary for more specific restrictions',
+          'TEAM SPORTS AND OTHER RECREATIONAL ACTIVITIES':
+            'Effective June 1 \n Change: Sports and recreational activities for children and adults may resume',
+          'TRAVEL TO NORTHERN PARKS, CAMPGROUNDS, CABINS, LODGES_AND_RESORTS':
+            'Effective June 1. \n Change: Travel restrictions revised. \n Manitoba residents will be permitted to travel directly to parks, campgrounds, cabins, lodges and resorts north of the 53rd parallel from within Manitoba.',
+          'OUTDOOR RECREATION FACILITIES AND GOLF COURSES':
+            'Effective June 1. \n Change: Access to indoor facilities allowed.',
+          'PARKS, CAMPGROUNDS, YURTS AND VACATION CABINS':
+            'Open with social distancing enforced',
+          'PUBLIC/PRIVATE SWIMMING POOLS, SPLASH PADS, SPAS,FITNESS CLUBS, GYMS AND TRAINING FACILITIES':
+            'Effective June 1. \n These sites are required to limit occupancy to 50 per cent of normal business levels or one person per 10 square metres, whichever is lower.',
+          'COMMUNITY/SERVICE CENTRES':
+            'Effective June 1. \n The maximum number of people permitted per site is 25, except where discrete groupsof 25 can be segregated to prevent contact with other groups through the use of separate exits and/or staggered drop off schedules and monitoring access to the facility to avoid congestion. ',
+          'PERSONAL SERVICES BUSINESSES':
+            'Effective June 1. \n Change: Reopening of manicurists and pedicurists, tattoo parlours, estheticians, cosmetologists, electrologists and tanning parlours. \n Occupancy limits of 50 per cent of normal business levels or one person per 10 square metres will be in place. ',
+          'BARS, BEVERAGE ROOMS, BREW PUBS, MICRO-BREWERS AND DISTILLERIES':
+            'Effective June 1. \n Change: Patios and indoor spaces are allowed to operate at 50 per cent of site capacity',
+          FILM_PRODUCTION:
+            'Effective June 1. \n Change: Productions may resume operations.',
+          'THERAPEUTIC OR HEALTH CARE BUSINESSES':
+            'Effective June 1. \n Change: Occupancy limits lifted for regulated health professions. \n Occupancy limits of 50 per cent of normal business levels or one person per 10 square metres can be lifted for regulated health professions. Non-regulated health professions must continue to limit occupancy to 50 per cent of normal business levels or one person per 10 square metres. \n Service providers must continue to implement measures to ensure that members of the public are reasonably able to maintain a separation of at least two metres from others, except for brief exchanges.',
+        },
+        source:
+          'https://manitoba.ca/asset_library/en/proactive/2020_2021/restoring-safe-services-phase-2.pdf',
+      },
       {
         phase: 3,
-        source: 'https://www.gov.mb.ca/asset_library/en/proactive/2020_2021/restoring-safe-services-phase-3.pdf', 
+        source:
+          'https://www.gov.mb.ca/asset_library/en/proactive/2020_2021/restoring-safe-services-phase-3.pdf',
         restrictions: {
           gathering:
             ' Indoor gathering limits are increased to up to 50 and outdoor gathering limits are increased to up to 100 people',
@@ -1028,10 +1401,42 @@ db.reopenings.insertMany([
   {
     province: 'Nunavut',
     abbr: 'NU',
-    current_stage: 2,
+    current_stage: 1,
     phases: [
-      { phase: 1, restrictions: {} },
-      { phase: 2, restrictions: {} },
+      {
+        phase: 1,
+        restrictions: {
+          Effective: 'July 20',
+          'Licensed establishments':
+            'All licensed establishments in the territory are allowed to open with regular hours.',
+          'Outdoor gathering':
+            'The limit for outdoor gatherings has been increased to 50 people.',
+          'Indoor gathering':
+            'The limit for indoor gatherings has been increased to 10 people. In private dwellings, this means 10 people in addition to those who reside there.',
+          'Gatherings at places of worship, conference facilities, community halls, rental meeting spaces, and gatherings organized by the Government of Canada, Government of Nunavut, municipal corporations, or Regional Inuit Organizations':
+            'The limit for gatherings at places of worship, conference facilities, community halls, rental meeting spaces, and gatherings organized by the Government of Canada, Government of Nunavut, municipal corporations, or Regional Inuit Organizations has been set at 50 people or 50% of capacity for the facility, whichever is less.',
+          'Youth centres and day camps': 'may resume operations.',
+          'Long-term care facilities':
+            'can accept visitors in a limited capacity; they can only allow one to two visitors per resident at a time, and these visitors can only be immediate family.',
+          'Personal service providers':
+            'are permitted to open for one-on-one sessions. ',
+          'Bars and restaurants':
+            'are allowed to re-open and operate at half capacity.  Last call for alcohol service will be at 9 p.m.',
+          'Theatres and churches': 'are permitted to re-open.',
+          'Gyms and pools':
+            'are permitted to re-open for solo workouts and lap swimming only.',
+          'Dental Clinics, physiotherapy clinics, massage therapy, and chiropractic treatments':
+            'are permitted to resume. Proper PPE must be made available if requested.',
+          'Workplace and retail outlets':
+            'are permitted to re-open, provided that they have safety measures in place.',
+          'Galleries, museums, and libraries':
+            'may be opened for individual viewing and browsing. Group sessions are still prohibited.',
+          Daycares: 'are permitted to open up for regular business.',
+          'Territorial parks':
+            'may reopen for outdoor activities only. All park buildings will remain closed.',
+          'Municipal playgrounds': 'are permitted to re-open.',
+        },
+      },
     ],
     more: 'https://www.gov.nu.ca/health/information/covid-19-novel-coronavirus',
   },
