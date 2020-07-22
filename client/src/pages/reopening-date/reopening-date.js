@@ -336,7 +336,12 @@ function breaklines(text) {
   {
     const paragraph = text.split('\n');
     return paragraph.map((line) => {
-      return <div>{line}</div>;
+      return (
+        <text>
+          {line}
+          <br />
+        </text>
+      );
     });
   }
 }
