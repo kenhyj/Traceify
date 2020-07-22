@@ -20,6 +20,7 @@
 #provtable td:nth-child(1) {
   /* text-decoration: underline; */
   text-align: center;
+  white-space: pre-wrap;
 }
 #provtable tr:hover {
   background-color: #ddd;
