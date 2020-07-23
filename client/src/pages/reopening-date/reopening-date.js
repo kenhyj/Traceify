@@ -435,7 +435,7 @@ function Reopen() {
   const classes = useStyles();
   const axiosgetreopenlist = (target) => {
     axios
-      .get('http://localhost:7000/reopenings/getprovince/'.concat(target))
+      .get('/api/reopenings/getprovince/'.concat(target))
       .then((res) => {
         setPhase(res.data[0].current_stage);
         setProvince(res.data[0]);

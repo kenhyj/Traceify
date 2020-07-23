@@ -10,13 +10,12 @@ const mongoose = require('mongoose');
 //I think this is the Middleware
 var indexRouter = require('./routes/index');
 var adminsRouter = require('./routes/admins');
-var postsRouter = require('./routes/posts');
 var locationRouter = require('./routes/location-traces');
 var reopeningsRouter = require('./routes/reopenings');
 var exposeRouter = require('./routes/expose');
 var locationOutbreakRouter = require('./routes/location-outbreak');
 var app = express();
-require('dotenv').config({ path: './.env' });
+require('dotenv').config({ path: '../.env' });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,8 +33,7 @@ app.use(exposeRouter);
 app.use(adminsRouter);
 app.use(locationRouter);
 app.use(locationOutbreakRouter);
-app.use('/posts', postsRouter);
-app.use('/reopenings', reopeningsRouter);
+app.use(reopeningsRouter);
 app.use(bodyParser.json());
 
 // CONNECT TO MONGO DB
@@ -50,7 +48,7 @@ mongoose.connection.on('connected', () => {
 
 const db = require('./db');
 db.connect(() => {
-  app.listen(process.env.PORT || 5555, function () {
+  app.listen(process.env.DB_PORT || 5555, function () {
     console.log(`Listening`);
   });
 });

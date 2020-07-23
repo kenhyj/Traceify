@@ -4,11 +4,11 @@ const Reopening = require('../models/Reopening');
 
 /* GET messages listing. */
 /* SAMPLE REST */
-router.get('/', function (req, res, next) {
+router.get('/api/reopenings', function (req, res, next) {
   res.send('this is the Reopening endpoint');
 });
 
-router.get('/getall', (req, res) => {
+router.get('/api/getall', (req, res) => {
   Reopening.find({})
     .then((data) => {
       // console.log('Reopening...', data);
@@ -22,7 +22,7 @@ router.get('/getall', (req, res) => {
 
 /* get specific provincial territorial reopen details 
 one possible debug: your dotenv might be using the wrong database */
-router.get('/getprovince', (req, res) => {
+router.get('/api/reopenings/getprovince', (req, res) => {
   Reopening.find({
     province: req.body.province,
   })
@@ -38,7 +38,7 @@ router.get('/getprovince', (req, res) => {
 
 /* get specific provincial territorial reopen details using abbreviation of province territory
 one possible debug: your dotenv might be using the wrong database */
-router.get('/getprovince/:abbr', (req, res) => {
+router.get('/api/reopenings/getprovince/:abbr', (req, res) => {
   Reopening.find({
     abbr: req.params.abbr,
   })
@@ -54,7 +54,7 @@ router.get('/getprovince/:abbr', (req, res) => {
 
 /* get specific provincial territorial reopen details using abbreviation of province territory
 one possible debug: your dotenv might be using the wrong database */
-router.get('/getprovince/:abbr', (req, res) => {
+router.get('/api/getprovince/:abbr', (req, res) => {
   Reopening.find({
     abbr: req.params.abbr,
   })
@@ -69,7 +69,7 @@ router.get('/getprovince/:abbr', (req, res) => {
 });
 
 // do not use, this is simply there to help test if I'm accessing the proper database and collection //
-router.put('/newprovince', (req, res) => {
+router.put('/api/reopenings/newprovince', (req, res) => {
   const newPost = new Reopening({
     province: req.body.province,
     abbr: req.body.abbr,
@@ -90,19 +90,20 @@ router.put('/newprovince', (req, res) => {
     });
 });
 
-
-router.route('/expose').post((req, res) => {
+router.route('/api/reopenings/expose').post((req, res) => {
   const fields = req.body;
-  if(fields.length === 0) res.status(400).json('empty field for querying');
+  if (fields.length === 0) res.status(400).json('empty field for querying');
   let places = [];
-  fields.map((oneRow)=>{
-    oneRow.locations.map(oneLoc=>{
-      if(oneLoc.loc !== ''){
-        Locations.find({date:oneRow.date,lat:oneLoc.lat,lng:oneLoc.lng})
-        .then(()=>{places.push(oneLoc.loc);})
-        .catch(err=>console.log('not found for this row.'))
+  fields.map((oneRow) => {
+    oneRow.locations.map((oneLoc) => {
+      if (oneLoc.loc !== '') {
+        Locations.find({ date: oneRow.date, lat: oneLoc.lat, lng: oneLoc.lng })
+          .then(() => {
+            places.push(oneLoc.loc);
+          })
+          .catch((err) => console.log('not found for this row.'));
       }
-    })
+    });
   });
   res.json(places);
 });
