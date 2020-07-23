@@ -12,7 +12,7 @@ import theme from './MuiTheme';
 import thunk from 'redux-thunk';
 
 // axios.defaults.baseURL = '';
-axios.defaults.baseURL = 'http://localhost:7000';
+axios.defaults.baseURL = 'http://localhost:5555';
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
