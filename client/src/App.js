@@ -29,7 +29,7 @@ function App(props) {
             <ThankPage />
             <div className='App-main'>
                 <AnimatePresence exitBeforeEnter>
-                    <Route path='/' render={() => <Redirect to="/home"/>} />
+                    <Route exact path='/' render={() => <Redirect to="/home"/>} />
                     <Route path='/home' component={Home} />
                     <Route path='/have-i-been-exposed' component={HaveI} />
                     <Route path='/qna' component={QnA} />
@@ -38,7 +38,7 @@ function App(props) {
                     {props.isLoggedIn ? (
                         <Route path='/admin' component={AdminPage} />
                     ) : (
-                        <span />
+                        <Route path='/admin' render={() => <Redirect to="/home"/>} />
                     )}
                 </AnimatePresence>
             </div>
