@@ -1,3 +1,4 @@
+require('dotenv').config({ path: 'client/.env' });
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -44,7 +45,7 @@ mongoose.connect(process.env.DB_CONNECTION, {
 
 const db = require('./db');
 db.connect(() => {
-  app.listen(process.env.DB_PORT || 5555, function () {
+  app.listen(process.env.DB_PORT || 5000, function () {
     console.log(`Listening`);
   });
 });
