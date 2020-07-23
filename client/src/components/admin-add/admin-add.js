@@ -5,7 +5,6 @@ import DatePicker from 'react-datepicker';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import {
     geocodeByAddress,
-    geocodeByPlaceId,
     getLatLng,
 } from 'react-places-autocomplete';
 import './admin-add.css';

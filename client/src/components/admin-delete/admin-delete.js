@@ -19,7 +19,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
-import FilterListIcon from '@material-ui/icons/FilterList';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {setLocationTraces} from '../../redux/actions/website-actions';

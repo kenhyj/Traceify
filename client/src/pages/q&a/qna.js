@@ -48,7 +48,7 @@ const QnA = () => {
     const body = (
         <>
             Check here for frequently asked questions. Review Canada's economic plan {' '}
-            <a target='_blank' href='https://www.canada.ca/en/department-finance/economic-response-plan.html'>
+            <a target='_blank' href='https://www.canada.ca/en/department-finance/economic-response-plan.html' rel="noopener noreferrer">
                 here
             </a>
             . Fraud alert: The government will never contact you via text message.
@@ -135,7 +135,7 @@ const QnA = () => {
                             <Typography className='typography'>
                                 The Canada Emergency Response Benefit (CERB) gives financial support to employed and self-employed Canadians who are directly affected by COVID-19. If you are eligible, you can receive $2,000 for a 4-week period (the same as $500 a week).
                             </Typography>
-                            <a className="link-button" onClick={() => window.open('https://www.canada.ca/en/revenue-agency/services/benefits/apply-for-cerb-with-cra.html', "_blank")}>FIND OUT MORE</a>
+                            <button className="link-button" onClick={() => window.open('https://www.canada.ca/en/revenue-agency/services/benefits/apply-for-cerb-with-cra.html', "_blank")}>FIND OUT MORE</button>
                         </AccordionDetails>
                     </Accordion>
                     <Accordion>
@@ -150,7 +150,7 @@ const QnA = () => {
                             <Typography className='typography'>
                                 The Canada Emergency Student Benefit (CESB) provides financial support to post-secondary students, and recent post-secondary and high school graduates who are unable to find work due to COVID-19.
                             </Typography>
-                            <a className="link-button" onClick={() => window.open('https://www.canada.ca/en/revenue-agency/services/benefits/emergency-student-benefit.html', "_blank")}>FIND OUT MORE</a>
+                            <button className="link-button" onClick={() => window.open('https://www.canada.ca/en/revenue-agency/services/benefits/emergency-student-benefit.html', "_blank")}>FIND OUT MORE</button>
                         </AccordionDetails>
                     </Accordion>
                     <Accordion>
@@ -165,7 +165,7 @@ const QnA = () => {
                             <Typography className='typography'>
                                 A one-time, tax-free $1,000 payment for B.C. residents whose ability to work has been affected due to COVID-19.
                             </Typography>
-                            <a className="link-button" onClick={() => window.open('https://www2.gov.bc.ca/gov/content/employment-business/covid-19-financial-supports/emergency-benefit-workers', "_blank")}>FIND OUT MORE</a>
+                            <button className="link-button" onClick={() => window.open('https://www2.gov.bc.ca/gov/content/employment-business/covid-19-financial-supports/emergency-benefit-workers', "_blank")}>FIND OUT MORE</button>
                         </AccordionDetails>
                     </Accordion>
                 </div>
@@ -188,7 +188,7 @@ const QnA = () => {
                             <Typography className='typography'>
                                 An official government website that shows you the locations/details of the COVID-19 testing centres in BC.
                             </Typography>
-                            <a className="link-button" onClick={() => window.open('https://experience.arcgis.com/experience/3862560c5a41418e9d78f4f81688e9d0', "_blank")}>FIND OUT MORE</a>
+                            <button className="link-button" onClick={() => window.open('https://experience.arcgis.com/experience/3862560c5a41418e9d78f4f81688e9d0', "_blank")}>FIND OUT MORE</button>
                         </AccordionDetails>
                     </Accordion>
                     <Accordion>
@@ -203,7 +203,7 @@ const QnA = () => {
                             <Typography className='typography'>
                                 An official website hosted by Vancouver Coastal Health that lists the wait times for hospitals located in Vancouver, Richmond and North Shore.
                             </Typography>
-                            <a className="link-button" onClick={() => window.open('http://www.edwaittimes.ca/WaitTimes.aspx', "_blank")}>FIND OUT MORE</a>
+                            <button className="link-button" onClick={() => window.open('http://www.edwaittimes.ca/WaitTimes.aspx', "_blank")}>FIND OUT MORE</button>
                         </AccordionDetails>
                     </Accordion>
                     <Accordion>
@@ -218,7 +218,7 @@ const QnA = () => {
                             <Typography className='typography'>
                                 An official government website that summarizes current COVID-19 situation in British Columbia. The dashboard is updated Monday to Friday at 5 p.m.
                             </Typography>
-                            <a className="link-button" onClick={() => window.open('https://experience.arcgis.com/experience/a6f23959a8b14bfa989e3cda29297ded', "_blank")}>FIND OUT MORE</a>
+                            <button className="link-button" onClick={() => window.open('https://experience.arcgis.com/experience/a6f23959a8b14bfa989e3cda29297ded', "_blank")}>FIND OUT MORE</button>
                         </AccordionDetails>
                     </Accordion>
                 </div>

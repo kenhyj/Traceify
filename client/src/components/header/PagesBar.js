@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Toolbar, Typography } from '@material-ui/core';
+import { makeStyles, Toolbar } from '@material-ui/core';
 import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 

@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Home from './pages/home/home';
 import Header from './components/header/header';
-import PagesBar from './components/header/PagesBar';
 import ThankPage from './pages/thankyou/ThankPage';
 import SymptomChecker from './pages/symptom-checker/symptom-checker';
 import QnA from './pages/q&a/qna';
