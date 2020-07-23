@@ -12,9 +12,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Button from '@material-ui/core/Button';
 import Instruction from '../instruction/instruction';
 import axios from "axios/index";
-import { withGoogleMaps } from '../../pages/home/map/MapHOC';
 
-class AdminAdd extends React.Component {
+class AdminAddOutbreak extends React.Component {
     constructor (props) {
         super(props);
         this.state = {
@@ -26,7 +25,6 @@ class AdminAdd extends React.Component {
                     lng: 0
                 },
                 city: 'Vancouver',
-                time: '12 AM ~ 3 AM',
                 date: new Date()
             }
         };
@@ -50,17 +48,6 @@ class AdminAdd extends React.Component {
         })
     };
 
-    handleTimeChange = event => {
-        let temp = this.state.submissionObj;
-        temp = {
-            ...temp,
-            time: event.target.value
-        };
-        this.setState({
-            submissionObj: temp
-        });
-    };
-
     handleSelect = address => {
         console.log("ADDRESS: "+address);
         geocodeByAddress(address)
@@ -77,9 +64,6 @@ class AdminAdd extends React.Component {
                 };
                 this.setState({
                     submissionObj: temp
-                });
-                this.setState({
-                    locationSearchField: address
                 });
             })
             .catch(error => console.error('Error', error));
@@ -108,7 +92,7 @@ class AdminAdd extends React.Component {
                 date: temp.date.toISOString()
             };
             console.log(temp);
-            axios.post('/api/location-trace', temp).then( () =>
+            axios.post('/api/location-outbreak', temp).then( () =>
                 alert("Submission Successful")
             ).catch( () =>
                 alert("Submission Failed")
@@ -119,7 +103,7 @@ class AdminAdd extends React.Component {
     render () {
         return (
             <div>
-                <Instruction text="Please input the information of the place where the positive patient visited."/>
+                <Instruction text="Please input the information of the place where an outbreak occurred. (>10)"/>
                 <br/>
                 <form className="form">
                     <label>
@@ -174,19 +158,6 @@ class AdminAdd extends React.Component {
                         />
                     </label>
                     <br/><br/>
-                    <label>
-                        <p className="label">Time</p>
-                        <select value={this.state.submissionObj.time} onChange={this.handleTimeChange}  className="input">
-                            <option selected value="12 AM ~ 3 AM">12 AM ~ 3 AM</option>
-                            <option value="3 AM ~ 6 AM">3 AM ~ 6 AM</option>
-                            <option value="6 AM ~ 9AM">6 AM ~ 9AM</option>
-                            <option value="9 AM ~ 12 PM">9 AM ~ 12 PM</option>
-                            <option value="12 PM ~ 3 PM">12 PM ~ 3 PM</option>
-                            <option value="3 PM ~ 6 PM">3 PM ~ 6 PM</option>
-                            <option value="6 PM ~ 9 PM">6 PM ~ 9 PM</option>
-                            <option value="9 PM ~ 12 AM">9 PM ~ 12 AM</option>
-                        </select>
-                    </label><br/><br/>
                     <br/><br/>
                     <Button className="button" onClick={() => this.handleSubmit()}>SUBMIT</Button>
                 </form>
@@ -201,4 +172,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default withRouter(connect(mapStateToProps)(withGoogleMaps(AdminAdd)));
+export default withRouter(connect(mapStateToProps)(AdminAddOutbreak));

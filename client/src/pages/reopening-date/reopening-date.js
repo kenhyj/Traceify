@@ -17,213 +17,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { Typography } from '@material-ui/core';
 
-const pei = {
-  province: 'Prince Edward Island',
-  abbr: 'PE',
-  current_stage: 4,
-  phases: [
-    {
-      phase: 1,
-      restrictions: {
-        'Angling season and licenses': `Location: Online and private vendors.\n Open May 1. `,
-        'Carbon Capture Tree Planting Program':
-          'Location: Properities of private woodlot owners. \n Open May 1. ',
-        'Forest Enhancement Program':
-          'Location: Properities of private woodlot owners. \n Open May 1. ',
-        'Protected Areas Program':
-          'Locations:183 Upton Road (and virtual meetings). \n Open May 1. ',
-        'Watershed Management Program':
-          'Locations: 	Watersheds across PEI. \n Open May 1. ',
-        'Wildlife Inventory and Monitoring':
-          'Locations: Across PEI. \n Open May 1. ',
-        'Slemon Park Corporation - On The Fly Retail Store and Postal Outlet':
-          'Location: Slemon Park. \n Open May 1. ',
-        'Slemon Park Corporation - Residential Leasing, Commercial Leasing, Property Management, and Administration':
-          'Location: Slemon Park. \n Open May 1. ',
-        "Crown Attorneys' Office - Queens and Kings County":
-          'Location: 50 Water Street, Charlottetown. \n Open May 1. ',
-        "Crown Attorneys' Office - Prince County":
-          'Location: 243 Heather Moyse Drive, Summerside. \n Open May 1. ',
-        'PEI Legal Aid Offices':
-          'Locations: \n 40 Great George St, Charlottetown. \n 120 Heather Moyse Drive, Summerside. \n Open May 1 by appointment. ',
-        'PEI Legal Aid Family Office':
-          'Location: 1 Harbourside Access Road, Charlottetown. \n Open May 1 by appointment. ',
-        'Feed Lab Services':
-          'Location: PEI Analytical Lab Biocommons Park. \n Open May 3. ',
-        'Efficiency PEI':
-          'Location: 69 Belvedere Avenue, Charlottetown. \n Open May 11. ',
-        'Soil Health Lab Services':
-          'Location: PEI Analytical Lab Biocommons Park. \n Open May 11. ',
-        'Educational Services':
-          'Location: Enman Crescent. \n Open May 14 by appointment. ',
-        "Access PEI Services (except driver's testing)":
-          "Locations: Souris Charlottetown, Summerside, O'Leary. \n Open	May 12.",
-        'Educational Assistant Support for Students':
-          'Locations: Souris, Morell, Montague, Charlottetown, Kensington, West Prince. \n Open May 14 by appointment. ',
-        'Brudenell Golf Course': 'Location: Roseneath. \n Open May 15. ',
-        'Links at Crowbush Cove': 'Location: Morell. \n Open May 15. ',
-        'Class 7 written exams (previously cancelled)':
-          'All open Access PEI locations. \n Open May 18. ',
-        'Fish Inspection Services':
-          'Inspections occur on wharves/harbours across PEI. \n Open May 18. ',
-        'Lobster Resource Monitoring Program':
-          'Sampling occurs on PEI commercial fishing vessels \n A portion of the program, the index fishery, will begin the week of May 18 ',
-        IWMC:
-          'Waste Watch Drop-Off Centers and the East Prince Waste Management Facility will begin to accept household compost, waste and recyclables (disposal fees apply), mattresses/box springs, and recyclables (blue bag #1 and #2) from businesses. \n Open May 19 ',
-      },
-    },
-    {
-      phase: 2,
-      restrictions: {
-        'Municipal advisory services':
-          'Location: Aubin Arseneault Building, Charlottetown. \n Some services offered virtually; all other services to begin week of May 22 ',
-        'Burning permits': 'Location: online. \n Open May 22',
-        'Fire Weather Index': 'Location: online	\n Open May 22',
-        'Hunter Safety Practical Testing':
-          'Location: 183 Upton Road \n Open May 22 by appointment',
-        'Wildlife cards Wildlife permits':
-          'Location: 183 Upton Road \n Open	May 22 by appointment',
-        'PEI Cannabis stores': 'All locations \n	Open May 22',
-        'Dundarave Golf Course': 'Location: Roseneath \n Open	May 22',
-        'Maintenance Enforcement Office':
-          'Location: Harbourside \n	Open May 22 by appointment',
-        'Child Support Guidelines Office':
-          'Location: Harbourside \n	Open May 22 by appointment',
-        'Family Court Counsellors Office':
-          'Location: Harbourside \n	Open May 22 by appointment',
-        'Access and Privacy Services Office':
-          'Location: Harbourside \n	Open May 22 by appointment',
-        'Public Guardian and Public Trustee Office':
-          'Location: Harbourside \n	Open May 22 by appointment',
-        'Office of the Children’s Lawyer':
-          'Location: Harbourside \n	Open May 22 by appointment',
-        'Access and Privacy Offices':
-          'Location: 1st Sullivan Building, Charlottetown. \n Open	May 25 by appointment',
-        'Slemon Park Corporation Cafeteria':
-          'Location: Slemon Park \n	Open May 25, for training guests only',
-        'PEILCC Liquor sales and services': 'All 17 locations \n	Open May 25',
-        'Marriage licences':
-          'Location: 126 Douses Road, Montague \n	Open May 25 by appointment only',
-        'Change of name':
-          'Location: 126 Douses Road, Montague \n	Open May 25 by appointment only',
-        'Day programs for people with disabilities (delivered by NGOs and private companies)':
-          'Location: Various locations across PEI \n	Open May 25',
-        "Educational Services: Registrar's Office":
-          'Location: Holman Building, Summerside \n	Open May 25',
-        'Educational Services: Finance / Administration':
-          'Location: Holman Building, Summerside \n	Open May 25',
-        'In-person filing of documents (e.g. Employment Standards Act Complaints, Labour Relations Board applications)':
-          'Location: Sherwood Business Center, 2nd Floor. \n	Open May 25',
-        'Forest, Fish and Wildlife - Resource Inventory and Mapping Services':
-          '183 Upton Road \n	Open May 25',
-        'Taxation and Property Records':
-          'Location: 1st Floor Shaw S, Charlottetown. \n	Open May 25',
-        'Aphid Alert Service':
-          'Location: PEI Analytical Lab, Biocommons Park. \n	Open May 25',
-        'Driver testing, class 1,2,3,4, 6':
-          "Location: Charlottetown, Summerside, O'Leary and Souris \n	Open May 26",
-        'Driver improvement programss':
-          'All open Access PEI locations \n	Open May 25',
-        'Highway Safety Administration': 'Charlottetown \n	Open May 26',
-        'Tender opening for building construction projects':
-          '1st Floor Jones, Charlottetown \n	First tender closing May 28',
-      },
-    },
-    {
-      phase: 3,
-      restrictions: {
-        Pension_Office_and_Counselling_Service: 'Open June 1',
-        PEI_Public_Libraries: 'Open June 1. \n Curbside pickup only.',
-        Day_use_provincial_parks: 'Open June 5',
-        Novice_driver_course_for_newcomers: 'Open June 6',
-        Slemon_Park_Corporation:
-          'Open June 6. \n For training and essential services guests only',
-        Slemon_Park_Hotel:
-          'Open June 6. \n For training and essential services guests only',
-        PEI_Public_Libraries: 'Open June 8. \n Curbside pickup only',
-        Plant_Health_Lab: 'Open June 8',
-        Oyster_Monitoring_program: 'Open June 8',
-        PEI_Public_Libraries:
-          'Open June 12. \n Curbside pickup only. \n Counter service only',
-        Victim_Services_client_meetings: 'Open June 12 by appointment only',
-        Probation_Services_client_meetings: 'Open June 12 by appointment only',
-        'Youth Justice Services client meetings':
-          'Open June 12 by appointment only',
-        'One-on one-counselling (sexual deviancy, anger management, mental health counselling, Indigenous supports)':
-          'Open June 12',
-        'Occupational health and safety inspections':
-          'Open June 12 pending risk assessment',
-        'WCB occupational therapy visits and vocational rehabilitation':
-          'Open June 12 pending risk assessment',
-        'WCB client drop-in service': 'Open June 12 pending risk assessment',
-        'Visitor Information Centres': 'Open June 12',
-        'PEI Liquor Control Commission / PEI Cannabis Management Corporation head office':
-          'Open June 15',
-        'Island Investment Development Inc. (Office of Immigration)':
-          'Open June 15, recommend appointments be booked to allow for screening',
-        'Finance PEI':
-          'June 15, recommend appointments be booked to allow for screening',
-        'Investor / consumer complaints and inquiries': 'Open June 15',
-        'JPS licensing, securities, insurance and registry services':
-          'Open June 15',
-        'Vital Statistics services (Marriage Licenses; Birth & Death Certificates; Change of Name)':
-          'Open June 15 \n Recommend appointments be booked to allow for screening',
-        'Lobster Resource Monitoring Program':
-          '	At-sea sampling (remaining portion of program) to begin week of June 15',
-        'PEI Marine Science Organization Inc.':
-          '	Research activities can begin week of June 15',
-        'Northside Windmill Enhancement Fund': 'Open 	June 15',
-        'Driver testing class 5': 'Open	June 15',
-        'Class 7 written exams': 'Open June 15',
-        'Foreign driver licence': 'Open	June 15',
-        'Novice driver course': 'Open June 15',
-        'Public safety courses': 'Open June 15',
-        'Building and development permits': 'Open June 15',
-        'Subdivision applications': 'Open June 15',
-        'Boiler inspections': 'Open June 15',
-        'Electrical permits and licensing': 'Open June 15',
-        'Plumbing permits and licensing': 'Open June 15',
-        'LP gas permits and licensing': 'Open June 15',
-        'Mechanical contracts': 'Open June 15',
-        'Ozone depleting substance licensing': 'Open June 15',
-        'Power engineer licensing': 'Open June 15',
-        'Underground storage tank': 'Open June 15',
-        'Welding/brazer registration and licensing': 'Open June 15',
-        'In-person services: Social Assistance': 'Open June 15',
-        'In-person services: Seniors Independence Initiative': 'Open June 15',
-        'In-person services: AccessAbility supports  (and home visits for clinical assessments)':
-          'Open June 15',
-        'In-person services: Child Care Subsidy': 'Open June 15',
-        'Employment services for social program clients': 'Open June 15',
-        'Innovation PEI':
-          'Open June 15. \n recommend appointments be booked to allow for screening',
-        'PEI Museum and Heritage sites': 'Open June 15',
-        'Authentication of documents service': 'Open June 22',
-        'Provincial campgrounds': 'Open June 26',
-      },
-    },
-    {
-      phase: 4,
-      restrictions: {
-        Provincial_campgrounds:
-          'Sites across PEI. \n Proposed to open June 26 - open to seasonal campers only.',
-        PEI_Museum_and_Heritage_sites:
-          'Basin Head Fisheries Museum Elmira Railway Museum. \n Proposed to open June 29.',
-        Medical_unfit_driver_testing:
-          'All open Access PEI locations and residential. \n Proposed to open August 3',
-        Safety_courses_public:
-          'All open Access PEI locations and residential. \n Proposed to open August 3',
-        PEI_Agricultural_Insurance_Corporation_Kensington_Office:
-          '7 Gerald McCarville Drive, Kensington \n Open date: To be determined',
-        Youth_Justice_Services_client_meetings:
-          'Access PEI sites and RCMP / police detachments. \n Open date: To be determined',
-      },
-    },
-  ],
-  more:
-    'https://www.princeedwardisland.ca/en/information/health-and-wellness/re-openings',
-};
-
 function renderProvince(obj) {
   if (Object.keys(obj).length !== 0) {
     const current_phase = obj.current_stage - 1;
@@ -310,10 +103,16 @@ function renderProvinceTwo(obj, chosenphase) {
             {renderTableDataMUI(obj.phases[clicked_phase].restrictions)}
           </TableBody>
         </Table>
+        <b>
+          Additional information is located{' '}
+          <a href={obj.more} target='_blank'>
+            here.
+          </a>
+        </b>
       </div>
     );
   }
-  return <div>Utnapishtim</div>;
+  return <div>.</div>;
 }
 
 function renderTableDataMUI(restrictions) {
@@ -416,7 +215,7 @@ const body = (
     eg. 2 reverts to 1.
     <br />
     Each of these phases are flexible to change according to the COVID-19
-    climate. Ontario, Quebec, Nunvaut, New Brunswick, Manitoba are not updated.
+    climate.
     <br />
     If there is a service you do not see, try checking the previous stages.
     <br />

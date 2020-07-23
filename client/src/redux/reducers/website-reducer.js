@@ -1,5 +1,3 @@
-import axios from "axios/index";
-
 const INITIAL_STATE = {
     isLoggedIn: false,
     accessToken: '',

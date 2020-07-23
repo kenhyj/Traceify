@@ -15,7 +15,6 @@ var reopeningsRouter = require('./routes/reopenings');
 var exposeRouter = require('./routes/expose');
 var locationOutbreakRouter = require('./routes/location-outbreak');
 var app = express();
-require('dotenv').config({ path: '../.env' });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -40,10 +39,6 @@ app.use(bodyParser.json());
 mongoose.connect(process.env.DB_CONNECTION, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
-
-mongoose.connection.on('connected', () => {
-  console.log('mongoDB is connected');
 });
 
 const db = require('./db');
