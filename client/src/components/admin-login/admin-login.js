@@ -7,7 +7,7 @@ import axios from 'axios';
 import { Button, makeStyles } from '@material-ui/core';
 
 const CLIENT_ID =
-  '319564492744-lpvaf4jeab014b5rrh21qv0ak1aab997.apps.googleusercontent.com';
+  '214796866260-6c8clqh189ckf5i0rgb9td99pvul0r59.apps.googleusercontent.com';
 
 const AdminLogin = (props) => {
   const login = (response) => {

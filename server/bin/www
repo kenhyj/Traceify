@@ -12,7 +12,10 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.API_PORT || '7000'); // do not use 3000 it's for the front end.
+var port = normalizePort(process.env.PORT || '7000'); // do not use 3000 it's for the front end.
+if (process.env.PORT) {
+  console.log(`Listening to Port ${process.env.PORT}`);
+}
 app.set('port', port);
 
 /**
