@@ -13,4 +13,13 @@ router.get('/api/location-outbreak', function (req, res) {
   });
 });
 
+router.post('/api/location-outbreak', function (req, res) {
+    db.get().collection('locationOutbreak').insertOne(req.body)
+        .then(() => {
+            res.status(200).send("ok");
+        }).catch(() => {
+        res.status(400).send("An error occurred in the database.");
+    });
+});
+
 module.exports = router;

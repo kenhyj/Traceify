@@ -11,9 +11,8 @@ import { ThemeProvider } from '@material-ui/core';
 import theme from './MuiTheme';
 import thunk from "redux-thunk";
 
-axios.defaults.baseURL = '';
-// axios.defaults.baseURL = 'http://localhost:7000';
-// console.log("AXIOS BASEURL: "+ axios.defaults.baseURL);
+// axios.defaults.baseURL = '';
+axios.defaults.baseURL = 'http://localhost:7000';
 
 ReactDOM.render(
     <ThemeProvider theme={theme}>

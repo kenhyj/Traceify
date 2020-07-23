@@ -15,7 +15,7 @@ var reopeningsRouter = require("./routes/reopenings");
 var exposeRouter = require('./routes/expose');
 var locationOutbreakRouter = require('./routes/location-outbreak');
 var app = express();
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config({ path: "./.env" });
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
