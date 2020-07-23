@@ -115,7 +115,7 @@ const HaveI = () => {
             let oneRow = fields[i];
             console.log(oneRow);
             let oneDate = oneRow.date.toISOString();
-            let oneResult = await axios.put('/expose', { date: oneDate, locations: oneRow.locations });
+            let oneResult = await axios.put('/api/expose', { date: oneDate, locations: oneRow.locations });
             console.log(oneResult);
             oneResult.data.map((onePlace) => places.push(onePlace));
         }

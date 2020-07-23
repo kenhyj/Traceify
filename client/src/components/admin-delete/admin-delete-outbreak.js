@@ -25,8 +25,8 @@ import {setLocationTraces} from '../../redux/actions/website-actions';
 import axios from "axios/index";
 import Instruction from "../instruction/instruction";
 
-function createData(id, title, lat, lng, city, time, date) {
-    return { id, title, lat, lng, city, time, date };
+function createData(id, title, lat, lng, city, date) {
+    return { id, title, lat, lng, city, date };
 }
 
 function descendingComparator(a, b, orderBy) {
@@ -60,7 +60,6 @@ const headCells = [
     { id: 'lat', numeric: true, disablePadding: false, label: 'Lat' },
     { id: 'lng', numeric: true, disablePadding: false, label: 'Lng' },
     { id: 'city', numeric: false, disablePadding: false, label: 'City' },
-    { id: 'time', numeric: false, disablePadding: false, label: 'Time' },
     { id: 'date', numeric: false, disablePadding: false, label: 'Date' }
 ];
 
@@ -207,7 +206,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function AdminDelete(props) {
+function AdminDeleteOutbreak(props) {
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
@@ -218,15 +217,15 @@ function AdminDelete(props) {
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
     const getRows = () => {
-        axios.get('/api/locations').then( result => {
-            props.setLocationTraces(result.data);
+        axios.get('/api/location-outbreak').then( result => {
+            // props.setLocationTraces(result.data);
             let temp = [];
             result.data.forEach(row => {
-                temp.push(createData(row._id, row.title, row.location.lat, row.location.lng, row.city, row.time, row.date))
+                temp.push(createData(row._id, row.title, row.location.lat, row.location.lng, row.city, row.date))
             });
             setRows(temp);
         }).catch( () => {
-            alert('Location Traces retrieval failed.');
+            alert('Outbreak Location(s) retrieval failed.');
         });
     };
 
@@ -287,7 +286,7 @@ function AdminDelete(props) {
 
     return (
         <div className={classes.root}>
-            <Instruction text="Please select the location trace you would like to delete, then press the icon at the top right."/>
+            <Instruction text="Please select the outbreak location you would like to delete, then press the icon at the top right."/>
             <br/><br/><br/>
             <Paper className={classes.paper}>
                 <EnhancedTableToolbar numSelected={selected.length} selected={selected} trigger={getRows} setSelected={setSelected}/>
@@ -336,7 +335,6 @@ function AdminDelete(props) {
                                             <TableCell align="right">{row.lat}</TableCell>
                                             <TableCell align="right">{row.lng}</TableCell>
                                             <TableCell align="right">{row.city}</TableCell>
-                                            <TableCell align="right">{row.time}</TableCell>
                                             <TableCell align="right">{row.date}</TableCell>
                                         </TableRow>
                                     );
@@ -373,4 +371,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default withRouter(connect(mapStateToProps, { setLocationTraces })(AdminDelete));
+export default withRouter(connect(mapStateToProps, { setLocationTraces })(AdminDeleteOutbreak));

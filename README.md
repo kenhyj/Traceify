@@ -21,37 +21,22 @@
 
 TBA
 
-## Instruction
+## Instruction for Building the Project (DEV Environment)
 
-### Front End
+For first time use, in the terminal, run 'npm install' inside both client and server folder.
 
-For first time use, in the terminal run:
-
-```bash
-cd client
-npm install
+From the root, run 'npm start'. This will start both the client and the server.
+Create a '.env' file inside the client folder. You need to include:
 ```
-
-Then :
-
-```bash
-npm start
+REACT_APP_GOOGLE_API_KEY = 'YOUR GOOGLE API KEY'
+DB_CONNECTION = 'mongodb+srv://admin:traceify@traceify-bzpck.mongodb.net/traceify?retryWrites=true&w=majority'
 ```
+Note that you will have to generate your own Google API key from the Google Developer Console (https://console.cloud.google.com/).
+Your API key needs to enable the following API libraries:
+- Maps JavaScript API 
+- Places API
+- Geocoding API
 
-### Back End
-
-For first time use, in the terminal run:
-
-```bash
-cd api
-npm install
-```
-
-Then :
-
-```bash
-npm start
-```
 
 ## Project Description
 
@@ -65,47 +50,47 @@ Our project aims to help the general public in BC by providing information and k
 
 - What will it do? (What "human activity" will it support?)
 
-  - It will keep track of COVID-19 positive individuals of where they have visited in 3 day intervals. (Reason for that: some RNA test may need 3-4 days to complete and if a result is positive, the infected person is a carrier that can potentially infect others during this 3 days window) <br/><br/>
+  - It will keep track of COVID-19 positive individuals of where they have visited.<br/><br/>
 
 - What type of data will it store?
 
-  - Dates and Location of where people who turned out positive visited for the last 3 days
+  - Dates and Location of where people who turned out positive visited
+  - List of Admin emails that can log in
   - For a detailed description, refer to the Database Schema section below<br/><br/>
 
 - What will users be able to do with this data?
 
   - View map, locations, and infected numbers per region
   - Filter out by location or date or region
-  - If you find yourself at risk, you can isolate yourself at home for 2 weeks
+  - If you find yourself at risk (through 'Have I been Exposed?' page), you can isolate yourself at home for 2 weeks
   - You can avoid traveling to locations where there's higher chance of transmission<br/><br/>
 
 - What is some additional functionality you can add/remove based on time constraints?
-  - Symptom checker: Upon clicking radio buttons, the javascript or library package would calculate whether you would need to go to a clinic for check up or not.
-    We can decide on the next question according to user’s input instead of listing all the possible symptoms. <br/>
-    Our first question can be "Are you experiencing severe breathing difficulties", and if the user answers yes, we should give suggestion about calling 811 or redirect to bc health website.<br/>
-    If not, we can continue questionnaires with other possible mild symptoms. And when they finish the checker process, we will give suggestions or redirect the user to a certain page. <br/>
-    https://drive.google.com/file/d/1oiruC1mYAAFN7DtbwOGw02uMucLj5MDP/view?usp=sharing this is the visio online version of how we are going to direct people <br/>
-    https://bc.thrive.health/covid19/en example of symptom checker
+  - If we have time, we can extract the COVID-19 graphs real-time from certain websites and display them on our website. If we don't have time, we can include a link to those websites under our Q&A page.
 
 ## Project Task Requirements:
 
 - 3-5 minimal requirements (will definitely complete)
 
-  - Admin panel: Admin can submit anonymous patient data to be stored on the database
+  - Make the Admin Panel only accessible to Admin emails that's stored as a 'whitelist' on the database, and allow Admins to log in via Google OAuth
   - Home page: Google Maps integration to show data on map based on the filter selected
-  - Symptom Checker page
-  - A thank you pape for all essential workers and people stay at home
+  - Symptom Checker page: A quick self-testing page that assesses your likelihood of being contacted with COVID-19
+  - A thank you modal for all essential workers and people staying at home
     <br/>
 
 - 3-7 "standard" requirements (will most likely complete)
 
-  - Have I Been Exposed? page
+  - Have I Been Exposed? page: Checks whether you've crossed paths within close range of places that a positive patient visited
   - Financial Help page (links to CERB, EI, BC Emergency Workers fund, etc.)
-  - Retailers Re-Opening Dates
-  - (Historical data visulization), so people can see if the curve has been flattern
+  - Retailers Re-Opening Stage Information by province
+  - Admin panel: Admin can submit and delete Outbreak data
+  - Admin panel: Admin can submit and delete anonymous location trace data of a positive patient
     <br/>
 
-- 2-3 stretch requirements (plan to complete 1) - Q&A page - Wait times of testing centres (employ same technology currently used in all major hospitals: see http://www.edwaittimes.ca/WaitTimes.aspx) - Location of testing centres - list and map : https://experience.arcgis.com/experience/3862560c5a41418e9d78f4f81688e9d0 something like this - Current geolocation data only visible to Admin: alerts if the person moves out of their neighbourhood - Credit card statement parsing for areas visited by a patient who tested positive, and automatically upload this data to the database
+- 2-3 stretch requirements (plan to complete 1) 
+
+  - Q&A page - Link to Wait times of hospitals, COVID-19 testing facility locations, government financial help website, overall summary of current situation in BC.
+  - Current geolocation data only visible to Admin: alerts if the person moves out of their neighbourhood - Credit card statement parsing for areas visited by a patient who tested positive, and automatically upload this data to the database
   <br/>
 
 ## Task Breakdown
@@ -129,20 +114,55 @@ Our project aims to help the general public in BC by providing information and k
 ![Retail Re-opening Dates](client/protosketch/page.png)
 ![Admin Panel](client/protosketch/admin-panel.PNG)
 
-## Database Schema
+## Database Collections (Example data below)
 
-- Visited (<ins>carecard: integer, date: Date, location: char(50)</ins>) <br />
-  Reason for having all 3 as primary keys: <br />
-  Case1: need care card b/c there could be overlapping date/location with a different person. Case2: he/she could’ve visited the same location for two consecutive days <br />
-  Foreign key: location references Location_isIn
-
-- Location_isIn (<ins>location: char(50)</ins>, regionName: char(20)) <br />
-  Ex) (“4700 Kingsway, Burnaby, BC V5H 4N2”, “Burnaby”) or (“4700 Kingsway, Burnaby, BC V5H 4N2”, “Metrotown”) <br />
-  Foreign key: regionName references Region
-
-- Region (<ins>regionName: char(20)</ins>)
-
-- Symptom (<ins>symptom: char(20)</ins>)
-
-- Diagnosis (<ins>illness: char(20)</ins>, symptom: char(20))<br />
-  Foreign key: symptom references Symptom
+- locationOutbreak
+  ```
+  { "_id" : ObjectId("5f095ebcd763512a7c020091"), "title" : "Lynn Valley Care Centre", "location" : { "lat" : 49.3339665, "lng" : -123.0469177 }, "city" : "North Vancouver", "date" : "2020-03-15T00:00:00Z" }
+  ```
+- locationTraces
+  ```
+  { "_id" : ObjectId("5f0575bc43ed5361d5a14be5"), "title" : "CF Pacific Centre", "location" : { "lat" : 49.283741, "lng" : -123.118548 }, "city" : "Vancouver", "time" : "9 AM ~ 12 PM", "date" : "2020-03-15T00:00:00Z" }
+  ```
+- reopenings
+  ```
+  {
+        "_id" : ObjectId("5f162c7ca07e53cc40e66ba2"),
+        "province" : "Nunavut",
+        "abbr" : "NU",
+        "current_stage" : 1,
+        "phases" : [
+                {
+                        "phase" : 1,
+                        "restrictions" : {
+                                "Effective" : "July 20",
+                                "Licensed establishments" : "All licensed establishments in the territory are allowed to open with regular hours.",
+                                "Outdoor gathering" : "The limit for outdoor gatherings has been increased to 50 people.",
+                                "Indoor gathering" : "The limit for indoor gatherings has been increased to 10 people. In private dwellings, this means 10 people in addition to those who reside there.",
+                                "Gatherings at places of worship, conference facilities, community halls, rental meeting spaces, and gatherings organized by the Government of Canada, Government of Nunavut, municipal corporations, or Regional Inuit Organizations" : "The limit for gatherings at places of worship, conference facilities, community halls, rental meeting spaces, and gatherings organized by the Government of Canada, Government of Nunavut, municipal corporations, or Regional Inuit Organizations has been set at 50 people or 50% of capacity for the facility, whichever is less.",
+                                "Youth centres and day camps" : "may resume operations.",
+                                "Long-term care facilities" : "can accept visitors in a limited capacity; they can only allow one to two visitors per resident at a time, and these visitors can only be immediate family.",
+                                "Personal service providers" : "are permitted to open for one-on-one sessions. ",
+                                "Bars and restaurants" : "are allowed to re-open and operate at half capacity.  Last call for alcohol service will be at 9 p.m.",
+                                "Theatres and churches" : "are permitted to re-open.",
+                                "Gyms and pools" : "are permitted to re-open for solo workouts and lap swimming only.",
+                                "Dental Clinics, physiotherapy clinics, massage therapy, and chiropractic treatments" : "are permitted to resume. Proper PPE must be made available if requested.",
+                                "Workplace and retail outlets" : "are permitted to re-open, provided that they have safety measures in place.",
+                                "Galleries, museums, and libraries" : "may be opened for individual viewing and browsing. Group sessions are still prohibited.",
+                                "Daycares" : "are permitted to open up for regular business.",
+                                "Territorial parks" : "may reopen for outdoor activities only. All park buildings will remain closed.",
+                                "Municipal playgrounds" : "are permitted to re-open."
+                        }
+                }
+        ],
+        "more" : "https://www.gov.nu.ca/health/information/covid-19-novel-coronavirus"
+  }
+  ```
+  
+- users
+  ```
+  {
+        "_id" : ObjectId("5ee6e54b3df617fe515762a5"),
+        "email" : "kessris@gmail.com"
+  }
+  ```
