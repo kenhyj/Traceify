@@ -14,7 +14,7 @@ const modalStye = makeStyles((theme)=> ({
         marginTop: '150px',
         maxWidth : '300px',
         [theme.breakpoints.up('md')]:{
-            maxWidth : theme.breakpoints.values.sm,
+            maxWidth : '750px',
             marginTop: '3%',
         },
         
