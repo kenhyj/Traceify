@@ -29,3 +29,7 @@
   height: 100px;
   z-index: 1;
 }
+
+html {
+  overflow-y: scroll;
+}

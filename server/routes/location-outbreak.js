@@ -3,7 +3,7 @@ var router = express.Router();
 const db = require('../db');
 var mongodb = require('mongodb');
 
-router.get('/location-outbreak', function (req, res) {
+router.get('/api/location-outbreak', function (req, res) {
   db.get().collection('locationOutbreak').find({}).toArray()
       .then((result) => {
           if (result.toString() !== '') res.status(200).send(result);
@@ -11,6 +11,15 @@ router.get('/location-outbreak', function (req, res) {
       }).catch(() => {
       res.status(400).send("An error occurred in the database.");
   });
+});
+
+router.post('/api/location-outbreak', function (req, res) {
+    db.get().collection('locationOutbreak').insertOne(req.body)
+        .then(() => {
+            res.status(200).send("ok");
+        }).catch(() => {
+        res.status(400).send("An error occurred in the database.");
+    });
 });
 
 module.exports = router;

@@ -13,6 +13,9 @@ var http = require('http');
  */
 
 var port = normalizePort(process.env.PORT || '7000'); // do not use 3000 it's for the front end.
+if (process.env.PORT) {
+  console.log(`Listening to Port ${process.env.PORT}`);
+}
 app.set('port', port);
 
 /**

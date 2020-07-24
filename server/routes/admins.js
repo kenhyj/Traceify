@@ -4,7 +4,7 @@ const db = require('../db');
 const { response } = require('express');
 
 /* GET admin users listing. */
-router.get('/admins/:email', function (req, res) {
+router.get('/api/admins/:email', function (req, res) {
     let email = req.params.email;
     db.get().collection('users').find({ email: `${email}` }).toArray()
         .then((result) => {
