@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, Toolbar } from '@material-ui/core';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter, Link, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const navBarStyles = makeStyles((theme) => ({
@@ -28,11 +28,20 @@ const navBarStyles = makeStyles((theme) => ({
             backgroundSize: '100% .1em',
         },
     },
+    pageSelected:{
+        color: '#00a1c0',
+        textDecoration: 'none',
+        textAlign: 'center',
+        background: 'linear-gradient(currentColor, currentColor) bottom / 0 .1em no-repeat',
+        transition: '0.5s background-size',
+        backgroundSize: '100% .1em',
+    }
 }));
 
 function PagesBar(props) {
     const classes = navBarStyles();
-
+    const location = useLocation();
+    console.log(location.pathname)
     const showAdmin = () => {
         if (props.isLoggedIn)
             return (
@@ -46,19 +55,19 @@ function PagesBar(props) {
         <React.Fragment>
             <Toolbar component='nav' variant='dense' className={classes.pagesBar}>
                 <Link to='/home' className={classes.pageLink}>
-                    <span className={classes.pageLinkFancy}>Home</span>
+                    <span className= {location.pathname ==='/home'?classes.pageSelected:classes.pageLinkFancy}>Home</span>
                 </Link>
                 <Link to='/symptom-checker' className={classes.pageLink}>
-                    <span className={classes.pageLinkFancy}>Symptom Checker</span>
+                    <span className= {location.pathname ==='/symptom-checker'?classes.pageSelected:classes.pageLinkFancy}>Symptom Checker</span>
                 </Link>
                 <Link to='/have-i-been-exposed' className={classes.pageLink}>
-                    <span className={classes.pageLinkFancy}>Have I been Exposed?</span>
+                    <span className= {location.pathname ==='/have-i-been-exposed'?classes.pageSelected:classes.pageLinkFancy}>Have I been Exposed?</span>
                 </Link>
                 <Link to='/reopen' className={classes.pageLink}>
-                    <span className={classes.pageLinkFancy}>Reopening</span>
+                    <span className= {location.pathname ==='/reopen'?classes.pageSelected:classes.pageLinkFancy}>Reopening</span>
                 </Link>
                 <Link to='/qna' className={classes.pageLink}>
-                    <span className={classes.pageLinkFancy}>Q&A</span>
+                    <span className= {location.pathname ==='/qna'?classes.pageSelected:classes.pageLinkFancy}>Q&A</span>
                 </Link>
                 {showAdmin()}
             </Toolbar>

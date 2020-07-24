@@ -6,6 +6,7 @@
   border: 2px solid rgb(194, 207, 191);
   padding: 8px;
   background-color: rgb(188, 213, 243);
+  font-weight: bold;
 }
 #provtable th:nth-child(1) {
   white-space: nowrap;
@@ -19,6 +20,7 @@
 #provtable td:nth-child(1) {
   /* text-decoration: underline; */
   text-align: center;
+  white-space: pre-wrap;
 }
 #provtable tr:hover {
   background-color: #ddd;

@@ -1,11 +1,11 @@
 {
   "extends": ["airbnb", "prettier", "react-app"],
   "plugins": ["prettier"],
-  "env": { 
-      "es6": true,
-      "browser": true,
-      "node": true
-    },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module"
@@ -19,6 +19,8 @@
     "object-shorthand": "off",
     "class-methods-use-this": "off",
     "jsx-quotes": "warn",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "camelcase": "off",
+    "no-multi-str": "warn"
   }
 }
