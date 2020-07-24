@@ -4,7 +4,7 @@ const db = require('../db');
 const { response } = require('express');
 
 
-router.put('/expose',(req,res)=>{
+router.put('/api/expose',(req,res)=>{
     const oneRow = req.body;
     let places = [];
     // const time = oneRow.date.toISOString().slice(0,10);

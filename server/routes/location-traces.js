@@ -4,7 +4,7 @@ const db = require('../db');
 var mongodb = require('mongodb');
 
 // Returns the complete list of all location traces
-router.get('/locations', function (req, res) {
+router.get('/api/locations', function (req, res) {
     db.get().collection('locationTraces').find({}).toArray()
         .then((result) => {
             if (result.toString() !== '') res.status(200).send(result);
@@ -14,7 +14,7 @@ router.get('/locations', function (req, res) {
     });
 });
 
-router.post('/location-trace', function (req, res) {
+router.post('/api/location-trace', function (req, res) {
     //TODO: Also increment numVisitedByInfected in city collection
 
     db.get().collection('locationTraces').insertOne(req.body)
@@ -25,7 +25,7 @@ router.post('/location-trace', function (req, res) {
     });
 });
 
-router.delete('/locations', function (req, res) {
+router.delete('/api/locations', function (req, res) {
     req.body.forEach(id => {
         db.get().collection('locationTraces').remove({ _id: new mongodb.ObjectID(id) })
             .then(() => {
