@@ -14,7 +14,7 @@ const modalStye = makeStyles((theme)=> ({
         marginTop: '150px',
         maxWidth : '300px',
         [theme.breakpoints.up('md')]:{
-            maxWidth : '750px',
+            maxWidth : '700px',
             marginTop: '3%',
         },
         
@@ -36,21 +36,21 @@ const ThankPage = ()=> {
                 <Hidden smDown>
                 <div className="page-intro">
                     <div className="intro-left">
-                        <img src={socialDis} />
+                        <img alt = "" src={socialDis} />
                         <p className="title">What we can do?</p>
                         <div>
                             <p className='intro-text'>Stay home if you can, keep social distancing and wash your hands.</p>
                         </div>
                     </div>
                     <div className="intro-middle">
-                        <img src={symptom} />
+                        <img alt = "" src={symptom} />
                         <p className="title"> Worried about it?</p>
                         <div>
                             <p className='intro-text'>Check current situation, your symptoms using our tools.</p>
                         </div>
                     </div>
                     <div className="intro-right">
-                        <img src={reopen} />
+                        <img alt = "" src={reopen} />
                         <p className="title">What's next</p>
                         <div>
                             <p className='intro-text'>Thanks again to essential workers and support local retailers.</p>
