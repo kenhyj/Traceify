@@ -7,7 +7,7 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -40%);
-    width: 800px;
+    width: 750px;
     border-radius: 15px;
     text-align: left;
     background-color: aliceblue;
@@ -16,3 +16,9 @@
     transition: background .3s ease;
     text-align: left;
 }
+
+@media screen and (max-width: 900px) {
+    .pop-result {
+        width: 750px;
+    }
+  }
