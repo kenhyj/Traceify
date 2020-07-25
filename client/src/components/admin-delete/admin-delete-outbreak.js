@@ -137,7 +137,7 @@ const useToolbarStyles = makeStyles((theme) => ({
 }));
 
 function handleDelete(selected, trigger, setSelected) {
-    axios.delete('/api/locations', { data: selected }).then( () => {
+    axios.delete('/api/location-outbreak', { data: selected }).then( () => {
         alert("Deletion Successful");
         setSelected([]);
         trigger();

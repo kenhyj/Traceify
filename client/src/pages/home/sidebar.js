@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Chip, Grid, Paper } from '@material-ui/core';
+import React from 'react';
+import { Chip, Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 import {
   showHeatLayer,

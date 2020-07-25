@@ -25,3 +25,13 @@
 #provtable tr:hover {
   background-color: #ddd;
 }
+
+.dropdown {
+  text-align: center;
+  width: 70%;
+  margin: auto;
+}
+
+.label {
+  width: 40% !important;
+}

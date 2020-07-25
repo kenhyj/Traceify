@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 const db = require('../db');
-var mongodb = require('mongodb');
+let mongodb = require('mongodb');
 
 router.get('/api/location-outbreak', function (req, res) {
   db.get().collection('locationOutbreak').find({}).toArray()
@@ -19,6 +19,19 @@ router.post('/api/location-outbreak', function (req, res) {
             res.status(200).send("ok");
         }).catch(() => {
         res.status(400).send("An error occurred in the database.");
+    });
+});
+
+router.delete('/api/location-outbreak', function (req, res) {
+    req.body.forEach(id => {
+        db.get().collection('locationOutbreak').remove({ _id: new mongodb.ObjectID(id) })
+            .then(() => {
+                console.log("Location trace removal successful.");
+                if (req.body.indexOf(id) === req.body.length-1)
+                    res.status(200).send("ok");
+            }).catch(() => {
+            res.status(400).send("An error occurred in the database.");
+        });
     });
 });
 

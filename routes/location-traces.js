@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 const db = require('../db');
-var mongodb = require('mongodb');
+let mongodb = require('mongodb');
 
 // Returns the complete list of all location traces
-router.get('/api/locations', function (req, res) {
+router.get('/api/location-trace', function (req, res) {
     db.get().collection('locationTraces').find({}).toArray()
         .then((result) => {
             if (result.toString() !== '') res.status(200).send(result);
@@ -25,7 +25,7 @@ router.post('/api/location-trace', function (req, res) {
     });
 });
 
-router.delete('/api/locations', function (req, res) {
+router.delete('/api/location-trace', function (req, res) {
     req.body.forEach(id => {
         db.get().collection('locationTraces').remove({ _id: new mongodb.ObjectID(id) })
             .then(() => {

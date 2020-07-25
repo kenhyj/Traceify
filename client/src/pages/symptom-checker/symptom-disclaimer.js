@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './symptom-checker.css';
-import { Modal, Grid, Button, Typography, Container } from '@material-ui/core';
+import { Modal, Grid, Button } from '@material-ui/core';
 import Card from '../../components/card/Card-TitleDescButton';
 
 export class SymptomDisclaimer extends React.Component {

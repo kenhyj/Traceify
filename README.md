@@ -81,7 +81,6 @@ Our project aims to help the general public in BC by providing information and k
 - 3-7 "standard" requirements (will most likely complete)
 
   - Have I Been Exposed? page: Checks whether you've crossed paths within close range of places that a positive patient visited
-  - Financial Help page (links to CERB, EI, BC Emergency Workers fund, etc.)
   - Retailers Re-Opening Stage Information by province
   - Admin panel: Admin can submit and delete Outbreak data
   - Admin panel: Admin can submit and delete anonymous location trace data of a positive patient

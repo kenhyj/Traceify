@@ -1,21 +1,18 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 const Reopening = require('../models/Reopening');
 
 /* GET messages listing. */
-/* SAMPLE REST */
-router.get('/api/reopenings', function (req, res, next) {
+router.get('/api/reopenings', function (req, res) {
   res.send('this is the Reopening endpoint');
 });
 
 router.get('/api/getall', (req, res) => {
   Reopening.find({})
     .then((data) => {
-      // console.log('Reopening...', data);
       res.json(data);
     })
     .catch((error) => {
-      // console.error("Error", error);
       res.status(404).json('Error: ' + error);
     });
 });
@@ -27,11 +24,9 @@ router.get('/api/reopenings/getprovince', (req, res) => {
     province: req.body.province,
   })
     .then((data) => {
-      // console.log('Reopening...', data);
       res.json(data);
     })
     .catch((error) => {
-      // console.error("Error", error);
       res.status(404).json('Error: ' + error);
     });
 });
@@ -43,11 +38,9 @@ router.get('/api/reopenings/getprovince/:abbr', (req, res) => {
     abbr: req.params.abbr,
   })
     .then((data) => {
-      // console.log('Reopening...', data);
       res.json(data);
     })
     .catch((error) => {
-      // console.error("Error", error);
       res.status(404).json('Error: ' + error);
     });
 });
@@ -59,11 +52,9 @@ router.get('/api/getprovince/:abbr', (req, res) => {
     abbr: req.params.abbr,
   })
     .then((data) => {
-      // console.log('Reopening...', data);
       res.json(data);
     })
     .catch((error) => {
-      // console.error("Error", error);
       res.status(404).json('Error: ' + error);
     });
 });
@@ -101,7 +92,7 @@ router.route('/api/reopenings/expose').post((req, res) => {
           .then(() => {
             places.push(oneLoc.loc);
           })
-          .catch((err) => console.log('not found for this row.'));
+          .catch(() => console.log('not found for this row.'));
       }
     });
   });
