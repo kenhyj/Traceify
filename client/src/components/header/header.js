@@ -10,7 +10,7 @@ import { Menu } from '@material-ui/icons';
 import logo from '../../assets/logoresized.svg';
 import DropdownMenu from './DropdownMenu';
 import PagesBar from './PagesBar';
-import { useStyles } from './Header.css';
+import { useStyles } from './header.css';
 
 export default function HeaderTitle(props) {
   const classes = useStyles();
