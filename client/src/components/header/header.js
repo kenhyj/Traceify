@@ -28,18 +28,18 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: `1px solid ${theme.palette.divider}`,
     backgroundColor: '#ffffff',
     width: '100%',
-    flexGrow: 1,
   },
   pagesBar: {
     justifyContent: 'center',
-    flexGrow: 2,
   },
   logo: {
     maxHeight: '4rem',
   },
   logoTypography: {
     justifyContent: 'left',
-    flexGrow: 1,
+    [theme.breakpoints.down('sm')]: {
+      flexGrow: 1,
+    },
     paddingLeft: '2rem',
   },
   menuButton: {
@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawer: {
     flexShrink: 0,
+    borderBottom: `1px solid ${theme.palette.divider}`,
   },
 }));
 

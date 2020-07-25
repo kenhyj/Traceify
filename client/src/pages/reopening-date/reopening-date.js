@@ -1,7 +1,6 @@
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -15,7 +14,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { Typography } from '@material-ui/core';
+import Instruction from '../../components/instruction/instruction';
 
 function renderProvince(obj) {
   if (Object.keys(obj).length !== 0) {
@@ -45,7 +44,7 @@ function renderProvince(obj) {
             <TableRow>
               <TableCell>Service</TableCell>
               <TableCell>
-                Detail and Restriction for Stage {current_phase}
+                Detail and Restriction for Stage {obj.current_stage}
               </TableCell>
             </TableRow>
           </TableHead>
@@ -55,7 +54,7 @@ function renderProvince(obj) {
         </Table>
         <b>
           Additional information is located{' '}
-          <a href={obj.more} target='_blank'>
+          <a href={obj.more} target='_blank' rel='noopener noreferrer'>
             here.
           </a>
         </b>
@@ -72,7 +71,7 @@ function renderProvinceTwo(obj, chosenphase) {
     }
     const clicked_phase = chosenphase - 1;
     return (
-      <div>
+      <div style={{ textAlign: 'center' }}>
         <h1
           style={{
             textAlign: 'center',
@@ -93,19 +92,25 @@ function renderProvinceTwo(obj, chosenphase) {
         <Table id='provtable'>
           <TableHead>
             <TableRow>
-              <TableCell>Service</TableCell>
-              <TableCell>
+              <TableCell style={{ width: '50%', textAlign: 'center' }}>
+                Service
+              </TableCell>
+              <TableCell style={{ width: '50%', textAlign: 'center' }}>
                 Detail and Restriction for Stage {chosenphase}
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
+            {console.log(
+              'obj.phases[clicked_phase]',
+              obj.phases[clicked_phase]
+            )}
             {renderTableDataMUI(obj.phases[clicked_phase].restrictions)}
           </TableBody>
         </Table>
         <b>
           Additional information is located{' '}
-          <a href={obj.more} target='_blank'>
+          <a href={obj.more} target='_blank' rel='noopener noreferrer'>
             here.
           </a>
         </b>
@@ -121,10 +126,12 @@ function renderTableDataMUI(restrictions) {
     for (const x of mesage) {
       return (
         <TableRow>
-          <TableCell>
+          <TableCell style={{ textAlign: 'center' }}>
             {x.replace(/_/gi, ' ').replace(/\n/g, '<br />')}
           </TableCell>
-          <TableCell>{breaklines(mesage[1])}</TableCell>
+          <TableCell style={{ textAlign: 'center' }}>
+            {breaklines(mesage[1])}
+          </TableCell>
         </TableRow>
       );
     }
@@ -147,8 +154,8 @@ function breaklines(text) {
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
+    margin: theme.spacing(10),
+    minWidth: '30%',
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -187,7 +194,9 @@ const phasesmenu = (region) => {
 function dropphasemenu(region) {
   if (Object.keys(region).length > 0) {
     return phasesmenu(region)
-      .sort()
+      .sort(function (a, b) {
+        return a - b;
+      })
       .map((service) => {
         return <MenuItem value={service}>{service}</MenuItem>;
       });
@@ -236,33 +245,47 @@ function Reopen() {
     axios
       .get('/api/reopenings/getprovince/'.concat(target))
       .then((res) => {
-        setPhase(res.data[0].current_stage);
+        // setPhase(res.data[0].current_stage);
+        setPhase(1000);
         setProvince(res.data[0]);
       })
       .catch((err) => {
         console.log('failed to get desired reopen detail. Error: ', err);
       });
   };
+
   const handleProvinceChange = (event) => {
     axiosgetreopenlist(event.target.value);
+    // axios
+    //   .get('/api/reopenings/getprovince/'.concat(event.target.value))
+    //   .then((res) => {
+    //     setPhase(res.data[0].current_stage);
+    //     setProvince(res.data[0]);
+    //   })
+    //   .catch((err) => {
+    //     console.log('failed to get desired reopen detail. Error: ', err);
+    //   });
   };
+
   const handlePhaseChange = (event) => {
     setPhase(event.target.value);
   };
+
   const droprender = (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id='province-select-label'>Prov/Terr</InputLabel>
+        <p className='label'>Province/Territory</p>
         <Select
           labelId='province-select-label'
           id='service-select-label'
           onChange={handleProvinceChange}
+          defaultValue={prov}
         >
           {dropprovmenu}
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
-        <InputLabel id='service-select-label'>Phases/Stages</InputLabel>
+        <p className='label'>Phases/Stages</p>
         <Select
           labelId='phases-select-label'
           id='phases-select-label'
@@ -275,6 +298,7 @@ function Reopen() {
       {renderProvinceTwo(prov, phase)}
     </div>
   );
+
   return (
     <motion.div
       exit='out'
@@ -287,10 +311,19 @@ function Reopen() {
       <div>
         <PageHeading data={pageHeadingData} />
       </div>
-      <div>
+      <br />
+      <br />
+      <Instruction
+        text='Please select a Province/Territory then a phase/stage.'
+        width='30%'
+      />
+      <div className='dropdown'>
         {droprender}
         <br />
       </div>
+      <br />
+      <br />
+      <br />
     </motion.div>
   );
 }

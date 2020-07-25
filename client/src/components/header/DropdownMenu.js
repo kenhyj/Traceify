@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 function DropdownMenu(props) {
   const classes = useStyles();
   const theme = useTheme();
+  const location = useLocation();
   const { toggleMenu } = props;
   const showAdmin = () => {
     if (props.isLoggedIn)

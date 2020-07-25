@@ -1,7 +1,6 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 const db = require('../db');
-const { response } = require('express');
 
 /* GET admin users listing. */
 router.get('/api/admins/:email', function (req, res) {

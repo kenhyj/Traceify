@@ -42,17 +42,16 @@ const navBarStyles = makeStyles((theme) => ({
 }));
 
 function PagesBar(props) {
-  const classes = navBarStyles();
-  const location = useLocation();
-
-  const showAdmin = () => {
-    if (props.isLoggedIn)
-      return (
-        <Link to='/admin' className={classes.pageLink}>
-          <span className={classes.pageLinkFancy}>Admin</span>
-        </Link>
-      );
-  };
+    const classes = navBarStyles();
+    const location = useLocation();
+    const showAdmin = () => {
+        if (props.isLoggedIn)
+            return (
+                <Link to='/admin' className={classes.pageLink}>
+                    <span className={location.pathname ==='/admin'?classes.pageSelected:classes.pageLinkFancy}>Admin</span>
+                </Link>
+            );
+    };
 
   return (
     <>

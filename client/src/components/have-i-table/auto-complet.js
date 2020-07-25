@@ -24,7 +24,11 @@ const useStyles = makeStyles((theme) => ({
   },
   listItem: {
     backgroundColor: theme.palette.background.paper,
-    width: '200px',
+    width: '280px',
+    [theme.breakpoints.up('md')]:{
+      width: '180px',
+    },
+    
     textAlign: "left",
     '&:hover': {
       color: 'tomato',
@@ -38,28 +42,23 @@ function LocationAuto(props) {
   const classes = useStyles();
   const fields = useSelector(state => state.timeAndLoc);
   const dispatch = useDispatch();
-
-  const [text, setText] = React.useState("");
-  const address = fields[props.idx].locations[props.locid].loc;
-
-  // console.log(fields);
+  let address = fields[props.idx].locations[props.locid].loc;
+  
+  const setAddress = (value)=>{
+    dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: { lat: ''.lat, lng: ''.lng, loc: value } });
+  }
 
   const handleSelect = async value => {
-    setText(value);
+    setAddress(value);
     geocodeByAddress(value)
       .then((results) => {
         return getLatLng(results[0]);
       }).then((latLng) => {
-        // console.log(latLng);
         dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: { lat: latLng.lat, lng: latLng.lng, loc: value } });
-
       })
       .catch(err => {
         dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: { lat: ''.lat, lng: ''.lng, loc: value } });
       })
-
-
-
   };
 
   const renderFunc = ({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
@@ -87,8 +86,8 @@ function LocationAuto(props) {
   return (
     <div>
       <PlacesAutocomplete
-        value={text}
-        onChange={setText}
+        value={address}
+        onChange={setAddress}
         onSelect={handleSelect}
       >{renderFunc}
       </PlacesAutocomplete>
