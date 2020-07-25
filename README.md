@@ -19,10 +19,6 @@ Traceify aims to help the general public in Vancouver by providing information a
 - NodeJS
 - NoSQL (mongodb)
 
-## License
-
-TBA
-
 ## Instruction for Building the Project (DEV Environment)
 
 For first time use, in the terminal, run 'npm install' inside both client and server folder.
@@ -41,8 +37,6 @@ Your API key needs to enable the following API libraries:
 
 
 ## Project Description
-
-https://docs.google.com/document/d/18EIdx1Ytu0IXqTDAZWKWwrnbv4uQwJ7OXPdo-ErhpIc/edit?usp=sharing <br/>
 
 - Who is it for?
 
