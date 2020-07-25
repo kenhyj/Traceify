@@ -9,9 +9,6 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "heroku-postbuild": "cd client && npm install && npm run build",
-    "client": "cd client && npm start",
-    "backend": "nodemon ./bin/www",
-    "dev": "concurrently \"npm run backend\" \"npm run client\""
   },
   "dependencies": {
     "body-parser": "^1.19.0",
