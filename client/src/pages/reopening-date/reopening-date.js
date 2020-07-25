@@ -6,14 +6,14 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './reopening.css';
 import React, { useState } from 'react';
-import PageHeading from '../../components/page-heading/PageHeading';
 import { motion } from 'framer-motion';
-import { variants, transitions, pageStyle } from '../motion-settings';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { variants, transitions, pageStyle } from '../motion-settings';
+import PageHeading from '../../components/page-heading/PageHeading';
 import Instruction from '../../components/instruction/instruction';
 
 function renderProvince(obj) {

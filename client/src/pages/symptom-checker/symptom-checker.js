@@ -8,7 +8,7 @@ import {
   FormControlLabel,
 } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { Send, Refresh } from '@material-ui/icons';
+import { Send } from '@material-ui/icons';
 import { motion } from 'framer-motion';
 import './symptom-checker.css';
 import SymptomDisclaimer from './symptom-disclaimer';
@@ -23,7 +23,6 @@ class SymptomChecker extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.typeform = this.typeform.bind(this);
-    this.retakeTest = this.retakeTest.bind(this);
   }
 
   handleChange(event) {
@@ -34,13 +33,9 @@ class SymptomChecker extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({ ...this.state, risk: true, show: true });
+    const prevState = this.state;
+    this.setState({ ...prevState, risk: true, show: true });
     this.props.showResult();
-  }
-
-  retakeTest(event) {
-    this.setState({ ...this.state, risk: false, show: false });
-    // TODO: retake.
   }
 
   typeform(symptomtype) {
@@ -75,7 +70,7 @@ class SymptomChecker extends React.Component {
       <>
         <p>
           This page will determine the level of risk you are at based to COVID
-          19 based these symptoms and criteria.{' '}
+          19 based these symptoms and criteria.
         </p>
         <p>Disclaimer: Use this checker at your own discretion.</p>
       </>
