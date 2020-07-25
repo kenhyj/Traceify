@@ -1,38 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Link, useLocation } from 'react-router-dom';
-import {
-  Drawer,
-  List,
-  ListItem,
-  makeStyles,
-  useTheme,
-} from '@material-ui/core';
+import { withRouter } from 'react-router-dom';
+import { List, ListItem } from '@material-ui/core';
 import AdminLogin from '../admin-login/admin-login';
 import DropdownMenuLink from './DropdownMenuLink';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: '#ffffff',
-  },
-}));
-
 function DropdownMenu(props) {
-  const classes = useStyles();
-  const theme = useTheme();
-  const location = useLocation();
   const { toggleMenu } = props;
   const showAdmin = () => {
     if (props.isLoggedIn)
       return (
-        <DropdownMenuLink to='/admin' key='listitem-admin' primary='Admin' onClick={toggleMenu} />
+        <DropdownMenuLink
+          to='/admin'
+          key='listitem-admin'
+          primary='Admin'
+          onClick={toggleMenu}
+        />
       );
   };
 
   const drawer = (
     <div>
       <List>
-        <DropdownMenuLink to='/home' key='listitem-home' primary='Home' onClick={toggleMenu} />
+        <DropdownMenuLink
+          to='/home'
+          key='listitem-home'
+          primary='Home'
+          onClick={toggleMenu}
+        />
         <DropdownMenuLink
           to='/symptom-checker'
           key='listitem-symptom-checker'
@@ -51,7 +46,12 @@ function DropdownMenu(props) {
           primary='Reopening'
           onClick={toggleMenu}
         />
-        <DropdownMenuLink to='/qna' key='listitem-qna' primary='Q&A' onClick={toggleMenu} />
+        <DropdownMenuLink
+          to='/qna'
+          key='listitem-qna'
+          primary='Q&A'
+          onClick={toggleMenu}
+        />
         {showAdmin()}
         <ListItem>
           <AdminLogin />

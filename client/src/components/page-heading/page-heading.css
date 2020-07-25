@@ -4,7 +4,7 @@
   margin-bottom: 1rem;
 }
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1060px) {
   .page-heading-heading {
     font-family: Lato, sans-serif;
     font-size: 40px;
@@ -20,7 +20,7 @@
   }
 }
 
-@media only screen and (max-width: 999px) {
+@media only screen and (max-width: 1059px) {
     .page-heading-heading {
       font-family: Lato, sans-serif;
       font-size: 30px;

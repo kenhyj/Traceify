@@ -1,48 +1,12 @@
 import React from 'react';
-import { makeStyles, Toolbar } from '@material-ui/core';
+import { Toolbar } from '@material-ui/core';
 import { withRouter, Link, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
 import AdminLogin from '../admin-login/admin-login';
-
-const navBarStyles = makeStyles((theme) => ({
-  pagesBar: {
-    backgroundColor: '#ffffff',
-    overflowX: 'auto',
-    justifyContent: 'space-between',
-  },
-  pageLink: {
-    padding: theme.spacing(2),
-    flexShrink: 0,
-    textDecoration: 'none',
-    minWidth: '4rem',
-    alignContent: 'center',
-    textAlign: 'center',
-  },
-  pageLinkFancy: {
-    color: '#959c9f',
-    textDecoration: 'none',
-    textAlign: 'center',
-    background:
-      'linear-gradient(currentColor, currentColor) bottom / 0 .1em no-repeat',
-    transition: '0.5s background-size',
-    '&:hover': {
-      color: '#00a1c0',
-      backgroundSize: '100% .1em',
-    },
-  },
-  pageSelected: {
-    color: '#00a1c0',
-    textDecoration: 'none',
-    textAlign: 'center',
-    background:
-      'linear-gradient(currentColor, currentColor) bottom / 0 .1em no-repeat',
-    transition: '0.5s background-size',
-    backgroundSize: '100% .1em',
-  },
-}));
+import { useStyles } from './PagesBar.css';
 
 function PagesBar(props) {
-  const classes = navBarStyles();
+  const classes = useStyles();
   const location = useLocation();
   const showAdmin = () => {
     if (props.isLoggedIn)

@@ -1,27 +1,22 @@
 /* global google */
-import React, { Component } from 'react';
+import React from 'react';
 import { HeatmapLayer } from '@react-google-maps/api';
 import { connect } from 'react-redux';
 
-class MapHeatLayer extends Component {
-  render() {
-    const { data, showHeatLayer } = this.props.map;
-    // console.log(markers);
+function MapHeatLayer(props) {
+  const { data, showHeatLayer } = props.map;
 
-    return (
-      showHeatLayer && (
-        <HeatmapLayer
-          data={data.map((m) => ({
-            location: new google.maps.LatLng(m.location.lat, m.location.lng),
-            weight: m.numInfected,
-          }))}
-          options={
-            {radius: 30}
-          }
-        ></HeatmapLayer>
-      )
-    );
-  }
+  return (
+    showHeatLayer && (
+      <HeatmapLayer
+        data={data.map((m) => ({
+          location: new google.maps.LatLng(m.location.lat, m.location.lng),
+          weight: m.numInfected,
+        }))}
+        options={{ radius: 30 }}
+      />
+    )
+  );
 }
 
 // export default MapHeatLayer;

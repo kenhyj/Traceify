@@ -25,22 +25,7 @@ class MapOutbreakMarker extends Component {
   };
 
   render() {
-    const { location, id, isInfoWindowVisible, title, date } = this.props;
-
-    const handleMarkerClick = () => {
-      this.props.dispatch(showInfoWindow(id));
-      console.log('clicked marker ', id);
-    };
-
-    // const icon = {
-    //     path: virusImg,
-    // };
-    // const s = new XMLSerializer();
-    // const iconPath = s.serializeToString(virusImg);
-    // const icon = {
-    //   path: iconPath,
-    // };
-
+    const { location, id, title, date } = this.props;
     const formattedDate = new Date(date).toLocaleDateString();
 
     return (
@@ -48,6 +33,7 @@ class MapOutbreakMarker extends Component {
         position={location}
         onClick={() => this.handleToggleOpen()}
         icon={virusImg}
+        id={id}
       >
         {this.state.isOpen && (
           <InfoWindow
@@ -59,9 +45,7 @@ class MapOutbreakMarker extends Component {
                 <b>Outbreak!</b>
               </h1>
               <h1>{title}</h1>
-              <p>
-                Date Declared (M/D/Y): {formattedDate}
-              </p>
+              <p>Date Declared (M/D/Y): {formattedDate}</p>
             </div>
           </InfoWindow>
         )}

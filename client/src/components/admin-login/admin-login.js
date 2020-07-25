@@ -32,7 +32,7 @@ const AdminLogin = (props) => {
         btnAuth: {
             fontFamily: 'Open Sans, sans-serif',
             fontWeight: '700',
-            backgroundColor: '#00a1c0',
+            backgroundColor: '#2196F3',
             color: '#ffffff',
             display: 'inline-flex',
             alignItems: 'center',
@@ -41,7 +41,7 @@ const AdminLogin = (props) => {
             borderRadius: '3',
             border: '1px solid transparent',
             '&:hover, &.Mui-focusVisible': {
-                backgroundColor: '#00a1c0',
+                backgroundColor: '#2196F3',
                 opacity: '0.7',
                 cursor: 'pointer',
                 transition: '0.7s',

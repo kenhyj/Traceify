@@ -25,7 +25,7 @@ class MapMarker extends Component {
   };
 
   render() {
-    const { location, id, title, time, date } = this.props;
+    const { location, id, title, time, date, clusterer } = this.props;
 
     const formattedDate = date.substring(0, 10);
 
@@ -34,6 +34,8 @@ class MapMarker extends Component {
         position={location}
         onClick={() => this.handleToggleOpen()}
         icon={bluePinImg}
+        id={id}
+        clusterer={clusterer}
       >
         {this.state.isOpen && (
           <InfoWindow

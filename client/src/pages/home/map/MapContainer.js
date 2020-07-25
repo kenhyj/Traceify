@@ -1,6 +1,5 @@
-/* global google */
 import React, { Component } from 'react';
-import { GoogleMap } from '@react-google-maps/api';
+import { GoogleMap, MarkerClusterer, InfoWindow } from '@react-google-maps/api';
 import { connect } from 'react-redux';
 import styles from './MapContainer.css';
 import MapMarker from '../../../components/map/MapMarker';
@@ -11,6 +10,24 @@ import { fetchLocations } from '../../../redux/actions/map-actions';
 import '../home.css';
 
 class MapContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      clusterInfoIsOpen: false,
+    };
+  }
+
+  handleToggleOpen = () => {
+    this.setState({
+      clusterInfoIsOpen: true,
+    });
+  };
+
+  handleToggleClose = () => {
+    this.setState({
+      clusterInfoIsOpen: false,
+    });
+  };
   componentDidMount() {
     this.loadData();
   }
@@ -22,6 +39,21 @@ class MapContainer extends Component {
   render() {
     const { data, outbreaks } = this.props;
     const { showMarkers, showOutbreakMarkers } = this.props.mapReducer;
+    const options = {
+      imagePath:
+        'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+    };
+
+    const handleClusterClick = (cluster) => {
+      let markers = cluster.getMarkers();
+      // console.log('cluster markers?', markers);
+      // TODO: find out how to access google map's current zoom level
+      let markerInfoArray = [];
+      for (let m of markers) {
+        markerInfoArray.push(m.getPosition().toString());
+      }
+      this.handleToggleOpen();
+    };
 
     return (
       <>
@@ -31,14 +63,28 @@ class MapContainer extends Component {
           zoom={styles.zoom}
           options={{ styles: styles.mapStyle }}
         >
-          {data.map(
-            (marker) => showMarkers && <MapMarker key={marker.id} {...marker} />
+          {showMarkers && (
+            <MarkerClusterer
+              options={options}
+              minimumClusterSize={2}
+              onClick={(cluster) => handleClusterClick(cluster)}
+            >
+              {(clusterer) =>
+                data.map((marker) => (
+                  <MapMarker
+                    key={marker._id}
+                    clusterer={clusterer}
+                    {...marker}
+                  />
+                ))
+              }
+            </MarkerClusterer>
           )}
 
           {outbreaks.map(
             (marker) =>
               showOutbreakMarkers && (
-                <MapOutbreakMarker key={marker.id} {...marker} />
+                <MapOutbreakMarker key={marker._id} {...marker} />
               )
           )}
 
