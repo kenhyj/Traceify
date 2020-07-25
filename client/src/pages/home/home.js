@@ -28,18 +28,25 @@ const Home = () => {
       <div>
         <PageHeading data={pageHeadingData} />
       </div>
-      <Hidden smUp>
+      <Hidden mdUp>
         <div className='Home-mobile-toggle-view'>
-          <Chip label='View Maps'></Chip>
+          <Chip label='View Maps' onClick = {()=>setVisible(!mapVisible)}></Chip>
           <Chip label='View Info'></Chip>
         </div>
       </Hidden>
       <div className="Home-main-body">
         <Sidebar className="Home-main-body-sidebar" />
+        <Hidden smDown>
         <div style={{width: `${window.innerWidth - (window.innerWidth)*0.3}px`}}>
           <MapContainer className="Home-main-body-map" />
         </div>
+        </Hidden>
       </div>
+      <Hidden mdUp>
+      <div style = {{width:'80%', margin:'10px 10%', display : mapVisible?'block':'none'}}>
+        <MapContainer className="Home-main-body-map" />
+        </div>
+      </Hidden>
     </motion.div>
   );
 };
