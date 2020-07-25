@@ -36,12 +36,12 @@ function App(props) {
             <ThankPage />
             <div className='App-main'>
                 <AnimatePresence exitBeforeEnter>
-                    <Route exact path='/' render={() => <Redirect to="/home"/>} />
-                    <Route path='/home' component={Home} />
-                    <Route path='/have-i-been-exposed' component={HaveI} />
-                    <Route path='/qna' component={QnA} />
-                    <Route path='/symptom-checker' component={SymptomChecker} />
-                    <Route path='/reopen' component={Reopen} />
+                    <Route key = '/' exact path='/' render={() => <Redirect to="/home"/>} />
+                    <Route key = '/home' path='/home' component={Home} />
+                    <Route key = '/haveI' path='/have-i-been-exposed' component={HaveI} />
+                    <Route key = '/qna' path='/qna' component={QnA} />
+                    <Route key = '/symptom' path='/symptom-checker' component={SymptomChecker} />
+                    <Route key = '/reopen' path='/reopen' component={Reopen} />
                     {props.isLoggedIn ? (
                         <Route path='/admin' component={AdminPage} />
                     ) : (

@@ -37,8 +37,9 @@ class MapMarker extends Component {
     //     color: '21CBF3',
     //     fillOpacity: 1,
     // };
-
-    const formattedDate = new Date(date).toLocaleDateString();
+    
+    const formattedDate = date.substring(0,10);
+    // const formattedDate = new Date(date).toLocaleDateString();
 
     return (
       <Marker
@@ -54,7 +55,7 @@ class MapMarker extends Component {
             <div>
               <h1>{title}</h1>
               <p>Time visited: {time}</p>
-              <p>Date visited (M/D/Y): {formattedDate}</p>
+              <p>Date visited (Y/M/D): {formattedDate}</p>
             </div>
           </InfoWindow>
         )}

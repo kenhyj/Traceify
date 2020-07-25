@@ -21,14 +21,15 @@ import { variants, transitions, pageStyle } from '../motion-settings';
 import PageHeading from '../../components/page-heading/PageHeading';
 
 
-// from material ui-- need to customize
 const StyledTableCell = withStyles((theme) => ({
     head: {
         backgroundColor: '#b0c4de',
-        fontSize: 18,
+        fontSize: 16,
+        padding : '5px'
     },
     body: {
-        fontSize: 18,
+        fontSize: 16,
+        padding :'5px'
     },
 }))(TableCell);
 
@@ -45,12 +46,18 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     menuButton: {
-        marginRight: theme.spacing(2),
+        marginRight: theme.spacing(1),
     },
     title: {
         flexGrow: 1,
         textAlign: 'center'
     },
+    container :{
+        maxWidth : theme.breakpoints.values.sm,
+        [theme.breakpoints.up('md')]:{
+          maxWidth : theme.breakpoints.values.md,
+        }
+    }
 }));
 
 const heading = 'Have I Been Exposed?';
@@ -96,17 +103,12 @@ const HaveI = () => {
 
     const handleSubmit = async () => {
         let places = [];
-        console.log(fields);
         for (let i = 0; i < fields.length; i++) {
             let oneRow = fields[i];
-            console.log(oneRow);
             let oneDate = oneRow.date.toISOString();
             let oneResult = await axios.put('/api/expose', { date: oneDate, locations: oneRow.locations });
-            console.log(oneResult);
             oneResult.data.map((onePlace) => places.push(onePlace));
         }
-        
-        console.log(places);
         setResult(places);
         setAlert(places.length);
         setOpen(true);
@@ -114,9 +116,7 @@ const HaveI = () => {
 
 
     const handleClose = () => {
-
         setOpen(false);
-
     }
     return (
         <motion.div
@@ -130,12 +130,10 @@ const HaveI = () => {
       <div>
         <PageHeading data={pageHeadingData} />
       </div>
-      <Container>
-       
+      <Container className = {classes.container}>
         <Toolbar>
         <Grid container item xs = {2} justify="center" >
         <IconButton
-            
             variant="outlined"
             color="inherit"
             onClick={() => dispatch({ type: 'ADD_ROW' })}
@@ -175,7 +173,7 @@ const HaveI = () => {
                     <TableBody>
                         {fields.map((field, idx) => {
                             return (
-                                <RowComponent key={`${field}-${idx}`} fieldKey={idx} />
+                                <RowComponent key={`${field}-${idx}`} fieldKey={idx} field = {field} />
                             )
                         })}
                     </TableBody>

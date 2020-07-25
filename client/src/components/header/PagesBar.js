@@ -41,7 +41,6 @@ const navBarStyles = makeStyles((theme) => ({
 function PagesBar(props) {
     const classes = navBarStyles();
     const location = useLocation();
-    console.log(location.pathname)
     const showAdmin = () => {
         if (props.isLoggedIn)
             return (

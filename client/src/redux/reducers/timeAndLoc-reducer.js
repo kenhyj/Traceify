@@ -17,15 +17,12 @@ const timeAndLocReducer = (fields = InitialField, action) => {
       ];
     case 'DELETE_ROW':
       return fields.filter((oneRow, index) => {
-        // console.log(`index${index}`);
-        // console.log(`idx:${action.idx}`);
         return index !== action.idx;
       });
 
     case 'EDIT_ROW_DATE':
       return fields.map((oneRow, index) => {
         if (index === action.idx) {
-          // console.log(action.newDate.toISOString());
           return {
             ...oneRow,
             date: action.newDate,

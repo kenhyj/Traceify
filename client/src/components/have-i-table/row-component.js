@@ -12,15 +12,12 @@ import {
     Hidden,
     Collapse,
     Typography,
-    Grid,
     TableBody,
-    Box,
-    Tab,
 } from '@material-ui/core';
 import { MuiPickersUtilsProvider, KeyboardDatePicker, } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
@@ -38,9 +35,8 @@ export default function RowComponent(props) {
     const dispatch = useDispatch();
 
     const key = props.fieldKey;
-
+    
     const selectedDate = fields[props.fieldKey].date;
-    // const [selectedDate, setSelectedDate] = React.useState(new Date('2020-07-01T21:11:54'));
     const [open,setOpen] = useState(false);
 
     const handleDateChange = (date) => {
@@ -52,7 +48,7 @@ export default function RowComponent(props) {
         <StyledTableRow>
             <TableCell align="center">
                 <IconButton size = 'small' aria-label="delete"
-                    onClick={() => dispatch({ type: 'DELETE_ROW', idx: props.fieldKey, })}>
+                    onClick={() => dispatch({ type: 'DELETE_ROW', idx: props.fieldKey})}>
                     <DeleteIcon fontSize="small" />
                 </IconButton>
                 <Hidden mdUp>
@@ -70,7 +66,8 @@ export default function RowComponent(props) {
                         margin="normal"
                         id="date-picker-inline"
                         label="Date picker inline"
-                        value={selectedDate}
+                        value ={selectedDate}
+                        initialFocusedDate={selectedDate}
                         onChange={handleDateChange}
                         KeyboardButtonProps={{
                             'aria-label': 'change date',
@@ -96,7 +93,6 @@ export default function RowComponent(props) {
           <TableRow><TableCell><LocationAuto locid='2' idx={key} /></TableCell></TableRow>
           </TableBody>
           </Table>
-       
         </Collapse>
         </Hidden>
         </TableCell>
