@@ -9,10 +9,10 @@ import {
 } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { Send, Refresh } from '@material-ui/icons';
+import { motion } from 'framer-motion';
 import './symptom-checker.css';
 import SymptomDisclaimer from './symptom-disclaimer';
 import PageHeading from '../../components/page-heading/PageHeading';
-import { motion } from 'framer-motion';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import Instruction from '../../components/instruction/instruction';
 
@@ -122,7 +122,7 @@ class SymptomChecker extends React.Component {
           <br />
           <br />
           <Grid container style={{ width: '30%', marginLeft: '35%' }}>
-            <Grid item xs={6} container justify='center'>
+            <Grid container justify='center'>
               <Button
                 type='submit'
                 variant='contained'
@@ -131,17 +131,6 @@ class SymptomChecker extends React.Component {
                 className='button'
               >
                 Submit
-              </Button>
-            </Grid>
-            <Grid item xs={6} container justify='center'>
-              <Button
-                type='clear'
-                variant='contained'
-                endIcon={<Refresh />}
-                onClick={this.retakeTest}
-                className='button'
-              >
-                Retake
               </Button>
             </Grid>
           </Grid>
