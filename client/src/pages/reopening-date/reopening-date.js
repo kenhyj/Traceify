@@ -61,12 +61,12 @@ function renderProvince(obj) {
       </div>
     );
   }
-  return <div>Utnapishtim</div>;
+  return <div>.</div>;
 }
 
 function renderProvinceTwo(obj, chosenphase) {
   if (Object.keys(obj).length !== 0) {
-    if (chosenphase === 1000) {
+    if (chosenphase === -1000) {
       return renderProvince(obj);
     }
     const clicked_phase = chosenphase - 1;
@@ -101,10 +101,6 @@ function renderProvinceTwo(obj, chosenphase) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {console.log(
-              'obj.phases[clicked_phase]',
-              obj.phases[clicked_phase]
-            )}
             {renderTableDataMUI(obj.phases[clicked_phase].restrictions)}
           </TableBody>
         </Table>
@@ -239,15 +235,15 @@ const pageHeadingData = { heading, subheading, body };
 
 function Reopen() {
   const [prov, setProvince] = useState({});
-  const [phase, setPhase] = useState(1000);
+  const [phase, setPhase] = useState(-1000);
   const classes = useStyles();
   const axiosgetreopenlist = (target) => {
     axios
       .get('/api/reopenings/getprovince/'.concat(target))
       .then((res) => {
-        // setPhase(res.data[0].current_stage);
-        setPhase(1000);
+        setPhase(-1000);
         setProvince(res.data[0]);
+        setPhase(res.data[0].current_stage);
       })
       .catch((err) => {
         console.log('failed to get desired reopen detail. Error: ', err);
@@ -256,15 +252,6 @@ function Reopen() {
 
   const handleProvinceChange = (event) => {
     axiosgetreopenlist(event.target.value);
-    // axios
-    //   .get('/api/reopenings/getprovince/'.concat(event.target.value))
-    //   .then((res) => {
-    //     setPhase(res.data[0].current_stage);
-    //     setProvince(res.data[0]);
-    //   })
-    //   .catch((err) => {
-    //     console.log('failed to get desired reopen detail. Error: ', err);
-    //   });
   };
 
   const handlePhaseChange = (event) => {
@@ -290,7 +277,7 @@ function Reopen() {
           labelId='phases-select-label'
           id='phases-select-label'
           onChange={handlePhaseChange}
-          defaultValue={phase}
+          value={phase}
         >
           {dropphasemenu(prov)}
         </Select>
