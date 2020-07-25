@@ -2,6 +2,10 @@
     color : white;
 }
 
+.page-content {
+    padding: 5% 10% !important;
+}
+
 .pop-result {
     position: fixed;
     top: 40%;
@@ -15,7 +19,6 @@
     box-shadow: 5px 5px #888888;
     display: block;
     transition: background .3s ease;
-    text-align: left;
 }
 
 .button {
