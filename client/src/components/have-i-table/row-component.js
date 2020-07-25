@@ -66,7 +66,8 @@ export default function RowComponent(props) {
                         margin="normal"
                         id="date-picker-inline"
                         label="Date picker inline"
-                        value={selectedDate}
+                        value ={selectedDate}
+                        initialFocusedDate={selectedDate}
                         onChange={handleDateChange}
                         KeyboardButtonProps={{
                             'aria-label': 'change date',
