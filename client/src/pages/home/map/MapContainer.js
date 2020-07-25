@@ -1,8 +1,8 @@
 /* global google */
 import React, { Component } from 'react';
 import { GoogleMap } from '@react-google-maps/api';
-import styles from './MapContainer.css';
 import { connect } from 'react-redux';
+import styles from './MapContainer.css';
 import MapMarker from '../../../components/map/MapMarker';
 import MapOutbreakMarker from '../../../components/map/MapOutbreakMarker';
 import MapHeatLayer from '../../../components/map/MapHeatLayer';
@@ -21,7 +21,6 @@ class MapContainer extends Component {
 
   render() {
     const { data, outbreaks } = this.props;
-    // console.log(data);
     const { showMarkers, showOutbreakMarkers } = this.props.mapReducer;
 
     return (
@@ -51,7 +50,6 @@ class MapContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log('map container : state... ', state);
   return {
     mapReducer: state.map,
     data: state.map.data,

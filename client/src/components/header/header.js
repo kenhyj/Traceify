@@ -23,17 +23,22 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     background: '#ffffff',
-    // padding: '1rem',
     // TODO: when scrolling down, make header opacity 60% and make border bottom appear.
     borderBottom: `1px solid ${theme.palette.divider}`,
     backgroundColor: '#ffffff',
     width: '100%',
+    zIndex: theme.zIndex.drawer + 1,
+    position: 'relative',
   },
   pagesBar: {
     justifyContent: 'center',
+    zIndex: theme.zIndex.drawer + 1,
+    position: 'relative',
   },
   logo: {
     maxHeight: '4rem',
+    zIndex: theme.zIndex.drawer + 1,
+    position: 'relative',
   },
   logoTypography: {
     justifyContent: 'left',
@@ -41,14 +46,20 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
     },
     paddingLeft: '2rem',
+    zIndex: theme.zIndex.drawer + 1,
+    position: 'relative',
+
   },
   menuButton: {
     justifyContent: 'right',
     paddingRight: '2rem',
+    zIndex: theme.zIndex.drawer + 1,
+    position: 'relative',
   },
   drawer: {
     flexShrink: 0,
     borderBottom: `1px solid ${theme.palette.divider}`,
+    position: 'relative',
   },
 }));
 
@@ -84,12 +95,14 @@ export default function HeaderTitle(props) {
             className={classes.drawer}
             anchor='top'
             open={menuOpen}
-            variant='temporary'
+            variant='persistent'
             onClose={toggleMenu}
+            elevation={16}
             ModalProps={{
               keepMounted: true,
             }}
           >
+            <span style={{height: '5rem'}} />
             <DropdownMenu toggleMenu={toggleMenu} />
           </Drawer>
         </div>

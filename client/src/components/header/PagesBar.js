@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles, Toolbar } from '@material-ui/core';
 import { withRouter, Link, useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -42,16 +42,24 @@ const navBarStyles = makeStyles((theme) => ({
 }));
 
 function PagesBar(props) {
-    const classes = navBarStyles();
-    const location = useLocation();
-    const showAdmin = () => {
-        if (props.isLoggedIn)
-            return (
-                <Link to='/admin' className={classes.pageLink}>
-                    <span className={location.pathname ==='/admin'?classes.pageSelected:classes.pageLinkFancy}>Admin</span>
-                </Link>
-            );
-    };
+  const classes = navBarStyles();
+  const location = useLocation();
+  const showAdmin = () => {
+    if (props.isLoggedIn)
+      return (
+        <Link to='/admin' className={classes.pageLink}>
+          <span
+            className={
+              location.pathname === '/admin'
+                ? classes.pageSelected
+                : classes.pageLinkFancy
+            }
+          >
+            Admin
+          </span>
+        </Link>
+      );
+  };
 
   return (
     <>
