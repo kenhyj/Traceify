@@ -6,8 +6,7 @@ import { login, logout } from '../../redux/actions/website-actions';
 import axios from 'axios';
 import { Button, makeStyles } from '@material-ui/core';
 
-const CLIENT_ID =
-  '214796866260-6c8clqh189ckf5i0rgb9td99pvul0r59.apps.googleusercontent.com';
+const CLIENT_ID = '214796866260-6c8clqh189ckf5i0rgb9td99pvul0r59.apps.googleusercontent.com';
 
 const AdminLogin = (props) => {
   const login = (response) => {
@@ -29,7 +28,7 @@ const AdminLogin = (props) => {
     alert('Failed to log out');
   };
 
-  const adminStyles = makeStyles((theme) => ({
+  const adminStyles = makeStyles(() => ({
     btnAuth: {
       fontFamily: 'Open Sans, sans-serif',
       fontWeight: '700',
@@ -76,7 +75,7 @@ const AdminLogin = (props) => {
               <span className={classes.btnAuthSpan}>Logout</span>
             </Button>
           )}
-        ></GoogleLogout>
+        />
       ) : (
         <GoogleLogin
           clientId={CLIENT_ID}

@@ -1,5 +1,5 @@
 import React, { Component, forwardRef } from "react";
-import { GoogleMap, LoadScript, useLoadScript } from "@react-google-maps/api";
+import { useLoadScript } from "@react-google-maps/api";
 
 const API_KEY = `${process.env.REACT_APP_GOOGLE_API_KEY}`;
 // const API_KEY = 123456;

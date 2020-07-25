@@ -46,7 +46,7 @@ function PagesBar(props) {
         if (props.isLoggedIn)
             return (
                 <Link to='/admin' className={classes.pageLink}>
-                    <span className={classes.pageLinkFancy}>Admin</span>
+                    <span className={location.pathname ==='/admin'?classes.pageSelected:classes.pageLinkFancy}>Admin</span>
                 </Link>
             );
     };

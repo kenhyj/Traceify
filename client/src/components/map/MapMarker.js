@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Marker, InfoWindow } from '@react-google-maps/api';
 import { connect } from 'react-redux';
-import MapInfoWindow from '../map/MapInfoWindow';
-import * as actions from '../../redux/constants/action-types';
 import { showInfoWindow } from '../../redux/actions/map-actions';
 import bluePinImg from '../../assets/blue-pin.svg';
 

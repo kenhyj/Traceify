@@ -1,21 +1,20 @@
 require('dotenv').config({ path: 'client/.env' });
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require('cors');
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
+let cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-//I think this is the Middleware
-var indexRouter = require('./routes/index');
-var adminsRouter = require('./routes/admins');
-var locationRouter = require('./routes/location-traces');
-var reopeningsRouter = require('./routes/reopenings');
-var exposeRouter = require('./routes/expose');
-var locationOutbreakRouter = require('./routes/location-outbreak');
-var app = express();
+let indexRouter = require('./routes/index');
+let adminsRouter = require('./routes/admins');
+let locationRouter = require('./routes/location-traces');
+let reopeningsRouter = require('./routes/reopenings');
+let exposeRouter = require('./routes/expose');
+let locationOutbreakRouter = require('./routes/location-outbreak');
+let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,7 +25,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/', indexRouter);

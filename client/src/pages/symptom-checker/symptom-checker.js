@@ -15,8 +15,6 @@ import SymptomDisclaimer from './symptom-disclaimer';
 import PageHeading from '../../components/page-heading/PageHeading';
 import { motion } from 'framer-motion';
 import { variants, transitions, pageStyle } from '../motion-settings';
-import PageHeader from "../../components/page-header/page-header";
-import Instruction from "../../components/instruction/instruction";
 
 class SymptomChecker extends React.Component {
   constructor() {

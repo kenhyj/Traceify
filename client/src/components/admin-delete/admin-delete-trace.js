@@ -138,7 +138,7 @@ const useToolbarStyles = makeStyles((theme) => ({
 }));
 
 function handleDelete(selected, trigger, setSelected) {
-    axios.delete('/api/locations', { data: selected }).then( () => {
+    axios.delete('/api/location-trace', { data: selected }).then( () => {
         alert("Deletion Successful");
         setSelected([]);
         trigger();
@@ -218,7 +218,7 @@ function AdminDelete(props) {
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
     const getRows = () => {
-        axios.get('/api/locations').then( result => {
+        axios.get('/api/location-trace').then( result => {
             props.setLocationTraces(result.data);
             let temp = [];
             result.data.forEach(row => {

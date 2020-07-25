@@ -1,13 +1,11 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 const db = require('../db');
-const { response } = require('express');
 
 
 router.put('/api/expose',(req,res)=>{
     const oneRow = req.body;
     let places = [];
-    // const time = oneRow.date.toISOString().slice(0,10);
     const time = oneRow.date.slice(0,10);
     console.log(time);
     const locations = oneRow.locations;
@@ -74,6 +72,6 @@ router.put('/api/expose',(req,res)=>{
     
     
     
-})
+});
 
 module.exports = router;

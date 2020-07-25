@@ -35,7 +35,7 @@ export const fetchLocationsFailure = (error) => ({
 });
 
 export const fetchLocations = () => (dispatch) => {
-  const getAllData = axios.get('/api/locations');
+  const getAllData = axios.get('/api/location-trace');
   const getOutbreakData = axios.get('/api/location-outbreak');
   axios
     .all([getAllData, getOutbreakData])

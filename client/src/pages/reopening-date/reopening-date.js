@@ -15,7 +15,6 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { Typography } from '@material-ui/core';
 
 function renderProvince(obj) {
   if (Object.keys(obj).length !== 0) {
@@ -55,7 +54,7 @@ function renderProvince(obj) {
         </Table>
         <b>
           Additional information is located{' '}
-          <a href={obj.more} target='_blank'>
+          <a href={obj.more} target='_blank' rel="noopener noreferrer">
             here.
           </a>
         </b>
@@ -105,7 +104,7 @@ function renderProvinceTwo(obj, chosenphase) {
         </Table>
         <b>
           Additional information is located{' '}
-          <a href={obj.more} target='_blank'>
+          <a href={obj.more} target='_blank' rel="noopener noreferrer">
             here.
           </a>
         </b>
