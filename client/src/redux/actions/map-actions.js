@@ -53,18 +53,4 @@ export const fetchLocations = () => (dispatch) => {
       dispatch(fetchLocationsFailure(err));
       console.log(err);
     });
-  // axios
-  //   .get('/locations')
-  //   .then((res) => {
-  //     // console.log('res...', res.data);
-  //     return res.data;
-  //   })
-  //   .then((locations) => {
-  //     // console.log('map actions locations...', locations);
-  //     dispatch(fetchLocationsSuccess(locations));
-  //   })
-  //   .catch((err) => {
-  //     dispatch(fetchLocationsFailure(err));
-  //     console.log(err);
-  //   });
 };

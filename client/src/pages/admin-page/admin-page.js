@@ -11,10 +11,10 @@ import AdminAdd from '../../components/admin-add/admin-add-trace';
 import AdminAddOutbreak from '../../components/admin-add/admin-add-outbreak';
 import AdminDelete from '../../components/admin-delete/admin-delete-trace';
 import AdminDeleteOutbreak from '../../components/admin-delete/admin-delete-outbreak';
-import './admin-page.css';
 import PageHeading from '../../components/page-heading/PageHeading';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import { motion } from 'framer-motion';
+import './admin-page.css';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -79,7 +79,6 @@ function AdminPage(props) {
     );
     const body = (
         <>
-
         </>
     );
     const pageHeadingData = { heading, subheading, body };
@@ -97,13 +96,7 @@ function AdminPage(props) {
                 <div>
                     <PageHeading data={pageHeadingData} />
                 </div>
-                {/*
-                ACCESSTOKEN: {this.props.accessToken} <br /><br /><br /><br />
-            */}
-                {/* Welcome, {props.user} */}
-                <br />
-                <br />
-                <br />
+                <br /><br /><br />
                 <div className={classes.root}>
                     <Tabs
                         orientation='vertical'

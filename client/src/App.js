@@ -8,11 +8,18 @@ import QnA from './pages/q&a/qna';
 import HaveI from './pages/have-i-been-exposed/have-been-exposed';
 import Reopen from './pages/reopening-date/reopening-date';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { login, logout } from './redux/actions/website-actions';
 import AdminPage from './pages/admin-page/admin-page';
 import { connect } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 
 function App(props) {
+
+    if (sessionStorage.getItem("token") !== null) {
+        let token = JSON.parse(sessionStorage.getItem("token"));
+        props.login(token.token, token.user);
+    }
+
     return (
         <Router>
             <div
@@ -52,4 +59,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { login, logout })(App);
