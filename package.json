@@ -8,7 +8,6 @@
   },
   "scripts": {
     "start": "nodemon ./bin/www",
-    "startboth": "concurrently \"cd client && npm run start \" \"nodemon ./bin/www\"",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "dependencies": {
