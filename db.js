@@ -6,7 +6,7 @@ let db;
 
 function connect(callback) {
   console.log('URI: ' + URI);
-  MongoClient.connect(URI, (err, database) => {
+  MongoClient.connect(URI, { useUnifiedTopology: true }, (err, database) => {
     if (err) return console.error(err);
     db = database.db('traceify');
     console.log('Connected to Database');
