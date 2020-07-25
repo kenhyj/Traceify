@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "nodemon ./bin/www",
-    "heroku-postbuild": "cd client && npm install && npm run build",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
