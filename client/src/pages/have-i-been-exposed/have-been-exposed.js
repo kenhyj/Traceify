@@ -9,7 +9,7 @@ import { Typography, Toolbar, Table, TableBody, TableCell, TableRow, TableHead, 
     Grid, Container, Hidden, IconButton } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RowComponent from '../../components/have-i-table/row-component';
-import PublishIcon from '@material-ui/icons/Publish';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import axios from "axios/index";
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
@@ -23,9 +23,10 @@ import PageHeading from '../../components/page-heading/PageHeading';
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
-        backgroundColor: '#b0c4de',
+        backgroundColor: '#2196F3',
         fontSize: 16,
-        padding : '5px'
+        padding : '5px',
+        color: 'white'
     },
     body: {
         fontSize: 16,
@@ -149,7 +150,7 @@ const HaveI = () => {
     <IconButton variant="outlined"
             color="inherit"
             onClick={handleSubmit}
-           ><PublishIcon /></IconButton>
+           ><ArrowUpwardIcon /></IconButton>
     </Grid>
     </Toolbar>
            
