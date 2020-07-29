@@ -65,7 +65,7 @@ export default function RowComponent(props) {
                         format="MM/dd/yyyy"
                         margin="normal"
                         id="date-picker-inline"
-                        label="Date picker inline"
+                        label="Enter date here"
                         value ={selectedDate}
                         initialFocusedDate={selectedDate}
                         onChange={handleDateChange}
