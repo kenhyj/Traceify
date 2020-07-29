@@ -90,8 +90,17 @@ const QnA = () => {
             <AccordionDetails style={{ padding: '5%' }}>
               <Typography>
                 This is a contact tracing website for Vancouver built by a group
-                of UBC CS students. Blah Blah Blah
+                of UBC CS students.
               </Typography>
+              <iframe
+                title='traceifyutube'
+                width='560'
+                height='315'
+                src='https://www.youtube.com/embed/8TWWVOtbVD8'
+                frameBorder='0'
+                allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+                allowFullscreen
+              />
             </AccordionDetails>
           </Accordion>
           <Accordion>
