@@ -7,6 +7,8 @@
 **Project Name**: Traceify <br/>
 **Team Name**:ControlC<br/>
 
+Traceify aims to help the general public in Vancouver by providing information and keeping track of where COVID-19 positive individuals visited within the past few days. The users will be able to view the locations, check their risk of COVID-19, check whether they crossed paths with any of the known positive patients, and have access to useful information (i.e., Financial help resources, Reopening Stages, etc.).
+
 ## Tech Stack
 
 - HTML
@@ -16,10 +18,6 @@
 - Redux
 - NodeJS
 - NoSQL (mongodb)
-
-## License
-
-TBA
 
 ## Instruction for Building the Project (DEV Environment)
 
@@ -39,10 +37,6 @@ Your API key needs to enable the following API libraries:
 
 
 ## Project Description
-
-https://docs.google.com/document/d/18EIdx1Ytu0IXqTDAZWKWwrnbv4uQwJ7OXPdo-ErhpIc/edit?usp=sharing <br/>
-
-Our project aims to help the general public in BC by providing information and keeping track of where COVID-19 positive individuals visited within the last three days. The users will be able to view the locations and the infected number of people. In addition, the search can be filtered by a region on a Google Map.<br/>
 
 - Who is it for?
 
@@ -81,7 +75,6 @@ Our project aims to help the general public in BC by providing information and k
 - 3-7 "standard" requirements (will most likely complete)
 
   - Have I Been Exposed? page: Checks whether you've crossed paths within close range of places that a positive patient visited
-  - Financial Help page (links to CERB, EI, BC Emergency Workers fund, etc.)
   - Retailers Re-Opening Stage Information by province
   - Admin panel: Admin can submit and delete Outbreak data
   - Admin panel: Admin can submit and delete anonymous location trace data of a positive patient

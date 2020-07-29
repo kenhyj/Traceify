@@ -1,19 +1,38 @@
 .page-heading {
-    background: #F2F4F7;
-    padding: 4rem;
-    margin-bottom: 1rem;
+  background: #f2f4f7;
+  padding: 4rem;
+  margin-bottom: 1rem;
 }
 
-.page-heading-heading {
+@media only screen and (min-width: 1060px) {
+  .page-heading-heading {
     font-family: Lato, sans-serif;
-    font-size: 3rem;
-}
+    font-size: 40px;
+  }
 
-.page-heading-subheading {
+  .page-heading-subheading {
     font-family: Lato, sans-serif;
     font-style: italic;
+  }
+
+  .page-heading-body {
+    margin-top: 2rem;
+  }
 }
 
-.page-heading-body {
-    margin-top: 2rem;
-}
+@media only screen and (max-width: 1059px) {
+    .page-heading-heading {
+      font-family: Lato, sans-serif;
+      font-size: 30px;
+    }
+  
+    .page-heading-subheading {
+      font-family: Lato, sans-serif;
+      font-style: italic;
+    }
+  
+    .page-heading-body {
+      margin-top: 2rem;
+    }
+  }
+  

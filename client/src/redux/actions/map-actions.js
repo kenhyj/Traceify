@@ -4,7 +4,6 @@ import * as actions from '../constants/action-types';
 export const showInfoWindow = (id) => ({
   type: actions.SHOW_MAP_INFOWINDOW,
   id: id,
-  // isInfoWindowVisible: !isInfoWindowVisible,
 });
 
 export const showHeatLayer = () => ({
@@ -35,7 +34,7 @@ export const fetchLocationsFailure = (error) => ({
 });
 
 export const fetchLocations = () => (dispatch) => {
-  const getAllData = axios.get('/api/locations');
+  const getAllData = axios.get('/api/location-trace');
   const getOutbreakData = axios.get('/api/location-outbreak');
   axios
     .all([getAllData, getOutbreakData])
@@ -53,18 +52,4 @@ export const fetchLocations = () => (dispatch) => {
       dispatch(fetchLocationsFailure(err));
       console.log(err);
     });
-  // axios
-  //   .get('/locations')
-  //   .then((res) => {
-  //     // console.log('res...', res.data);
-  //     return res.data;
-  //   })
-  //   .then((locations) => {
-  //     // console.log('map actions locations...', locations);
-  //     dispatch(fetchLocationsSuccess(locations));
-  //   })
-  //   .catch((err) => {
-  //     dispatch(fetchLocationsFailure(err));
-  //     console.log(err);
-  //   });
 };

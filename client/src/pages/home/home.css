@@ -14,7 +14,8 @@
 }
 
 .sidebar {
-    margin: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .sidebar-legend {
@@ -64,3 +65,4 @@
     font-weight: 700;
     padding-bottom: .5rem;
 }
+

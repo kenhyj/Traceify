@@ -8,6 +8,10 @@ const INITIAL_STATE = {
 const websiteReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case 'LOG_IN':
+            if (sessionStorage.getItem("token") === null) {
+                let object = {token: action.accessToken, user: action.user};
+                sessionStorage.setItem("token", JSON.stringify(object));
+            }
             return {
                 ...state,
                 isLoggedIn: true,
@@ -15,6 +19,8 @@ const websiteReducer = (state = INITIAL_STATE, action) => {
                 user: action.user
             };
         case 'LOG_OUT':
+            if (sessionStorage.getItem("token") !== null)
+                sessionStorage.removeItem("token");
             return {
                 ...state,
                 isLoggedIn: false,

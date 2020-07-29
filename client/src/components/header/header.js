@@ -1,64 +1,61 @@
 import React from 'react';
-import './header.css';
-import { Toolbar, Typography, makeStyles } from '@material-ui/core';
-import PropTypes from 'prop-types';
-import logo from '../../assets/logoresized.svg';
 import { Link } from 'react-router-dom';
-import AdminLogin from '../admin-login/admin-login';
+import {
+  Typography,
+  IconButton,
+  Hidden,
+  Drawer,
+} from '@material-ui/core';
+import { Menu } from '@material-ui/icons';
+import logo from '../../assets/logoresized.svg';
+import DropdownMenu from './DropdownMenu';
 import PagesBar from './PagesBar';
-
-const useStyles = makeStyles((theme) => ({
-  header: {
-    color: 'secondary',
-    height: '5rem',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    background: '#ffffff',
-    // padding: '1rem',
-    // TODO: when scrolling down, make header opacity 60% and make border bottom appear.
-    borderBottom: `1px solid ${theme.palette.divider}`,
-  },
-  titleBar: {
-    // borderBottom: `1px solid ${theme.palette.divider}`,
-    backgroundColor: '#FFFFFF',
-    color: '#303f9f',
-  },
-  pagesBar: {
-  },
-  adminLogin: {
-    justifyContent: 'right',
-  },
-  title: {
-    flex: 1,
-  },
-  headerButton: {
-    color: '#303f9f',
-  },
-  logo: {
-    maxHeight: '4rem',
-  }
-}));
+import { useStyles } from './header.css';
 
 export default function HeaderTitle(props) {
   const classes = useStyles();
-  // const { title } = props;
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <div className={classes.header}>
-      <Toolbar className={classes.titleBar}>
-        <Typography align='center' className={classes.title} variant='h4'>
-          {/* {title}                 */}
+    <>
+      <div className={classes.header}>
+        <Typography className={classes.logoTypography} variant='h6'>
           <Link to='/home'>
-            <img className={classes.logo} src={logo} alt='traceifylogo' />
+            <img className={classes.logo} src={logo} alt='Traceify' />
           </Link>
         </Typography>
-      </Toolbar>
-      <PagesBar className={classes.pagesBar} />
-      <AdminLogin className={classes.adminLogin} />
-    </div>
+        <Hidden smDown>
+          <PagesBar className={classes.pagesBar} />
+        </Hidden>
+        <Hidden mdUp>
+          <div className={classes.menuButton}>
+            <IconButton onClick={toggleMenu}>
+              <Menu />
+            </IconButton>
+          </div>
+        </Hidden>
+      </div>
+      <Hidden mdUp>
+        <div className={classes.drawerContainer}>
+          <Drawer
+            className={classes.drawer}
+            anchor='top'
+            open={menuOpen}
+            variant='persistent'
+            onClose={toggleMenu}
+            elevation={16}
+            ModalProps={{
+              keepMounted: true,
+            }}
+          >
+            <span style={{height: '5rem'}} />
+            <DropdownMenu toggleMenu={toggleMenu} />
+          </Drawer>
+        </div>
+      </Hidden>
+    </>
   );
 }
-
-HeaderTitle.propTypes = {
-  title: PropTypes.string,
-};

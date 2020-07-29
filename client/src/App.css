@@ -17,6 +17,7 @@
   width: 100%;
   display: inline-block;
   z-index: 2;
+  margin-top: 70px;
   /* overflow-x: hidden; */
   /* position: relative; */
 }

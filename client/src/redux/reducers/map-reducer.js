@@ -1,5 +1,4 @@
 import * as actions from '../constants/action-types';
-// import initialMarkers from './initial-data/initialMarkers';
 
 const initialState = {
   activeMarker: {},
@@ -14,11 +13,8 @@ const initialState = {
 };
 
 const mapReducer = (state = initialState, action) => {
-  // console.log('map reducer action', action);
   switch (action.type) {
     case actions.SHOW_MAP_INFOWINDOW:
-      // console.log('clicked', action.id);
-      // console.log('map reducer state markers ', state.markers);
       return {
         ...state,
         data: state.data.map((d) =>

@@ -1,16 +1,20 @@
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './reopening.css';
 import React, { useState } from 'react';
-import PageHeader from '../../components/page-header/page-header';
 import PageHeading from '../../components/page-heading/PageHeading';
 import { motion } from 'framer-motion';
 import { variants, transitions, pageStyle } from '../motion-settings';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Instruction from '../../components/instruction/instruction';
 
 function renderProvince(obj) {
   if (Object.keys(obj).length !== 0) {
@@ -35,34 +39,39 @@ function renderProvince(obj) {
         >
           You are looking at details of Stage {obj.current_stage}
         </h2>
-        <table id='provtable'>
-          <tr>
-            <th>Service</th>
-            <th>Detail and restrictions {obj.current_stage}</th>
-          </tr>
-          {renderTableData(obj.phases[current_phase].restrictions)}
-        </table>
+        <Table id='provtable'>
+          <TableHead>
+            <TableRow>
+              <TableCell>Service</TableCell>
+              <TableCell>
+                Detail and Restriction for Stage {obj.current_stage}
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {renderTableDataMUI(obj.phases[current_phase].restrictions)}
+          </TableBody>
+        </Table>
         <b>
           Additional information is located{' '}
-          <a href={obj.more} target='_blank'>
+          <a href={obj.more} target='_blank' rel='noopener noreferrer'>
             here.
           </a>
         </b>
       </div>
     );
   }
-  return <div>Utnapishtim</div>;
+  return <div>.</div>;
 }
 
 function renderProvinceTwo(obj, chosenphase) {
   if (Object.keys(obj).length !== 0) {
-    if (chosenphase === 1000) {
+    if (chosenphase === -1000) {
       return renderProvince(obj);
     }
-    // const current_phase = obj.current_stage - 1;
     const clicked_phase = chosenphase - 1;
     return (
-      <div>
+      <div style={{ textAlign: 'center' }}>
         <h1
           style={{
             textAlign: 'center',
@@ -80,44 +89,69 @@ function renderProvinceTwo(obj, chosenphase) {
         >
           You are looking at details of Stage {chosenphase}
         </h2>
-        <table id='provtable'>
-          <tr>
-            <th>Service</th>
-            <th>Detail and Restrictions for Stage {chosenphase}</th>
-          </tr>
-          {/* {renderTableData(obj.phases[current_phase].restrictions)} */}
-          {renderTableData(obj.phases[clicked_phase].restrictions)}
-        </table>
+        <Table id='provtable'>
+          <TableHead>
+            <TableRow>
+              <TableCell style={{ width: '50%', textAlign: 'center' }}>
+                Service
+              </TableCell>
+              <TableCell style={{ width: '50%', textAlign: 'center' }}>
+                Detail and Restriction for Stage {chosenphase}
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {renderTableDataMUI(obj.phases[clicked_phase].restrictions)}
+          </TableBody>
+        </Table>
         <b>
           Additional information is located{' '}
-          <a href={obj.more} target='_blank'>
+          <a href={obj.more} target='_blank' rel='noopener noreferrer'>
             here.
           </a>
         </b>
       </div>
     );
   }
-  return <div>Utnapishtim</div>;
+  return <div>.</div>;
 }
 
-function renderTableData(restrictions) {
+function renderTableDataMUI(restrictions) {
   const list = Object.entries(restrictions);
   return list.map((mesage) => {
     for (const x of mesage) {
       return (
-        <tr>
-          <td>{x.replace(/_/gi, ' ').replace(/\n/g, '<br />')}</td>
-          <td>{mesage[1]}</td>
-        </tr>
+        <TableRow>
+          <TableCell style={{ textAlign: 'center' }}>
+            {x.replace(/_/gi, ' ').replace(/\n/g, '<br />')}
+          </TableCell>
+          <TableCell style={{ textAlign: 'center' }}>
+            {breaklines(mesage[1])}
+          </TableCell>
+        </TableRow>
       );
     }
   });
 }
 
+function breaklines(text) {
+  {
+    const paragraph = text.split('\n');
+    return paragraph.map((line) => {
+      return (
+        <text>
+          {line}
+          <br />
+        </text>
+      );
+    });
+  }
+}
+
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
+    margin: theme.spacing(10),
+    minWidth: '30%',
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -137,7 +171,7 @@ const provterr = [
   { abbr: 'PE', province: 'Prince Edward Island' },
   { abbr: 'QC', province: 'Quebec' },
   { abbr: 'SK', province: 'Saskatchewan' },
-  { abbr: 'YK', province: 'Yukon' },
+  { abbr: 'YT', province: 'Yukon' },
 ];
 const dropprovmenu = provterr.map((list) => {
   return <MenuItem value={list.abbr}>{list.province}</MenuItem>;
@@ -156,7 +190,9 @@ const phasesmenu = (region) => {
 function dropphasemenu(region) {
   if (Object.keys(region).length > 0) {
     return phasesmenu(region)
-      .sort()
+      .sort(function (a, b) {
+        return a - b;
+      })
       .map((service) => {
         return <MenuItem value={service}>{service}</MenuItem>;
       });
@@ -164,78 +200,84 @@ function dropphasemenu(region) {
   return <MenuItem />;
 }
 
-const heading = "Reopening Dates";
-  const subheading = <p>
-        
-  </p>;
-  const body = 
-    <>
-      <b>Disclaimer</b>
-      <br />
-      Each province and territory have several phases or stages that consist of unique policies.
-      <br />
-      As the COVID-19 cases improves, the province/territory will transition into the next phase.
-      <br />
-      eg. 1 goes to 2 and 2 goes to 3, etc.
-      <br />
-      However, if the COVID-19 cases worsens, it is possible to regress to a
-      previous phase.
-      <br />
-      eg. 2 reverts to 1.
-      <br />
-      Each of these phases are flexible to change according to the COVID-19
-      climate. Only the Canadian province British Columbia has been updated.
-      <br />
-      If there is a service you do not see, try checking the previous stages.
-      <br />
-      There are additional information listed at the button of the table.
-      <br />
-      Please call the specific store location of interest to enquire about
-      operating hours. Their hours may have adjusted. They could be closed for
-      safety.
-    </>;
-    const pageHeadingData = {heading, subheading, body};
+const heading = 'Reopening Dates';
+const subheading = <p></p>;
+const body = (
+  <>
+    <b>Disclaimer</b>
+    <br />
+    Each province and territory have several phases or stages that consist of
+    unique policies.
+    <br />
+    As the COVID-19 cases improves, the province/territory will transition into
+    the next phase.
+    <br />
+    eg. 1 goes to 2 and 2 goes to 3, etc.
+    <br />
+    However, if the COVID-19 cases worsens, it is possible to regress to a
+    previous phase.
+    <br />
+    eg. 2 reverts to 1.
+    <br />
+    Each of these phases are flexible to change according to the COVID-19
+    climate.
+    <br />
+    If there is a service you do not see, try checking the previous stages.
+    <br />
+    There are additional information listed at the button of the table.
+    <br />
+    Please call the specific store location of interest to enquire about
+    operating hours. Their hours may have adjusted. They could be closed for
+    safety.
+  </>
+);
+const pageHeadingData = { heading, subheading, body };
 
 function Reopen() {
   const [prov, setProvince] = useState({});
-  const [phase, setPhase] = useState(1000);
+  const [phase, setPhase] = useState(-1000);
   const classes = useStyles();
   const axiosgetreopenlist = (target) => {
     axios
       .get('/api/reopenings/getprovince/'.concat(target))
       .then((res) => {
-        setPhase(res.data[0].current_stage);
+        setPhase(-1000);
         setProvince(res.data[0]);
+        setPhase(res.data[0].current_stage);
       })
       .catch((err) => {
         console.log('failed to get desired reopen detail. Error: ', err);
       });
   };
+
   const handleProvinceChange = (event) => {
     axiosgetreopenlist(event.target.value);
   };
+
   const handlePhaseChange = (event) => {
     setPhase(event.target.value);
   };
+
   const droprender = (
     <div>
       <FormControl className={classes.formControl}>
-        <InputLabel id='province-select-label'>Prov/Terr</InputLabel>
+        <p className='label'>Province/Territory</p>
         <Select
           labelId='province-select-label'
           id='service-select-label'
           onChange={handleProvinceChange}
+          defaultValue={prov}
         >
           {dropprovmenu}
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
-        <InputLabel id='service-select-label'>Phases/Stages</InputLabel>
+        <p className='label'>Phases/Stages</p>
         <Select
           labelId='phases-select-label'
           id='phases-select-label'
           onChange={handlePhaseChange}
-          defaultValue={phase}
+          value={phase}
         >
           {dropphasemenu(prov)}
         </Select>
@@ -243,22 +285,32 @@ function Reopen() {
       {renderProvinceTwo(prov, phase)}
     </div>
   );
+
   return (
     <motion.div
-    exit='out'
-    animate='in'
-    initial='initial'
-    variants={variants}
-    transition={transitions}
-    style={pageStyle}
-  >
-    <div>
-      <PageHeading data={pageHeadingData} />
-    </div>
-    <div>
-      {droprender}
+      exit='out'
+      animate='in'
+      initial='initial'
+      variants={variants}
+      transition={transitions}
+      style={pageStyle}
+    >
+      <div>
+        <PageHeading data={pageHeadingData} />
+      </div>
       <br />
-    </div>
+      <br />
+      <Instruction
+        text='Please select a Province/Territory then a phase/stage.'
+        width='30%'
+      />
+      <div className='dropdown'>
+        {droprender}
+        <br />
+      </div>
+      <br />
+      <br />
+      <br />
     </motion.div>
   );
 }

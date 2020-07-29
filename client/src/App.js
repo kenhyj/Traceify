@@ -8,11 +8,18 @@ import QnA from './pages/q&a/qna';
 import HaveI from './pages/have-i-been-exposed/have-been-exposed';
 import Reopen from './pages/reopening-date/reopening-date';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { login, logout } from './redux/actions/website-actions';
 import AdminPage from './pages/admin-page/admin-page';
 import { connect } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
 
 function App(props) {
+
+    if (sessionStorage.getItem("token") !== null) {
+        let token = JSON.parse(sessionStorage.getItem("token"));
+        props.login(token.token, token.user);
+    }
+
     return (
         <Router>
             <div
@@ -29,12 +36,12 @@ function App(props) {
             <ThankPage />
             <div className='App-main'>
                 <AnimatePresence exitBeforeEnter>
-                    <Route exact path='/' render={() => <Redirect to="/home"/>} />
-                    <Route path='/home' component={Home} />
-                    <Route path='/have-i-been-exposed' component={HaveI} />
-                    <Route path='/qna' component={QnA} />
-                    <Route path='/symptom-checker' component={SymptomChecker} />
-                    <Route path='/reopen' component={Reopen} />
+                    <Route key = '/' exact path='/' render={() => <Redirect to="/home"/>} />
+                    <Route key = '/home' path='/home' component={Home} />
+                    <Route key = '/haveI' path='/have-i-been-exposed' component={HaveI} />
+                    <Route key = '/qna' path='/qna' component={QnA} />
+                    <Route key = '/symptom' path='/symptom-checker' component={SymptomChecker} />
+                    <Route key = '/reopen' path='/reopen' component={Reopen} />
                     {props.isLoggedIn ? (
                         <Route path='/admin' component={AdminPage} />
                     ) : (
@@ -52,4 +59,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { login, logout })(App);

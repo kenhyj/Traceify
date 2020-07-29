@@ -1,48 +1,35 @@
 /* eslint-disable */
 import 'date-fns';
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
-import {
-    Typography,
-    Toolbar,
-    Button,
-    Table,
-    TableBody,
-    TableCell,
-    TableRow,
-    TableHead,
-    TableContainer,
-    Dialog,
-    Container,
-} from '@material-ui/core';
+import { Typography, Toolbar, Table, TableBody, TableCell, TableRow, TableHead, TableContainer, Dialog,
+    Grid, Container, Hidden, IconButton } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import RowComponent from './row-component';
+import RowComponent from '../../components/have-i-table/row-component';
 import PublishIcon from '@material-ui/icons/Publish';
-import Result from './result';
 import axios from "axios/index";
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Alert from '@material-ui/lab/Alert';
 import './have-been-exposed.css';
-import PageHeader from "../../components/page-header/page-header";
-import Instruction from "../../components/instruction/instruction";
 import { motion } from 'framer-motion';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import PageHeading from '../../components/page-heading/PageHeading';
 
 
-// from material ui-- need to customize
 const StyledTableCell = withStyles((theme) => ({
     head: {
         backgroundColor: '#b0c4de',
-        fontSize: 18,
+        fontSize: 16,
+        padding : '5px'
     },
     body: {
-        fontSize: 18,
+        fontSize: 16,
+        padding :'5px'
     },
 }))(TableCell);
 
@@ -59,25 +46,31 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     menuButton: {
-        marginRight: theme.spacing(2),
+        marginRight: theme.spacing(1),
     },
     title: {
         flexGrow: 1,
         textAlign: 'center'
     },
+    container :{
+        maxWidth : theme.breakpoints.values.sm,
+        [theme.breakpoints.up('md')]:{
+          maxWidth : theme.breakpoints.values.md,
+        }
+    }
 }));
 
 const heading = 'Have I Been Exposed?';
 const subheading = (
-  <>Wondering if you've been exposed? You can check it here.</>
+  <div>Wondering if you've been exposed? You can check it here.</div>
 );
 const body = (
-  <>
+  <div>
     <p>
         Enter the date and the places you have visited to check whether your paths crossed with any of the positive patients anonymously. We won't collect
       your data.
     </p>
-  </>
+  </div>
 );
 
 const pageHeadingData = { heading, subheading, body };
@@ -110,17 +103,12 @@ const HaveI = () => {
 
     const handleSubmit = async () => {
         let places = [];
-        console.log(fields);
         for (let i = 0; i < fields.length; i++) {
             let oneRow = fields[i];
-            console.log(oneRow);
             let oneDate = oneRow.date.toISOString();
             let oneResult = await axios.put('/api/expose', { date: oneDate, locations: oneRow.locations });
-            console.log(oneResult);
             oneResult.data.map((onePlace) => places.push(onePlace));
         }
-        
-        console.log(places);
         setResult(places);
         setAlert(places.length);
         setOpen(true);
@@ -128,9 +116,7 @@ const HaveI = () => {
 
 
     const handleClose = () => {
-
         setOpen(false);
-
     }
     return (
         <motion.div
@@ -144,48 +130,57 @@ const HaveI = () => {
       <div>
         <PageHeading data={pageHeadingData} />
       </div>
-      <div>
-        <Container fixed>
-            <Toolbar>
-                <Button
-                    className="buttonz"
-                    variant="outlined"
-                    color="inherit"
-                    onClick={() => dispatch({ type: 'ADD_ROW' })}
-                    endIcon={<AddCircleOutlineIcon />}>
-                    Add</Button>
+      <Container className = {classes.container}>
+        <Toolbar>
+        <Grid container item xs = {2} justify="center" >
+        <IconButton
+            variant="outlined"
+            color="inherit"
+            onClick={() => dispatch({ type: 'ADD_ROW' })}
+            ><AddCircleOutlineIcon /></IconButton>
+</Grid>
+           <Grid item xs = {8}>
                 <Typography variant="h6" className={classes.title}>
                     Enter the places you went to
                     </Typography>
-                <Button variant="outlined" className="buttonz"
-                    color="inherit"
-                    onClick={handleSubmit}
-                    endIcon={<PublishIcon />}>Submit</Button>
-            </Toolbar>
-
+            </Grid>
+            
+    <Grid container item xs = {2} justify="center" >
+    <IconButton variant="outlined"
+            color="inherit"
+            onClick={handleSubmit}
+           ><PublishIcon /></IconButton>
+    </Grid>
+    </Toolbar>
+           
             <br />
             <TableContainer>
                 <Table aria-label='customized table' className={classes.table}>
+                <Hidden smDown>
                     <TableHead>
                         <StyledTableRow>
+                        <StyledTableCell></StyledTableCell>
                             <StyledTableCell align='center'>
                                 Date
                             </StyledTableCell>
                             <StyledTableCell align='center'>Location</StyledTableCell>
                             <StyledTableCell align='center'>Location</StyledTableCell>
                             <StyledTableCell align='center'>Location</StyledTableCell>
-                            <StyledTableCell></StyledTableCell>
+                            
                         </StyledTableRow>
                     </TableHead>
+                    </Hidden>
                     <TableBody>
                         {fields.map((field, idx) => {
                             return (
-                                <RowComponent key={`${field}-${idx}`} fieldKey={idx} />
+                                <RowComponent key={`${field}-${idx}`} fieldKey={idx} field = {field} />
                             )
                         })}
                     </TableBody>
                 </Table>
             </TableContainer>
+            
+    
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -202,8 +197,8 @@ const HaveI = () => {
                     )
                 })}
             </Dialog>
+       
         </Container>
-        </div>
     </motion.div>
     );
 };

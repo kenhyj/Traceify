@@ -1,18 +1,48 @@
 import { makeStyles } from '@material-ui/core';
 
-export default makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
   header: {
-    color: 'seconday',
-  },
-  titleBar: {
+    color: 'secondary',
+    height: '5rem',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: '#ffffff',
+    // TODO: when scrolling down, make header opacity 60% and make border bottom appear.
     borderBottom: `1px solid ${theme.palette.divider}`,
-    backgroundColor: '#F8F8D6',
-    color: '#303f9f',
+    backgroundColor: '#ffffff',
+    width: '100%',
+    zIndex: theme.zIndex.drawer + 1,
+    position: 'relative',
   },
-  title: {
-    flex: 1,
+  pagesBar: {
+    justifyContent: 'center',
+    zIndex: theme.zIndex.drawer + 1,
+    position: 'relative',
   },
-  headerButton: {
-    color: '#303f9f',
+  logo: {
+    maxHeight: '4rem',
+    zIndex: theme.zIndex.drawer + 1,
+    position: 'relative',
+  },
+  logoTypography: {
+    justifyContent: 'left',
+    [theme.breakpoints.down('sm')]: {
+      flexGrow: 1,
+    },
+    paddingLeft: '2rem',
+    zIndex: theme.zIndex.drawer + 1,
+    position: 'relative',
+  },
+  menuButton: {
+    justifyContent: 'right',
+    paddingRight: '2rem',
+    zIndex: theme.zIndex.drawer + 1,
+    position: 'relative',
+  },
+  drawer: {
+    flexShrink: 0,
+    borderBottom: `1px solid ${theme.palette.divider}`,
+    position: 'relative',
   },
 }));
