@@ -72,7 +72,10 @@ class SymptomChecker extends React.Component {
           This page will determine the level of risk you are at based to COVID
           19 based these symptoms and criteria.
         </p>
-        <p>Disclaimer: Use this checker at your own discretion.</p>
+        <p>
+          <b>Disclaimer: </b>
+          Use this checker at your own discretion.
+        </p>
       </>
     );
 

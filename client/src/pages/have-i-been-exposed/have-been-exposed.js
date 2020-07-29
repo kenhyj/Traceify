@@ -1,16 +1,29 @@
 /* eslint-disable */
 import 'date-fns';
 import React from 'react';
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
-import { Typography, Toolbar, Table, TableBody, TableCell, TableRow, TableHead, TableContainer, Dialog,
-    Grid, Container, Hidden, IconButton } from '@material-ui/core';
+import {
+  Typography,
+  Toolbar,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  TableHead,
+  TableContainer,
+  Dialog,
+  Grid,
+  Container,
+  Hidden,
+  IconButton,
+} from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RowComponent from '../../components/have-i-table/row-component';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-import axios from "axios/index";
+import Send from '@material-ui/icons/Send';
+import axios from 'axios/index';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -20,45 +33,44 @@ import { motion } from 'framer-motion';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import PageHeading from '../../components/page-heading/PageHeading';
 
-
 const StyledTableCell = withStyles((theme) => ({
-    head: {
-        backgroundColor: '#2196F3',
-        fontSize: 16,
-        padding : '5px',
-        color: 'white'
-    },
-    body: {
-        fontSize: 16,
-        padding :'5px'
-    },
+  head: {
+    backgroundColor: '#2196F3',
+    fontSize: 16,
+    padding: '5px',
+    color: 'white',
+  },
+  body: {
+    fontSize: 16,
+    padding: '5px',
+  },
 }))(TableCell);
 
 const StyledTableRow = withStyles((theme) => ({
-    root: {
-        '&:nth-of-type(odd)': {
-            backgroundColor: theme.palette.action.hover,
-        },
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
     },
+  },
 }))(TableRow);
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(1),
+  },
+  title: {
+    flexGrow: 1,
+    textAlign: 'center',
+  },
+  container: {
+    maxWidth: theme.breakpoints.values.sm,
+    [theme.breakpoints.up('md')]: {
+      maxWidth: theme.breakpoints.values.md,
     },
-    menuButton: {
-        marginRight: theme.spacing(1),
-    },
-    title: {
-        flexGrow: 1,
-        textAlign: 'center'
-    },
-    container :{
-        maxWidth : theme.breakpoints.values.sm,
-        [theme.breakpoints.up('md')]:{
-          maxWidth : theme.breakpoints.values.md,
-        }
-    }
+  },
 }));
 
 const heading = 'Have I Been Exposed?';
@@ -68,7 +80,8 @@ const subheading = (
 const body = (
   <div>
     <p>
-        Enter the date and the places you have visited to check whether your paths crossed with any of the positive patients anonymously. We won't collect
+      Enter the date and the places you have visited to check whether your paths
+      crossed with any of the positive patients anonymously. We won't collect
       your data.
     </p>
   </div>
@@ -76,51 +89,50 @@ const body = (
 
 const pageHeadingData = { heading, subheading, body };
 
-
 const HaveI = () => {
-    const fields = useSelector(state => state.timeAndLoc)
-    const dispatch = useDispatch();
-    const classes = useStyles();
+  const fields = useSelector((state) => state.timeAndLoc);
+  const dispatch = useDispatch();
+  const classes = useStyles();
 
-    const [al,setAl] = React.useState("error");
-    const [text,setText] = React.useState("");
-    const [open, setOpen] = React.useState(false);
-    const [result, setResult] = React.useState([]);
+  const [al, setAl] = React.useState('error');
+  const [text, setText] = React.useState('');
+  const [open, setOpen] = React.useState(false);
+  const [result, setResult] = React.useState([]);
 
-    const setAlert = (num)=>{
-        if(num > 4) {
-            setAl('error');
-            setText("You are at risk for being exposed");
-        }
-        else if (num>0) {
-            setAl('warning');
-            setText("You may be at risk for being exposed");
-        } 
-        else {
-            setAl('success');
-            setText("You are safe.");
-        }
+  const setAlert = (num) => {
+    if (num > 4) {
+      setAl('error');
+      setText('You are at risk for being exposed');
+    } else if (num > 0) {
+      setAl('warning');
+      setText('You may be at risk for being exposed');
+    } else {
+      setAl('success');
+      setText('You are safe.');
     }
+  };
 
-    const handleSubmit = async () => {
-        let places = [];
-        for (let i = 0; i < fields.length; i++) {
-            let oneRow = fields[i];
-            let oneDate = oneRow.date.toISOString();
-            let oneResult = await axios.put('/api/expose', { date: oneDate, locations: oneRow.locations });
-            oneResult.data.map((onePlace) => places.push(onePlace));
-        }
-        setResult(places);
-        setAlert(places.length);
-        setOpen(true);
+  const handleSubmit = async () => {
+    let places = [];
+    for (let i = 0; i < fields.length; i++) {
+      let oneRow = fields[i];
+      let oneDate = oneRow.date.toISOString();
+      let oneResult = await axios.put('/api/expose', {
+        date: oneDate,
+        locations: oneRow.locations,
+      });
+      oneResult.data.map((onePlace) => places.push(onePlace));
     }
+    setResult(places);
+    setAlert(places.length);
+    setOpen(true);
+  };
 
-
-    const handleClose = () => {
-        setOpen(false);
-    }
-    return (
-        <motion.div
+  const handleClose = () => {
+    setOpen(false);
+  };
+  return (
+    <motion.div
       exit='out'
       animate='in'
       initial='initial'
@@ -131,77 +143,79 @@ const HaveI = () => {
       <div>
         <PageHeading data={pageHeadingData} />
       </div>
-      <Container className = {classes.container}>
+      <Container className={classes.container}>
         <Toolbar>
-        <Grid container item xs = {2} justify="center" >
-        <IconButton
-            variant="outlined"
-            color="inherit"
-            onClick={() => dispatch({ type: 'ADD_ROW' })}
-            ><AddCircleOutlineIcon /></IconButton>
-</Grid>
-           <Grid item xs = {8}>
-                <Typography variant="h6" className={classes.title}>
-                    Enter the places you went to
-                    </Typography>
-            </Grid>
-            
-    <Grid container item xs = {2} justify="center" >
-    <IconButton variant="outlined"
-            color="inherit"
-            onClick={handleSubmit}
-           ><ArrowUpwardIcon /></IconButton>
-    </Grid>
-    </Toolbar>
-           
-            <br />
-            <TableContainer>
-                <Table aria-label='customized table' className={classes.table}>
-                <Hidden smDown>
-                    <TableHead>
-                        <StyledTableRow>
-                        <StyledTableCell></StyledTableCell>
-                            <StyledTableCell align='center'>
-                                Date
-                            </StyledTableCell>
-                            <StyledTableCell align='center'>Location</StyledTableCell>
-                            <StyledTableCell align='center'>Location</StyledTableCell>
-                            <StyledTableCell align='center'>Location</StyledTableCell>
-                            
-                        </StyledTableRow>
-                    </TableHead>
-                    </Hidden>
-                    <TableBody>
-                        {fields.map((field, idx) => {
-                            return (
-                                <RowComponent key={`${field}-${idx}`} fieldKey={idx} field = {field} />
-                            )
-                        })}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            
-    
-            <Dialog
-                open={open}
-                onClose={handleClose}
+          <Grid container item xs={2} justify='center'>
+            <IconButton
+              variant='outlined'
+              color='inherit'
+              onClick={() => dispatch({ type: 'ADD_ROW' })}
             >
-            
-            <DialogTitle><Alert severity={al}>{text}</Alert></DialogTitle>
-                {result.map((one,index) => {
-                    return (
-                        <DialogContent key = {one.date + index}>
-                            <DialogContentText>
-                                You visited {one.place} on {one.date}
-                            </DialogContentText>
-                        </DialogContent>
-                    )
-                })}
-            </Dialog>
-       
-        </Container>
+              <AddCircleOutlineIcon />
+            </IconButton>
+          </Grid>
+          <Grid item xs={8}>
+            <Typography variant='h6' className={classes.title}>
+              Enter the places you went to
+            </Typography>
+          </Grid>
+
+          <Grid container item xs={2} justify='center'>
+            <IconButton
+              variant='outlined'
+              color='inherit'
+              onClick={handleSubmit}
+            >
+              Submit <Send />
+            </IconButton>
+          </Grid>
+        </Toolbar>
+
+        <br />
+        <TableContainer>
+          <Table aria-label='customized table' className={classes.table}>
+            <Hidden smDown>
+              <TableHead>
+                <StyledTableRow>
+                  <StyledTableCell></StyledTableCell>
+                  <StyledTableCell align='center'>Date</StyledTableCell>
+                  <StyledTableCell align='center'>Location</StyledTableCell>
+                  <StyledTableCell align='center'>Location</StyledTableCell>
+                  <StyledTableCell align='center'>Location</StyledTableCell>
+                </StyledTableRow>
+              </TableHead>
+            </Hidden>
+            <TableBody>
+              {fields.map((field, idx) => {
+                return (
+                  <RowComponent
+                    key={`${field}-${idx}`}
+                    fieldKey={idx}
+                    field={field}
+                  />
+                );
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle>
+            <Alert severity={al}>{text}</Alert>
+          </DialogTitle>
+          {result.map((one, index) => {
+            return (
+              <DialogContent key={one.date + index}>
+                <DialogContentText>
+                  You visited {one.place} on {one.date}
+                </DialogContentText>
+              </DialogContent>
+            );
+          })}
+        </Dialog>
+      </Container>
     </motion.div>
-    );
+  );
 };
 
 export default withRouter(HaveI);
