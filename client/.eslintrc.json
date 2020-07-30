@@ -30,6 +30,7 @@
       { "declaration": false, "assignment": false }
     ],
     "react/prop-types": [1],
-    "no-alert": "off"
+    "no-alert": "off",
+    "react/jsx-one-expression-per-line": [0, { "allow": "single-child" }]
   }
 }

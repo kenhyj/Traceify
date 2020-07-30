@@ -92,6 +92,7 @@ const QnA = () => {
                 This is a contact tracing website for Vancouver built by a group
                 of UBC CS students.
               </Typography>
+              <br />
               <iframe
                 title='traceifyutube'
                 width='560'

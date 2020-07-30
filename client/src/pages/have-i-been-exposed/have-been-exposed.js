@@ -1,8 +1,6 @@
-/* eslint-disable */
 import 'date-fns';
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import {
@@ -21,7 +19,6 @@ import {
   IconButton,
 } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import RowComponent from '../../components/have-i-table/row-component';
 import Send from '@material-ui/icons/Send';
 import axios from 'axios/index';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -30,6 +27,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Alert from '@material-ui/lab/Alert';
 import './have-been-exposed.css';
 import { motion } from 'framer-motion';
+import RowComponent from '../../components/have-i-table/row-component';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import PageHeading from '../../components/page-heading/PageHeading';
 
@@ -75,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
 
 const heading = 'Have I Been Exposed?';
 const subheading = (
-  <div>Wondering if you've been exposed? You can check it here.</div>
+  <div>Wondering if you have been exposed? You can check it here.</div>
 );
 const body = (
   <div>
@@ -113,11 +111,11 @@ const HaveI = () => {
   };
 
   const handleSubmit = async () => {
-    let places = [];
+    const places = [];
     for (let i = 0; i < fields.length; i++) {
-      let oneRow = fields[i];
-      let oneDate = oneRow.date.toISOString();
-      let oneResult = await axios.put('/api/expose', {
+      const oneRow = fields[i];
+      const oneDate = oneRow.date.toISOString();
+      const oneResult = await axios.put('/api/expose', {
         date: oneDate,
         locations: oneRow.locations,
       });
