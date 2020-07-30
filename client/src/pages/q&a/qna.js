@@ -6,10 +6,10 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { motion } from 'framer-motion';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import './qna.css';
 import PageHeading from '../../components/page-heading/PageHeading';
-import { motion } from 'framer-motion';
 import PageHeader from '../../components/page-header/page-header';
 
 const useStyles = makeStyles((theme) => ({
@@ -91,17 +91,19 @@ const QnA = () => {
               <Typography>
                 This is a contact tracing website for Vancouver built by a group
                 of UBC CS students.
+                <br />
+                Please look at our youtube video of a brief summary.
+                <br />
+                <iframe
+                  title='traceifyutube'
+                  width='560'
+                  height='315'
+                  src='https://www.youtube.com/embed/8TWWVOtbVD8'
+                  frameBorder='0'
+                  allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+                  allowFullscreen
+                />
               </Typography>
-              <br />
-              <iframe
-                title='traceifyutube'
-                width='560'
-                height='315'
-                src='https://www.youtube.com/embed/8TWWVOtbVD8'
-                frameBorder='0'
-                allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-                allowFullscreen
-              />
             </AccordionDetails>
           </Accordion>
           <Accordion>
@@ -116,9 +118,12 @@ const QnA = () => {
             </AccordionSummary>
             <AccordionDetails style={{ padding: '5%' }}>
               <Typography>
-                {
-                  'Home: A map that shows the locations that a positive patient visited \n Symptom Checker: A quiz that assess your risk to COVID-19 \n blah blah blah'
-                }
+                Home: A map that shows the locations that a positive patient
+                visited
+                <br />
+                Symptom Checker: A quiz that assess your risk to COVID-19
+                <br />
+                blah blah blah
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -136,7 +141,10 @@ const QnA = () => {
               <Typography>
                 Unfortunately no. Vancouver does not provide any open-source
                 dataset on COVID patients. The data shown on this map is solely
-                deduced from available news articles.
+                deduced from available news articles. Reopening dates is not up
+                to date either. There is not a readily available API for each
+                province province or territory. However, we try our best to
+                catch up with latest updates and make changes to our database.
               </Typography>
             </AccordionDetails>
           </Accordion>
