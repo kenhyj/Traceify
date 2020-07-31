@@ -114,17 +114,48 @@ const QnA = () => {
               id='panel2a-header'
             >
               <Typography className={classes.heading}>
-                Description of each page
+                Symptom Checker - How accurate is this?
               </Typography>
             </AccordionSummary>
             <AccordionDetails style={{ padding: '5%' }}>
               <Typography>
-                Home: A map that shows the locations that a positive patient
-                visited
+                The symptoms that you see are taken from the list of symptoms
+                recorded by the Centre for Disease Control (CDC).
                 <br />
-                Symptom Checker: A quiz that assess your risk to COVID-19
+                We cannot claim any liabilities or damages from the results of
+                this quiz.
                 <br />
-                blah blah blah
+                COVID-19 RNA testing or antibody testing is the most reliable to
+                test presence of COVID-19.
+                <br />
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls='panel2b-content'
+              id='panel2b-header'
+            >
+              <Typography className={classes.heading}>
+                Reopening - Can we regress back a phase?
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails style={{ padding: '5%' }}>
+              <Typography>
+                Yes.
+                <br />
+                If the number COVID-19 positive population exceeds a certain
+                threshold (each provincial territorial government will have
+                different threshold), the phases can regress back a phase or
+                multiple phases.
+                <br />
+                Other conditions may also regress the phase. It is possible that
+                despite an overall regressing COVID-19 positive population, if a
+                certain group such as elderlies or children have increased
+                number of COVID-19 afflicted, then a phase can be regressed or a
+                new phase with more restrictions can be imposed.
+                <br />
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -140,12 +171,40 @@ const QnA = () => {
             </AccordionSummary>
             <AccordionDetails style={{ padding: '5%' }}>
               <Typography>
-                Unfortunately no. Vancouver does not provide any open-source
-                dataset on COVID patients. The data shown on this map is solely
-                deduced from available news articles. Reopening dates is not up
-                to date either. There is not a readily available API for each
-                province province or territory. However, we try our best to
-                catch up with latest updates and make changes to our database.
+                Unfortunately, no.
+                <br />
+                However, we try our best to catch up with the latest updates and
+                make changes to our database.
+                <br />
+                <br />
+                Vancouver does not provide any open-source dataset on COVID
+                patients. The data shown on this map is solely deduced from
+                available news articles.
+                <br />
+                Reopening is not up to date either. There is not a readily
+                available API or database from the government or medical
+                organization of each province or territory.
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls='panel4a-content'
+              id='panel4a-header'
+            >
+              <Typography className={classes.heading}>
+                Is there a cure?
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails style={{ padding: '5%' }}>
+              <Typography>
+                While there are some drugs that have shown some positive
+                results, the Centre for Disease Control (CDC) or World Health
+                Organization (WHO) have yet to formally approve any drugs or
+                vaccines. Please be assured that this is a global crisis and
+                every single nation and its people work hard to develop a
+                treatment.
               </Typography>
             </AccordionDetails>
           </Accordion>
