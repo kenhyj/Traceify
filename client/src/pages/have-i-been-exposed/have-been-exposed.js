@@ -4,8 +4,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import {
-  Typography, Toolbar, Table, TableBody, TableCell, TableRow,
-  TableHead, TableContainer, Dialog, Grid, Container, Hidden,IconButton,
+  Typography,
+  Toolbar,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  TableHead,
+  TableContainer,
+  Dialog,
+  Grid,
+  Container,
+  Hidden,
+  IconButton,
 } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Send from '@material-ui/icons/Send';
@@ -68,8 +79,8 @@ const body = (
   <div>
     <p>
       Enter the date and the places you have visited to check whether your paths
-      crossed with any of the positive patients anonymously. We won't collect
-      your data.
+      crossed with any of the positive patients anonymously. We won&#39;t
+      collect your data.
     </p>
   </div>
 );
@@ -138,7 +149,8 @@ const HaveI = () => {
               color='inherit'
               onClick={() => dispatch({ type: 'ADD_ROW' })}
             >
-              Add<AddCircleOutlineIcon />
+              Add
+              <AddCircleOutlineIcon />
             </IconButton>
           </Grid>
           <Grid item xs={8}>
@@ -153,7 +165,8 @@ const HaveI = () => {
               variant='outlined'
               onClick={handleSubmit}
             >
-              Submit<Send/>
+              Submit
+              <Send />
             </IconButton>
           </Grid>
         </Toolbar>

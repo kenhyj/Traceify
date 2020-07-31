@@ -7,14 +7,17 @@ import Select from '@material-ui/core/Select';
 import './reopening.css';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Snackbar,
+} from '@material-ui/core';
+import { Alert } from '@material-ui/lab/';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import PageHeading from '../../components/page-heading/PageHeading';
-import Instruction from '../../components/instruction/instruction';
 
 function renderProvince(obj) {
   if (Object.keys(obj).length !== 0) {
@@ -198,6 +201,7 @@ const pageHeadingData = { heading, subheading, body };
 function Reopen() {
   const [prov, setProvince] = useState({});
   const [phase, setPhase] = useState(-1000);
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
   const axiosgetreopenlist = (target) => {
     axios
@@ -218,7 +222,33 @@ function Reopen() {
 
   const handlePhaseChange = (event) => {
     setPhase(event.target.value);
+    setOpen(true);
   };
+
+  const handlesnackClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+
+  function snackalert() {
+    console.log('snackalert start');
+    return (
+      <div>
+        <Snackbar
+          open={open}
+          autoHideDuration={5000}
+          onClose={handlesnackClose}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        >
+          <Alert onClose={handlesnackClose} severity='info'>
+            Questions? Check out our Q&#38;A!
+          </Alert>
+        </Snackbar>
+      </div>
+    );
+  }
 
   const droprender = (
     <div>
@@ -261,6 +291,7 @@ function Reopen() {
         <PageHeading data={pageHeadingData} />
       </div>
       <div className='dropdown'>{droprender}</div>
+      {snackalert()}
     </motion.div>
   );
 }

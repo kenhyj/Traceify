@@ -47,7 +47,8 @@ const QnA = () => {
   );
   const body = (
     <>
-      Check here for frequently asked questions. Review Canada's economic plan{' '}
+      Check here for frequently asked questions. Review Canada&#39;s economic
+      plan{' '}
       <a
         target='_blank'
         href='https://www.canada.ca/en/department-finance/economic-response-plan.html'
@@ -174,6 +175,7 @@ const QnA = () => {
                 $2,000 for a 4-week period (the same as $500 a week).
               </Typography>
               <button
+                type='button'
                 className='link-button'
                 onClick={() =>
                   window.open(
@@ -204,6 +206,7 @@ const QnA = () => {
                 COVID-19.
               </Typography>
               <button
+                type='button'
                 className='link-button'
                 onClick={() =>
                   window.open(
@@ -232,6 +235,7 @@ const QnA = () => {
                 ability to work has been affected due to COVID-19.
               </Typography>
               <button
+                type='button'
                 className='link-button'
                 onClick={() =>
                   window.open(
@@ -268,6 +272,7 @@ const QnA = () => {
                 locations/details of the COVID-19 testing centres in BC.
               </Typography>
               <button
+                type='button'
                 className='link-button'
                 onClick={() =>
                   window.open(
@@ -297,6 +302,7 @@ const QnA = () => {
                 Richmond and North Shore.
               </Typography>
               <button
+                type='button'
                 className='link-button'
                 onClick={() =>
                   window.open(
@@ -326,6 +332,7 @@ const QnA = () => {
                 to Friday at 5 p.m.
               </Typography>
               <button
+                type='button'
                 className='link-button'
                 onClick={() =>
                   window.open(
