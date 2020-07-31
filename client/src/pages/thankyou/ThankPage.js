@@ -14,8 +14,8 @@ const modalStye = makeStyles((theme)=> ({
         marginTop: '150px',
         maxWidth : '300px',
         [theme.breakpoints.up('md')]:{
-            maxWidth : '700px',
-            marginTop: '3%',
+            maxWidth : '650px',
+            marginTop: '2%',
         },
         
     }
@@ -39,7 +39,7 @@ const ThankPage = ()=> {
                         <img src={socialDis} alt="social distance" />
                         <p className="title">What we can do?</p>
                         <div>
-                            <p className='intro-text'>Stay home if you can, keep social distancing and wash your hands.</p>
+                            <p className='intro-text'>Keep social distancing and wash your hands.</p>
                         </div>
                     </div>
                     <div className="intro-middle">
@@ -53,7 +53,7 @@ const ThankPage = ()=> {
                         <img src={reopen}  alt="reopen" />
                         <p className="title">What's next</p>
                         <div>
-                            <p className='intro-text'>Thanks again to essential workers and support local retailers.</p>
+                            <p className='intro-text'>Support local retailers and ready for reopening.</p>
                         </div>
                     </div>
                 </div>

@@ -16,6 +16,14 @@ const Home = () => {
   const pageHeadingData = { heading, subheading, body };
   const [mapVisible, setVisible] = useState(false);
 
+  const [width,setWidth] = useState(window.innerWidth);
+
+  React.useEffect(()=>{
+    window.addEventListener('resize',()=>{
+      setWidth(window.innerWidth);
+    })
+  })
+
   return (
     <motion.div
       exit='out'
@@ -37,7 +45,7 @@ const Home = () => {
       <div className="Home-main-body">
         <Sidebar className="Home-main-body-sidebar" />
         <Hidden smDown>
-        <div style={{width: `${window.innerWidth - (window.innerWidth)*0.3}px`}}>
+        <div style={{width: `${width - (width)*0.3}px`}}>
           <MapContainer className="Home-main-body-map" />
         </div>
         </Hidden>

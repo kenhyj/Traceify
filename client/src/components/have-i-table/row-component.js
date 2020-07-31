@@ -5,14 +5,8 @@ import { useDispatch } from "react-redux";
 import React, { useState } from 'react';
 import LocationAuto from './auto-complet';
 import {
-    IconButton,
-    TableCell,
-    TableRow,
-    Table,
-    Hidden,
-    Collapse,
-    Typography,
-    TableBody,
+    IconButton, TableCell, TableRow, Table,
+    Hidden, Collapse, Typography, TableBody,
 } from '@material-ui/core';
 import { MuiPickersUtilsProvider, KeyboardDatePicker, } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';

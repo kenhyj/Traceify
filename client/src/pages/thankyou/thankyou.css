@@ -20,7 +20,7 @@
   }
   
   .intro-left img , .intro-middle img,.intro-right img {
-    width: 75%;
+    width: 70%;
     display: block;
     margin: 0 auto;
   }
@@ -30,7 +30,7 @@
   }
   
   .intro-text {
-    width: 80%;
+    width: 90%;
     margin: 5px auto 10px auto;
     text-align: center;
     font-size: 0.8em;

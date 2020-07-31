@@ -6,17 +6,17 @@ const commonstate = {
 const rarestate = {
   'aches and pains': false,
   'sore throat': false,
-  diarrhea: false,
-  conjunctivitis: false,
-  headache: false,
+  'diarrhea': false,
+  'conjunctivitis': false,
+  'headache': false,
   'loss of taste': false,
   'loss of smell': false,
-
   'rash on skin': false,
-  'discolouration of fingers or toes': false,
+  // 'discolouration of fingers or toes': false,
 };
 const seriousstate = {
-  'difficulty breathing or shortness of breath': false,
+  'difficulty breathing': false,
+  'shortness of breath' : false,
   'chest pain or pressure': false,
   'loss of speech': false,
   'loss of movement': false,
@@ -24,10 +24,9 @@ const seriousstate = {
 const atriskstate = {
   'Older than 64': false,
   'Have Liver Disease': false,
-  'Have HIV or immunocompromised': false,
-
+  'Immunocompromised': false,
   'Undergoing chemotherapy': false,
-  Diabetic: false,
+  'Diabetic': false,
   'Undergoing dialysis': false,
   'BMI 40 and over': false,
   'In need of organ transplant': false,
