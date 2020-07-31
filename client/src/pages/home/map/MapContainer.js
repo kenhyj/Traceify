@@ -17,6 +17,10 @@ class MapContainer extends Component {
     };
   }
 
+  componentDidMount() {
+    this.loadData();
+  }
+
   handleToggleOpen = () => {
     this.setState({
       clusterInfoIsOpen: true,
@@ -28,10 +32,6 @@ class MapContainer extends Component {
       clusterInfoIsOpen: false,
     });
   };
-
-  componentDidMount() {
-    this.loadData();
-  }
 
   loadData() {
     this.props.dispatch(fetchLocations());

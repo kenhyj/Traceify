@@ -98,7 +98,7 @@ class AdminAdd extends React.Component {
     let validSubmission = false;
     let title = '';
     let city = '';
-    let array = this.state.locationSearchField.split(', ');
+    const array = this.state.locationSearchField.split(', ');
     for (let i = 0; i < array.length; i++) {
       if (validCities.indexOf(array[i].toLowerCase()) > -1) {
         city = array[i];

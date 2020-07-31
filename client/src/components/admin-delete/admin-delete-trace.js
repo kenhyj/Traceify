@@ -244,7 +244,7 @@ function AdminDelete(props) {
       .get('/api/location-trace')
       .then((result) => {
         props.setLocationTraces(result.data);
-        let temp = [];
+        const temp = [];
         result.data.forEach((row) => {
           temp.push(
             createData(
