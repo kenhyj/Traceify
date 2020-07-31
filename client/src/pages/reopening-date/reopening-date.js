@@ -122,17 +122,15 @@ function renderTableDataMUI(restrictions) {
 }
 
 function breaklines(text) {
-  {
-    const paragraph = text.split('\n');
-    return paragraph.map((line) => {
-      return (
-        <text>
-          {line}
-          <br />
-        </text>
-      );
-    });
-  }
+  const paragraph = text.split('\n');
+  return paragraph.map((line) => {
+    return (
+      <text>
+        {line}
+        <br />
+      </text>
+    );
+  });
 }
 
 const useStyles = makeStyles((theme) => ({
