@@ -9,10 +9,10 @@ class SymptomDisclaimer extends React.Component {
     title: 'Suggestions',
     descriptions: [
       'Currently there is no official treatment or cure for COVID-19.',
-      'Meanwhile, please continue to practice social distancing and wash your hands thoroughly and regularly.',
-      'Avoid large gatherings and limit outside contact to as limited to shopping groceries and essentials.',
+      'Meanwhile, please continue to practice social distancing and wash your hands thoroughly and regularly. Avoid large gatherings and limit outside contact to as limited to shopping groceries and essentials.',
       'If you are seeing new symptoms or pre-existing symptoms worsen in the next 2-14 days, check the symptom checker or in case of emergency contact your local health authorities.',
     ],
+    severe : 'warning',
     url:
       'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/treatments',
     id: 0,
@@ -25,6 +25,7 @@ class SymptomDisclaimer extends React.Component {
         'But you may be a virus carrier.',
         'To be sure that you are virus-free, a COVID testing from a clinic is necessary',
       ],
+      severe : 'success',
       url:
         'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/symptoms',
       id: 5,
@@ -36,6 +37,7 @@ class SymptomDisclaimer extends React.Component {
         'You are exhibiting some of the more common symptoms of someone who has the virus.',
         ' Do not be alarmed. Some of these are commonly seen in colds and flu',
       ],
+      severe : 'warning',
       url:
         'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/symptoms',
       id: 1,
@@ -47,6 +49,7 @@ class SymptomDisclaimer extends React.Component {
         'You are exhibiting some of the rarest symptoms of someone who has the virus.',
         ' Not many individuals who have contracted COVID 19 exhibits these symptoms.',
       ],
+      severe : 'warning',
       url:
         'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/symptoms',
       id: 2,
@@ -57,6 +60,7 @@ class SymptomDisclaimer extends React.Component {
       descriptions: [
         'You are exhibiting some of the more serious symptoms exhibited by those with the COVID virus',
       ],
+      severe : 'error',
       url:
         'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/symptoms',
       id: 3,
@@ -86,6 +90,7 @@ class SymptomDisclaimer extends React.Component {
       descriptions: [
         'The COVID-19 will or has put you at an elevated risk of developing health complications from either your pre-existing disorder or current disorder',
       ],
+      severe : 'error',
       url:
         'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/if-you-are-sick',
       id: 4,
@@ -104,7 +109,7 @@ class SymptomDisclaimer extends React.Component {
     return (
       <Dialog open={this.props.diagnosis.showResult} onClose={this.props.close}>
         <div className='pop-result'>
-          <DialogContent>{this.atrisque(this.props.diagnosis)}</DialogContent>
+        {this.atrisque(this.props.diagnosis)?<DialogContent>{this.atrisque(this.props.diagnosis)}</DialogContent>:null}
           <DialogContent>
             <Card key={result.id} {...result} />
           </DialogContent>

@@ -4,19 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import {
-  Typography,
-  Toolbar,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  TableHead,
-  TableContainer,
-  Dialog,
-  Grid,
-  Container,
-  Hidden,
-  IconButton,
+  Typography, Toolbar, Table, TableBody, TableCell, TableRow,
+  TableHead, TableContainer, Dialog, Grid, Container, Hidden,IconButton,
 } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Send from '@material-ui/icons/Send';
@@ -34,8 +23,8 @@ import PageHeading from '../../components/page-heading/PageHeading';
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: '#2196F3',
-    fontSize: 16,
-    padding: '5px',
+    fontSize: 18,
+    padding: '8px',
     color: 'white',
   },
   body: {
@@ -149,7 +138,7 @@ const HaveI = () => {
               color='inherit'
               onClick={() => dispatch({ type: 'ADD_ROW' })}
             >
-              <AddCircleOutlineIcon />
+              Add<AddCircleOutlineIcon />
             </IconButton>
           </Grid>
           <Grid item xs={8}>
@@ -160,16 +149,14 @@ const HaveI = () => {
 
           <Grid container item xs={2} justify='center'>
             <IconButton
-              variant='outlined'
               color='inherit'
+              variant='outlined'
               onClick={handleSubmit}
             >
-              Submit <Send />
+              Submit<Send/>
             </IconButton>
           </Grid>
         </Toolbar>
-
-        <br />
         <TableContainer>
           <Table aria-label='customized table' className={classes.table}>
             <Hidden smDown>
