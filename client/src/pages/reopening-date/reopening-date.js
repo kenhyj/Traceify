@@ -231,7 +231,6 @@ function Reopen() {
   };
 
   function snackalert() {
-    console.log('snackalert start');
     return (
       <div>
         <Snackbar
