@@ -11,7 +11,6 @@ const cardStyles = makeStyles((theme) => ({
   },
   content: {
     padding: 5,
-
   },
   contentText: {
     marginTop: '5px',
@@ -19,11 +18,11 @@ const cardStyles = makeStyles((theme) => ({
   },
   button: {
     color: 'black',
-    size: 'small'
+    size: 'small',
   },
-  alert:{
-    fontSize:'0.8rem'
-  }
+  alert: {
+    fontSize: '0.8rem',
+  },
 }));
 
 export default cardStyles;

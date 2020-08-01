@@ -94,16 +94,15 @@ const QnA = () => {
                 of UBC CS students.
                 <br />
                 Please look at our youtube video of a brief summary.
-                <br />
-                <iframe
-                  title='traceifyutube'
-                  width='560'
-                  height='315'
-                  src='https://www.youtube.com/embed/8TWWVOtbVD8'
-                  frameBorder='0'
-                  allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-                  allowFullscreen
-                />
+                <div className='video_wrapper'>
+                  <iframe
+                    title='traceifyutube'
+                    src='https://www.youtube.com/embed/8TWWVOtbVD8'
+                    frameBorder='0'
+                    allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+                    allowFullscreen
+                  />
+                </div>
               </Typography>
             </AccordionDetails>
           </Accordion>
