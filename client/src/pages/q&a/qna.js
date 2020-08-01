@@ -97,8 +97,6 @@ const QnA = () => {
                 <div className='video_wrapper'>
                   <iframe
                     title='traceifyutube'
-                    width='80%'
-                    height='300'
                     src='https://www.youtube.com/embed/8TWWVOtbVD8'
                     frameBorder='0'
                     allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
