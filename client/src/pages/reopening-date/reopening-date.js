@@ -19,6 +19,22 @@ import { Alert } from '@material-ui/lab/';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import PageHeading from '../../components/page-heading/PageHeading';
 
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    minWidth : '30%',
+    margin :'2%',
+    margin: '5%',
+    minWidth: '40%',
+    [theme.breakpoints.down('lg')]:{
+      minWidth : '30%',
+      margin :'2%'
+  },
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
+
 function renderProvince(obj) {
   if (Object.keys(obj).length !== 0) {
     const current_phase = obj.current_stage - 1;
@@ -132,16 +148,6 @@ function breaklines(text) {
     );
   });
 }
-
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(10),
-    minWidth: '30%',
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
 
 const provterr = [
   { abbr: 'AB', province: 'Alberta' },
