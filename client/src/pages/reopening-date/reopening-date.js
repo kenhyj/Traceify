@@ -6,15 +6,34 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import './reopening.css';
 import React, { useState } from 'react';
-import PageHeading from '../../components/page-heading/PageHeading';
 import { motion } from 'framer-motion';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Snackbar,
+} from '@material-ui/core';
+import { Alert } from '@material-ui/lab/';
 import { variants, transitions, pageStyle } from '../motion-settings';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Instruction from '../../components/instruction/instruction';
+import PageHeading from '../../components/page-heading/PageHeading';
+
+const useStyles = makeStyles((theme) => ({
+  formControl: {
+    minWidth : '30%',
+    margin :'2%',
+    margin: '5%',
+    minWidth: '40%',
+    [theme.breakpoints.down('lg')]:{
+      minWidth : '30%',
+      margin :'2%'
+  },
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
 function renderProvince(obj) {
   if (Object.keys(obj).length !== 0) {
@@ -24,21 +43,13 @@ function renderProvince(obj) {
         <h1
           style={{
             textAlign: 'center',
-            fontSize: '1.5em',
+            fontSize: '1em',
             backgroundColor: 'rgb(135, 151, 170)',
           }}
         >
           {obj.province} is currently in Stage {obj.current_stage}
           <br />
         </h1>
-        <h2
-          style={{
-            textAlign: 'center',
-            fontSize: 'em',
-          }}
-        >
-          You are looking at details of Stage {obj.current_stage}
-        </h2>
         <Table id='provtable'>
           <TableHead>
             <TableRow>
@@ -75,20 +86,12 @@ function renderProvinceTwo(obj, chosenphase) {
         <h1
           style={{
             textAlign: 'center',
-            fontSize: '1.5em',
-            backgroundColor: 'rgb(135, 151, 170)',
+            fontSize: '1em',
+            backgroundColor: 'rgb(188, 213, 243)',
           }}
         >
           {obj.province} is currently in Stage {obj.current_stage}
         </h1>
-        <h2
-          style={{
-            textAlign: 'center',
-            fontSize: 'em',
-          }}
-        >
-          You are looking at details of Stage {chosenphase}
-        </h2>
         <Table id='provtable'>
           <TableHead>
             <TableRow>
@@ -135,28 +138,16 @@ function renderTableDataMUI(restrictions) {
 }
 
 function breaklines(text) {
-  {
-    const paragraph = text.split('\n');
-    return paragraph.map((line) => {
-      return (
-        <text>
-          {line}
-          <br />
-        </text>
-      );
-    });
-  }
+  const paragraph = text.split('\n');
+  return paragraph.map((line) => {
+    return (
+      <text>
+        {line}
+        <br />
+      </text>
+    );
+  });
 }
-
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(10),
-    minWidth: '30%',
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
 
 const provterr = [
   { abbr: 'AB', province: 'Alberta' },
@@ -201,34 +192,12 @@ function dropphasemenu(region) {
 }
 
 const heading = 'Reopening Dates';
-const subheading = <p></p>;
+const subheading = <>Find which services are available in your area.</>;
 const body = (
   <>
-    <b>Disclaimer</b>
-    <br />
-    Each province and territory have several phases or stages that consist of
-    unique policies.
-    <br />
-    As the COVID-19 cases improves, the province/territory will transition into
-    the next phase.
-    <br />
-    eg. 1 goes to 2 and 2 goes to 3, etc.
-    <br />
-    However, if the COVID-19 cases worsens, it is possible to regress to a
-    previous phase.
-    <br />
-    eg. 2 reverts to 1.
-    <br />
-    Each of these phases are flexible to change according to the COVID-19
-    climate.
+    Choose province/territory. The stage will be set to current by default.
     <br />
     If there is a service you do not see, try checking the previous stages.
-    <br />
-    There are additional information listed at the button of the table.
-    <br />
-    Please call the specific store location of interest to enquire about
-    operating hours. Their hours may have adjusted. They could be closed for
-    safety.
   </>
 );
 const pageHeadingData = { heading, subheading, body };
@@ -236,6 +205,7 @@ const pageHeadingData = { heading, subheading, body };
 function Reopen() {
   const [prov, setProvince] = useState({});
   const [phase, setPhase] = useState(-1000);
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
   const axiosgetreopenlist = (target) => {
     axios
@@ -256,7 +226,32 @@ function Reopen() {
 
   const handlePhaseChange = (event) => {
     setPhase(event.target.value);
+    setOpen(true);
   };
+
+  const handlesnackClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+
+  function snackalert() {
+    return (
+      <div>
+        <Snackbar
+          open={open}
+          autoHideDuration={5000}
+          onClose={handlesnackClose}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        >
+          <Alert onClose={handlesnackClose} severity='info'>
+            Questions? Check out our Q&#38;A!
+          </Alert>
+        </Snackbar>
+      </div>
+    );
+  }
 
   const droprender = (
     <div>
@@ -272,7 +267,7 @@ function Reopen() {
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
-        <p className='label'>Phases/Stages</p>
+        <p className='label'>Stages</p>
         <Select
           labelId='phases-select-label'
           id='phases-select-label'
@@ -298,19 +293,8 @@ function Reopen() {
       <div>
         <PageHeading data={pageHeadingData} />
       </div>
-      <br />
-      <br />
-      <Instruction
-        text='Please select a Province/Territory then a phase/stage.'
-        width='30%'
-      />
-      <div className='dropdown'>
-        {droprender}
-        <br />
-      </div>
-      <br />
-      <br />
-      <br />
+      <div className='dropdown'>{droprender}</div>
+      {snackalert()}
     </motion.div>
   );
 }

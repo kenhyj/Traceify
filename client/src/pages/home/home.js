@@ -35,6 +35,14 @@ const Home = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const [width, setWidth] = useState(window.innerWidth);
+
+  React.useEffect(() => {
+    window.addEventListener('resize', () => {
+      setWidth(window.innerWidth);
+    });
+  });
+
   return (
     <motion.div
       exit='out'
@@ -49,20 +57,29 @@ const Home = () => {
       </div>
       <div className='Home-main-body'>
         <div className='Home-mobile-toggle-view'>
-          <Chip
-            onClick={() => setMapVisible(!mapVisible)}
-            label='Toggle View'
-          />
+          <Chip label='View Maps' onClick={() => setVisible(!mapVisible)} />
+          <Chip label='View Info' />
         </div>
+      </Hidden>
+      <div className='Home-main-body'>
         <Sidebar className='Home-main-body-sidebar' />
+        <Hidden smDown>
+          <div style={{ width: `${width - width * 0.3}px` }}>
+            <MapContainer className='Home-main-body-map' />
+          </div>
+        </Hidden>
+      </div>
+      <Hidden mdUp>
         <div
           style={{
-            width: `${windowSize.width - windowSize.width * 0.3}px`,
+            width: '80%',
+            margin: '10px 10%',
+            display: mapVisible ? 'block' : 'none',
           }}
         >
           <MapContainer className='Home-main-body-map' />
         </div>
-      </div>
+      </Hidden>
     </motion.div>
   );
 };

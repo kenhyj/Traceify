@@ -28,18 +28,22 @@ export default function CardMapInfo(props) {
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card className={classes.root} variant="outlined">
+    <Card className={classes.root} variant='outlined'>
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
+        <Typography
+          className={classes.title}
+          color='textSecondary'
+          gutterBottom
+        >
           Outbreak/Possible Exposure
         </Typography>
-        <Typography variant="h5" component="h2">
+        <Typography variant='h5' component='h2'>
           Location
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
+        <Typography className={classes.pos} color='textSecondary'>
           Date/time
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography variant='body2' component='p'>
           Useful information here
         </Typography>
       </CardContent>

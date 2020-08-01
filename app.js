@@ -44,7 +44,7 @@ mongoose.connect(process.env.DB_CONNECTION, {
 const db = require('./db');
 db.connect(() => {
   app.listen(process.env.DB_PORT || 5000, function () {
-    console.log(`Listening`);
+    console.log('Listening');
   });
 });
 

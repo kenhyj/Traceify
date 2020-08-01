@@ -1,16 +1,28 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useStyles = makeStyles({
+const cardStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 800, // TODO: make responsive
+    maxWidth: '800px',
+    [theme.breakpoints.down('md')]: {
+      maxWidth: '300px',
+    },
     variant: 'outlined',
-    margin: 10,
+    margin: 5,
   },
   content: {
-    padding: 20,
+    padding: 5,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 700,
+  contentText: {
+    marginTop: '5px',
+    fontSize: '0.8rem',
   },
-});
+  button: {
+    color: 'black',
+    size: 'small',
+  },
+  alert: {
+    fontSize: '0.8rem',
+  },
+}));
+
+export default cardStyles;

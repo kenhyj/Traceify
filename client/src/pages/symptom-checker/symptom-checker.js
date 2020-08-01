@@ -8,9 +8,8 @@ import {
   FormControlLabel,
 } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { Send, Refresh } from '@material-ui/icons';
+import { Send } from '@material-ui/icons';
 import { motion } from 'framer-motion';
-import './symptom-checker.css';
 import SymptomDisclaimer from './symptom-disclaimer';
 import PageHeading from '../../components/page-heading/PageHeading';
 import { variants, transitions, pageStyle } from '../motion-settings';
@@ -19,12 +18,22 @@ import Instruction from '../../components/instruction/instruction';
 class SymptomChecker extends React.Component {
   constructor() {
     super();
-    this.state = { risk: false };
+    this.state = { risk: false, width: 0 };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.typeform = this.typeform.bind(this);
-    this.retakeTest = this.retakeTest.bind(this);
+    window.addEventListener('resize', this.update);
   }
+
+  componentDidMount() {
+    this.update();
+  }
+
+  update = () => {
+    this.setState({
+      width: window.innerWidth,
+    });
+  };
 
   handleChange(event) {
     this.props.choosesymptoms({
@@ -34,21 +43,17 @@ class SymptomChecker extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({ ...this.state, risk: true, show: true });
+    const prevState = this.state;
+    this.setState({ ...prevState, risk: true, show: true });
     this.props.showResult();
-  }
-
-  retakeTest(event) {
-    this.setState({ ...this.state, risk: false, show: false });
-    // TODO: retake.
   }
 
   typeform(symptomtype) {
     return (
-      <Grid style={{ margin: '5%' }}>
+      <Grid style={{ margin: '3%' }}>
         <FormGroup row='true'>
           {symptomtype.map((somesymptoms) => (
-            <Grid item xs={3}>
+            <Grid item xs={6} sm={4} md={3}>
               <FormControlLabel
                 control={
                   <Checkbox
@@ -69,16 +74,21 @@ class SymptomChecker extends React.Component {
   render() {
     const heading = 'Symptom Checker';
     const subheading = (
-      <>Wondering if you should get tested? Discover a treatment plan below.</>
+      <div>
+        Wondering if you should get tested? Discover a treatment plan below.
+      </div>
     );
     const body = (
-      <>
+      <div>
         <p>
           This page will determine the level of risk you are at based to COVID
-          19 based these symptoms and criteria.{' '}
+          19 based these symptoms and criteria.
         </p>
-        <p>Disclaimer: Use this checker at your own discretion.</p>
-      </>
+        <p>
+          <b>Disclaimer: </b>
+          Use this checker at your own discretion.
+        </p>
+      </div>
     );
 
     const pageHeadingData = { heading, subheading, body };
@@ -101,10 +111,6 @@ class SymptomChecker extends React.Component {
             width='50%'
           />
           {this.typeform(this.props.diagnosis.atrisk.sort())}
-          <br />
-          <br />
-          <br />
-          <br />
           <Instruction
             text="Please check all the boxes below that you've experienced recently
                         eg.last 2-14 days:"
@@ -119,9 +125,13 @@ class SymptomChecker extends React.Component {
               )
               .sort()
           )}
-          <br />
-          <br />
-          <Grid container style={{ width: '30%', marginLeft: '35%' }}>
+          <Grid
+            container
+            style={{
+              width: '200px',
+              marginLeft: `${this.state.width * 0.5 - 100}px`,
+            }}
+          >
             <Grid container justify='center'>
               <Button
                 type='submit'

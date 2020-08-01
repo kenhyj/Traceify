@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './symptom-checker.css';
 import { Dialog, DialogContent } from '@material-ui/core';
 import Card from '../../components/card/Card-TitleDescButton';
 
-export class SymptomDisclaimer extends React.Component {
+class SymptomDisclaimer extends React.Component {
   please = {
     title: 'Suggestions',
     descriptions: [
       'Currently there is no official treatment or cure for COVID-19.',
-      'Meanwhile, please continue to practice social distancing and wash your hands thoroughly and regularly.',
-      'Avoid large gatherings and limit outside contact to as limited to shopping groceries and essentials.',
+      'Meanwhile, please continue to practice social distancing and wash your hands thoroughly and regularly. Avoid large gatherings and limit outside contact to as limited to shopping groceries and essentials.',
       'If you are seeing new symptoms or pre-existing symptoms worsen in the next 2-14 days, check the symptom checker or in case of emergency contact your local health authorities.',
     ],
-    url: 'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/treatments',
+    severe : 'warning',
+    url:
+      'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/treatments',
     id: 0,
   };
 
@@ -24,7 +24,9 @@ export class SymptomDisclaimer extends React.Component {
         'But you may be a virus carrier.',
         'To be sure that you are virus-free, a COVID testing from a clinic is necessary',
       ],
-      url: 'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/symptoms',
+      severe : 'success',
+      url:
+        'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/symptoms',
       id: 5,
     };
 
@@ -34,7 +36,9 @@ export class SymptomDisclaimer extends React.Component {
         'You are exhibiting some of the more common symptoms of someone who has the virus.',
         ' Do not be alarmed. Some of these are commonly seen in colds and flu',
       ],
-      url: 'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/symptoms',
+      severe : 'warning',
+      url:
+        'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/symptoms',
       id: 1,
     };
 
@@ -44,7 +48,9 @@ export class SymptomDisclaimer extends React.Component {
         'You are exhibiting some of the rarest symptoms of someone who has the virus.',
         ' Not many individuals who have contracted COVID 19 exhibits these symptoms.',
       ],
-      url: 'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/symptoms',
+      severe : 'warning',
+      url:
+        'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/symptoms',
       id: 2,
     };
 
@@ -53,7 +59,9 @@ export class SymptomDisclaimer extends React.Component {
       descriptions: [
         'You are exhibiting some of the more serious symptoms exhibited by those with the COVID virus',
       ],
-      url: 'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/symptoms',
+      severe : 'error',
+      url:
+        'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/symptoms',
       id: 3,
     };
 
@@ -81,7 +89,9 @@ export class SymptomDisclaimer extends React.Component {
       descriptions: [
         'The COVID-19 will or has put you at an elevated risk of developing health complications from either your pre-existing disorder or current disorder',
       ],
-      url: 'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/if-you-are-sick',
+      severe : 'error',
+      url:
+        'http://www.bccdc.ca/health-info/diseases-conditions/covid-19/about-covid-19/if-you-are-sick',
       id: 4,
     };
 
@@ -96,24 +106,19 @@ export class SymptomDisclaimer extends React.Component {
   render() {
     const result = this.gimme(this.props.diagnosis);
     return (
-
-      <Dialog open={this.props.diagnosis.showResult} onClose={this.props.close}>
-        <div className='pop-result'>
-
-          <DialogContent>
-            {this.atrisque(this.props.diagnosis)}
-          </DialogContent>
-          <DialogContent>
+      <Dialog scroll = 'paper' open={this.props.diagnosis.showResult} onClose={this.props.close}>
+      
+        
+          <DialogContent style = {{backgroundColor : 'aliceblue'}}>
+            {this.atrisque(this.props.diagnosis)? this.atrisque(this.props.diagnosis):null}
             <Card key={result.id} {...result} />
-          </DialogContent>
-
-          <DialogContent>
             <Card key={this.please.id} {...this.please} />
           </DialogContent>
-
-        </div>
+          <DialogContent>
+            
+          </DialogContent>
+       
       </Dialog>
-
     );
   }
 }

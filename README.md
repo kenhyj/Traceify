@@ -9,6 +9,8 @@
 
 Traceify aims to help the general public in Vancouver by providing information and keeping track of where COVID-19 positive individuals visited within the past few days. The users will be able to view the locations, check their risk of COVID-19, check whether they crossed paths with any of the known positive patients, and have access to useful information (i.e., Financial help resources, Reopening Stages, etc.).
 
+[![Traceify U2vu](https://i.imgur.com/KdfDccq.png)](https://www.youtube.com/watch?v=8TWWVOtbVD8&feature=emb_title "U2vu")
+
 ## Tech Stack
 
 - HTML

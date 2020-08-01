@@ -1,12 +1,12 @@
 import React from 'react';
+import { Container } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { fetchLocations } from '../../redux/actions/map-actions';
 import CardMapInfo from './Card-MapInfo';
-import { Container } from '@material-ui/core';
 
 const InformationList = (props) => {
   return (
-    <Container style={{maxHeight: '600px', overflow: 'auto'}}>
+    <Container style={{ maxHeight: '600px', overflow: 'auto' }}>
       <CardMapInfo />
       <CardMapInfo />
       <CardMapInfo />

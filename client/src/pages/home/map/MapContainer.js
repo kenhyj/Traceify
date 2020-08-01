@@ -17,6 +17,10 @@ class MapContainer extends Component {
     };
   }
 
+  componentDidMount() {
+    this.loadData();
+  }
+
   handleToggleOpen = () => {
     this.setState({
       clusterInfoIsOpen: true,
@@ -28,9 +32,6 @@ class MapContainer extends Component {
       clusterInfoIsOpen: false,
     });
   };
-  componentDidMount() {
-    this.loadData();
-  }
 
   loadData() {
     this.props.dispatch(fetchLocations());
@@ -45,11 +46,11 @@ class MapContainer extends Component {
     };
 
     const handleClusterClick = (cluster) => {
-      let markers = cluster.getMarkers();
+      const markers = cluster.getMarkers();
       // console.log('cluster markers?', markers);
       // TODO: find out how to access google map's current zoom level
-      let markerInfoArray = [];
-      for (let m of markers) {
+      const markerInfoArray = [];
+      for (const m of markers) {
         markerInfoArray.push(m.getPosition().toString());
       }
       this.handleToggleOpen();

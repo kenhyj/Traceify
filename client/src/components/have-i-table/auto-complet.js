@@ -1,14 +1,18 @@
-/* eslint-disable */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import PlacesAutocomplete, {
   geocodeByAddress,
-  getLatLng
+  getLatLng,
 } from 'react-places-autocomplete';
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
-import { List, ListItem, ListItemText, Menu, ListItemIcon } from "@material-ui/core";
+import {
+  List,
+  ListItem,
+  ListItemText,
+  Menu,
+  ListItemIcon,
+} from '@material-ui/core';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { withGoogleMaps } from '../../pages/home/map/MapHOC';
 
@@ -25,58 +29,90 @@ const useStyles = makeStyles((theme) => ({
   listItem: {
     backgroundColor: theme.palette.background.paper,
     width: '280px',
-    [theme.breakpoints.up('md')]:{
+    [theme.breakpoints.up('md')]: {
       width: '180px',
     },
-    
-    textAlign: "left",
+
+    textAlign: 'left',
     '&:hover': {
       color: 'tomato',
-    }
-  }
+    },
+  },
 }));
-
-
 
 function LocationAuto(props) {
   const classes = useStyles();
-  const fields = useSelector(state => state.timeAndLoc);
+  const fields = useSelector((state) => state.timeAndLoc);
   const dispatch = useDispatch();
-  let address = fields[props.idx].locations[props.locid].loc;
-  
-  const setAddress = (value)=>{
-    dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: { lat: ''.lat, lng: ''.lng, loc: value } });
-  }
+  const address = fields[props.idx].locations[props.locid].loc;
 
-  const handleSelect = async value => {
+  const setAddress = (value) => {
+    dispatch({
+      type: 'EDIT_ROW_LOC',
+      idx: props.idx,
+      locid: parseInt(props.locid),
+      newLoc: { lat: ''.lat, lng: ''.lng, loc: value },
+    });
+  };
+
+  const handleSelect = async (value) => {
     setAddress(value);
     geocodeByAddress(value)
       .then((results) => {
         return getLatLng(results[0]);
-      }).then((latLng) => {
-        dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: { lat: latLng.lat, lng: latLng.lng, loc: value } });
       })
-      .catch(err => {
-        dispatch({ type: 'EDIT_ROW_LOC', idx: props.idx, locid: parseInt(props.locid), newLoc: { lat: ''.lat, lng: ''.lng, loc: value } });
+      .then((latLng) => {
+        dispatch({
+          type: 'EDIT_ROW_LOC',
+          idx: props.idx,
+          locid: parseInt(props.locid),
+          newLoc: { lat: latLng.lat, lng: latLng.lng, loc: value },
+        });
       })
+      .catch((err) => {
+        dispatch({
+          type: 'EDIT_ROW_LOC',
+          idx: props.idx,
+          locid: parseInt(props.locid),
+          newLoc: { lat: ''.lat, lng: ''.lng, loc: value },
+        });
+      });
   };
 
-  const renderFunc = ({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+  const renderFunc = ({
+    getInputProps,
+    suggestions,
+    getSuggestionItemProps,
+    loading,
+  }) => (
     <div>
-      <TextField className={classes.text} {...getInputProps({ label: "Type address", size: 'medium' })} />
+      <TextField
+        className={classes.text}
+        {...getInputProps({ label: 'Type address', size: 'medium' })}
+      />
 
-      <div style={{ position: 'fixed', padding: '0', width: '23%', zIndex: '3' }}>
+      <div
+        style={{ position: 'fixed', padding: '0', width: '23%', zIndex: '3' }}
+      >
         {loading ? <div>...loading</div> : null}
 
         <List position='sticky' component='nav'>
           {suggestions.map((suggestion, index) => {
             const primary = suggestion.description;
             return (
-              <ListItem className={classes.listItem} dense={true} key={props.idx + index}>
-                <ListItemIcon><LocationOnIcon size='small' /></ListItemIcon>
-                <ListItemText {...getSuggestionItemProps(suggestion, { primary })}></ListItemText>
+              <ListItem
+                className={classes.listItem}
+                dense
+                key={props.idx + index}
+              >
+                <ListItemIcon>
+                  <LocationOnIcon size='small' />
+                </ListItemIcon>
+                <ListItemText
+                  {...getSuggestionItemProps(suggestion, { primary })}
+                />
               </ListItem>
-            )
+            );
           })}
         </List>
       </div>
@@ -89,7 +125,8 @@ function LocationAuto(props) {
         value={address}
         onChange={setAddress}
         onSelect={handleSelect}
-      >{renderFunc}
+      >
+        {renderFunc}
       </PlacesAutocomplete>
     </div>
   );

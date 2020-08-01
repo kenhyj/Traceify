@@ -22,6 +22,10 @@
   /* position: relative; */
 }
 
+.MuiAlert-message{
+  font-size: 14px;
+}
+
 {/* This doesn't work for some reason...*/}
 .App-header {
   position: fixed;

@@ -6,3 +6,9 @@
     width: 40%;
     text-align: center;
 }
+
+@media screen and (max-width: 992px) {
+    .heading {
+        width: 80%;
+    }
+  }

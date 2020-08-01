@@ -1,11 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Typography,
-  IconButton,
-  Hidden,
-  Drawer,
-} from '@material-ui/core';
+import { Typography, IconButton, Hidden, Drawer } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 import logo from '../../assets/logoresized.svg';
 import DropdownMenu from './DropdownMenu';
@@ -51,7 +46,7 @@ export default function HeaderTitle(props) {
               keepMounted: true,
             }}
           >
-            <span style={{height: '5rem'}} />
+            <span style={{ height: '5rem' }} />
             <DropdownMenu toggleMenu={toggleMenu} />
           </Drawer>
         </div>
