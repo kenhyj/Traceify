@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './symptom-checker.css';
 import { Dialog, DialogContent } from '@material-ui/core';
 import Card from '../../components/card/Card-TitleDescButton';
 
@@ -107,17 +106,18 @@ class SymptomDisclaimer extends React.Component {
   render() {
     const result = this.gimme(this.props.diagnosis);
     return (
-      <Dialog open={this.props.diagnosis.showResult} onClose={this.props.close}>
-        <div className='pop-result'>
-        {this.atrisque(this.props.diagnosis)?<DialogContent>{this.atrisque(this.props.diagnosis)}</DialogContent>:null}
-          <DialogContent>
+      <Dialog scroll = 'paper' open={this.props.diagnosis.showResult} onClose={this.props.close}>
+      
+        
+          <DialogContent style = {{backgroundColor : 'aliceblue'}}>
+            {this.atrisque(this.props.diagnosis)? this.atrisque(this.props.diagnosis):null}
             <Card key={result.id} {...result} />
-          </DialogContent>
-
-          <DialogContent>
             <Card key={this.please.id} {...this.please} />
           </DialogContent>
-        </div>
+          <DialogContent>
+            
+          </DialogContent>
+       
       </Dialog>
     );
   }

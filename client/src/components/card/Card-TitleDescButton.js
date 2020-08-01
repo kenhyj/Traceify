@@ -43,7 +43,9 @@ const CardTitleDescButton = (props) => {
             <IconButton color= 'inherit' onClick={() => handleClick(url)}>More</IconButton>
           }>{title}
         </Alert>
-        {handleSuggestion()}
+        {descriptions.map((oneDescription) => {
+          return <Typography className={classes.contentText}>{oneDescription}</Typography>;
+        })}
       </CardContent>
     </Card>
   );
