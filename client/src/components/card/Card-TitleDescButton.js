@@ -4,37 +4,11 @@ import {
   Card,
   CardContent,
   Typography,
-  Button,
   Hidden,
-  Collapse,
+  IconButton,
 } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
-
-const cardStyles = makeStyles((theme) => ({
-  root: {
-    maxWidth: '800px',
-    [theme.breakpoints.down('md')]: {
-      maxWidth: '300px',
-    },
-    variant: 'outlined',
-    margin: 5,
-  },
-  content: {
-    padding: 5,
-
-  },
-  contentText: {
-    marginTop: '5px',
-    fontSize: '0.8rem',
-  },
-  button: {
-    color: 'inherit',
-    size: 'small'
-  },
-  alert:{
-    fontSize:'0.8rem'
-  }
-}));
+import cardStyles from './Card-TitleDescButton.css';
 
 const CardTitleDescButton = (props) => {
   const classes = cardStyles();
@@ -66,10 +40,12 @@ const CardTitleDescButton = (props) => {
         <Alert className={classes.alert}
           severity={severe}
           action={
-            <Button className={classes.button} onClick={() => handleClick(url)}>More</Button>
+            <IconButton color= 'inherit' onClick={() => handleClick(url)}>More</IconButton>
           }>{title}
         </Alert>
-        {handleSuggestion()}
+        {descriptions.map((oneDescription) => {
+          return <Typography className={classes.contentText}>{oneDescription}</Typography>;
+        })}
       </CardContent>
     </Card>
   );
