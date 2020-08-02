@@ -9,7 +9,7 @@
 
 Traceify aims to help the general public in Vancouver by providing information and keeping track of where COVID-19 positive individuals visited within the past few days. The users will be able to view the locations, check their risk of COVID-19, check whether they crossed paths with any of the known positive patients, and have access to useful information (i.e., Financial help resources, Reopening Stages, etc.).
 
-[![Traceify U2vu](https://i.imgur.com/KdfDccq.png)](https://www.youtube.com/watch?v=8TWWVOtbVD8&feature=emb_title "U2vu")
+[![Traceify U2vu](https://i.imgur.com/KdfDccq.png)](https://www.youtube.com/watch?v=8TWWVOtbVD8&feature=emb_title 'U2vu')
 
 ## Tech Stack
 
@@ -27,16 +27,18 @@ For first time use, in the terminal, run 'npm install' inside both client and se
 
 From the root, run 'npm start'. This will start both the client and the server.
 Create a '.env' file inside the client folder. You need to include:
+
 ```
 REACT_APP_GOOGLE_API_KEY = 'YOUR GOOGLE API KEY'
 DB_CONNECTION = 'mongodb+srv://admin:traceify@traceify-bzpck.mongodb.net/traceify?retryWrites=true&w=majority'
 ```
+
 Note that you will have to generate your own Google API key from the Google Developer Console (https://console.cloud.google.com/).
 Your API key needs to enable the following API libraries:
-- Maps JavaScript API 
+
+- Maps JavaScript API
 - Places API
 - Geocoding API
-
 
 ## Project Description
 
@@ -68,25 +70,25 @@ Your API key needs to enable the following API libraries:
 
 - 3-5 minimal requirements (will definitely complete)
 
-  - Make the Admin Panel only accessible to Admin emails that's stored as a 'whitelist' on the database, and allow Admins to log in via Google OAuth
-  - Home page: Google Maps integration to show data on map based on the filter selected
-  - Symptom Checker page: A quick self-testing page that assesses your likelihood of being contacted with COVID-19
-  - A thank you modal for all essential workers and people staying at home
-    <br/>
+  - [x] Make the Admin Panel only accessible to Admin emails that's stored as a 'whitelist' on the database, and allow Admins to log in via Google OAuth
+  - [x] Home page: Google Maps integration to show data on map based on the filter selected
+  - [x] Symptom Checker page: A quick self-testing page that assesses your likelihood of being contacted with COVID-19
+  - [x] A thank you modal for all essential workers and people staying at home
+        <br/>
 
 - 3-7 "standard" requirements (will most likely complete)
 
-  - Have I Been Exposed? page: Checks whether you've crossed paths within close range of places that a positive patient visited
+  - [x] Have I Been Exposed? page: Checks whether you've crossed paths within close range of places that a positive patient visited
   - Retailers Re-Opening Stage Information by province
-  - Admin panel: Admin can submit and delete Outbreak data
-  - Admin panel: Admin can submit and delete anonymous location trace data of a positive patient
+  - [x] Admin panel: Admin can submit and delete Outbreak data
+  - [x] Admin panel: Admin can submit and delete anonymous location trace data of a positive patient
+        <br/>
+
+- 2-3 stretch requirements (plan to complete 1)
+
+  - [x] Q&A page - Link to Wait times of hospitals, COVID-19 testing facility locations, government financial help website, overall summary of current situation in BC.
+  - [] Current geolocation data only visible to Admin: alerts if the person moves out of their neighbourhood - Credit card statement parsing for areas visited by a patient who tested positive, and automatically upload this data to the database
     <br/>
-
-- 2-3 stretch requirements (plan to complete 1) 
-
-  - Q&A page - Link to Wait times of hospitals, COVID-19 testing facility locations, government financial help website, overall summary of current situation in BC.
-  - Current geolocation data only visible to Admin: alerts if the person moves out of their neighbourhood - Credit card statement parsing for areas visited by a patient who tested positive, and automatically upload this data to the database
-  <br/>
 
 ## Task Breakdown
 
@@ -120,6 +122,7 @@ Your API key needs to enable the following API libraries:
   { "_id" : ObjectId("5f0575bc43ed5361d5a14be5"), "title" : "CF Pacific Centre", "location" : { "lat" : 49.283741, "lng" : -123.118548 }, "city" : "Vancouver", "time" : "9 AM ~ 12 PM", "date" : "2020-03-15T00:00:00Z" }
   ```
 - reopenings
+
   ```
   {
         "_id" : ObjectId("5f162c7ca07e53cc40e66ba2"),
@@ -153,7 +156,7 @@ Your API key needs to enable the following API libraries:
         "more" : "https://www.gov.nu.ca/health/information/covid-19-novel-coronavirus"
   }
   ```
-  
+
 - users
   ```
   {
