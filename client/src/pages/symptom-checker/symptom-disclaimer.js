@@ -1,8 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Dialog, DialogContent, IconButton } from '@material-ui/core';
+import {
+  Dialog,
+  DialogContent,
+  IconButton,
+  DialogActions,
+} from '@material-ui/core';
 import CancelIcon from '@material-ui/icons/Cancel';
-import { blueGrey } from '@material-ui/core/colors';
+import { red } from '@material-ui/core/colors';
 import Card from '../../components/card/Card-TitleDescButton';
 
 class SymptomDisclaimer extends React.Component {
@@ -112,15 +117,17 @@ class SymptomDisclaimer extends React.Component {
         scroll='paper'
         open={this.props.diagnosis.showResult}
         onClose={this.props.close}
+        style={{ backgroundColor: 'aliceblue' }}
       >
-        <IconButton
-          aria-label='close'
-          className='disclaimer-close-button'
-          onClick={this.props.close}
-          style={{ color: blueGrey[1200] }}
-        >
-          <CancelIcon />
-        </IconButton>
+        <DialogActions style={{ backgroundColor: 'aliceblue' }}>
+          <IconButton aria-label='close' onClick={this.props.close} CancelIcon>
+            <CancelIcon
+              onClick={this.props.close}
+              style={{ color: red[500], backgroundColor: 'aliceblue' }}
+              justify='right'
+            />
+          </IconButton>
+        </DialogActions>
         <DialogContent style={{ backgroundColor: 'aliceblue' }}>
           {this.atrisque(this.props.diagnosis)
             ? this.atrisque(this.props.diagnosis)

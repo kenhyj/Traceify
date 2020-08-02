@@ -3,7 +3,7 @@
 **Collaborators (CSID)**: e5c0b, d2e2b, l0y2b, k0b0b &nbsp; <br/>
 **Course**: CPSC 436I &nbsp; <br/>
 **Lab section**: Thursday L1C &nbsp; <br/>
-**May - August 2020**. &nbsp; <br/>
+**May 4th - August 7th 2020**. &nbsp; <br/>
 **Project Name**: Traceify <br/>
 **Team Name**:ControlC<br/>
 
@@ -41,15 +41,17 @@ The following tech Stack were used:
 
 - HTML
 - CSS
-- JS
-- REACT
-- REDUX
-- NOSQL
+- JavaScript
+- React JS
+- Redux
+- NoSQL
+- Heroku
 
 A combination of HTML, CSS, React JS was used to produce the frontend of the project. ReactJS provided the backbone of the frontend, CSS provided the styling and HTML provided some of the more convoluted boilerplate code such as inserting iframe codes.
 Redux was used primarily in Symptom Checker to provide results of the quiz and provide heat layers and markers for our Home page map.<br/>
 NodeJS uses were extensive. To name a few, its libraries provided a quick access to forming our backend and our connection to the database; NodeJS also provided linting and pre-made material user interface (MUI).<br/>
-Our NoSQL via MongoDB was used to store reopening data, map data. Please refer to Database Collection section below.
+Our NoSQL via MongoDB was used to store reopening data, map data. Please refer to Database Collection section below. <br/>
+Finally our web app project is deployed in heroku at https://staging-traceify.herokuapp.com/
 
 ### Database Collections (Example data below)
 
@@ -107,12 +109,13 @@ Our NoSQL via MongoDB was used to store reopening data, map data. Please refer t
 
 ## Above and Beyond
 
-We think we owe it to ourselves that we went above and beyond with this project because we weren't provided ample access to data and API from the government or medical institutions that could ...blah blah blah
+We think we owe it to ourselves that we went above and beyond with this project. Even though we were not provided ample and early access to data and API from the government or medical institutions that could have made a reduced a portion of our workload, we took the time to go through every website read through them and provide the database and datasets needed for our project.
 
 ## Next Steps
 
 - What is some additional functionality you can add/remove based on time constraints?
   - If we have time, we can extract the COVID-19 graphs real-time from certain websites and display them on our website. If we don't have time, we can include a link to those websites under our Q&A page.
+  - Additionally, if we have more time, we could have used Vancouver's real time data into our Home Page's map component that was just beginning to be offered in late July.
 
 ## Contributions
 
