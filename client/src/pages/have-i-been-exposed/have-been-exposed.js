@@ -31,7 +31,7 @@ import RowComponent from '../../components/have-i-table/row-component';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import PageHeading from '../../components/page-heading/PageHeading';
 
-const StyledTableCell = withStyles((theme) => ({
+const StyledTableCell = withStyles(() => ({
   head: {
     backgroundColor: '#2196F3',
     fontSize: 18,
@@ -211,6 +211,7 @@ const HaveI = () => {
             );
           })}
         </Dialog>
+        <br/><br/>
       </Container>
     </motion.div>
   );

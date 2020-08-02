@@ -204,12 +204,18 @@ class AdminAdd extends React.Component {
                 12 AM ~ 3 AM
               </option>
               <option value='3 AM ~ 6 AM'>3 AM ~ 6 AM</option>
+              <option value='3 AM ~ 9 AM'>3 AM ~ 9 AM</option>
               <option value='6 AM ~ 9AM'>6 AM ~ 9AM</option>
               <option value='9 AM ~ 12 PM'>9 AM ~ 12 PM</option>
+              <option value='9 AM ~ 3 PM'>9 AM ~ 3 PM</option>
               <option value='12 PM ~ 3 PM'>12 PM ~ 3 PM</option>
               <option value='3 PM ~ 6 PM'>3 PM ~ 6 PM</option>
+              <option value='3 PM ~ 9 PM'>3 PM ~ 9 PM</option>
               <option value='6 PM ~ 9 PM'>6 PM ~ 9 PM</option>
               <option value='9 PM ~ 12 AM'>9 PM ~ 12 AM</option>
+              <option value='9 PM ~ 3 AM'>9 PM ~ 3 AM</option>
+              <option value='All times inclusive of exposure dates'>All times inclusive of exposure dates</option>
+              <option value='During operating hours'>During operating hours</option>
             </select>
           </label>
           <br />

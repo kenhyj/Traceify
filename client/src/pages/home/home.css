@@ -1,6 +1,7 @@
 .Home-main-body {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+    padding: 0 0 1% 0;
 }
 
 .Home-main-body-sidebar {

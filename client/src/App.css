@@ -33,5 +33,9 @@
 }
 
 html {
-  overflow-y: scroll;
+  overflow-y: scroll !important;
+}
+
+body {
+  padding-right: 0 !important;
 }

@@ -41,7 +41,6 @@ const QnA = () => {
         that the government stands ready to take any and all necessary actions
         as we continue to confront these challenging times together.”
       </p>
-      <br />
       <p>- Bill Morneau, Minister of Finance</p>
     </>
   );
@@ -88,12 +87,12 @@ const QnA = () => {
                 What is this website for?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails style={{ padding: '5%' }}>
-              <Typography>
+            <AccordionDetails>
+              <Typography style={{  padding: '5%', textAlign: 'center', width: '100%' }}>
                 This is a contact tracing website for Vancouver built by a group
                 of UBC CS students.
-                <br />
-                Please look at our youtube video of a brief summary.
+                <br /><br />
+                - Intro Clip of Traceify -
                 <div className='video_wrapper'>
                   <iframe
                     title='traceifyutube'
@@ -101,6 +100,7 @@ const QnA = () => {
                     frameBorder='0'
                     allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
                     allowFullscreen
+                    style={{ width: '100%' }}
                   />
                 </div>
               </Typography>
@@ -116,8 +116,8 @@ const QnA = () => {
                 Symptom Checker - How accurate is this?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails style={{ padding: '5%' }}>
-              <Typography>
+            <AccordionDetails>
+              <Typography  style={{  padding: '5%', textAlign: 'center', width: '100%'}}>
                 The symptoms that you see are taken from the list of symptoms
                 recorded by the Centre for Disease Control (CDC).
                 <br />
@@ -140,8 +140,8 @@ const QnA = () => {
                 Reopening - Can we regress back a phase?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails style={{ padding: '5%' }}>
-              <Typography>
+            <AccordionDetails>
+              <Typography style={{  padding: '5%', textAlign: 'center', width: '100%'}}>
                 Yes.
                 <br />
                 If the number COVID-19 positive population exceeds a certain
@@ -168,8 +168,8 @@ const QnA = () => {
                 Are all the information up-to-date?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails style={{ padding: '5%' }}>
-              <Typography>
+            <AccordionDetails>
+              <Typography style={{  padding: '5%', textAlign: 'center', width: '100%'}}>
                 Unfortunately, no.
                 <br />
                 However, we try our best to catch up with the latest updates and
@@ -179,10 +179,15 @@ const QnA = () => {
                 Vancouver does not provide any open-source dataset on COVID
                 patients. The data shown on this map is solely deduced from
                 available news articles.
-                <br />
                 Reopening is not up to date either. There is not a readily
                 available API or database from the government or medical
                 organization of each province or territory.
+                <br/><br/>
+                UPDATE:
+                <br/>
+                Vancouver Coastal Health started to release public exposure information recently.
+                Traceify will use these data as well as news articles to populate the database with
+                real dataset.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -193,11 +198,11 @@ const QnA = () => {
               id='panel4a-header'
             >
               <Typography className={classes.heading}>
-                Is there a cure?
+                Is there a cure for COVID-19?
               </Typography>
             </AccordionSummary>
-            <AccordionDetails style={{ padding: '5%' }}>
-              <Typography>
+            <AccordionDetails>
+              <Typography style={{  padding: '5%', textAlign: 'center', width: '100%'}}>
                 While there are some drugs that have shown some positive
                 results, the Centre for Disease Control (CDC) or World Health
                 Organization (WHO) have yet to formally approve any drugs or
