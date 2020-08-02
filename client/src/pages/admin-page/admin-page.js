@@ -104,6 +104,7 @@ function AdminPage(props) {
             onChange={handleChange}
             aria-label='Vertical tabs example'
             className={classes.tabs}
+            indicatorColor="primary"
           >
             <Tab label='Add a New Trace Location' {...a11yProps(0)} />
             <Tab label='Delete a Trace(s)' {...a11yProps(1)} />

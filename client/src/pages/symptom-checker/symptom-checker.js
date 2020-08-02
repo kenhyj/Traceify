@@ -105,7 +105,7 @@ class SymptomChecker extends React.Component {
         <div>
           <PageHeading data={pageHeadingData} />
         </div>
-        <FormControl onSubmit={this.handleSubmit} className='page-content'>
+        <FormControl onSubmit={this.handleSubmit}>
           <Instruction
             text='Please check all the boxes below that applies to you:'
             width='50%'
@@ -139,12 +139,14 @@ class SymptomChecker extends React.Component {
                 endIcon={<Send />}
                 onClick={this.handleSubmit}
                 className='button'
+                style={{ width: '100%' }}
               >
                 Submit
               </Button>
             </Grid>
           </Grid>
         </FormControl>
+        <br/><br/>
         <SymptomDisclaimer />
       </motion.div>
     );

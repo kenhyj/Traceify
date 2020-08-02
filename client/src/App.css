@@ -26,7 +26,6 @@
   font-size: 14px;
 }
 
-{/* This doesn't work for some reason...*/}
 .App-header {
   position: fixed;
   width: 100%;
@@ -36,5 +35,9 @@
 }
 
 html {
-  overflow-y: scroll;
+  overflow-y: scroll !important;
+}
+
+body {
+  padding-right: 0 !important;
 }
