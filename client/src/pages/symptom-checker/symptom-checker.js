@@ -150,18 +150,6 @@ class SymptomChecker extends React.Component {
                 Submit
               </Button>
             </Grid>
-            {/* <Grid container justify='center'>
-              <Button
-                type='submit'
-                variant='contained'
-                endIcon={<Send />}
-                className='button'
-                onClick={this.retaketest}
-                style={{ width: '100%' }}
-              >
-                Retake
-              </Button>
-            </Grid> */}
           </Grid>
         </FormControl>
         <br />
