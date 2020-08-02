@@ -47,8 +47,8 @@ The following tech Stack were used:
 - NOSQL
 
 A combination of HTML, CSS, React JS was used to produce the frontend of the project. ReactJS provided the backbone of the frontend, CSS provided the styling and HTML provided some of the more convoluted boilerplate code such as inserting iframe codes.
-Redux was used primarily in Symptom Checker to provide results of the quiz and provide heat layers and markers for our Home page map.
-NodeJS uses were extensive. To name a few, its libraries provided a quick access to forming our backend and our connection to the database; NodeJS also provided linting and pre-made material user interface (MUI).
+Redux was used primarily in Symptom Checker to provide results of the quiz and provide heat layers and markers for our Home page map.<br/>
+NodeJS uses were extensive. To name a few, its libraries provided a quick access to forming our backend and our connection to the database; NodeJS also provided linting and pre-made material user interface (MUI).<br/>
 Our NoSQL via MongoDB was used to store reopening data, map data. Please refer to Database Collection section below.
 
 ### Database Collections (Example data below)
@@ -107,14 +107,16 @@ Our NoSQL via MongoDB was used to store reopening data, map data. Please refer t
 
 ## Above and Beyond
 
+We think we owe it to ourselves that we went above and beyond with this project because we weren't provided ample access to data and API from the government or medical institutions that could ...blah blah blah
+
 ## Next Steps
 
 - What is some additional functionality you can add/remove based on time constraints?
   - If we have time, we can extract the COVID-19 graphs real-time from certain websites and display them on our website. If we don't have time, we can include a link to those websites under our Q&A page.
 
-## Credits
+## Contributions
 
-d2e2b: Google Map API, Home
-e5c0b: Reopening - Database setup, Symptom Checker - Redux, ESLint, Deployment,
-k0b0b: Oauth, Admin - Login/Logout, Admin - privileges,
-l0y2b: Reopening - Styling, Symptom Checker - Styling, Have I been Exposed,
+- d2e2b: Google Map API, Home,
+- e5c0b: Reopening - Database setup, Symptom Checker - Redux and diagnosis, ESLint and prettier, Automated Deployment,
+- k0b0b: Oauth, Admin, MongoDB set-up,
+- l0y2b: Reopening - Styling, Symptom Checker - Styling, Have I been Exposed, Thank You,
