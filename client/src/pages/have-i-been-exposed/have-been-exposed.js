@@ -150,7 +150,7 @@ const HaveI = () => {
               onClick={() => dispatch({ type: 'ADD_ROW' })}
             >
               Add
-              <AddCircleOutlineIcon />
+              <AddCircleOutlineIcon style={{ padding: '0 0 0 10px' }}/>
             </IconButton>
           </Grid>
           <Grid item xs={8}>
@@ -166,7 +166,7 @@ const HaveI = () => {
               onClick={handleSubmit}
             >
               Submit
-              <Send />
+              <Send style={{ padding: '0 0 0 10px' }}/>
             </IconButton>
           </Grid>
         </Toolbar>
