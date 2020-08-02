@@ -109,17 +109,18 @@ Finally our web app project is deployed in heroku at https://staging-traceify.he
 
 ## Above and Beyond
 
-We think we owe it to ourselves that we went above and beyond with this project. Even though we were not provided ample and early access to data and API from the government or medical institutions that could have made a reduced a portion of our workload, we took the time to go through every website read through them and provide the database and datasets needed for our project.
+- We think we owe it to ourselves that we went above and beyond with this project. Even though we were not provided ample and early access to data and API from the government or medical institutions that could have made a reduced a portion of our workload, we took the time to go through every website read through them and provide the database and datasets needed for our project.
+- We made sure that our project was fully responsive to both mobile and laptop of varying dimensions.
+- We took the extra mile of using the external Google Map API to implement our map in the Home page.
 
 ## Next Steps
 
-- What is some additional functionality you can add/remove based on time constraints?
-  - If we have time, we can extract the COVID-19 graphs real-time from certain websites and display them on our website. If we don't have time, we can include a link to those websites under our Q&A page.
-  - Additionally, if we have more time, we could have used Vancouver's real time data into our Home Page's map component that was just beginning to be offered in late July.
+- There are COVID-19 graphs real-time from certain websites. Instead of including links to those websites in our Q&A page, we would have loved to incorporate them into our project with appropriate styling and aesthetics and comfortable usability.
+- If we have more time, we could have used Vancouver's real time data into our Home Page's map component that was just beginning to be offered in late July. Additionally, if other cities provides their data, we would have loved to incoporate them as well.
 
 ## Contributions
 
 - d2e2b: Google Map API, Home,
 - e5c0b: Reopening - Database setup, Symptom Checker - Redux and diagnosis, ESLint and prettier, Automated Deployment,
-- k0b0b: Oauth, Admin, MongoDB set-up,
+- k0b0b: Oauth, Admin, MongoDB set-up, Intro Youtube video
 - l0y2b: Reopening - Styling, Symptom Checker - Styling, Have I been Exposed, Thank You,
