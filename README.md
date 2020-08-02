@@ -11,107 +11,47 @@ Traceify aims to help the general public in Vancouver by providing information a
 
 [![Traceify U2vu](https://i.imgur.com/KdfDccq.png)](https://www.youtube.com/watch?v=8TWWVOtbVD8&feature=emb_title 'U2vu')
 
-## Tech Stack
-
-- HTML
-- CSS
-- JS
-- React
-- Redux
-- NodeJS
-- NoSQL (mongodb)
-
-## Instruction for Building the Project (DEV Environment)
-
-For first time use, in the terminal, run 'npm install' inside both client and server folder.
-
-From the root, run 'npm start'. This will start both the client and the server.
-Create a '.env' file inside the client folder. You need to include:
-
-```
-REACT_APP_GOOGLE_API_KEY = 'YOUR GOOGLE API KEY'
-DB_CONNECTION = 'mongodb+srv://admin:traceify@traceify-bzpck.mongodb.net/traceify?retryWrites=true&w=majority'
-```
-
-Note that you will have to generate your own Google API key from the Google Developer Console (https://console.cloud.google.com/).
-Your API key needs to enable the following API libraries:
-
-- Maps JavaScript API
-- Places API
-- Geocoding API
-
-## Project Description
-
-- Who is it for?
-
-  - The general public.<br/><br/>
-
-- What will it do? (What "human activity" will it support?)
-
-  - It will keep track of COVID-19 positive individuals of where they have visited.<br/><br/>
-
-- What type of data will it store?
-
-  - Dates and Location of where people who turned out positive visited
-  - List of Admin emails that can log in
-  - For a detailed description, refer to the Database Schema section below<br/><br/>
-
-- What will users be able to do with this data?
-
-  - View map, locations, and infected numbers per region
-  - Filter out by location or date or region
-  - If you find yourself at risk (through 'Have I been Exposed?' page), you can isolate yourself at home for 2 weeks
-  - You can avoid traveling to locations where there's higher chance of transmission<br/><br/>
-
-- What is some additional functionality you can add/remove based on time constraints?
-  - If we have time, we can extract the COVID-19 graphs real-time from certain websites and display them on our website. If we don't have time, we can include a link to those websites under our Q&A page.
-
 ## Project Task Requirements:
 
 - 3-5 minimal requirements (will definitely complete)
 
-  - [x] Make the Admin Panel only accessible to Admin emails that's stored as a 'whitelist' on the database, and allow Admins to log in via Google OAuth
-  - [x] Home page: Google Maps integration to show data on map based on the filter selected
-  - [x] Symptom Checker page: A quick self-testing page that assesses your likelihood of being contacted with COVID-19
-  - [x] A thank you modal for all essential workers and people staying at home
-        <br/>
+  - &#x2611; Make the Admin Panel only accessible to Admin emails that's stored as a 'whitelist' on the database, and allow Admins to log in via Google OAuth
+  - &#x2611; Home page: Google Maps integration to show data on map based on the filter selected
+  - &#x2611; Symptom Checker page: A quick self-testing page that assesses your likelihood of being contacted with COVID-19
+  - &#x2611; A thank you modal for all essential workers and people staying at home
+    <br/>
 
 - 3-7 "standard" requirements (will most likely complete)
 
-  - [x] Have I Been Exposed? page: Checks whether you've crossed paths within close range of places that a positive patient visited
+  - &#x2611; Have I Been Exposed? page: Checks whether you've crossed paths within close range of places that a positive patient visited
   - Retailers Re-Opening Stage Information by province
-  - [x] Admin panel: Admin can submit and delete Outbreak data
-  - [x] Admin panel: Admin can submit and delete anonymous location trace data of a positive patient
-        <br/>
+  - &#x2611; Admin panel: Admin can submit and delete Outbreak data
+  - &#x2611; Admin panel: Admin can submit and delete anonymous location trace data of a positive patient
+    <br/>
 
 - 2-3 stretch requirements (plan to complete 1)
 
-  - [x] Q&A page - Link to Wait times of hospitals, COVID-19 testing facility locations, government financial help website, overall summary of current situation in BC.
-  - [] Current geolocation data only visible to Admin: alerts if the person moves out of their neighbourhood - Credit card statement parsing for areas visited by a patient who tested positive, and automatically upload this data to the database
+  - &#x2611; Q&A page - Link to Wait times of hospitals, COVID-19 testing facility locations, government financial help website, overall summary of current situation in BC.
+  - &#x2612; Current geolocation data only visible to Admin: alerts if the person moves out of their neighbourhood - Credit card statement parsing for areas visited by a patient who tested positive, and automatically upload this data to the database
     <br/>
 
-## Task Breakdown
+## Tech Stack
 
-○ Pick 2 of your minimal requirements and break each of them down into ~2-5 smaller tasks! This will help you divide up work among your teammates.<br/>
+The following tech Stack were used:
 
-- Set-up the database (create mock data, write scripts to populate the database, etc.)
-- Implement Front-end of Admin panel
-- Implement Back-end of Admin panel
-- Implement Front-end of Home page. Research Google Map API and render dots on a map appropriately
-- Implement Back-end of Home page
-  <br/>
+- HTML
+- CSS
+- JS
+- REACT
+- REDUX
+- NOSQL
 
-## Prototypes
+A combination of HTML, CSS, React JS was used to produce the frontend of the project. ReactJS provided the backbone of the frontend, CSS provided the styling and HTML provided some of the more convoluted boilerplate code such as inserting iframe codes.
+Redux was used primarily in Symptom Checker to provide results of the quiz and provide heat layers and markers for our Home page map.
+NodeJS uses were extensive. To name a few, its libraries provided a quick access to forming our backend and our connection to the database; NodeJS also provided linting and pre-made material user interface (MUI).
+Our NoSQL via MongoDB was used to store reopening data, map data. Please refer to Database Collection section below.
 
-![Thank you Page](client/protosketch/thankPage.png)
-![Home](client/protosketch/1.jpg)
-![Symptom Checker](client/protosketch/2.jpg)
-![Have I been Exposed?](client/protosketch/3.jpg)
-![Financial Help](client/protosketch/4.jpg)
-![Retail Re-opening Dates](client/protosketch/page.png)
-![Admin Panel](client/protosketch/admin-panel.PNG)
-
-## Database Collections (Example data below)
+### Database Collections (Example data below)
 
 - locationOutbreak
   ```
@@ -164,3 +104,17 @@ Your API key needs to enable the following API libraries:
         "email" : "kessris@gmail.com"
   }
   ```
+
+## Above and Beyond
+
+## Next Steps
+
+- What is some additional functionality you can add/remove based on time constraints?
+  - If we have time, we can extract the COVID-19 graphs real-time from certain websites and display them on our website. If we don't have time, we can include a link to those websites under our Q&A page.
+
+## Credits
+
+d2e2b: Google Map API, Home
+e5c0b: Reopening - Database setup, Symptom Checker - Redux, ESLint, Deployment,
+k0b0b: Oauth, Admin - Login/Logout, Admin - privileges,
+l0y2b: Reopening - Styling, Symptom Checker - Styling, Have I been Exposed,
