@@ -107,8 +107,6 @@ class SymptomDisclaimer extends React.Component {
     const result = this.gimme(this.props.diagnosis);
     return (
       <Dialog scroll = 'paper' open={this.props.diagnosis.showResult} onClose={this.props.close}>
-      
-        
           <DialogContent style = {{backgroundColor : 'aliceblue'}}>
             {this.atrisque(this.props.diagnosis)? this.atrisque(this.props.diagnosis):null}
             <Card key={result.id} {...result} />

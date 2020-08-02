@@ -46,10 +46,10 @@ class SymptomChecker extends React.Component {
 
   typeform(symptomtype) {
     return (
-      <Grid style={{ margin: '3%' }}>
+      <Grid style={{ margin : '3%', marginLeft: '10%' }}>
         <FormGroup row='true'>
           {symptomtype.map((somesymptoms) => (
-            <Grid item xs={6} sm = {4} md ={3}>
+            <Grid item xs={6} sm = {4} md ={3} xl = {2}>
               <FormControlLabel
                 control={
                   <Checkbox
