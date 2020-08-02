@@ -46,3 +46,9 @@ iframe {
   min-width: 300px;
   min-height: 150px;
 }
+
+@media screen and (max-width: 992px) {
+  .wrapper {
+    padding: 4% 5%;
+  }
+}

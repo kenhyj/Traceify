@@ -1,68 +1,65 @@
 .Home-main-body {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .Home-main-body-sidebar {
-    display: inline-block;
-    width: 30%;
+  display: inline-block;
+  width: 30%;
 }
 
 .Home-main-body-map {
-    display: inline-block;
-    width: 70%;
+  display: inline-block;
+  width: 70%;
 }
 
 .sidebar {
-    margin-left: 1rem;
-    margin-right: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .sidebar-legend {
-    background-color: #F2F4F7;
-    padding: 1rem;
-    border-radius: 3px;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+  background-color: #f2f4f7;
+  padding: 1rem;
+  border-radius: 3px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .sidebar-legend-heatmap {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;    
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .sidebar-legend-markers {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .sidebar-legend-heatmap-low {
-    display: inline-block;
-    justify-content: left;
-    width: 50%;
-    text-align: left;
-    /* font-size: 0.7rem; */
+  display: inline-block;
+  justify-content: left;
+  width: 50%;
+  text-align: left;
 }
 
 .sidebar-legend-heatmap-high {
-    display: inline-block;
-    justify-content: right;
-    width: 50%;
-    text-align: right;
-    /* font-size: 0.7rem; */
+  display: inline-block;
+  justify-content: right;
+  width: 50%;
+  text-align: right;
 }
 
 .sidebar-legend-heatmap-words {
-    display: inline-flex;
-    width: 320px;
+  display: inline-flex;
+  width: 320px;
 }
 
 .sidebar-title {
-    font-family: Lato, sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    padding-bottom: .5rem;
+  font-family: Lato, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-bottom: 0.5rem;
 }
-

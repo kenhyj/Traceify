@@ -18,15 +18,12 @@
   display: inline-block;
   z-index: 2;
   margin-top: 70px;
-  /* overflow-x: hidden; */
-  /* position: relative; */
 }
 
-.MuiAlert-message{
+.MuiAlert-message {
   font-size: 14px;
 }
 
-{/* This doesn't work for some reason...*/}
 .App-header {
   position: fixed;
   width: 100%;
