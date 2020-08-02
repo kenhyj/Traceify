@@ -120,9 +120,12 @@ class SymptomDisclaimer extends React.Component {
         onClose={this.props.close}
         className='container'
         PaperProps={{
-            style: {
-                maxWidth: '40%', backgroundColor: 'aliceblue', padding: '2%'
-            },
+          style: {
+            minWidth: '300px',
+            maxWidth: '40%',
+            backgroundColor: 'aliceblue',
+            padding: '2%',
+          },
         }}
       >
         <DialogActions className='icon'>
