@@ -242,7 +242,7 @@ const QnA = () => {
                   )
                 }
               >
-                FIND OUT MORE
+                MORE
               </button>
             </AccordionDetails>
           </Accordion>
@@ -273,7 +273,7 @@ const QnA = () => {
                   )
                 }
               >
-                FIND OUT MORE
+                MORE
               </button>
             </AccordionDetails>
           </Accordion>
@@ -302,7 +302,7 @@ const QnA = () => {
                   )
                 }
               >
-                FIND OUT MORE
+                MORE
               </button>
             </AccordionDetails>
           </Accordion>
@@ -339,7 +339,7 @@ const QnA = () => {
                   )
                 }
               >
-                FIND OUT MORE
+                MORE
               </button>
             </AccordionDetails>
           </Accordion>
@@ -369,7 +369,7 @@ const QnA = () => {
                   )
                 }
               >
-                FIND OUT MORE
+                MORE
               </button>
             </AccordionDetails>
           </Accordion>
@@ -399,7 +399,7 @@ const QnA = () => {
                   )
                 }
               >
-                FIND OUT MORE
+                MORE
               </button>
             </AccordionDetails>
           </Accordion>
