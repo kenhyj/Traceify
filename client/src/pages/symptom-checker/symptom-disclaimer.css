@@ -1,0 +1,15 @@
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.icon {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.content {
+    background-color: aliceblue;
+}

@@ -3,113 +3,57 @@
 **Collaborators (CSID)**: e5c0b, d2e2b, l0y2b, k0b0b &nbsp; <br/>
 **Course**: CPSC 436I &nbsp; <br/>
 **Lab section**: Thursday L1C &nbsp; <br/>
-**May - August 2020**. &nbsp; <br/>
+**May 4th - August 7th 2020**. &nbsp; <br/>
 **Project Name**: Traceify <br/>
 **Team Name**:ControlC<br/>
 
 Traceify aims to help the general public in Vancouver by providing information and keeping track of where COVID-19 positive individuals visited within the past few days. The users will be able to view the locations, check their risk of COVID-19, check whether they crossed paths with any of the known positive patients, and have access to useful information (i.e., Financial help resources, Reopening Stages, etc.).
 
-[![Traceify U2vu](https://i.imgur.com/KdfDccq.png)](https://www.youtube.com/watch?v=8TWWVOtbVD8&feature=emb_title "U2vu")
-
-## Tech Stack
-
-- HTML
-- CSS
-- JS
-- React
-- Redux
-- NodeJS
-- NoSQL (mongodb)
-
-## Instruction for Building the Project (DEV Environment)
-
-For first time use, in the terminal, run 'npm install' inside both client and server folder.
-
-From the root, run 'npm start'. This will start both the client and the server.
-Create a '.env' file inside the client folder. You need to include:
-```
-REACT_APP_GOOGLE_API_KEY = 'YOUR GOOGLE API KEY'
-DB_CONNECTION = 'mongodb+srv://admin:traceify@traceify-bzpck.mongodb.net/traceify?retryWrites=true&w=majority'
-```
-Note that you will have to generate your own Google API key from the Google Developer Console (https://console.cloud.google.com/).
-Your API key needs to enable the following API libraries:
-- Maps JavaScript API 
-- Places API
-- Geocoding API
-
-
-## Project Description
-
-- Who is it for?
-
-  - The general public.<br/><br/>
-
-- What will it do? (What "human activity" will it support?)
-
-  - It will keep track of COVID-19 positive individuals of where they have visited.<br/><br/>
-
-- What type of data will it store?
-
-  - Dates and Location of where people who turned out positive visited
-  - List of Admin emails that can log in
-  - For a detailed description, refer to the Database Schema section below<br/><br/>
-
-- What will users be able to do with this data?
-
-  - View map, locations, and infected numbers per region
-  - Filter out by location or date or region
-  - If you find yourself at risk (through 'Have I been Exposed?' page), you can isolate yourself at home for 2 weeks
-  - You can avoid traveling to locations where there's higher chance of transmission<br/><br/>
-
-- What is some additional functionality you can add/remove based on time constraints?
-  - If we have time, we can extract the COVID-19 graphs real-time from certain websites and display them on our website. If we don't have time, we can include a link to those websites under our Q&A page.
+[![Traceify U2vu](https://i.imgur.com/KdfDccq.png)](https://www.youtube.com/watch?v=8TWWVOtbVD8&feature=emb_title 'U2vu')
 
 ## Project Task Requirements:
 
 - 3-5 minimal requirements (will definitely complete)
 
-  - Make the Admin Panel only accessible to Admin emails that's stored as a 'whitelist' on the database, and allow Admins to log in via Google OAuth
-  - Home page: Google Maps integration to show data on map based on the filter selected
-  - Symptom Checker page: A quick self-testing page that assesses your likelihood of being contacted with COVID-19
-  - A thank you modal for all essential workers and people staying at home
+  - &#x2611; Make the Admin Panel only accessible to Admin emails that's stored as a 'whitelist' on the database, and allow Admins to log in via Google OAuth
+  - &#x2611; Home page: Google Maps integration to show data on map based on the filter selected
+  - &#x2611; Symptom Checker page: A quick self-testing page that assesses your likelihood of being contacted with COVID-19
+  - &#x2611; A thank you modal for all essential workers and people staying at home
     <br/>
 
 - 3-7 "standard" requirements (will most likely complete)
 
-  - Have I Been Exposed? page: Checks whether you've crossed paths within close range of places that a positive patient visited
+  - &#x2611; Have I Been Exposed? page: Checks whether you've crossed paths within close range of places that a positive patient visited
   - Retailers Re-Opening Stage Information by province
-  - Admin panel: Admin can submit and delete Outbreak data
-  - Admin panel: Admin can submit and delete anonymous location trace data of a positive patient
+  - &#x2611; Admin panel: Admin can submit and delete Outbreak data
+  - &#x2611; Admin panel: Admin can submit and delete anonymous location trace data of a positive patient
     <br/>
 
-- 2-3 stretch requirements (plan to complete 1) 
+- 2-3 stretch requirements (plan to complete 1)
 
-  - Q&A page - Link to Wait times of hospitals, COVID-19 testing facility locations, government financial help website, overall summary of current situation in BC.
-  - Current geolocation data only visible to Admin: alerts if the person moves out of their neighbourhood - Credit card statement parsing for areas visited by a patient who tested positive, and automatically upload this data to the database
-  <br/>
+  - &#x2611; Q&A page - Link to Wait times of hospitals, COVID-19 testing facility locations, government financial help website, overall summary of current situation in BC.
+  - &#x2612; Current geolocation data only visible to Admin: alerts if the person moves out of their neighbourhood - Credit card statement parsing for areas visited by a patient who tested positive, and automatically upload this data to the database
+    <br/>
 
-## Task Breakdown
+## Tech Stack
 
-○ Pick 2 of your minimal requirements and break each of them down into ~2-5 smaller tasks! This will help you divide up work among your teammates.<br/>
+The following tech Stack were used:
 
-- Set-up the database (create mock data, write scripts to populate the database, etc.)
-- Implement Front-end of Admin panel
-- Implement Back-end of Admin panel
-- Implement Front-end of Home page. Research Google Map API and render dots on a map appropriately
-- Implement Back-end of Home page
-  <br/>
+- HTML
+- CSS
+- JavaScript
+- React JS
+- Redux
+- NoSQL
+- Heroku
 
-## Prototypes
+A combination of HTML, CSS, React JS was used to produce the frontend of the project. ReactJS provided the backbone of the frontend, CSS provided the styling and HTML provided some of the more convoluted boilerplate code such as inserting iframe codes.
+Redux was used primarily in Symptom Checker to provide results of the quiz and provide heat layers and markers for our Home page map.<br/>
+NodeJS uses were extensive. To name a few, its libraries provided a quick access to forming our backend and our connection to the database; NodeJS also provided linting and pre-made material user interface (MUI).<br/>
+Our NoSQL via MongoDB was used to store reopening data, map data. Please refer to Database Collection section below. <br/>
+Finally our web app project is deployed in heroku at https://staging-traceify.herokuapp.com/
 
-![Thank you Page](client/protosketch/thankPage.png)
-![Home](client/protosketch/1.jpg)
-![Symptom Checker](client/protosketch/2.jpg)
-![Have I been Exposed?](client/protosketch/3.jpg)
-![Financial Help](client/protosketch/4.jpg)
-![Retail Re-opening Dates](client/protosketch/page.png)
-![Admin Panel](client/protosketch/admin-panel.PNG)
-
-## Database Collections (Example data below)
+### Database Collections (Example data below)
 
 - locationOutbreak
   ```
@@ -120,6 +64,7 @@ Your API key needs to enable the following API libraries:
   { "_id" : ObjectId("5f0575bc43ed5361d5a14be5"), "title" : "CF Pacific Centre", "location" : { "lat" : 49.283741, "lng" : -123.118548 }, "city" : "Vancouver", "time" : "9 AM ~ 12 PM", "date" : "2020-03-15T00:00:00Z" }
   ```
 - reopenings
+
   ```
   {
         "_id" : ObjectId("5f162c7ca07e53cc40e66ba2"),
@@ -153,7 +98,7 @@ Your API key needs to enable the following API libraries:
         "more" : "https://www.gov.nu.ca/health/information/covid-19-novel-coronavirus"
   }
   ```
-  
+
 - users
   ```
   {
@@ -161,3 +106,21 @@ Your API key needs to enable the following API libraries:
         "email" : "kessris@gmail.com"
   }
   ```
+
+## Above and Beyond
+
+- We think we owe it to ourselves that we went above and beyond with this project. Even though we were not provided ample and early access to data and API from the government or medical institutions that could have made a reduced a portion of our workload, we took the time to go through every website read through them and provide the database and datasets needed for our project.
+- We made sure that our project was fully responsive to both mobile and laptop of varying dimensions.
+- We took the extra mile of using the external Google Map API to implement our map in the Home page.
+
+## Next Steps
+
+- There are COVID-19 graphs real-time from certain websites. Instead of including links to those websites in our Q&A page, we would have loved to incorporate them into our project with appropriate styling and aesthetics and comfortable usability.
+- If we have more time, we could have used Vancouver's real time data into our Home Page's map component that was just beginning to be offered in late July. Additionally, if other cities provides their data, we would have loved to incoporate them as well.
+
+## Contributions
+
+- d2e2b: Google Map API, Home,
+- e5c0b: Reopening - Database setup, Symptom Checker - Redux and diagnosis, ESLint and prettier, Automated Deployment,
+- k0b0b: Oauth, Admin, MongoDB set-up, Intro Youtube video
+- l0y2b: Reopening - Styling, Symptom Checker - Styling, Have I been Exposed, Thank You,

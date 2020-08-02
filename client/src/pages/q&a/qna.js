@@ -88,20 +88,21 @@ const QnA = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography style={{  padding: '5%', textAlign: 'center', width: '100%'}}>
+              <Typography style={{  padding: '5%', textAlign: 'center', width: '100%' }}>
                 This is a contact tracing website for Vancouver built by a group
                 of UBC CS students.
                 <br /><br />
-                  <p> - Intro Clip of Traceify - </p>
-                <iframe
-                  title='traceifyutube'
-                  width='560'
-                  height='315'
-                  src='https://www.youtube.com/embed/8TWWVOtbVD8'
-                  frameBorder='0'
-                  allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-                  allowFullscreen
-                />
+                - Intro Clip of Traceify -
+                <div className='video_wrapper'>
+                  <iframe
+                    title='traceifyutube'
+                    src='https://www.youtube.com/embed/8TWWVOtbVD8'
+                    frameBorder='0'
+                    allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+                    allowFullscreen
+                    style={{ width: '100%' }}
+                  />
+                </div>
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -246,7 +247,7 @@ const QnA = () => {
                   )
                 }
               >
-                FIND OUT MORE
+                MORE
               </button>
             </AccordionDetails>
           </Accordion>
@@ -277,7 +278,7 @@ const QnA = () => {
                   )
                 }
               >
-                FIND OUT MORE
+                MORE
               </button>
             </AccordionDetails>
           </Accordion>
@@ -306,7 +307,7 @@ const QnA = () => {
                   )
                 }
               >
-                FIND OUT MORE
+                MORE
               </button>
             </AccordionDetails>
           </Accordion>
@@ -343,7 +344,7 @@ const QnA = () => {
                   )
                 }
               >
-                FIND OUT MORE
+                MORE
               </button>
             </AccordionDetails>
           </Accordion>
@@ -373,7 +374,7 @@ const QnA = () => {
                   )
                 }
               >
-                FIND OUT MORE
+                MORE
               </button>
             </AccordionDetails>
           </Accordion>
@@ -403,7 +404,7 @@ const QnA = () => {
                   )
                 }
               >
-                FIND OUT MORE
+                MORE
               </button>
             </AccordionDetails>
           </Accordion>
