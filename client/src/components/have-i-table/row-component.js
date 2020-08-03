@@ -2,14 +2,8 @@ import 'date-fns';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import {
-  IconButton,
-  TableCell,
-  TableRow,
-  Table,
-  Hidden,
-  Collapse,
-  Typography,
-  TableBody,
+  IconButton, TableCell, TableRow,Table,
+  Hidden, Collapse, Typography, TableBody,
 } from '@material-ui/core';
 import {
   MuiPickersUtilsProvider,

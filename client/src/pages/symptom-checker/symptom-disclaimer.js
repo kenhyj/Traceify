@@ -9,6 +9,7 @@ import {
 import CancelIcon from '@material-ui/icons/Cancel';
 import { red } from '@material-ui/core/colors';
 import Card from '../../components/card/Card-TitleDescButton';
+import './symptom-disclaimer.css';
 
 class SymptomDisclaimer extends React.Component {
   please = {
@@ -117,18 +118,26 @@ class SymptomDisclaimer extends React.Component {
         scroll='paper'
         open={this.props.diagnosis.showResult}
         onClose={this.props.close}
-        style={{ backgroundColor: 'aliceblue' }}
+        className='container'
+        PaperProps={{
+          style: {
+            minWidth: '300px',
+            maxWidth: '40%',
+            backgroundColor: 'aliceblue',
+            padding: '2%',
+          },
+        }}
       >
-        <DialogActions style={{ backgroundColor: 'aliceblue' }}>
-          <IconButton aria-label='close' onClick={this.props.close} CancelIcon>
+        <DialogActions  style={{padding : '0'}} className='icon'>
+          <IconButton  style={{padding : '0'}} aria-label='close' onClick={this.props.close} CancelIcon>
             <CancelIcon
               onClick={this.props.close}
-              style={{ color: red[500], backgroundColor: 'aliceblue' }}
+              style={{ color: red[500]}}
               justify='right'
             />
           </IconButton>
         </DialogActions>
-        <DialogContent style={{ backgroundColor: 'aliceblue' }}>
+        <DialogContent className='content'>
           {this.atrisque(this.props.diagnosis)
             ? this.atrisque(this.props.diagnosis)
             : null}

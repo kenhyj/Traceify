@@ -7,6 +7,11 @@
     font-size: 1.4em;
 }
 
+.parent {
+    position: relative;
+    height: 100%;
+}
+
 .page-intro {
     margin-top: 10px;
     margin-bottom: 10px;

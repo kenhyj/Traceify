@@ -1,0 +1,14 @@
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.icon {
+    background-color: transparent;
+    position: relative;
+    padding: 0px;
+}
+
+.content {
+    background-color: aliceblue;
+}

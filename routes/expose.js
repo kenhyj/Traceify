@@ -8,7 +8,6 @@ router.put('/api/expose',(req,res)=>{
     const oneRow = req.body;
     let places = [];
     const time = oneRow.date.slice(0,10);
-    console.log('^' + time);
     const locations = oneRow.locations;
     return db.get().collection('locationTraces').find({$and:[{'date': {$regex: new RegExp('^' + time)}},
     {$and:[{'location.lat':{$gt: locations[0].lat-E}}, {'location.lat':{$lt: locations[0].lat+E}},

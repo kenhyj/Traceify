@@ -23,3 +23,9 @@ export const hideResult = () => {
     type: 'HIDE_RESULT',
   };
 };
+
+export const retaketest = () => {
+  return {
+    type: 'RETAKE_TEST',
+  };
+};

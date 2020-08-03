@@ -1,14 +1,14 @@
 const commonstate = {
-  fever: false,
+  'fever': false,
   'dry cough': false,
-  tiredness: false,
+  'tiredness': false,
 };
 const rarestate = {
   'aches and pains': false,
   'sore throat': false,
-  diarrhea: false,
-  conjunctivitis: false,
-  headache: false,
+  'diarrhea': false,
+  'conjunctivitis': false,
+  'headache': false,
   'loss of taste': false,
   'loss of smell': false,
   'rash on skin': false,
@@ -24,9 +24,9 @@ const seriousstate = {
 const atriskstate = {
   'Older than 64': false,
   'Have Liver Disease': false,
-  Immunocompromised: false,
+  'Have a weakened immune system': false,
   'Undergoing chemotherapy': false,
-  Diabetic: false,
+  'Diabetic': false,
   'Undergoing dialysis': false,
   'BMI 40 and over': false,
   'In need of organ transplant': false,
@@ -49,6 +49,9 @@ const diagnosisReducer = (state = INITIAL_STATE, action) => {
         ...state,
         symptoms: { ...state.symptoms, ...action.payload },
       };
+
+    case 'RETAKE_TEST':
+      return INITIAL_STATE;
 
     case 'GENERATE_RESULT':
       return { ...state, showResult: true };

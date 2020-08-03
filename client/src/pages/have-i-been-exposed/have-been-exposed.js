@@ -4,19 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import {
-  Typography,
-  Toolbar,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  TableHead,
-  TableContainer,
-  Dialog,
-  Grid,
-  Container,
-  Hidden,
-  IconButton,
+  Typography, Toolbar, Table, TableBody, TableCell, TableRow,
+  TableHead, TableContainer, Dialog, Grid, Container, Hidden, IconButton,
 } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Send from '@material-ui/icons/Send';
@@ -31,7 +20,7 @@ import RowComponent from '../../components/have-i-table/row-component';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import PageHeading from '../../components/page-heading/PageHeading';
 
-const StyledTableCell = withStyles((theme) => ({
+const StyledTableCell = withStyles(() => ({
   head: {
     backgroundColor: '#2196F3',
     fontSize: 18,
@@ -150,7 +139,7 @@ const HaveI = () => {
               onClick={() => dispatch({ type: 'ADD_ROW' })}
             >
               Add
-              <AddCircleOutlineIcon />
+              <AddCircleOutlineIcon style={{ padding: '0 0 0 10px' }}/>
             </IconButton>
           </Grid>
           <Grid item xs={8}>
@@ -166,7 +155,7 @@ const HaveI = () => {
               onClick={handleSubmit}
             >
               Submit
-              <Send />
+              <Send style={{ padding: '0 0 0 10px' }}/>
             </IconButton>
           </Grid>
         </Toolbar>
@@ -211,6 +200,7 @@ const HaveI = () => {
             );
           })}
         </Dialog>
+        <br/><br/>
       </Container>
     </motion.div>
   );
