@@ -4,20 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import {
-  Typography,
-  Toolbar,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  TableHead,
-  TableContainer,
-  Dialog,
-  Grid,
-  Container,
-  Hidden,
-  IconButton,
-  DialogActions,
+  Typography, Toolbar, Table, TableBody, TableCell, TableRow,
+  TableHead, TableContainer, Dialog, Grid, Container, Hidden, IconButton, DialogActions
 } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Send from '@material-ui/icons/Send';
@@ -76,9 +64,9 @@ const useStyles = makeStyles((theme) => ({
 
 const heading = 'Have I Been Exposed?';
 const subheading = (
-  <>
+  <div>
     <p>Wondering if you have been exposed? You can check it here.</p>
-  </>
+  </div>
 );
 const body = (
   <div>
@@ -201,7 +189,6 @@ const HaveI = () => {
             </TableBody>
           </Table>
         </TableContainer>
-
         <Dialog open={open} onClose={handleClose} PaperProps={{
             style: {
                 overflowX: 'hidden'

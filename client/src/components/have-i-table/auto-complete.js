@@ -10,7 +10,6 @@ import {
   List,
   ListItem,
   ListItemText,
-  Menu,
   ListItemIcon,
 } from '@material-ui/core';
 import LocationOnIcon from '@material-ui/icons/LocationOn';

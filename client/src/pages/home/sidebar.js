@@ -14,7 +14,6 @@ import {
   showMarkers,
   showOutbreakMarkers,
 } from '../../redux/actions/map-actions';
-import InformationList from './InformationList';
 import './home.css';
 import { ReactComponent as HeatmapGradient } from '../../assets/heatmap-gradient.svg';
 import { ReactComponent as HeatmapGradientSmall } from '../../assets/heatmap-gradient-small.svg';

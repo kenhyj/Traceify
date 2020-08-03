@@ -14,7 +14,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { withStyles } from '@material-ui/core/styles';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import LocationAuto from './auto-complet';
+import LocationAuto from './auto-complete';
 
 const StyledTableRow = withStyles((theme) => ({
   root: {

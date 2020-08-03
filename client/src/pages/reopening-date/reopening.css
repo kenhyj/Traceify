@@ -5,7 +5,8 @@
   text-align: center;
   border: 2px solid rgb(194, 207, 191);
   padding: 8px;
-  background-color: rgb(188, 213, 243);
+  color: white;
+  background-color: #2196f3;
   font-weight: bold;
 }
 #provtable th:nth-child(1) {

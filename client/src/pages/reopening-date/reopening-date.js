@@ -21,8 +21,6 @@ import PageHeading from '../../components/page-heading/PageHeading';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    minWidth: '30%',
-    margin: '2%',
     margin: '5%',
     minWidth: '40%',
     [theme.breakpoints.down('lg')]: {
@@ -87,7 +85,9 @@ function renderProvinceTwo(obj, chosenphase) {
           style={{
             textAlign: 'center',
             fontSize: '1em',
-            backgroundColor: 'rgb(188, 213, 243)',
+            padding: '2%',
+            backgroundColor: '#2196F3',
+            color: 'white'
           }}
         >
           {obj.province} is currently in Stage {obj.current_stage}
