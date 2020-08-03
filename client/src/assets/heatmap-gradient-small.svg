@@ -1,0 +1,11 @@
+<svg viewBox="0 0 100px 20px" height="5px" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="myGradient">
+      <stop offset="5%"  stop-color="lime" />
+      <stop offset="50%" stop-color="yellow" />
+      <stop offset="95%" stop-color="red" />
+    </linearGradient>
+  </defs>
+  <rect width="100px" height="20px" fill="url('#myGradient')" />
+</svg>

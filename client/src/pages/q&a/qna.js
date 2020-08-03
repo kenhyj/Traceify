@@ -30,33 +30,11 @@ const QnA = () => {
   const heading = 'Q&A';
   const subheading = (
     <>
-      <p>
-        “We know that people are worried about their health, their jobs and
-        their financial situations. Our government is doing whatever it takes to
-        protect the health and safety of Canadians, and to support workers,
-        families and businesses. The Canada Emergency Response Benefit would
-        make sure that money gets in the hands of workers as quickly as possible
-        to support them in their time of need, and would help businesses keep
-        their employees during this difficult period. Canadians can rest assured
-        that the government stands ready to take any and all necessary actions
-        as we continue to confront these challenging times together.”
-      </p>
-      <p>- Bill Morneau, Minister of Finance</p>
+      <p>Check here for frequently asked questions.</p>
     </>
   );
   const body = (
-    <>
-      Check here for frequently asked questions. Review Canada&#39;s economic
-      plan{' '}
-      <a
-        target='_blank'
-        href='https://www.canada.ca/en/department-finance/economic-response-plan.html'
-        rel='noopener noreferrer'
-      >
-        here
-      </a>
-      . Fraud alert: The government will never contact you via text message.
-    </>
+    <>Fraud alert: The government will never contact you via text message.</>
   );
   const pageHeadingData = { heading, subheading, body };
 
@@ -88,11 +66,13 @@ const QnA = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography style={{  padding: '5%', textAlign: 'center', width: '100%' }}>
+              <Typography
+                style={{ padding: '5%', textAlign: 'center', width: '100%' }}
+              >
                 This is a contact tracing website for Vancouver built by a group
                 of UBC CS students.
-                <br /><br />
-                - Intro Clip of Traceify -
+                <br />
+                <br />- Intro Clip of Traceify -
                 <div className='video_wrapper'>
                   <iframe
                     title='traceifyutube'
@@ -117,7 +97,9 @@ const QnA = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography  style={{  padding: '5%', textAlign: 'center', width: '100%'}}>
+              <Typography
+                style={{ padding: '5%', textAlign: 'center', width: '100%' }}
+              >
                 The symptoms that you see are taken from the list of symptoms
                 recorded by the Centre for Disease Control (CDC).
                 <br />
@@ -141,7 +123,9 @@ const QnA = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography style={{  padding: '5%', textAlign: 'center', width: '100%'}}>
+              <Typography
+                style={{ padding: '5%', textAlign: 'center', width: '100%' }}
+              >
                 Yes.
                 <br />
                 If the number COVID-19 positive population exceeds a certain
@@ -169,7 +153,9 @@ const QnA = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography style={{  padding: '5%', textAlign: 'center', width: '100%'}}>
+              <Typography
+                style={{ padding: '5%', textAlign: 'center', width: '100%' }}
+              >
                 Unfortunately, no.
                 <br />
                 However, we try our best to catch up with the latest updates and
@@ -178,16 +164,17 @@ const QnA = () => {
                 <br />
                 Vancouver does not provide any open-source dataset on COVID
                 patients. The data shown on this map is solely deduced from
-                available news articles.
-                Reopening is not up to date either. There is not a readily
-                available API or database from the government or medical
-                organization of each province or territory.
-                <br/><br/>
+                available news articles. Reopening is not up to date either.
+                There is not a readily available API or database from the
+                government or medical organization of each province or
+                territory.
+                <br />
+                <br />
                 UPDATE:
-                <br/>
-                Vancouver Coastal Health started to release public exposure information recently.
-                Traceify will use these data as well as news articles to populate the database with
-                real dataset.
+                <br />
+                Vancouver Coastal Health started to release public exposure
+                information recently. Traceify will use these data as well as
+                news articles to populate the database with real dataset.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -202,7 +189,9 @@ const QnA = () => {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography style={{  padding: '5%', textAlign: 'center', width: '100%'}}>
+              <Typography
+                style={{ padding: '5%', textAlign: 'center', width: '100%' }}
+              >
                 While there are some drugs that have shown some positive
                 results, the Centre for Disease Control (CDC) or World Health
                 Organization (WHO) have yet to formally approve any drugs or

@@ -17,6 +17,7 @@
 .sidebar {
   margin-left: 1rem;
   margin-right: 1rem;
+  margin-bottom: 1rem;
 }
 
 .sidebar-legend {
@@ -53,9 +54,18 @@
   text-align: right;
 }
 
-.sidebar-legend-heatmap-words {
-  display: inline-flex;
-  width: 320px;
+@media screen and (max-width: 400px) {
+  .sidebar-legend-heatmap-words {
+    display: inline-flex;
+    width: 100px;
+  }
+}
+
+@media screen and (min-width: 401px) {
+  .sidebar-legend-heatmap-words {
+    display: inline-flex;
+    width: 320px;
+  }
 }
 
 .sidebar-title {

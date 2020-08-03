@@ -6,7 +6,13 @@ import CardMapInfo from './Card-MapInfo';
 
 const InformationList = (props) => {
   return (
-    <Container style={{ maxHeight: '600px', overflow: 'auto' }}>
+    <Container
+      style={{
+        height: '100%',
+        maxHeight: `${props.windowSize.height * 0.5}px`,
+        overflow: 'auto',
+      }}
+    >
       <CardMapInfo />
       <CardMapInfo />
       <CardMapInfo />

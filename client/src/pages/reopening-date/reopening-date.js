@@ -21,14 +21,14 @@ import PageHeading from '../../components/page-heading/PageHeading';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    minWidth : '30%',
-    margin :'2%',
+    minWidth: '30%',
+    margin: '2%',
     margin: '5%',
     minWidth: '40%',
-    [theme.breakpoints.down('lg')]:{
-      minWidth : '30%',
-      margin :'2%'
-  },
+    [theme.breakpoints.down('lg')]: {
+      minWidth: '30%',
+      margin: '2%',
+    },
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -192,7 +192,11 @@ function dropphasemenu(region) {
 }
 
 const heading = 'Reopening Dates';
-const subheading = <>Find which services are available in your area.</>;
+const subheading = (
+  <>
+    <p>Find which services are available in your area.</p>
+  </>
+);
 const body = (
   <>
     Choose province/territory. The stage will be set to current by default.

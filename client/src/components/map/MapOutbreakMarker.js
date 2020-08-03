@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Marker, InfoWindow } from '@react-google-maps/api';
 import { connect } from 'react-redux';
-import { showInfoWindow } from '../../redux/actions/map-actions';
 import virusImg from '../../assets/virus.svg';
+import { addMarker } from '../../redux/actions/map-actions';
 
 class MapOutbreakMarker extends Component {
   constructor(props) {
@@ -24,12 +24,17 @@ class MapOutbreakMarker extends Component {
     });
   };
 
+  addToGlobalMarkersArray = (markerObject) => {
+    this.props.dispatch(addMarker(markerObject));
+  };
+
   render() {
     const { location, id, title, date } = this.props;
     const formattedDate = new Date(date).toLocaleDateString();
 
     return (
       <Marker
+        ref={this.addToGlobalMarkersArray(this)}
         position={location}
         onClick={() => this.handleToggleOpen()}
         icon={virusImg}
@@ -41,9 +46,7 @@ class MapOutbreakMarker extends Component {
             onCloseClick={() => this.handleToggleClose()}
           >
             <div>
-              <h1>
-                <b>Outbreak!</b>
-              </h1>
+              <h1>Outbreak!</h1>
               <h1>{title}</h1>
               <p>Date Declared (M/D/Y): {formattedDate}</p>
             </div>
@@ -54,17 +57,11 @@ class MapOutbreakMarker extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    ownProps,
-  };
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    showInfoWindow: (id) => dispatch(showInfoWindow(id)),
+    addMarker: (markerObject) => dispatch(addMarker(markerObject)),
     dispatch,
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MapOutbreakMarker);
+export default connect(mapDispatchToProps)(MapOutbreakMarker);

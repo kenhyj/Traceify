@@ -10,19 +10,13 @@ const initialState = {
   showMarkers: true,
   showOutbreakMarkers: true,
   error: null,
+  globalMap: {},
+  globalMarkers: [],
+  visibleMarkers: [],
 };
 
 const mapReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actions.SHOW_MAP_INFOWINDOW:
-      return {
-        ...state,
-        data: state.data.map((d) =>
-          d.id === action.id
-            ? (d.isInfoWindowVisible = !d.isInfoWindowVisible)
-            : d
-        ),
-      };
     case actions.SHOW_HEAT_LAYER:
       return {
         ...state,
@@ -48,6 +42,19 @@ const mapReducer = (state = initialState, action) => {
       return {
         ...state,
         error: action.payload.error,
+      };
+    case actions.SET_MAP:
+      return {
+        ...state,
+        globalMap: action.payload,
+      };
+    case actions.ADD_MARKER:
+      state.globalMarkers.push(action.payload);
+      return state;
+    case actions.ADD_VISIBLE_MARKER:
+      return {
+        ...state,
+        visibleMarkers: state.visibleMarkers.concat(action.payload.marker),
       };
     default:
       return state;
