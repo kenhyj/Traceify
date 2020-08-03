@@ -1,11 +1,6 @@
 import axios from 'axios/index';
 import * as actions from '../constants/action-types';
 
-export const showInfoWindow = (id) => ({
-  type: actions.SHOW_MAP_INFOWINDOW,
-  id: id,
-});
-
 export const showHeatLayer = () => ({
   type: actions.SHOW_HEAT_LAYER,
 });
@@ -53,3 +48,20 @@ export const fetchLocations = () => (dispatch) => {
       console.log(err);
     });
 };
+
+export const setGlobalMap = (map) => ({
+  type: actions.SET_MAP,
+  payload: map,
+});
+
+export const addMarker = (marker) => ({
+  type: actions.ADD_MARKER,
+  payload: marker,
+});
+
+export const addVisibleMarker = (marker) => ({
+  type: actions.ADD_VISIBLE_MARKER,
+  payload: {
+    marker: marker,
+  },
+});

@@ -6,7 +6,11 @@ import MapMarker from '../../../components/map/MapMarker';
 import MapOutbreakMarker from '../../../components/map/MapOutbreakMarker';
 import MapHeatLayer from '../../../components/map/MapHeatLayer';
 import { withGoogleMaps } from './MapHOC';
-import { fetchLocations } from '../../../redux/actions/map-actions';
+import {
+  fetchLocations,
+  setGlobalMap,
+  addVisibleMarker,
+} from '../../../redux/actions/map-actions';
 import '../home.css';
 
 const MapContainer = (props) => {
@@ -15,8 +19,9 @@ const MapContainer = (props) => {
   const [clusterCenter, setClusterCenter] = useState(null);
   const [clusterInfoWindowIsOpen, setClusterInfoWindowOpen] = useState(false);
   const [clusterMarkerData, setClusterMarkerData] = useState([]);
+  const [visibleMarkers, setVisibleMarkers] = useState([]);
   const { data, outbreaks, dispatch } = props;
-  const { showMarkers, showOutbreakMarkers } = props.mapReducer;
+  const { showMarkers, showOutbreakMarkers, globalMarkers } = props.mapReducer;
   const clustererOptions = {
     imagePath:
       'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
@@ -27,11 +32,10 @@ const MapContainer = (props) => {
   }, []);
 
   const handleClusterClick = (cluster) => {
-    const markers = cluster.getMarkers();
-    console.log(markers);
+    const clusterMarkers = cluster.getMarkers();
     const markerTitleIdArray = [];
     const markerDataArray = [];
-    for (const m of markers) {
+    for (const m of clusterMarkers) {
       markerTitleIdArray.push(m.getTitle());
       const markerData = data.find((element) => {
         return m.getTitle() === element._id;
@@ -47,13 +51,47 @@ const MapContainer = (props) => {
 
   const handleMapLoad = (currentMap) => {
     setMap(currentMap);
+    dispatch(setGlobalMap(currentMap));
   };
 
   const handleZoomChange = () => {
-    if (map !== null) {
+    if (map) {
       setZoom(map.getZoom());
+      // console.log(visibleMarkers);
     }
   };
+
+  const onMapIdle = () => {
+    if (map) {
+      const bounds = map.getBounds();
+      for (let i = 0; i < globalMarkers.length; i++) {
+        let { lat } = globalMarkers[i].props.location;
+        let { lng } = globalMarkers[i].props.location;
+        // eslint-disable-next-line no-undef
+        const pos = new google.maps.LatLng(lat, lng);
+        if (bounds.contains(pos) === true) {
+          // console.log('we can see this marker!', globalMarkers[i].props._id);
+          // const visibleMarker = data.find((element) => {
+          //   return globalMarkers[i].props._id === element._id;
+          // });
+          // handleAddVisibleMarker(visibleMarker);
+          // const newArray = [...visibleMarkers, globalMarkers[i].props._id];
+          // setVisibleMarkers(newArray);
+          // handleAddVisibleMarker(globalMarkers[i].props._id);
+        }
+      }
+    }
+  };
+
+  // const handleAddVisibleMarker = (element) => {
+  //   // if (visibleMarkers.length > 0) {
+  //     const newArray = [...visibleMarkers, element];
+  //     setVisibleMarkers(newArray);
+  //   // } else {
+  //   //   setVisibleMarkers([element]);
+  //   // }
+  //   console.log(visibleMarkers);
+  // };
 
   return (
     <>
@@ -65,9 +103,8 @@ const MapContainer = (props) => {
         center={styles.center}
         zoom={zoom}
         options={{ styles: styles.mapStyle }}
-        onZoomChanged={() => {
-          handleZoomChange();
-        }}
+        onZoomChanged={handleZoomChange}
+        onIdle={onMapIdle}
       >
         {showMarkers && (
           <MarkerClusterer
@@ -95,9 +132,9 @@ const MapContainer = (props) => {
               {'\n'}
               {clusterMarkerData.map((markerData) => (
                 <p key={`${markerData._id}_infoWindow_p`}>
-                  Time visited: {markerData.time}
-                  {'\n'}
                   Date visited (Y/M/D): {markerData.date.substring(0, 10)}
+                  {'\n'}
+                  Time visited: {markerData.time}
                 </p>
               ))}
             </div>
@@ -128,6 +165,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchLocations: () => dispatch(fetchLocations()),
+    setGlobalMap: (map) => dispatch(setGlobalMap(map)),
+    addVisibleMarker: (marker) => dispatch(addVisibleMarker(marker)),
     dispatch,
   };
 };

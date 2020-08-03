@@ -8,7 +8,8 @@ const InformationList = (props) => {
   return (
     <Container
       style={{
-        maxHeight: `${props.windowSize.height * 0.8}px`,
+        height: '100%',
+        maxHeight: `${props.windowSize.height * 0.5}px`,
         overflow: 'auto',
       }}
     >

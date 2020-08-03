@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Marker, InfoWindow } from '@react-google-maps/api';
 import { connect } from 'react-redux';
-import { showInfoWindow } from '../../redux/actions/map-actions';
+import { addMarker } from '../../redux/actions/map-actions';
 
 class MapMarker extends Component {
   constructor(props) {
@@ -23,6 +23,10 @@ class MapMarker extends Component {
     });
   };
 
+  addToGlobalMarkersArray = (markerObject) => {
+    this.props.dispatch(addMarker(markerObject));
+  };
+
   render() {
     const { location, _id, title, time, date, clusterer } = this.props;
     const formattedDate = date.substring(0, 10);
@@ -42,12 +46,14 @@ class MapMarker extends Component {
 
     return (
       <Marker
+        ref={this.addToGlobalMarkersArray(this)}
         position={location}
         onClick={() => this.handleToggleOpen()}
         icon={customIcon}
         id={_id}
         clusterer={clusterer}
         title={_id}
+        isMounted='true'
       >
         {this.state.isOpen && (
           <InfoWindow
@@ -58,9 +64,9 @@ class MapMarker extends Component {
             <div style={{ whiteSpace: 'pre' }}>
               <h1>{title}</h1>
               <p>
-                Time visited: {time}
-                {'\n'}
                 Date visited (Y/M/D): {formattedDate}
+                {'\n'}
+                Time visited: {time}
               </p>
             </div>
           </InfoWindow>
@@ -70,22 +76,11 @@ class MapMarker extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    ownProps,
-  };
-};
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    showInfoWindow: (id) => dispatch(showInfoWindow(id)),
+    addMarker: (markerObject) => dispatch(addMarker(markerObject)),
     dispatch,
   };
 };
 
-const ConnectedMapMarker = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MapMarker);
-
-export default ConnectedMapMarker;
+export default connect(mapDispatchToProps)(MapMarker);

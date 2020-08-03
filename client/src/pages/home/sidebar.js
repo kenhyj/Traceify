@@ -7,7 +7,7 @@ import {
   AccordionDetails,
   Typography,
 } from '@material-ui/core';
-import { ExpandMore, RoomTwoTone } from '@material-ui/icons';
+import { ExpandMore, Room } from '@material-ui/icons';
 import { connect } from 'react-redux';
 import {
   showHeatLayer,
@@ -17,8 +17,8 @@ import {
 import InformationList from './InformationList';
 import './home.css';
 import { ReactComponent as HeatmapGradient } from '../../assets/heatmap-gradient.svg';
+import { ReactComponent as HeatmapGradientSmall } from '../../assets/heatmap-gradient-small.svg';
 import { ReactComponent as OutbreakIcon } from '../../assets/virus.svg';
-import { Room } from '@material-ui/icons';
 
 const Sidebar = (props) => {
   const toggleHeat = () => {
@@ -45,7 +45,11 @@ const Sidebar = (props) => {
               <p>
                 <b>Heatmap</b>
               </p>
-              <HeatmapGradient />
+              {props.windowSize.width >= 401 ? (
+                <HeatmapGradient />
+              ) : (
+                <HeatmapGradientSmall />
+              )}
               <div className='sidebar-legend-heatmap-words'>
                 <div className='sidebar-legend-heatmap-low'>low</div>
                 <div className='sidebar-legend-heatmap-high'>high</div>
@@ -87,7 +91,7 @@ const Sidebar = (props) => {
           </div>
         </AccordionDetails>
       </Accordion>
-      {/* <InformationList windowSize={props.windowSize}></InformationList> */}
+      {/* {!props.mapVisible && <InformationList windowSize={props.windowSize} />} */}
     </div>
   );
 };

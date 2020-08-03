@@ -50,16 +50,23 @@ const Home = () => {
       <div className='Home-main-body'>
         <Hidden mdUp>
           <div className='Home-mobile-toggle-view'>
+            {/* <Chip
+              label={mapVisible ? 'Switch to List View' : 'Switch to Map View'}
+              onClick={() => setMapVisible(!mapVisible)}
+            /> */}
             <Chip
-              label='View Maps'
+              label={mapVisible ? 'Hide Maps' : 'Show Maps'}
               onClick={() => setMapVisible(!mapVisible)}
             />
-            <Chip label='View Info' />
           </div>
         </Hidden>
       </div>
       <div className='Home-main-body'>
-        <Sidebar className='Home-main-body-sidebar' windowSize={windowSize} />
+        <Sidebar
+          className='Home-main-body-sidebar'
+          windowSize={windowSize}
+          mapVisible={mapVisible}
+        />
         <Hidden smDown>
           <div
             style={{
