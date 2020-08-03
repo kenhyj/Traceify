@@ -23,7 +23,9 @@
 }
 
 .instruction {
-    background-color: lightsteelblue;
+    font-weight: 500;
+    color :#ffffff;
+    background-color:#2196F3;
     padding: 10px;
     width: fit-content;
     margin: auto;

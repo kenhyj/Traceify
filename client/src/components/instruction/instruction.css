@@ -1,5 +1,7 @@
 .instruction {
-    background-color: lightsteelblue;
+    color :#ffffff;
+    font-weight: 500;
+    background-color:#2196F3;
     padding: 10px;
     width: fit-content;
     margin: auto;
