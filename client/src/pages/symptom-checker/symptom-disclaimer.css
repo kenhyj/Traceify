@@ -5,9 +5,8 @@
 
 .icon {
     background-color: transparent;
-    position: absolute;
-    top: 0;
-    right: 0;
+    position: relative;
+    padding: 0px;
 }
 
 .content {

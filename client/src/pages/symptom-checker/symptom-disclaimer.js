@@ -128,11 +128,11 @@ class SymptomDisclaimer extends React.Component {
           },
         }}
       >
-        <DialogActions className='icon'>
-          <IconButton aria-label='close' onClick={this.props.close} CancelIcon>
+        <DialogActions  style={{padding : '0'}} className='icon'>
+          <IconButton  style={{padding : '0'}} aria-label='close' onClick={this.props.close} CancelIcon>
             <CancelIcon
               onClick={this.props.close}
-              style={{ color: red[500] }}
+              style={{ color: red[500]}}
               justify='right'
             />
           </IconButton>
