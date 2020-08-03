@@ -22,15 +22,6 @@
     border-width: 0 0 1px;
 }
 
-.instruction {
-    font-weight: 500;
-    color :#ffffff;
-    background-color:#2196F3;
-    padding: 10px;
-    width: fit-content;
-    margin: auto;
-}
-
 .customDatePickerWidth,
 .customDatePickerWidth > div.react-datepicker-wrapper,
 .customDatePickerWidth > div > div.react-datepicker__input-container,
