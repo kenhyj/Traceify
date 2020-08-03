@@ -65,7 +65,7 @@ class SymptomChecker extends React.Component {
                   <Checkbox
                     onChange={this.handleChange}
                     name={somesymptoms}
-                    color='default'
+                    style ={{color : '#2196F3'}}
                   />
                 }
                 label={somesymptoms}

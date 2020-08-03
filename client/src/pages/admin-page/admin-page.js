@@ -15,6 +15,8 @@ import AdminDeleteOutbreak from '../../components/admin-delete/admin-delete-outb
 import PageHeading from '../../components/page-heading/PageHeading';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import './admin-page.css';
+import { Hidden } from '@material-ui/core';
+import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,20 +52,13 @@ function a11yProps(index) {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-    display: 'flex',
-    height: 224,
-    width: '100%',
-  },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
-    width: '20%',
   },
 }));
 
 function AdminPage(props) {
+  const vert = isWidthUp('md',props.width)?'vertical':'horizontal';
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -96,21 +91,26 @@ function AdminPage(props) {
         <br />
         <br />
         <br />
-        <div className={classes.root}>
-          <Tabs
-            orientation='vertical'
-            variant='scrollable'
-            value={value}
-            onChange={handleChange}
-            aria-label='Vertical tabs example'
-            className={classes.tabs}
-            indicatorColor="primary"
-          >
-            <Tab label='Add a New Trace Location' {...a11yProps(0)} />
-            <Tab label='Delete a Trace(s)' {...a11yProps(1)} />
-            <Tab label='Add a New Outbreak' {...a11yProps(2)} />
-            <Tab label='Delete an Outbreak(s)' {...a11yProps(3)} />
-          </Tabs>
+
+        <div className='tabRoot' >
+        <div className = 'leftMenu'>
+            <Tabs
+              orientation= {vert}
+              variant='scrollable'
+              value={value}
+              onChange={handleChange}
+              aria-label='Vertical tabs example'
+              className={classes.tabs}
+              indicatorColor="primary"
+            >
+              <Tab label='Add a New Trace Location' {...a11yProps(0)} />
+              <Tab label='Delete a Trace(s)' {...a11yProps(1)} />
+              <Tab label='Add a New Outbreak' {...a11yProps(2)} />
+              <Tab label='Delete an Outbreak(s)' {...a11yProps(3)} />
+            </Tabs>
+
+            </div>
+           <div className = 'rightPanel'>
           <TabPanel value={value} index={0} className='tabpanel'>
             <AdminAdd />
           </TabPanel>
@@ -123,6 +123,7 @@ function AdminPage(props) {
           <TabPanel value={value} index={3} className='tabpanel'>
             <AdminDeleteOutbreak />
           </TabPanel>
+          </div>
         </div>
       </div>
     </motion.div>
@@ -136,4 +137,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps)(AdminPage));
+export default withWidth()(withRouter(connect(mapStateToProps)(AdminPage)));
