@@ -4,8 +4,8 @@ export default {
     height: '100%',
   },
   center: {
-    lat: 49.2849418,
-    lng: -122.8966744,
+    lat: 49.2488,
+    lng: -122.9805,
   },
   zoom: 11,
   mapStyle: [

@@ -4,8 +4,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import {
-  Typography, Toolbar, Table, TableBody, TableCell, TableRow,
-  TableHead, TableContainer, Dialog, Grid, Container, Hidden, IconButton,
+  Typography,
+  Toolbar,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  TableHead,
+  TableContainer,
+  Dialog,
+  Grid,
+  Container,
+  Hidden,
+  IconButton,
 } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Send from '@material-ui/icons/Send';
@@ -62,7 +73,9 @@ const useStyles = makeStyles((theme) => ({
 
 const heading = 'Have I Been Exposed?';
 const subheading = (
-  <div>Wondering if you have been exposed? You can check it here.</div>
+  <>
+    <p>Wondering if you have been exposed? You can check it here.</p>
+  </>
 );
 const body = (
   <div>
@@ -139,7 +152,7 @@ const HaveI = () => {
               onClick={() => dispatch({ type: 'ADD_ROW' })}
             >
               Add
-              <AddCircleOutlineIcon style={{ padding: '0 0 0 10px' }}/>
+              <AddCircleOutlineIcon style={{ padding: '0 0 0 10px' }} />
             </IconButton>
           </Grid>
           <Grid item xs={8}>
@@ -155,7 +168,7 @@ const HaveI = () => {
               onClick={handleSubmit}
             >
               Submit
-              <Send style={{ padding: '0 0 0 10px' }}/>
+              <Send style={{ padding: '0 0 0 10px' }} />
             </IconButton>
           </Grid>
         </Toolbar>
@@ -200,7 +213,8 @@ const HaveI = () => {
             );
           })}
         </Dialog>
-        <br/><br/>
+        <br />
+        <br />
       </Container>
     </motion.div>
   );

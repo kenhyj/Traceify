@@ -80,9 +80,11 @@ class SymptomChecker extends React.Component {
   render() {
     const heading = 'Symptom Checker';
     const subheading = (
-      <div>
-        Wondering if you should get tested? Discover a treatment plan below.
-      </div>
+      <>
+        <p>
+          Wondering if you should get tested? Discover a treatment plan below.
+        </p>
+      </>
     );
     const body = (
       <div>
