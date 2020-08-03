@@ -1,6 +1,6 @@
 const InitialField = [
   {
-    date: new Date('2020-07-01T01:11:54'),
+    date: new Date(),
     locations: [{ loc: '' }, { loc: '' }, { loc: '' }],
   },
 ];

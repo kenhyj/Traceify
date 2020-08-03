@@ -4,19 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import {
-  Typography,
-  Toolbar,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow,
-  TableHead,
-  TableContainer,
-  Dialog,
-  Grid,
-  Container,
-  Hidden,
-  IconButton,
+  Typography, Toolbar, Table, TableBody, TableCell, TableRow,
+  TableHead, TableContainer, Dialog, Grid, Container, Hidden, IconButton, DialogActions
 } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Send from '@material-ui/icons/Send';
@@ -30,6 +19,8 @@ import { motion } from 'framer-motion';
 import RowComponent from '../../components/have-i-table/row-component';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import PageHeading from '../../components/page-heading/PageHeading';
+import CancelIcon from '@material-ui/icons/Cancel';
+import { red } from '@material-ui/core/colors';
 
 const StyledTableCell = withStyles(() => ({
   head: {
@@ -73,9 +64,9 @@ const useStyles = makeStyles((theme) => ({
 
 const heading = 'Have I Been Exposed?';
 const subheading = (
-  <>
+  <div>
     <p>Wondering if you have been exposed? You can check it here.</p>
-  </>
+  </div>
 );
 const body = (
   <div>
@@ -198,8 +189,17 @@ const HaveI = () => {
             </TableBody>
           </Table>
         </TableContainer>
-
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open}
+        onClose={handleClose}>
+          <DialogActions style={{ padding: '5px 10px 0px 10px' }} className='icon'>
+            <IconButton style={{ padding: '0' }} aria-label='close' onClick={handleClose} CancelIcon>
+              <CancelIcon
+                onClick={handleClose}
+                style={{ color: red[500] }}
+                justify='right'
+              />
+            </IconButton>
+          </DialogActions>
           <DialogTitle>
             <Alert severity={al}>{text}</Alert>
           </DialogTitle>
