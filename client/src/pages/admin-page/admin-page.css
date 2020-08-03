@@ -10,6 +10,12 @@
     margin: 50px;
 }
 
+.tabRoot  {
+    display: flex;
+    height: 224px;
+    width: 100%;
+}
+
 .form {
     padding: 5%;
     width: 30%;
@@ -52,4 +58,28 @@ input {
 .tabpanel {
     width: 100%;
     margin-right: 15%;
+}
+
+.leftMenu {
+    width: 25%;
+}
+
+.rightPanel {
+    width: 75%;
+    align-content: center;
+}
+
+@media screen and (max-width: 1059px) {
+    .leftMenu {
+        width: 100%;
+    }
+    
+    .rightPanel {
+        width: 100%;
+        align-content: center;
+        overflow: scroll;
+    }
+    .tabRoot{
+        display: block;
+    }
 }

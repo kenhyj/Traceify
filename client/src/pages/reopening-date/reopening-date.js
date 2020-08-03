@@ -22,7 +22,6 @@ import PageHeading from '../../components/page-heading/PageHeading';
 const useStyles = makeStyles((theme) => ({
   formControl: {
     minWidth: '30%',
-    margin: '2%',
     margin: '5%',
     minWidth: '40%',
     [theme.breakpoints.down('lg')]: {
