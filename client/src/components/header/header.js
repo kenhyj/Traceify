@@ -7,7 +7,7 @@ import DropdownMenu from './DropdownMenu';
 import PagesBar from './PagesBar';
 import { useStyles } from './header.css';
 
-export default function HeaderTitle(props) {
+export default function HeaderTitle() {
   const classes = useStyles();
   const [menuOpen, setMenuOpen] = React.useState(false);
   const toggleMenu = () => {

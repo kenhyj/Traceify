@@ -22,11 +22,13 @@ class SymptomChecker extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.typeform = this.typeform.bind(this);
+    this.retaketest = this.retaketest.bind(this);
     window.addEventListener('resize', this.update);
   }
 
   componentDidMount() {
     this.update();
+    this.retaketest();
   }
 
   update = () => {
@@ -46,6 +48,10 @@ class SymptomChecker extends React.Component {
     const prevState = this.state;
     this.setState({ ...prevState, risk: true, show: true });
     this.props.showResult();
+  }
+
+  retaketest() {
+    this.props.retaketest();
   }
 
   typeform(symptomtype) {
@@ -105,7 +111,7 @@ class SymptomChecker extends React.Component {
         <div>
           <PageHeading data={pageHeadingData} />
         </div>
-        <FormControl onSubmit={this.handleSubmit} className='page-content'>
+        <FormControl onSubmit={this.handleSubmit}>
           <Instruction
             text='Please check all the boxes below that applies to you:'
             width='50%'
@@ -139,12 +145,15 @@ class SymptomChecker extends React.Component {
                 endIcon={<Send />}
                 onClick={this.handleSubmit}
                 className='button'
+                style={{ width: '100%' }}
               >
                 Submit
               </Button>
             </Grid>
           </Grid>
         </FormControl>
+        <br />
+        <br />
         <SymptomDisclaimer />
       </motion.div>
     );
@@ -160,6 +169,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     choosesymptoms: (symptoms) => {
       dispatch({ type: 'SELECTED_SYMPTOMS', payload: symptoms });
+    },
+    retaketest: () => {
+      dispatch({ type: 'RETAKE_TEST' });
     },
     showResult: () => {
       dispatch({ type: 'GENERATE_RESULT' });

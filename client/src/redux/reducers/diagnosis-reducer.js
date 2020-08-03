@@ -50,6 +50,9 @@ const diagnosisReducer = (state = INITIAL_STATE, action) => {
         symptoms: { ...state.symptoms, ...action.payload },
       };
 
+    case 'RETAKE_TEST':
+      return INITIAL_STATE;
+
     case 'GENERATE_RESULT':
       return { ...state, showResult: true };
 

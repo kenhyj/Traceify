@@ -83,6 +83,9 @@ function EnhancedTableHead(props) {
       <TableRow>
         <TableCell padding='checkbox'>
           <Checkbox
+              style ={{
+                  color: "#2196F3",
+              }}
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
@@ -133,12 +136,12 @@ const useToolbarStyles = makeStyles((theme) => ({
   highlight:
     theme.palette.type === 'light'
       ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+          color: 'white',
+          backgroundColor: '#2196F3',
         }
       : {
           color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
+          backgroundColor: theme.palette.primary.dark,
         },
   title: {
     flex: '1 1 100%',
@@ -227,6 +230,12 @@ const useStyles = makeStyles((theme) => ({
     top: 20,
     width: 1,
   },
+    tableRow: {
+        "&$selected, &$selected:hover": {
+            backgroundColor: lighten('#2196F3', 0.85),
+        }
+    },
+    selected: {}
 }));
 
 function AdminDelete(props) {
@@ -365,9 +374,14 @@ function AdminDelete(props) {
                       tabIndex={-1}
                       selected={isItemSelected}
                       key={row._id}
+                      classes={{ selected: classes.selected }}
+                      className={classes.tableRow}
                     >
                       <TableCell padding='checkbox'>
                         <Checkbox
+                            style ={{
+                                color: "#2196F3",
+                            }}
                           checked={isItemSelected}
                           inputProps={{ 'aria-labelledby': labelId }}
                         />

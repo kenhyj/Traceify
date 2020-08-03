@@ -47,6 +47,8 @@ The following tech Stack were used:
 - NoSQL
 - Heroku
 
+### Tech Utilization from CPSC436 Units
+
 A combination of HTML, CSS, React JS was used to produce the frontend of the project. ReactJS provided the backbone of the frontend, CSS provided the styling and HTML provided some of the more convoluted boilerplate code such as inserting iframe codes.
 Redux was used primarily in Symptom Checker to provide results of the quiz and provide heat layers and markers for our Home page map.<br/>
 NodeJS uses were extensive. To name a few, its libraries provided a quick access to forming our backend and our connection to the database; NodeJS also provided linting and pre-made material user interface (MUI).<br/>
@@ -110,8 +112,13 @@ Finally our web app project is deployed in heroku at https://staging-traceify.he
 ## Above and Beyond
 
 - We think we owe it to ourselves that we went above and beyond with this project. Even though we were not provided ample and early access to data and API from the government or medical institutions that could have made a reduced a portion of our workload, we took the time to go through every website read through them and provide the database and datasets needed for our project.
-- We made sure that our project was fully responsive to both mobile and laptop of varying dimensions.
-- We took the extra mile of using the external Google Map API to implement our map in the Home page.
+- We made sure that our project was fully **responsive** to both mobile and laptop of **varying dimensions**.
+- We took the extra mile of using the external **Google Map API** to implement our **map** in the Home page.
+- We used **Google OAuth** to **securely handle user information**
+- We stored login information in a browser's **session storage** so that the **login status persists** unless the tab is closed or the user manually logs out
+- We **researched UX style** of government sites and medical sites for **accessibility**, and set to utilize only the **main colour themes** for the website (blue, grey)
+- We allow **various filtering/rendering options** for the **Map**, rather than having only one option to render (i.e., heat map, markers)
+
 
 ## Next Steps
 
@@ -122,5 +129,5 @@ Finally our web app project is deployed in heroku at https://staging-traceify.he
 
 - d2e2b: Google Map API, Home,
 - e5c0b: Reopening - Database setup, Symptom Checker - Redux and diagnosis, ESLint and prettier, Automated Deployment,
-- k0b0b: Oauth, Admin, MongoDB set-up, Intro Youtube video
+- k0b0b: Google OAuth Logins (i.e., filtering valid users, persisting login status in session storage), Admin functionalities (i.e., insertion and deletion of trace/outbreak data), Q&A, Styling assist, MongoDB set-up and data generation, Traceify Intro Youtube video
 - l0y2b: Reopening - Styling, Symptom Checker - Styling, Have I been Exposed, Thank You,
