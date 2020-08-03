@@ -17,6 +17,7 @@ import {
   Container,
   Hidden,
   IconButton,
+  DialogActions,
 } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Send from '@material-ui/icons/Send';
@@ -30,6 +31,8 @@ import { motion } from 'framer-motion';
 import RowComponent from '../../components/have-i-table/row-component';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import PageHeading from '../../components/page-heading/PageHeading';
+import {red} from "@material-ui/core/colors/index";
+import CancelIcon from '@material-ui/icons/Cancel';
 
 const StyledTableCell = withStyles(() => ({
   head: {
@@ -199,10 +202,23 @@ const HaveI = () => {
           </Table>
         </TableContainer>
 
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open} onClose={handleClose} PaperProps={{
+            style: {
+                overflowX: 'hidden'
+            },
+        }}>
           <DialogTitle>
             <Alert severity={al}>{text}</Alert>
           </DialogTitle>
+          <DialogActions className='icons'>
+              <IconButton aria-label='close' onClick={handleClose} CancelIcon>
+                  <CancelIcon
+                      onClick={handleClose}
+                      style={{ color: red[500] }}
+                      justify='right'
+                  />
+              </IconButton>
+          </DialogActions>
           {result.map((one, index) => {
             return (
               <DialogContent key={one.date + index}>
