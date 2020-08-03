@@ -7,7 +7,7 @@ import {
   AccordionDetails,
   Typography,
 } from '@material-ui/core';
-import { ExpandMore } from '@material-ui/icons';
+import { ExpandMore, RoomTwoTone } from '@material-ui/icons';
 import { connect } from 'react-redux';
 import {
   showHeatLayer,
@@ -18,10 +18,9 @@ import InformationList from './InformationList';
 import './home.css';
 import { ReactComponent as HeatmapGradient } from '../../assets/heatmap-gradient.svg';
 import { ReactComponent as OutbreakIcon } from '../../assets/virus.svg';
-import { ReactComponent as DataMarker } from '../../assets/blue-pin.svg';
+import { Room } from '@material-ui/icons';
 
 const Sidebar = (props) => {
-
   const toggleHeat = () => {
     props.dispatch(showHeatLayer());
   };
@@ -58,17 +57,17 @@ const Sidebar = (props) => {
               </p>
               <div>
                 <Grid container spacing={2}>
-                  <Grid item xs={6}>
+                  <Grid item xs={2}>
                     <OutbreakIcon />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={10}>
                     <div>Outbreak</div>
                   </Grid>
-                  <Grid item xs={6}>
-                    <DataMarker />
+                  <Grid item xs={2}>
+                    <Room style={{ color: '#2196F3' }} />
                   </Grid>
-                  <Grid item xs={6}>
-                    <div>Data Point</div>
+                  <Grid item xs={10}>
+                    <div>Possible exposure</div>
                   </Grid>
                 </Grid>
               </div>
@@ -82,26 +81,13 @@ const Sidebar = (props) => {
         </AccordionSummary>
         <AccordionDetails>
           <div className='sidebar-chips'>
-            <Chip
-              // className={showMarkers ? classes.chipSelected : classes.chip}
-              clickable
-              label='All Data Points'
-              onClick={toggleMarkers}
-            />
-            <Chip
-              // className={showHeatLayer ? classes.chipSelected : classes.chip}
-              label='Heat Map'
-              onClick={toggleHeat}
-            />
-            <Chip
-              // className={showOutbreakMarkers ? classes.chipSelected : classes.chip}
-              label='Outbreaks'
-              onClick={toggleOutbreakMarkers}
-            />
+            <Chip label='All Possible Exposures' onClick={toggleMarkers} />
+            <Chip label='Heat Map' onClick={toggleHeat} />
+            <Chip label='Outbreaks' onClick={toggleOutbreakMarkers} />
           </div>
         </AccordionDetails>
       </Accordion>
-      {/* <InformationList></InformationList> */}
+      {/* <InformationList windowSize={props.windowSize}></InformationList> */}
     </div>
   );
 };

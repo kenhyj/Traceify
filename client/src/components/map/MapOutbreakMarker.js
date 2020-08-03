@@ -41,9 +41,7 @@ class MapOutbreakMarker extends Component {
             onCloseClick={() => this.handleToggleClose()}
           >
             <div>
-              <h1>
-                <b>Outbreak!</b>
-              </h1>
+              <h1>Outbreak!</h1>
               <h1>{title}</h1>
               <p>Date Declared (M/D/Y): {formattedDate}</p>
             </div>
