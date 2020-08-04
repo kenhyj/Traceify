@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, MarkerClusterer, InfoWindow } from '@react-google-maps/api';
 import { connect } from 'react-redux';
+import { Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import styles from './MapContainer.css';
 import MapMarker from '../../../components/map/MapMarker';
 import MapOutbreakMarker from '../../../components/map/MapOutbreakMarker';
@@ -12,6 +14,26 @@ import {
 } from '../../../redux/actions/map-actions';
 import '../home.css';
 
+const useStyles = makeStyles((theme) => ({
+  infoWindowTitle: {
+    textAlign: 'center',
+    color: '#2196F3',
+  },
+  infoWindowLabel: {
+    marginRight: '10px',
+  },
+  infoWindowType: {
+    fontSize: '12px',
+    textAlign: 'center',
+  },
+  infoWindowDataDiv: {
+    marginBottom: '5px',
+  },
+  infoWindowTotal: {
+    marginBottom: '10px',
+  },
+}));
+
 const MapContainer = (props) => {
   const [map, setMap] = useState(null);
   const [zoom, setZoom] = useState(11);
@@ -20,6 +42,7 @@ const MapContainer = (props) => {
   const [clusterMarkerData, setClusterMarkerData] = useState([]);
   const { data, outbreaks, dispatch } = props;
   const { showMarkers, showOutbreakMarkers } = props.mapReducer;
+  const classes = useStyles();
   const clustererOptions = {
     imagePath:
       'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
@@ -94,16 +117,56 @@ const MapContainer = (props) => {
             position={clusterCenter}
             onCloseClick={() => setClusterInfoWindowOpen(false)}
           >
-            <div style={{ whiteSpace: 'pre' }}>
-              <h1>{clusterMarkerData[0].title}</h1>
-              Total possible exposures: {clusterMarkerData.length}
-              {'\n'}
+            <div>
+              <Typography className={classes.infoWindowType}>
+                Possible Exposures
+              </Typography>
+              <Typography
+                variant='h6'
+                gutterBottom
+                className={classes.infoWindowTitle}
+              >
+                {clusterMarkerData[0].title}
+              </Typography>
+              <div className={classes.infoWindowTotal} style={{ display: 'flex' }}>
+                <Typography
+                  color='textSecondary'
+                  className={classes.infoWindowLabel}
+                >
+                  Total possible exposures:
+                </Typography>
+                <Typography className={classes.infoWindowData}>
+                  {clusterMarkerData.length}
+                </Typography>
+              </div>
               {clusterMarkerData.map((markerData) => (
-                <p key={`${markerData._id}_infoWindow_p`}>
-                  Date visited (Y/M/D): {markerData.date.substring(0, 10)}
-                  {'\n'}
-                  Time visited: {markerData.time}
-                </p>
+                <div
+                  className={classes.infoWindowDataDiv}
+                  key={`${markerData._id}_infoWindow_data_div`}
+                >
+                  <div style={{ display: 'flex' }}>
+                    <Typography
+                      color='textSecondary'
+                      className={classes.infoWindowLabel}
+                    >
+                      Date visited (Y/M/D):
+                    </Typography>
+                    <Typography className={classes.infoWindowData}>
+                      {markerData.date.substring(0, 10)}
+                    </Typography>
+                  </div>
+                  <div style={{ display: 'flex' }}>
+                    <Typography
+                      color='textSecondary'
+                      className={classes.infoWindowLabel}
+                    >
+                      Time visited:
+                    </Typography>
+                    <Typography className={classes.infoWindowData}>
+                      {markerData.time}
+                    </Typography>
+                  </div>
+                </div>
               ))}
             </div>
           </InfoWindow>

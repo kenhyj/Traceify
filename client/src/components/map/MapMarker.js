@@ -11,11 +11,15 @@ const useStyles = makeStyles((theme) => ({
   infoWindowLabel: {
     marginRight: '10px',
   },
+  infoWindowType: {
+    fontSize: '12px',
+    textAlign: 'center',
+  },
 }));
 
 const MapMarker = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { location, _id, title, time, date, clusterer } = props;
+  const { location, _id, title, time, date, clusterer, type } = props;
   const classes = useStyles();
   const formattedDate = date.substring(0, 10);
   const customIcon = {
@@ -57,6 +61,9 @@ const MapMarker = (props) => {
           onCloseClick={handleToggleClose}
         >
           <div>
+            <Typography className={classes.infoWindowType}>
+              {type === 'location' ? 'Possible Exposure' : ''}
+            </Typography>
             <Typography
               variant='h6'
               gutterBottom
