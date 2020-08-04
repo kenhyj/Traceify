@@ -5,7 +5,7 @@ import CardMapInfo from './Card-MapInfo';
 import Instruction from '../../components/instruction/instruction';
 
 const InformationList = (props) => {
-  const { visibleMarkers } = props.mapReducer;
+  const { visibleMarkers, showMarkers, showOutbreakMarkers } = props.mapReducer;
 
   return (
     <>
@@ -23,9 +23,18 @@ const InformationList = (props) => {
           alignItems: 'center',
         }}
       >
-        {visibleMarkers.map((data) => (
-          <CardMapInfo key={`${data._id}_sidebar_card`} {...data} />
-        ))}
+        {showMarkers &&
+          visibleMarkers.map((data) => {
+            if (data.type === 'location') {
+              return <CardMapInfo key={`${data._id}_sidebar_card`} {...data} />;
+            }
+          })}
+        {showOutbreakMarkers &&
+          visibleMarkers.map((data) => {
+            if (data.type === 'outbreak') {
+              return <CardMapInfo key={`${data._id}_sidebar_card`} {...data} />;
+            }
+          })}
       </Container>
     </>
   );
