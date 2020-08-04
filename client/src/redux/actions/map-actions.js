@@ -78,3 +78,7 @@ export const setVisibleMarkers = (markers) => ({
   type: actions.SET_VISIBLE_MARKERS,
   payload: markers,
 });
+
+export const setMapVisibleMobile = () => ({
+  type: actions.SET_MAP_VISIBLE_MOBILE,
+});

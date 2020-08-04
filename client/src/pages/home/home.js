@@ -66,12 +66,11 @@ const Home = () => {
             height: `${windowSize.height * 0.9}px`,
             '@media (maxWidth: 799px)': {
               width: `${windowSize.width}px`,
-              // visibility: mapVisible ? 'visible' : 'hidden',
             },
             '@media (minWidth: 800px)': {
               width: `${windowSize.width - windowSize.width * 0.3}px`,
             },
-            visibility: mapVisible ? 'visible' : 'hidden',
+            display: mapVisible ? 'block' : 'none',
           }}
           className='Home-main-body-map'
         >

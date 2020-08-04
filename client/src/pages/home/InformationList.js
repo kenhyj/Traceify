@@ -9,7 +9,7 @@ const InformationList = (props) => {
 
   return (
     <>
-      <Instruction text='Currently viewing on map:' width='auto' />
+      <Instruction text='Currently viewing:' width='auto' />
       <Container
         style={{
           height: '100%',

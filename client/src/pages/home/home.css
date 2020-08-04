@@ -17,9 +17,13 @@
   }
 
   .Home-mobile-toggle-view {
-    visibility: visible;
+    display: block;
     margin: auto;
     width: 100%;
+  }
+
+  .Home-sidebar-card-list {
+    display: none;
   }
 }
 
@@ -28,7 +32,6 @@
     display: flex;
   }
   .Home-main-body-map {
-    visibility: visible;
     display: inline-block;
     width: 70%;
   }
@@ -39,7 +42,11 @@
   }
 
   .Home-mobile-toggle-view {
-    visibility: hidden;
+    display: none;
+  }
+
+  .Home-sidebar-card-list {
+    display: inline-block;
   }
 }
 

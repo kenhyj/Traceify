@@ -1,9 +1,6 @@
 import * as actions from '../constants/action-types';
 
 const initialState = {
-  activeMarker: {},
-  selectedPlace: {},
-  infoWindowIsOpen: false,
   data: [],
   outbreaks: [],
   showHeatLayer: true,
@@ -13,6 +10,7 @@ const initialState = {
   globalMap: {},
   globalMarkers: [],
   visibleMarkers: [],
+  mapIsVisibleMobile: true,
 };
 
 const mapReducer = (state = initialState, action) => {
@@ -57,6 +55,11 @@ const mapReducer = (state = initialState, action) => {
       return {
         ...state,
         visibleMarkers: action.payload,
+      };
+    case actions.SET_MAP_VISIBLE_MOBILE:
+      return {
+        ...state,
+        mapIsVisibleMobile: !state.mapIsVisibleMobile,
       };
     default:
       return state;

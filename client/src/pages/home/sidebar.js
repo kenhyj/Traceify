@@ -33,6 +33,8 @@ const Sidebar = (props) => {
     props.dispatch(showOutbreakMarkers());
   };
 
+  const { mapVisible } = props;
+
   return (
     <div className='sidebar'>
       <Accordion>
@@ -91,7 +93,14 @@ const Sidebar = (props) => {
           </div>
         </AccordionDetails>
       </Accordion>
-      <InformationList windowSize={props.windowSize} />
+      <div
+        className='Home-sidebar-card-list'
+        style={{
+          display: mapVisible && props.windowSize.width < 800 ? 'none' : 'block',
+        }}
+      >
+        <InformationList windowSize={props.windowSize} />
+      </div>
     </div>
   );
 };
