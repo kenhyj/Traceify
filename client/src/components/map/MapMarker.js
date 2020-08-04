@@ -53,6 +53,8 @@ class MapMarker extends Component {
         id={_id}
         clusterer={clusterer}
         title={_id}
+        // eslint-disable-next-line no-undef
+        animation={google.maps.Animation.DROP}
       >
         {this.state.isOpen && (
           <InfoWindow

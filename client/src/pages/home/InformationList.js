@@ -6,7 +6,6 @@ import Instruction from '../../components/instruction/instruction';
 
 const InformationList = (props) => {
   const { visibleMarkers } = props.mapReducer;
-  console.log(visibleMarkers);
 
   return (
     <>
