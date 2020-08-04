@@ -16,6 +16,12 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import LocationAuto from './auto-complete';
 
+const getTime = (date)=>{
+  let tzoffset = date.getTimezoneOffset() * 60000; //offset in milliseconds
+  let localISOTime = (new Date(date - tzoffset));
+  return localISOTime;
+}
+
 const StyledTableRow = withStyles((theme) => ({
   root: {
     '&:nth-of-type(odd)': {
@@ -32,9 +38,8 @@ export default function RowComponent(props) {
 
   const selectedDate = fields[props.fieldKey].date;
   const [open, setOpen] = useState(false);
-
   const handleDateChange = (date) => {
-    dispatch({ type: 'EDIT_ROW_DATE', idx: props.fieldKey, newDate: date });
+    dispatch({ type: 'EDIT_ROW_DATE', idx: props.fieldKey, newDate: getTime(date) });
   };
 
   return (

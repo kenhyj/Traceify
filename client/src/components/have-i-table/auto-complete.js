@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
     textAlign: 'left',
     '&:hover': {
-      color: 'tomato',
+      color: '#2196F3',
     },
   },
 }));
