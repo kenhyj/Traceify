@@ -10,6 +10,7 @@ import {
   fetchLocations,
   setGlobalMap,
   setVisibleMarkers,
+  addMarker,
 } from '../../../redux/actions/map-actions';
 import '../home.css';
 
@@ -71,6 +72,11 @@ const MapContainer = (props) => {
     }
   };
 
+  const addToGlobalMarkersArray = (element) => {
+    // props.dispatch(addMarker());
+    console.log(element);
+  };
+
   const makeVisibleMarkersArray = () => {
     let visibleMarkers = [];
     const bounds = map.getBounds();
@@ -119,6 +125,7 @@ const MapContainer = (props) => {
               (marker) =>
                 showMarkers && (
                   <MapMarker
+                    ref={addToGlobalMarkersArray}
                     key={marker._id}
                     clusterer={clusterer}
                     isVisible={showMarkers}
@@ -180,6 +187,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchLocations: () => dispatch(fetchLocations()),
     setGlobalMap: (map) => dispatch(setGlobalMap(map)),
     setVisibleMarkers: (markers) => dispatch(setVisibleMarkers(markers)),
+    addMarker: (markerObject) => dispatch(addMarker(markerObject)),
     dispatch,
   };
 };

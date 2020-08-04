@@ -64,4 +64,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapDispatchToProps)(MapOutbreakMarker);
+export default connect(null, mapDispatchToProps)(MapOutbreakMarker);
