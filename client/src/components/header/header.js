@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Typography, IconButton, Hidden, Drawer } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 import logo from '../../assets/logoresized.svg';
-import DropdownMenu from './DropdownMenu';
+import DropdownMenu from './dropdown-mobile/DropdownMenu';
 import PagesBar from './PagesBar';
 import { useStyles } from './header.css';
 

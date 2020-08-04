@@ -90,7 +90,6 @@ const Sidebar = (props) => {
           </div>
         </AccordionDetails>
       </Accordion>
-      {/* {!props.mapVisible && <InformationList windowSize={props.windowSize} />} */}
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { GoogleMap, MarkerClusterer, InfoWindow } from '@react-google-maps/api';
 import { connect } from 'react-redux';
+import { Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import styles from './MapContainer.css';
 import MapMarker from '../../../components/map/MapMarker';
 import MapOutbreakMarker from '../../../components/map/MapOutbreakMarker';
@@ -9,9 +11,28 @@ import { withGoogleMaps } from './MapHOC';
 import {
   fetchLocations,
   setGlobalMap,
-  addVisibleMarker,
 } from '../../../redux/actions/map-actions';
 import '../home.css';
+
+const useStyles = makeStyles((theme) => ({
+  infoWindowTitle: {
+    textAlign: 'center',
+    color: '#2196F3',
+  },
+  infoWindowLabel: {
+    marginRight: '10px',
+  },
+  infoWindowType: {
+    fontSize: '12px',
+    textAlign: 'center',
+  },
+  infoWindowDataDiv: {
+    marginBottom: '5px',
+  },
+  infoWindowTotal: {
+    marginBottom: '10px',
+  },
+}));
 
 const MapContainer = (props) => {
   const [map, setMap] = useState(null);
@@ -19,9 +40,9 @@ const MapContainer = (props) => {
   const [clusterCenter, setClusterCenter] = useState(null);
   const [clusterInfoWindowIsOpen, setClusterInfoWindowOpen] = useState(false);
   const [clusterMarkerData, setClusterMarkerData] = useState([]);
-  const [visibleMarkers, setVisibleMarkers] = useState([]);
   const { data, outbreaks, dispatch } = props;
-  const { showMarkers, showOutbreakMarkers, globalMarkers } = props.mapReducer;
+  const { showMarkers, showOutbreakMarkers } = props.mapReducer;
+  const classes = useStyles();
   const clustererOptions = {
     imagePath:
       'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
@@ -57,68 +78,38 @@ const MapContainer = (props) => {
   const handleZoomChange = () => {
     if (map) {
       setZoom(map.getZoom());
-      // console.log(visibleMarkers);
     }
   };
-
-  const onMapIdle = () => {
-    if (map) {
-      const bounds = map.getBounds();
-      for (let i = 0; i < globalMarkers.length; i++) {
-        let { lat } = globalMarkers[i].props.location;
-        let { lng } = globalMarkers[i].props.location;
-        // eslint-disable-next-line no-undef
-        const pos = new google.maps.LatLng(lat, lng);
-        if (bounds.contains(pos) === true) {
-          // console.log('we can see this marker!', globalMarkers[i].props._id);
-          // const visibleMarker = data.find((element) => {
-          //   return globalMarkers[i].props._id === element._id;
-          // });
-          // handleAddVisibleMarker(visibleMarker);
-          // const newArray = [...visibleMarkers, globalMarkers[i].props._id];
-          // setVisibleMarkers(newArray);
-          // handleAddVisibleMarker(globalMarkers[i].props._id);
-        }
-      }
-    }
-  };
-
-  // const handleAddVisibleMarker = (element) => {
-  //   // if (visibleMarkers.length > 0) {
-  //     const newArray = [...visibleMarkers, element];
-  //     setVisibleMarkers(newArray);
-  //   // } else {
-  //   //   setVisibleMarkers([element]);
-  //   // }
-  //   console.log(visibleMarkers);
-  // };
 
   return (
     <>
       <GoogleMap
-        onLoad={(currentMap) => {
-          handleMapLoad(currentMap);
-        }}
+        onLoad={(currentMap) => handleMapLoad(currentMap)}
         mapContainerStyle={styles.mapContainerStyle}
         center={styles.center}
         zoom={zoom}
         options={{ styles: styles.mapStyle }}
         onZoomChanged={handleZoomChange}
-        onIdle={onMapIdle}
       >
-        {showMarkers && (
-          <MarkerClusterer
-            options={clustererOptions}
-            minimumClusterSize={2}
-            onClick={(cluster) => handleClusterClick(cluster)}
-          >
-            {(clusterer) =>
-              data.map((marker) => (
-                <MapMarker key={marker._id} clusterer={clusterer} {...marker} />
-              ))
-            }
-          </MarkerClusterer>
-        )}
+        <MarkerClusterer
+          options={clustererOptions}
+          minimumClusterSize={2}
+          onClick={(cluster) => handleClusterClick(cluster)}
+        >
+          {(clusterer) =>
+            data.map(
+              (marker) =>
+                showMarkers && (
+                  <MapMarker
+                    key={marker._id}
+                    clusterer={clusterer}
+                    isVisible={showMarkers}
+                    {...marker}
+                  />
+                )
+            )
+          }
+        </MarkerClusterer>
 
         {clusterInfoWindowIsOpen && (
           <InfoWindow
@@ -126,16 +117,59 @@ const MapContainer = (props) => {
             position={clusterCenter}
             onCloseClick={() => setClusterInfoWindowOpen(false)}
           >
-            <div style={{ whiteSpace: 'pre' }}>
-              <h1>{clusterMarkerData[0].title}</h1>
-              Total possible exposures: {clusterMarkerData.length}
-              {'\n'}
+            <div>
+              <Typography className={classes.infoWindowType}>
+                Possible Exposures
+              </Typography>
+              <Typography
+                variant='h6'
+                gutterBottom
+                className={classes.infoWindowTitle}
+              >
+                {clusterMarkerData[0].title}
+              </Typography>
+              <div
+                className={classes.infoWindowTotal}
+                style={{ display: 'flex' }}
+              >
+                <Typography
+                  color='textSecondary'
+                  className={classes.infoWindowLabel}
+                >
+                  Total possible exposures:
+                </Typography>
+                <Typography className={classes.infoWindowData}>
+                  {clusterMarkerData.length}
+                </Typography>
+              </div>
               {clusterMarkerData.map((markerData) => (
-                <p key={`${markerData._id}_infoWindow_p`}>
-                  Date visited (Y/M/D): {markerData.date.substring(0, 10)}
-                  {'\n'}
-                  Time visited: {markerData.time}
-                </p>
+                <div
+                  className={classes.infoWindowDataDiv}
+                  key={`${markerData._id}_infoWindow_data_div`}
+                >
+                  <div style={{ display: 'flex' }}>
+                    <Typography
+                      color='textSecondary'
+                      className={classes.infoWindowLabel}
+                    >
+                      Date visited (Y/M/D):
+                    </Typography>
+                    <Typography className={classes.infoWindowData}>
+                      {markerData.date.substring(0, 10)}
+                    </Typography>
+                  </div>
+                  <div style={{ display: 'flex' }}>
+                    <Typography
+                      color='textSecondary'
+                      className={classes.infoWindowLabel}
+                    >
+                      Time visited:
+                    </Typography>
+                    <Typography className={classes.infoWindowData}>
+                      {markerData.time}
+                    </Typography>
+                  </div>
+                </div>
               ))}
             </div>
           </InfoWindow>
@@ -144,7 +178,11 @@ const MapContainer = (props) => {
         {outbreaks.map(
           (marker) =>
             showOutbreakMarkers && (
-              <MapOutbreakMarker key={marker._id} {...marker} />
+              <MapOutbreakMarker
+                key={marker._id}
+                visible={showOutbreakMarkers}
+                {...marker}
+              />
             )
         )}
 
@@ -166,7 +204,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchLocations: () => dispatch(fetchLocations()),
     setGlobalMap: (map) => dispatch(setGlobalMap(map)),
-    addVisibleMarker: (marker) => dispatch(addVisibleMarker(marker)),
     dispatch,
   };
 };

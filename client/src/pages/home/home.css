@@ -1,17 +1,54 @@
 .Home-main-body {
+  justify-content: center;
+  padding: 0 0 1% 0;
+}
+
+@media only screen and (max-width: 799px) {
+  .Home-main-body {
+    display: flexbox;
+  }
+  
+  .Home-main-body-map {
+    display: block;
+  }
+
+  .Home-main-body-sidebar {
+    display: block;
+  }
+
+  .Home-mobile-toggle-view {
     display: flex;
+    margin: auto;
+    width: 100%;
     justify-content: center;
-    padding: 0 0 1% 0;
+  }
+
+  .Home-sidebar-card-list {
+    display: none;
+  }
 }
 
-.Home-main-body-sidebar {
-  display: inline-block;
-  width: 30%;
-}
+@media only screen and (min-width: 800px) {
+  .Home-main-body {
+    display: flex;
+  }
+  .Home-main-body-map {
+    display: inline-block;
+    width: 70%;
+  }
 
-.Home-main-body-map {
-  display: inline-block;
-  width: 70%;
+  .Home-main-body-sidebar {
+    display: inline-block;
+    width: 30%;
+  }
+
+  .Home-mobile-toggle-view {
+    display: none;
+  }
+
+  .Home-sidebar-card-list {
+    display: inline-block;
+  }
 }
 
 .sidebar {
