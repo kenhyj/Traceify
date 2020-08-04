@@ -14,7 +14,7 @@ const Home = () => {
   const body =
     'See where individuals who have tested positive for COVID-19 have been recently by interacting with the map below.';
   const pageHeadingData = { heading, subheading, body };
-  const [mapVisible, setMapVisible] = useState(false);
+  const [mapVisible, setMapVisible] = useState(true);
 
   const [windowSize, setWindowSize] = useState({
     width: undefined,
@@ -48,18 +48,12 @@ const Home = () => {
         <PageHeading data={pageHeadingData} />
       </div>
       <div className='Home-main-body'>
-        <Hidden mdUp>
-          <div className='Home-mobile-toggle-view'>
-            {/* <Chip
-              label={mapVisible ? 'Switch to List View' : 'Switch to Map View'}
-              onClick={() => setMapVisible(!mapVisible)}
-            /> */}
-            <Chip
-              label={mapVisible ? 'Hide Maps' : 'Show Maps'}
-              onClick={() => setMapVisible(!mapVisible)}
-            />
-          </div>
-        </Hidden>
+        <div className='Home-mobile-toggle-view'>
+          <Chip
+            label={mapVisible ? 'Switch to List View' : 'Switch to Map View'}
+            onClick={() => setMapVisible(!mapVisible)}
+          />
+        </div>
       </div>
       <div className='Home-main-body'>
         <Sidebar
@@ -67,28 +61,23 @@ const Home = () => {
           windowSize={windowSize}
           mapVisible={mapVisible}
         />
-        <Hidden smDown>
-          <div
-            style={{
-              width: `${windowSize.width - windowSize.width * 0.3}px`,
-              height: `${windowSize.height * 0.9}px`,
-            }}
-          >
-            <MapContainer className='Home-main-body-map' />
-          </div>
-        </Hidden>
-      </div>
-      <Hidden mdUp>
         <div
           style={{
-            width: `${windowSize.width}px`,
             height: `${windowSize.height * 0.9}px`,
-            display: mapVisible ? 'block' : 'none',
+            '@media (maxWidth: 799px)': {
+              width: `${windowSize.width}px`,
+              // visibility: mapVisible ? 'visible' : 'hidden',
+            },
+            '@media (minWidth: 800px)': {
+              width: `${windowSize.width - windowSize.width * 0.3}px`,
+            },
+            visibility: mapVisible ? 'visible' : 'hidden',
           }}
+          className='Home-main-body-map'
         >
-          <MapContainer className='Home-main-body-map' />
+          <MapContainer />
         </div>
-      </Hidden>
+      </div>
     </motion.div>
   );
 };

@@ -9,7 +9,7 @@ import { withGoogleMaps } from './MapHOC';
 import {
   fetchLocations,
   setGlobalMap,
-  addVisibleMarker,
+  setVisibleMarkers,
 } from '../../../redux/actions/map-actions';
 import '../home.css';
 
@@ -19,7 +19,6 @@ const MapContainer = (props) => {
   const [clusterCenter, setClusterCenter] = useState(null);
   const [clusterInfoWindowIsOpen, setClusterInfoWindowOpen] = useState(false);
   const [clusterMarkerData, setClusterMarkerData] = useState([]);
-  const [visibleMarkers, setVisibleMarkers] = useState([]);
   const { data, outbreaks, dispatch } = props;
   const { showMarkers, showOutbreakMarkers, globalMarkers } = props.mapReducer;
   const clustererOptions = {
@@ -49,56 +48,60 @@ const MapContainer = (props) => {
     }
   };
 
-  const handleMapLoad = (currentMap) => {
-    setMap(currentMap);
-    dispatch(setGlobalMap(currentMap));
+  const handleMapLoad = async (currentMap) => {
+    const mapIsInitialized = await dispatchMapInit(currentMap);
+    mapIsInitialized && makeVisibleMarkersArray();
+  };
+
+  const dispatchMapInit = (currMap) => {
+    setMap(currMap);
+    dispatch(setGlobalMap(currMap));
+    return map ? true : false;
   };
 
   const handleZoomChange = () => {
     if (map) {
       setZoom(map.getZoom());
-      // console.log(visibleMarkers);
     }
   };
 
   const onMapIdle = () => {
     if (map) {
-      const bounds = map.getBounds();
-      for (let i = 0; i < globalMarkers.length; i++) {
-        let { lat } = globalMarkers[i].props.location;
-        let { lng } = globalMarkers[i].props.location;
-        // eslint-disable-next-line no-undef
-        const pos = new google.maps.LatLng(lat, lng);
-        if (bounds.contains(pos) === true) {
-          // console.log('we can see this marker!', globalMarkers[i].props._id);
-          // const visibleMarker = data.find((element) => {
-          //   return globalMarkers[i].props._id === element._id;
-          // });
-          // handleAddVisibleMarker(visibleMarker);
-          // const newArray = [...visibleMarkers, globalMarkers[i].props._id];
-          // setVisibleMarkers(newArray);
-          // handleAddVisibleMarker(globalMarkers[i].props._id);
-        }
-      }
+      makeVisibleMarkersArray();
     }
   };
 
-  // const handleAddVisibleMarker = (element) => {
-  //   // if (visibleMarkers.length > 0) {
-  //     const newArray = [...visibleMarkers, element];
-  //     setVisibleMarkers(newArray);
-  //   // } else {
-  //   //   setVisibleMarkers([element]);
-  //   // }
-  //   console.log(visibleMarkers);
-  // };
+  const makeVisibleMarkersArray = () => {
+    let visibleMarkers = [];
+    const bounds = map.getBounds();
+    for (let i = 0; i < globalMarkers.length; i++) {
+      const { lat } = globalMarkers[i].props.location;
+      const { lng } = globalMarkers[i].props.location;
+      // eslint-disable-next-line no-undef
+      const pos = new google.maps.LatLng(lat, lng);
+      if (bounds.contains(pos) === true) {
+        let visibleMarker;
+        if (globalMarkers[i].props.type === 'location') {
+          visibleMarker = data.find((element) => {
+            return globalMarkers[i].props._id === element._id;
+          });
+        } else if (globalMarkers[i].props.type === 'outbreak') {
+          visibleMarker = outbreaks.find((element) => {
+            return globalMarkers[i].props._id === element._id;
+          });
+        }
+        if (visibleMarker !== undefined) {
+          visibleMarkers.push(visibleMarker);
+        }
+      }
+    }
+    dispatch(setVisibleMarkers(visibleMarkers));
+  };
 
   return (
     <>
       <GoogleMap
-        onLoad={(currentMap) => {
-          handleMapLoad(currentMap);
-        }}
+        onLoad={(currentMap) => handleMapLoad(currentMap)}
         mapContainerStyle={styles.mapContainerStyle}
         center={styles.center}
         zoom={zoom}
@@ -106,19 +109,25 @@ const MapContainer = (props) => {
         onZoomChanged={handleZoomChange}
         onIdle={onMapIdle}
       >
-        {showMarkers && (
-          <MarkerClusterer
-            options={clustererOptions}
-            minimumClusterSize={2}
-            onClick={(cluster) => handleClusterClick(cluster)}
-          >
-            {(clusterer) =>
-              data.map((marker) => (
-                <MapMarker key={marker._id} clusterer={clusterer} {...marker} />
-              ))
-            }
-          </MarkerClusterer>
-        )}
+        <MarkerClusterer
+          options={clustererOptions}
+          minimumClusterSize={2}
+          onClick={(cluster) => handleClusterClick(cluster)}
+        >
+          {(clusterer) =>
+            data.map(
+              (marker) =>
+                showMarkers && (
+                  <MapMarker
+                    key={marker._id}
+                    clusterer={clusterer}
+                    isVisible={showMarkers}
+                    {...marker}
+                  />
+                )
+            )
+          }
+        </MarkerClusterer>
 
         {clusterInfoWindowIsOpen && (
           <InfoWindow
@@ -144,7 +153,11 @@ const MapContainer = (props) => {
         {outbreaks.map(
           (marker) =>
             showOutbreakMarkers && (
-              <MapOutbreakMarker key={marker._id} {...marker} />
+              <MapOutbreakMarker
+                key={marker._id}
+                visible={showOutbreakMarkers}
+                {...marker}
+              />
             )
         )}
 
@@ -166,7 +179,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchLocations: () => dispatch(fetchLocations()),
     setGlobalMap: (map) => dispatch(setGlobalMap(map)),
-    addVisibleMarker: (marker) => dispatch(addVisibleMarker(marker)),
+    setVisibleMarkers: (markers) => dispatch(setVisibleMarkers(markers)),
     dispatch,
   };
 };

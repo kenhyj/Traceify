@@ -24,8 +24,8 @@ class MapOutbreakMarker extends Component {
     });
   };
 
-  addToGlobalMarkersArray = (markerObject) => {
-    this.props.dispatch(addMarker(markerObject));
+  addToGlobalMarkersArray = () => {
+    this.props.dispatch(addMarker(this));
   };
 
   render() {
@@ -34,7 +34,7 @@ class MapOutbreakMarker extends Component {
 
     return (
       <Marker
-        ref={this.addToGlobalMarkersArray(this)}
+        ref={this.addToGlobalMarkersArray}
         position={location}
         onClick={() => this.handleToggleOpen()}
         icon={virusImg}

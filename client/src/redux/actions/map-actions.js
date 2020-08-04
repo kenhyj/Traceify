@@ -41,7 +41,22 @@ export const fetchLocations = () => (dispatch) => {
       })
     )
     .then((res) => {
-      dispatch(fetchLocationsSuccess(res.locations, res.outbreaks));
+      let locationsWithType = [];
+      let outbreaksWithType = [];
+      for (let i = 0; i < res.locations.length; i++) {
+        const newObj = { ...res.locations[i], type: 'location' };
+        locationsWithType.push(newObj);
+      }
+      for (let i = 0; i < res.outbreaks.length; i++) {
+        const newObj = { ...res.outbreaks[i], type: 'outbreak' };
+        outbreaksWithType.push(newObj);
+      }
+      return { locationsWithType, outbreaksWithType };
+    })
+    .then((res) => {
+      dispatch(
+        fetchLocationsSuccess(res.locationsWithType, res.outbreaksWithType)
+      );
     })
     .catch((err) => {
       dispatch(fetchLocationsFailure(err));
@@ -59,9 +74,7 @@ export const addMarker = (marker) => ({
   payload: marker,
 });
 
-export const addVisibleMarker = (marker) => ({
-  type: actions.ADD_VISIBLE_MARKER,
-  payload: {
-    marker: marker,
-  },
+export const setVisibleMarkers = (markers) => ({
+  type: actions.SET_VISIBLE_MARKERS,
+  payload: markers,
 });

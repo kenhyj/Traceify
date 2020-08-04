@@ -14,6 +14,7 @@ import {
   showMarkers,
   showOutbreakMarkers,
 } from '../../redux/actions/map-actions';
+import InformationList from './InformationList';
 import './home.css';
 import { ReactComponent as HeatmapGradient } from '../../assets/heatmap-gradient.svg';
 import { ReactComponent as HeatmapGradientSmall } from '../../assets/heatmap-gradient-small.svg';
@@ -80,7 +81,7 @@ const Sidebar = (props) => {
       </Accordion>
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMore />} id='accordion-2'>
-          <Typography>Filters</Typography>
+          <Typography>Map Filters</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <div className='sidebar-chips'>
@@ -90,7 +91,7 @@ const Sidebar = (props) => {
           </div>
         </AccordionDetails>
       </Accordion>
-      {/* {!props.mapVisible && <InformationList windowSize={props.windowSize} />} */}
+      <InformationList windowSize={props.windowSize} />
     </div>
   );
 };

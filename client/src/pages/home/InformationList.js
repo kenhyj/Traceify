@@ -1,35 +1,40 @@
 import React from 'react';
 import { Container } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { fetchLocations } from '../../redux/actions/map-actions';
 import CardMapInfo from './Card-MapInfo';
+import Instruction from '../../components/instruction/instruction';
 
 const InformationList = (props) => {
+  const { visibleMarkers } = props.mapReducer;
+  console.log(visibleMarkers);
+
   return (
-    <Container
-      style={{
-        height: '100%',
-        maxHeight: `${props.windowSize.height * 0.5}px`,
-        overflow: 'auto',
-      }}
-    >
-      <CardMapInfo />
-      <CardMapInfo />
-      <CardMapInfo />
-      <CardMapInfo />
-      <CardMapInfo />
-      <CardMapInfo />
-      <CardMapInfo />
-      <CardMapInfo />
-    </Container>
+    <>
+      <Instruction text='Currently viewing on map:' width='auto' />
+      <Container
+        style={{
+          height: '100%',
+          maxHeight: `${props.windowSize.height * 0.75}px`,
+          overflow: 'auto',
+          paddingLeft: '0px',
+          paddingRight: '0px',
+          margin: 'auto',
+          display: 'inline-block',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        {visibleMarkers.map((data) => (
+          <CardMapInfo key={`${data._id}_sidebar_card`} {...data} />
+        ))}
+      </Container>
+    </>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
     mapReducer: state.map,
-    data: state.map.data,
-    outbreaks: state.map.outbreaks,
   };
 };
 

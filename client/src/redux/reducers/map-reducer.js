@@ -49,12 +49,14 @@ const mapReducer = (state = initialState, action) => {
         globalMap: action.payload,
       };
     case actions.ADD_MARKER:
-      state.globalMarkers.push(action.payload);
-      return state;
-    case actions.ADD_VISIBLE_MARKER:
       return {
         ...state,
-        visibleMarkers: state.visibleMarkers.concat(action.payload.marker),
+        globalMarkers: [...state.globalMarkers, action.payload],
+      };
+    case actions.SET_VISIBLE_MARKERS:
+      return {
+        ...state,
+        visibleMarkers: action.payload,
       };
     default:
       return state;
