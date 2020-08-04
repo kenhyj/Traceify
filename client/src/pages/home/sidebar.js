@@ -81,7 +81,7 @@ const Sidebar = (props) => {
       </Accordion>
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMore />} id='accordion-2'>
-          <Typography>Map Filters</Typography>
+          <Typography>Filters</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <div className='sidebar-chips'>
