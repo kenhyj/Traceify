@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Hidden, Chip } from '@material-ui/core';
+import { Chip } from '@material-ui/core';
 import MapContainer from './map/MapContainer';
 import Sidebar from './sidebar';
 import PageHeading from '../../components/page-heading/PageHeading';
@@ -50,7 +50,7 @@ const Home = () => {
       <div className='Home-main-body'>
         <div className='Home-mobile-toggle-view'>
           <Chip
-            label={mapVisible ? 'Switch to List View' : 'Switch to Map View'}
+            label={mapVisible ? 'Hide Map' : 'Show Map'}
             onClick={() => setMapVisible(!mapVisible)}
           />
         </div>

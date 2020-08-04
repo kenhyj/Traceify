@@ -14,7 +14,6 @@ import {
   showMarkers,
   showOutbreakMarkers,
 } from '../../redux/actions/map-actions';
-import InformationList from './InformationList';
 import './home.css';
 import { ReactComponent as HeatmapGradient } from '../../assets/heatmap-gradient.svg';
 import { ReactComponent as HeatmapGradientSmall } from '../../assets/heatmap-gradient-small.svg';
@@ -32,8 +31,6 @@ const Sidebar = (props) => {
   const toggleOutbreakMarkers = () => {
     props.dispatch(showOutbreakMarkers());
   };
-
-  const { mapVisible } = props;
 
   return (
     <div className='sidebar'>
@@ -93,14 +90,6 @@ const Sidebar = (props) => {
           </div>
         </AccordionDetails>
       </Accordion>
-      <div
-        className='Home-sidebar-card-list'
-        style={{
-          display: mapVisible && props.windowSize.width < 800 ? 'none' : 'block',
-        }}
-      >
-        <InformationList windowSize={props.windowSize} />
-      </div>
     </div>
   );
 };

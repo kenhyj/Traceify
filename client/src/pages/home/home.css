@@ -17,9 +17,10 @@
   }
 
   .Home-mobile-toggle-view {
-    display: block;
+    display: flex;
     margin: auto;
     width: 100%;
+    justify-content: center;
   }
 
   .Home-sidebar-card-list {

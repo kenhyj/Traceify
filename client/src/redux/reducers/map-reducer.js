@@ -8,9 +8,6 @@ const initialState = {
   showOutbreakMarkers: true,
   error: null,
   globalMap: {},
-  globalMarkers: [],
-  visibleMarkers: [],
-  mapIsVisibleMobile: true,
 };
 
 const mapReducer = (state = initialState, action) => {
@@ -45,21 +42,6 @@ const mapReducer = (state = initialState, action) => {
       return {
         ...state,
         globalMap: action.payload,
-      };
-    case actions.ADD_MARKER:
-      return {
-        ...state,
-        globalMarkers: [...state.globalMarkers, action.payload],
-      };
-    case actions.SET_VISIBLE_MARKERS:
-      return {
-        ...state,
-        visibleMarkers: action.payload,
-      };
-    case actions.SET_MAP_VISIBLE_MOBILE:
-      return {
-        ...state,
-        mapIsVisibleMobile: !state.mapIsVisibleMobile,
       };
     default:
       return state;
