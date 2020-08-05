@@ -22,10 +22,6 @@
     width: 100%;
     justify-content: center;
   }
-
-  .Home-sidebar-card-list {
-    display: none;
-  }
 }
 
 @media only screen and (min-width: 800px) {
@@ -45,24 +41,30 @@
   .Home-mobile-toggle-view {
     display: none;
   }
-
-  .Home-sidebar-card-list {
-    display: inline-block;
-  }
 }
 
 .sidebar {
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
+.sidebar-accordion {
+  margin-bottom: 16px;
+}
+
+.sidebar-card-list-cards {
+  height: 500px;
+  overflow: auto;
+  margin-top: 8px;
 }
 
 .sidebar-legend {
   background-color: #f2f4f7;
-  padding: 1rem;
+  padding: 16px;
   border-radius: 3px;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .sidebar-legend-heatmap {

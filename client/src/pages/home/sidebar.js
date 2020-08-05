@@ -18,6 +18,7 @@ import './home.css';
 import { ReactComponent as HeatmapGradient } from '../../assets/heatmap-gradient.svg';
 import { ReactComponent as HeatmapGradientSmall } from '../../assets/heatmap-gradient-small.svg';
 import { ReactComponent as OutbreakIcon } from '../../assets/virus.svg';
+import MapCardList from './MapCardList';
 
 const Sidebar = (props) => {
   const toggleHeat = () => {
@@ -32,8 +33,8 @@ const Sidebar = (props) => {
     props.dispatch(showOutbreakMarkers());
   };
 
-  return (
-    <div className='sidebar'>
+  const makeAccordion1 = () => {
+    return (
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMore />} id='accordion-1'>
           <Typography>Legend</Typography>
@@ -78,6 +79,11 @@ const Sidebar = (props) => {
           </div>
         </AccordionDetails>
       </Accordion>
+    );
+  };
+
+  const makeAccordion2 = () => {
+    return (
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMore />} id='accordion-2'>
           <Typography>Filters</Typography>
@@ -90,6 +96,18 @@ const Sidebar = (props) => {
           </div>
         </AccordionDetails>
       </Accordion>
+    );
+  };
+
+  return (
+    <div className='sidebar'>
+      <div className='sidebar-accordion'>
+        {makeAccordion1()}
+        {makeAccordion2()}
+      </div>
+      <div className='sidebar-card-list'>
+        <MapCardList />
+      </div>
     </div>
   );
 };
