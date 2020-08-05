@@ -1,15 +1,15 @@
 import axios from 'axios/index';
 import * as actions from '../constants/action-types';
 
-export const showHeatLayer = () => ({
+export const toggleHeatLayer = () => ({
   type: actions.SHOW_HEAT_LAYER,
 });
 
-export const showMarkers = () => ({
+export const toggleMarkers = () => ({
   type: actions.SHOW_MARKERS,
 });
 
-export const showOutbreakMarkers = () => ({
+export const toggleOutbreakMarkers = () => ({
   type: actions.SHOW_OUTBREAK_MARKERS,
 });
 

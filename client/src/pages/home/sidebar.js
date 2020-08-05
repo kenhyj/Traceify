@@ -7,30 +7,33 @@ import {
   AccordionDetails,
   Typography,
 } from '@material-ui/core';
-import { ExpandMore, Room } from '@material-ui/icons';
+import { ExpandMore, Room, Done } from '@material-ui/icons';
 import { connect } from 'react-redux';
 import {
-  showHeatLayer,
-  showMarkers,
-  showOutbreakMarkers,
+  toggleHeatLayer,
+  toggleMarkers,
+  toggleOutbreakMarkers,
 } from '../../redux/actions/map-actions';
 import './home.css';
 import { ReactComponent as HeatmapGradient } from '../../assets/heatmap-gradient.svg';
 import { ReactComponent as HeatmapGradientSmall } from '../../assets/heatmap-gradient-small.svg';
 import { ReactComponent as OutbreakIcon } from '../../assets/virus.svg';
 import MapCardList from './MapCardList';
+import useStyles from './Sidebar.css';
 
 const Sidebar = (props) => {
-  const toggleHeat = () => {
-    props.dispatch(showHeatLayer());
+  const { showHeatLayer, showMarkers, showOutbreakMarkers } = props.mapReducer;
+  const classes = useStyles();
+  const toggleHeatView = () => {
+    props.dispatch(toggleHeatLayer());
   };
 
-  const toggleMarkers = () => {
-    props.dispatch(showMarkers());
+  const toggleMarkersView = () => {
+    props.dispatch(toggleMarkers());
   };
 
-  const toggleOutbreakMarkers = () => {
-    props.dispatch(showOutbreakMarkers());
+  const toggleOutbreakMarkersView = () => {
+    props.dispatch(toggleOutbreakMarkers());
   };
 
   const makeAccordion1 = () => {
@@ -90,9 +93,31 @@ const Sidebar = (props) => {
         </AccordionSummary>
         <AccordionDetails>
           <div className='sidebar-chips'>
-            <Chip label='All Possible Exposures' onClick={toggleMarkers} />
-            <Chip label='Heat Map' onClick={toggleHeat} />
-            <Chip label='Outbreaks' onClick={toggleOutbreakMarkers} />
+            <Chip
+              icon={showMarkers ? <Done style={{ fill: '#2196F3' }} /> : null}
+              variant='outlined'
+              className={classes.chip}
+              label='Possible Exposures'
+              onClick={toggleMarkersView}
+            />
+            <Chip
+              icon={showHeatLayer ? <Done style={{ fill: '#2196F3' }} /> : null}
+              variant='outlined'
+              className={classes.chip}
+              label='Heat Map'
+              onClick={toggleHeatView}
+            />
+            <Chip
+              icon={
+                showOutbreakMarkers ? (
+                  <Done style={{ fill: '#2196F3' }} />
+                ) : null
+              }
+              variant='outlined'
+              className={classes.chip}
+              label='Outbreaks'
+              onClick={toggleOutbreakMarkersView}
+            />
           </div>
         </AccordionDetails>
       </Accordion>
@@ -114,15 +139,15 @@ const Sidebar = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    map: state.map,
+    mapReducer: state.map,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showHeatLayer: () => dispatch(showHeatLayer()),
-    showMarkers: () => dispatch(showMarkers()),
-    showOutbreakMarkers: () => dispatch(showOutbreakMarkers()),
+    showHeatLayer: () => dispatch(toggleHeatLayer()),
+    showMarkers: () => dispatch(toggleMarkers()),
+    showOutbreakMarkers: () => dispatch(toggleOutbreakMarkers()),
     dispatch,
   };
 };

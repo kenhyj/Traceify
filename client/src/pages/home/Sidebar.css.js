@@ -1,10 +1,11 @@
 import { makeStyles } from '@material-ui/core';
 
-export const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   chip: {
-    color: 'primary',
-  },
-  chipSelected: {
-    color: 'secondary',
+    margin: '5px',
+    border: '1px solid #2196F3',
+    color: '#2196F3',
   },
 }));
+
+export default useStyles;
