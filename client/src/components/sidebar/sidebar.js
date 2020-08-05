@@ -14,7 +14,7 @@ import {
   toggleMarkers,
   toggleOutbreakMarkers,
 } from '../../redux/actions/map-actions';
-import './home.css';
+import '../../pages/home/home.css';
 import { ReactComponent as HeatmapGradient } from '../../assets/heatmap-gradient.svg';
 import { ReactComponent as HeatmapGradientSmall } from '../../assets/heatmap-gradient-small.svg';
 import { ReactComponent as OutbreakIcon } from '../../assets/virus.svg';

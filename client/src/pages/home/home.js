@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Chip } from '@material-ui/core';
 import MapContainer from './map/MapContainer';
-import Sidebar from './sidebar';
+import Sidebar from '../../components/sidebar/sidebar';
 import PageHeading from '../../components/page-heading/PageHeading';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import './home.css';

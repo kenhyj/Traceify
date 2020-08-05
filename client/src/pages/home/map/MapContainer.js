@@ -12,9 +12,10 @@ import {
   setGlobalMap,
   setVisibleMarkers,
   setActiveMarker,
+  setPanToLocation,
 } from '../../../redux/actions/map-actions';
 import '../home.css';
-import useStyles from './ClusterInfoWindowStyles';
+import useStyles from '../../../components/map/ClusterInfoWindowStyles';
 
 const MapContainer = (props) => {
   const [map, setMap] = useState(null);
@@ -24,7 +25,11 @@ const MapContainer = (props) => {
   const [clusterMarkerData, setClusterMarkerData] = useState([]);
   const [globalMarkers, setGlobalMarkers] = useState([]);
   const { data, outbreaks, dispatch } = props;
-  const { showMarkers, showOutbreakMarkers } = props.mapReducer;
+  const {
+    showMarkers,
+    showOutbreakMarkers,
+    panToLocationLatLng,
+  } = props.mapReducer;
   const classes = useStyles();
   const clustererOptions = {
     imagePath:
@@ -66,6 +71,7 @@ const MapContainer = (props) => {
   const handleZoomChange = () => {
     if (map) {
       setZoom(map.getZoom());
+      dispatch(setPanToLocation(null));
     }
   };
 
@@ -77,7 +83,28 @@ const MapContainer = (props) => {
   const handleMapClick = () => {
     setClusterInfoWindowOpen(false);
     dispatch(setActiveMarker(''));
+    dispatch(setPanToLocation(null));
   };
+
+  const handlePanToLocation = () => {
+    // eslint-disable-next-line no-undef
+    const pos = new google.maps.LatLng(
+      panToLocationLatLng.lat,
+      panToLocationLatLng.lng
+    );
+    map.panTo(pos);
+    setZoom(22);
+  };
+
+  useEffect(() => {
+    if (
+      map &&
+      panToLocationLatLng !== null &&
+      panToLocationLatLng !== undefined
+    ) {
+      handlePanToLocation();
+    }
+  }, [panToLocationLatLng]);
 
   const getVisibleMarkers = () => {
     const currVisibleMarkers = [];
@@ -229,6 +256,7 @@ const mapDispatchToProps = (dispatch) => {
     setGlobalMap: (map) => dispatch(setGlobalMap(map)),
     setVisibleMarkers: (markers) => dispatch(setVisibleMarkers(markers)),
     setActiveMarker: (id) => dispatch(setActiveMarker(id)),
+    setPanToLocationId: (obj) => dispatch(setPanToLocation(obj)),
     dispatch,
   };
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Marker, InfoWindow } from '@react-google-maps/api';
 import virusImg from '../../assets/virus.svg';

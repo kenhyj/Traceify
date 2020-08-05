@@ -79,11 +79,12 @@ export const setVisibleMarkers = (markers) => ({
   payload: markers,
 });
 
-export const setMapVisibleMobile = () => ({
-  type: actions.SET_MAP_VISIBLE_MOBILE,
-});
-
 export const setActiveMarker = (markerId) => ({
   type: actions.SET_ACTIVE_MARKER,
   payload: markerId,
+});
+
+export const setPanToLocation = (latLng) => ({
+  type: actions.SET_PAN_TO_LOCATION,
+  payload: latLng,
 });

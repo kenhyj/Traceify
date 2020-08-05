@@ -10,8 +10,8 @@ const initialState = {
   globalMap: {},
   globalMarkers: [],
   visibleMarkers: [],
-  mapIsVisibleMobile: true,
-  activeMarkerId: null,
+  activeMarkerId: '',
+  panToLocationLatLng: null,
 };
 
 const mapReducer = (state = initialState, action) => {
@@ -57,16 +57,16 @@ const mapReducer = (state = initialState, action) => {
         ...state,
         visibleMarkers: action.payload,
       };
-    case actions.SET_MAP_VISIBLE_MOBILE:
-      return {
-        ...state,
-        mapIsVisibleMobile: !state.mapIsVisibleMobile,
-      };
     case actions.SET_ACTIVE_MARKER:
       return {
         ...state,
         activeMarkerId: action.payload,
       };
+    case actions.SET_PAN_TO_LOCATION:
+      return {
+        ...state,
+        panToLocationLatLng: action.payload,
+      }
     default:
       return state;
   }
