@@ -27,6 +27,7 @@ class AdminAdd extends React.Component {
         city: 'Vancouver',
         time: '12 AM ~ 3 AM',
         date: new Date(),
+        formattedAddress: '',
       },
     };
   }
@@ -63,7 +64,20 @@ class AdminAdd extends React.Component {
   handleSelect = (address) => {
     console.log('ADDRESS: ', address);
     geocodeByAddress(address)
-      .then((results) => getLatLng(results[0]))
+      .then((results) => {
+        const addrData = results[0];
+        const formattedAddr = addrData.formatted_address;
+        let temp = this.state.submissionObj;
+        temp = {
+          ...temp,
+          formattedAddress: formattedAddr,
+        };
+        this.setState({
+          submissionObj: temp,
+        });
+        return addrData;
+      })
+      .then((addr) => getLatLng(addr))
       .then((latLng) => {
         console.log('Success', latLng);
         let temp = this.state.submissionObj;
@@ -214,8 +228,12 @@ class AdminAdd extends React.Component {
               <option value='6 PM ~ 9 PM'>6 PM ~ 9 PM</option>
               <option value='9 PM ~ 12 AM'>9 PM ~ 12 AM</option>
               <option value='9 PM ~ 3 AM'>9 PM ~ 3 AM</option>
-              <option value='All times inclusive of exposure dates'>All times inclusive of exposure dates</option>
-              <option value='During operating hours'>During operating hours</option>
+              <option value='All times inclusive of exposure dates'>
+                All times inclusive of exposure dates
+              </option>
+              <option value='During operating hours'>
+                During operating hours
+              </option>
             </select>
           </label>
           <br />
