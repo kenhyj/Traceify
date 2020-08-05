@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
   infoWindowTotal: {
     marginBottom: '10px',
   },
+  address: {
+    marginBottom: '10px',
+  },
 }));
 
 export default useStyles;

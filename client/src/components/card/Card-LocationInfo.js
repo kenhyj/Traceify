@@ -5,6 +5,7 @@ import {
   CardContent,
   CardActionArea,
   Typography,
+  Divider,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { setPanToLocation } from '../../redux/actions/map-actions';
@@ -28,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
   dataLabel: {
     marginRight: '10px',
   },
+  divider: {
+    marginTop: '5px',
+    marginBottom: '5px',
+  },
 }));
 
 const CardLocationInfo = (props) => {
@@ -45,12 +50,16 @@ const CardLocationInfo = (props) => {
           <Typography variant='caption'>
             {props.type === 'location' ? 'Possible Exposure' : 'Outbreak'}
           </Typography>
-          <Typography variant='h6' gutterBottom className={classes.title}>
+          <Typography variant='h6' className={classes.title}>
             {props.title}
           </Typography>
+          <Typography color='textSecondary' variant='caption'>
+            {props.formattedAddress}
+          </Typography>
+          <Divider variant='middle' className={classes.divider} />
           <div style={{ display: 'flex' }}>
             <Typography color='textSecondary' className={classes.dataLabel}>
-              Date visited (Y/M/D):
+              Date {props.type === 'location' ? 'visited' : 'declared'} (Y/M/D):
             </Typography>
             <Typography className={classes.dataContent}>
               {formattedDate}

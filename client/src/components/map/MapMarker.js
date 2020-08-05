@@ -6,7 +6,16 @@ import useStyles from './InfoWindowStyles';
 import { setActiveMarker } from '../../redux/actions/map-actions';
 
 const MapMarker = (props) => {
-  const { location, _id, title, time, date, clusterer, type } = props;
+  const {
+    location,
+    _id,
+    title,
+    time,
+    date,
+    clusterer,
+    type,
+    formattedAddress,
+  } = props;
   const classes = useStyles();
   const formattedDate = date.substring(0, 10);
   const customIcon = {
@@ -51,12 +60,15 @@ const MapMarker = (props) => {
             <Typography className={classes.infoWindowType}>
               {type === 'location' ? 'Possible Exposure' : ''}
             </Typography>
-            <Typography
-              variant='h6'
-              gutterBottom
-              className={classes.infoWindowTitle}
-            >
+            <Typography variant='h6' className={classes.infoWindowTitle}>
               {title}
+            </Typography>
+            <Typography
+              color='textSecondary'
+              variant='caption'
+              className={classes.address}
+            >
+              {formattedAddress}
             </Typography>
             <div style={{ display: 'flex' }}>
               <Typography

@@ -7,7 +7,7 @@ import useStyles from './InfoWindowStyles';
 import { setActiveMarker } from '../../redux/actions/map-actions';
 
 const MapOutbreakMarker = (props) => {
-  const { location, _id, title, date, type } = props;
+  const { location, _id, title, date, type, formattedAddress } = props;
   const formattedDate = date.substring(0, 10);
   const classes = useStyles();
 
@@ -36,12 +36,15 @@ const MapOutbreakMarker = (props) => {
             <Typography className={classes.infoWindowType}>
               {type === 'outbreak' ? 'Outbreak' : ''}
             </Typography>
-            <Typography
-              variant='h6'
-              gutterBottom
-              className={classes.infoWindowTitle}
-            >
+            <Typography variant='h6' className={classes.infoWindowTitle}>
               {title}
+            </Typography>
+            <Typography
+              color='textSecondary'
+              variant='caption'
+              className={classes.address}
+            >
+              {formattedAddress}
             </Typography>
             <div style={{ display: 'flex' }}>
               <Typography

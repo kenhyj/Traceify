@@ -12,6 +12,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '12px',
     textAlign: 'center',
   },
+  address: {
+    marginBottom: '10px',
+  },
 }));
 
 export default useStyles;

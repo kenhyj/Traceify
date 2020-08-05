@@ -153,6 +153,9 @@ const MapContainer = (props) => {
             >
               {clusterMarkerData[0].title}
             </Typography>
+            <Typography color='textSecondary' variant='caption'>
+              {clusterMarkerData[0].formattedAddress}
+            </Typography>
             <div
               className={classes.infoWindowTotal}
               style={{ display: 'flex' }}
