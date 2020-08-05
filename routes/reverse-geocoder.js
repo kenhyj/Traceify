@@ -12,7 +12,7 @@ router.get('/api/reverse-geocode', function (req, res) {
       return formattedAddress;
     }).then((address) => {
       res.status(200).send({
-        formatted_address: address,
+        formattedAddress: address,
       });
     }).catch(() => {
       res.status(400).send('error reverse geocoding');
