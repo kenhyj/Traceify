@@ -9,7 +9,6 @@ const PageHeading = (props) => {
         <div className='page-heading-subheading'>{props.data.subheading}</div>
         <div className='page-heading-body'>{props.data.body}</div>
       </div>
-      
     </div>
   );
 };

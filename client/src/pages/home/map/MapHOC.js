@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import React, { forwardRef } from 'react';
 import { useLoadScript } from '@react-google-maps/api';
 import { CircularProgress, Typography } from '@material-ui/core';

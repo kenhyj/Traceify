@@ -83,9 +83,9 @@ function EnhancedTableHead(props) {
       <TableRow>
         <TableCell padding='checkbox'>
           <Checkbox
-              style ={{
-                  color: "#2196F3",
-              }}
+            style={{
+              color: '#2196F3',
+            }}
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
@@ -230,12 +230,12 @@ const useStyles = makeStyles((theme) => ({
     top: 20,
     width: 1,
   },
-    tableRow: {
-        "&$selected, &$selected:hover": {
-            backgroundColor: lighten('#2196F3', 0.85),
-        }
+  tableRow: {
+    '&$selected, &$selected:hover': {
+      backgroundColor: lighten('#2196F3', 0.85),
     },
-    selected: {}
+  },
+  selected: {},
 }));
 
 function AdminDelete(props) {
@@ -379,9 +379,9 @@ function AdminDelete(props) {
                     >
                       <TableCell padding='checkbox'>
                         <Checkbox
-                            style ={{
-                                color: "#2196F3",
-                            }}
+                          style={{
+                            color: '#2196F3',
+                          }}
                           checked={isItemSelected}
                           inputProps={{ 'aria-labelledby': labelId }}
                         />

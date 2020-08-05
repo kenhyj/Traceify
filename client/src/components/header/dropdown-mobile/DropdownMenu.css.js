@@ -4,9 +4,7 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: '#ffffff',
   },
-  inactiveListItemTypography: {
-
-  },
+  inactiveListItemTypography: {},
   activeListItemTypography: {
     color: '#2196F3',
   },

@@ -19,7 +19,6 @@
   border: 1px solid rgb(194, 207, 191);
 }
 #provtable td:nth-child(1) {
-  /* text-decoration: underline; */
   text-align: center;
   white-space: pre-wrap;
 }
@@ -37,7 +36,7 @@
 }
 
 @media screen and (max-width: 992px) {
-  .dropdown{
+  .dropdown {
     width: 80%;
   }
   .label {

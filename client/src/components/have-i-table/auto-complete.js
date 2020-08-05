@@ -6,12 +6,7 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import { useSelector, useDispatch } from 'react-redux';
 import TextField from '@material-ui/core/TextField';
-import {
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-} from '@material-ui/core';
+import { List, ListItem, ListItemText, ListItemIcon } from '@material-ui/core';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { withGoogleMaps } from '../../pages/home/map/MapHOC';
 

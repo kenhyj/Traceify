@@ -49,7 +49,7 @@ function DropdownMenu(props) {
         <DropdownMenuLink
           to='/qna'
           key='listitem-qna'
-          primary='Q&A'
+          primary='Q&#38;A'
           onClick={toggleMenu}
         />
         {showAdmin()}

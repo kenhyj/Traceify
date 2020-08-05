@@ -99,7 +99,7 @@ class AdminAdd extends React.Component {
   };
 
   handleSubmit = () => {
-    let validCities = [
+    const validCities = [
       'vancouver',
       'north vancouver',
       'west vancouver',
@@ -118,7 +118,7 @@ class AdminAdd extends React.Component {
         city = array[i];
         validSubmission = true;
         for (let j = 0; j < i; j++)
-          j + 1 === i ? (title += array[j]) : (title = title + array[j] + ', ');
+          j + 1 === i ? (title += array[j]) : (title = `${title + array[j]}, `);
       }
     }
     if (validSubmission) {

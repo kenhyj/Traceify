@@ -8,7 +8,6 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     background: '#ffffff',
-    // TODO: when scrolling down, make header opacity 60% and make border bottom appear.
     borderBottom: `1px solid ${theme.palette.divider}`,
     backgroundColor: '#ffffff',
     width: '100%',

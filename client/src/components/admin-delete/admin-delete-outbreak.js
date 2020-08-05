@@ -82,9 +82,9 @@ function EnhancedTableHead(props) {
       <TableRow>
         <TableCell padding='checkbox'>
           <Checkbox
-              style ={{
-                  color: "#2196F3",
-              }}
+            style={{
+              color: '#2196F3',
+            }}
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
@@ -135,8 +135,8 @@ const useToolbarStyles = makeStyles((theme) => ({
   highlight:
     theme.palette.type === 'light'
       ? {
-            color: 'white',
-            backgroundColor: '#2196F3',
+          color: 'white',
+          backgroundColor: '#2196F3',
         }
       : {
           color: theme.palette.text.primary,
@@ -229,12 +229,12 @@ const useStyles = makeStyles((theme) => ({
     top: 20,
     width: 1,
   },
-    tableRow: {
-        "&$selected, &$selected:hover": {
-            backgroundColor: lighten('#2196F3', 0.85),
-        }
+  tableRow: {
+    '&$selected, &$selected:hover': {
+      backgroundColor: lighten('#2196F3', 0.85),
     },
-    selected: {}
+  },
+  selected: {},
 }));
 
 function AdminDeleteOutbreak(props) {
@@ -252,7 +252,7 @@ function AdminDeleteOutbreak(props) {
       .get('/api/location-outbreak')
       .then((result) => {
         // props.setLocationTraces(result.data);
-        let temp = [];
+        const temp = [];
         result.data.forEach((row) => {
           temp.push(
             createData(
@@ -377,9 +377,9 @@ function AdminDeleteOutbreak(props) {
                     >
                       <TableCell padding='checkbox'>
                         <Checkbox
-                            style ={{
-                                color: "#2196F3",
-                            }}
+                          style={{
+                            color: '#2196F3',
+                          }}
                           checked={isItemSelected}
                           inputProps={{ 'aria-labelledby': labelId }}
                         />

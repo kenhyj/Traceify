@@ -102,7 +102,7 @@ class AdminAddOutbreak extends React.Component {
         city = array[i];
         validSubmission = true;
         for (let j = 0; j < i; j++)
-          j + 1 === i ? (title += array[j]) : (title = title + array[j] + ', ');
+          j + 1 === i ? (title += array[j]) : (title = `${title + array[j]}, `);
       }
     }
     if (validSubmission) {
