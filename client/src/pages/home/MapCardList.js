@@ -6,11 +6,15 @@ import './home.css';
 
 const MapCardList = (props) => {
   const { visibleMarkers, showMarkers, showOutbreakMarkers } = props.map;
+  const { windowSize } = props;
 
   return (
     <div>
       <Instruction text='Currently viewing:' width='95%' />
-      <div className='sidebar-card-list-cards'>
+      <div
+        className='sidebar-card-list-cards'
+        style={{ height: `${windowSize.height * 0.9 - 162}px` }}
+      >
         {showMarkers &&
           visibleMarkers.map((marker) => {
             if (marker.type === 'location') {

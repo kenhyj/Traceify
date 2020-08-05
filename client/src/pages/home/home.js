@@ -14,8 +14,6 @@ const Home = () => {
   const body =
     'See where individuals who have tested positive for COVID-19 have been recently by interacting with the map below.';
   const pageHeadingData = { heading, subheading, body };
-  const [mapVisible, setMapVisible] = useState(true);
-
   const [windowSize, setWindowSize] = useState({
     width: undefined,
     height: undefined,
@@ -48,19 +46,7 @@ const Home = () => {
         <PageHeading data={pageHeadingData} />
       </div>
       <div className='Home-main-body'>
-        <div className='Home-mobile-toggle-view'>
-          <Chip
-            label={mapVisible ? 'Hide Map' : 'Show Map'}
-            onClick={() => setMapVisible(!mapVisible)}
-          />
-        </div>
-      </div>
-      <div className='Home-main-body'>
-        <Sidebar
-          className='Home-main-body-sidebar'
-          windowSize={windowSize}
-          mapVisible={mapVisible}
-        />
+        <Sidebar className='Home-main-body-sidebar' windowSize={windowSize} />
         <div
           style={{
             height: `${windowSize.height * 0.9}px`,
@@ -70,7 +56,6 @@ const Home = () => {
             '@media (minWidth: 800px)': {
               width: `${windowSize.width - windowSize.width * 0.3}px`,
             },
-            display: mapVisible ? 'block' : 'none',
           }}
           className='Home-main-body-map'
         >

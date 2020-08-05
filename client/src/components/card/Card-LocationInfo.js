@@ -5,13 +5,13 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   card: {
     width: '100%',
-    maxWidth: '330px',
+    maxWidth: '95%',
     margin: 'auto',
     marginBottom: '10px',
     transition: '0.3s',
     boxShadow: '0 8px 40px -12px rgba(0,0,0,0.3)',
     '&:hover': {
-      boxShadow: '0 16px 70px -12.125px rgba(0,0,0,0.3)',
+      boxShadow: '0 16px 70px -12.125px #2196F3',
     },
   },
   title: {
@@ -27,7 +27,7 @@ const CardLocationInfo = (props) => {
   const formattedDate = props.date.substring(0, 10);
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} style={{}}>
       <CardContent>
         <Typography variant='caption'>
           {props.type === 'location' ? 'Possible Exposure' : 'Outbreak'}

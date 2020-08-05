@@ -1,24 +1,11 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Marker, InfoWindow } from '@react-google-maps/api';
 import { Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-  infoWindowTitle: {
-    textAlign: 'center',
-    color: '#2196F3',
-  },
-  infoWindowLabel: {
-    marginRight: '10px',
-  },
-  infoWindowType: {
-    fontSize: '12px',
-    textAlign: 'center',
-  },
-}));
+import useStyles from './InfoWindowStyles';
+import { setActiveMarker } from '../../redux/actions/map-actions';
 
 const MapMarker = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
   const { location, _id, title, time, date, clusterer, type } = props;
   const classes = useStyles();
   const formattedDate = date.substring(0, 10);
@@ -35,18 +22,18 @@ const MapMarker = (props) => {
     anchor: new google.maps.Point(13, 17),
   };
 
-  const handleToggleOpen = () => {
-    setIsOpen(true);
+  const handleInfoWindowOpen = () => {
+    props.dispatch(setActiveMarker(_id));
   };
 
-  const handleToggleClose = () => {
-    setIsOpen(false);
+  const handleInfoWindowClose = () => {
+    props.dispatch(setActiveMarker(''));
   };
 
   return (
     <Marker
       position={location}
-      onClick={handleToggleOpen}
+      onClick={handleInfoWindowOpen}
       icon={customIcon}
       id={_id}
       clusterer={clusterer}
@@ -54,11 +41,11 @@ const MapMarker = (props) => {
       // eslint-disable-next-line no-undef
       animation={google.maps.Animation.DROP}
     >
-      {isOpen && (
+      {props.mapReducer.activeMarkerId === _id && (
         <InfoWindow
           key={`${_id}_infoWindow`}
           position={location}
-          onCloseClick={handleToggleClose}
+          onCloseClick={handleInfoWindowClose}
         >
           <div>
             <Typography className={classes.infoWindowType}>
@@ -98,4 +85,17 @@ const MapMarker = (props) => {
   );
 };
 
-export default MapMarker;
+const mapStateToProps = (state) => {
+  return {
+    mapReducer: state.map,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setActiveMarker: (_id) => dispatch(setActiveMarker(_id)),
+    dispatch,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapMarker);

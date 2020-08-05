@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { GoogleMap, MarkerClusterer, InfoWindow } from '@react-google-maps/api';
 import { connect } from 'react-redux';
 import { Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import styles from './MapContainer.css';
 import MapMarker from '../../../components/map/MapMarker';
 import MapOutbreakMarker from '../../../components/map/MapOutbreakMarker';
@@ -12,28 +11,10 @@ import {
   fetchLocations,
   setGlobalMap,
   setVisibleMarkers,
+  setActiveMarker,
 } from '../../../redux/actions/map-actions';
 import '../home.css';
-
-const useStyles = makeStyles((theme) => ({
-  infoWindowTitle: {
-    textAlign: 'center',
-    color: '#2196F3',
-  },
-  infoWindowLabel: {
-    marginRight: '10px',
-  },
-  infoWindowType: {
-    fontSize: '12px',
-    textAlign: 'center',
-  },
-  infoWindowDataDiv: {
-    marginBottom: '5px',
-  },
-  infoWindowTotal: {
-    marginBottom: '10px',
-  },
-}));
+import useStyles from './ClusterInfoWindowStyles';
 
 const MapContainer = (props) => {
   const [map, setMap] = useState(null);
@@ -91,6 +72,11 @@ const MapContainer = (props) => {
   const onMapIdle = () => {
     const visibleMarkerArray = getVisibleMarkers();
     dispatch(setVisibleMarkers(visibleMarkerArray));
+  };
+
+  const handleMapClick = () => {
+    setClusterInfoWindowOpen(false);
+    dispatch(setActiveMarker(''));
   };
 
   const getVisibleMarkers = () => {
@@ -200,6 +186,7 @@ const MapContainer = (props) => {
         options={{ styles: styles.mapStyle }}
         onZoomChanged={handleZoomChange}
         onIdle={onMapIdle}
+        onClick={handleMapClick}
       >
         <MarkerClusterer
           options={clustererOptions}
@@ -241,6 +228,7 @@ const mapDispatchToProps = (dispatch) => {
     fetchLocations: () => dispatch(fetchLocations()),
     setGlobalMap: (map) => dispatch(setGlobalMap(map)),
     setVisibleMarkers: (markers) => dispatch(setVisibleMarkers(markers)),
+    setActiveMarker: (id) => dispatch(setActiveMarker(id)),
     dispatch,
   };
 };

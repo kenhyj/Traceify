@@ -41,6 +41,10 @@
   .Home-mobile-toggle-view {
     display: none;
   }
+
+  .sidebar {
+    max-width: 380px;
+  }
 }
 
 .sidebar {
@@ -54,7 +58,6 @@
 }
 
 .sidebar-card-list-cards {
-  height: 500px;
   overflow: auto;
   margin-top: 8px;
 }

@@ -11,6 +11,7 @@ const initialState = {
   globalMarkers: [],
   visibleMarkers: [],
   mapIsVisibleMobile: true,
+  activeMarkerId: null,
 };
 
 const mapReducer = (state = initialState, action) => {
@@ -60,6 +61,11 @@ const mapReducer = (state = initialState, action) => {
       return {
         ...state,
         mapIsVisibleMobile: !state.mapIsVisibleMobile,
+      };
+    case actions.SET_ACTIVE_MARKER:
+      return {
+        ...state,
+        activeMarkerId: action.payload,
       };
     default:
       return state;

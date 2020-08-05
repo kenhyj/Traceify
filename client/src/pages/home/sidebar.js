@@ -106,7 +106,7 @@ const Sidebar = (props) => {
         {makeAccordion2()}
       </div>
       <div className='sidebar-card-list'>
-        <MapCardList />
+        <MapCardList windowSize={props.windowSize} />
       </div>
     </div>
   );
