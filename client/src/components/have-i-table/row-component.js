@@ -22,12 +22,6 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import LocationAuto from './auto-complete';
 
-const getTime = (date) => {
-  let tzoffset = date.getTimezoneOffset() * 60000; // offset in milliseconds
-  let localISOTime = new Date(date - tzoffset);
-  return localISOTime;
-};
-
 const StyledTableRow = withStyles((theme) => ({
   root: {
     '&:nth-of-type(odd)': {
@@ -37,12 +31,12 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 export default function RowComponent(props) {
+  const fields = useSelector((state) => state.timeAndLoc);
   const dispatch = useDispatch();
   const key = props.fieldKey;
-  const [date,setDate] = useState(getTime(new Date()));
+  const selectedDate = fields[props.fieldKey].date;
   const [open, setOpen] = useState(false);
   const handleDateChange = (date) => {
-    setDate(date);
     dispatch({
       type: 'EDIT_ROW_DATE',
       idx: props.fieldKey,
@@ -78,7 +72,7 @@ export default function RowComponent(props) {
               margin='normal'
               id='date-picker-inline'
               label='Enter date here'
-              value={date}
+              value={selectedDate}
               onChange={handleDateChange}
               KeyboardButtonProps={{
                 'aria-label': 'change date',

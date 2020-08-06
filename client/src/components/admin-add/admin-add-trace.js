@@ -13,12 +13,6 @@ import axios from 'axios/index';
 import Instruction from '../instruction/instruction';
 import { withGoogleMaps } from '../../pages/home/map/MapHOC';
 
-const getTime = (date) => {
-  let tzoffset = date.getTimezoneOffset() * 60000; // offset in milliseconds
-  let localISOTime = new Date(date - tzoffset);
-  return localISOTime;
-};
-
 class AdminAdd extends React.Component {
   constructor(props) {
     super(props);
@@ -32,7 +26,7 @@ class AdminAdd extends React.Component {
         },
         city: 'Vancouver',
         time: '12 AM ~ 3 AM',
-        date: getTime(new Date()),
+        date: new Date(),
         formattedAddress: '',
       },
     };
