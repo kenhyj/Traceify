@@ -86,7 +86,7 @@ function LocationAuto(props) {
       />
 
       <div
-        style={{ position: 'fixed', padding: '0', width: '23%', zIndex: '3' }}
+        style={{ position: props.pos, padding: '0', width: '23%', zIndex: '3' }}
       >
         {loading ? <div>...loading</div> : null}
 
