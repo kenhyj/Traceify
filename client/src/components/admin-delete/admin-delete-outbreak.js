@@ -251,7 +251,6 @@ function AdminDeleteOutbreak(props) {
     axios
       .get('/api/location-outbreak')
       .then((result) => {
-        // props.setLocationTraces(result.data);
         const temp = [];
         result.data.forEach((row) => {
           temp.push(

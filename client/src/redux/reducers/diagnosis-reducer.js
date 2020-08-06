@@ -1,14 +1,14 @@
 const commonstate = {
-  'fever': false,
+  fever: false,
   'dry cough': false,
-  'tiredness': false,
+  tiredness: false,
 };
 const rarestate = {
   'aches and pains': false,
   'sore throat': false,
-  'diarrhea': false,
-  'conjunctivitis': false,
-  'headache': false,
+  diarrhea: false,
+  conjunctivitis: false,
+  headache: false,
   'loss of taste': false,
   'loss of smell': false,
   'rash on skin': false,
@@ -26,7 +26,7 @@ const atriskstate = {
   'Have Liver Disease': false,
   'Have a weakened immune system': false,
   'Undergoing chemotherapy': false,
-  'Diabetic': false,
+  Diabetic: false,
   'Undergoing dialysis': false,
   'BMI 40 and over': false,
   'In need of organ transplant': false,
