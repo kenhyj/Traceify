@@ -201,6 +201,65 @@ const QnA = () => {
               </Typography>
             </AccordionDetails>
           </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls='panel2a-content'
+              id='panel2a-header'
+            >
+              <Typography className={classes.heading}>
+                What is an outbreak?
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography
+                style={{ padding: '5%', textAlign: 'center', width: '100%' }}
+              >
+                Outbreaks occur when infected people, including patients, staff,
+                volunteers, contracted workers and visitors, come to our
+                hospitals and others become infected. The medical health officer
+                determines when an outbreak will be declared.
+                <br />
+                Generally, an outbreak is declared if three or more cases
+                involving patients and/or staff occur within a designated time
+                frame and in a specific area or unit. For C. difficile, an
+                outbreak is declared when the number of cases increases above
+                what is normally experienced.
+                <br />
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls='panel2a-content'
+              id='panel2a-header'
+            >
+              <Typography className={classes.heading}>
+                What is a potential exposure?
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Typography
+                style={{ padding: '5%', textAlign: 'center', width: '100%' }}
+              >
+                As a precaution, health authorities update this data with the
+                locations and times of known possible exposures to COVID-19 to
+                the public in our region. The possible exposures listed on this
+                site are believed to be low risk but, out of an abundance of
+                caution, Public Health asks anyone who may have visited any of
+                the locations listed on the specified dates and times to monitor
+                themselves for symptoms. There is no known risk to anyone who
+                attended any listed locations outside of the specified dates and
+                times. If people remain healthy and do not develop symptoms,
+                there is no need to self-isolate and people can continue with
+                their usual daily activities. If you develop any symptoms of
+                COVID-19, please seek testing and then self-isolate. Please call
+                ahead and wear a mask when seeking testing.
+                <br />
+              </Typography>
+            </AccordionDetails>
+          </Accordion>
         </div>
       </div>
 
