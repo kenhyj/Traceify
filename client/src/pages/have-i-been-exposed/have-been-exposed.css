@@ -4,3 +4,10 @@
     height: 48px;
     width: 20%;
 }
+
+.icons {
+    background-color: transparent;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+}

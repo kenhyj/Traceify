@@ -11,12 +11,12 @@ const rarestate = {
   headache: false,
   'loss of taste': false,
   'loss of smell': false,
-
   'rash on skin': false,
-  'discolouration of fingers or toes': false,
+  'finger or toe discolouration': false,
 };
 const seriousstate = {
-  'difficulty breathing or shortness of breath': false,
+  'difficulty breathing': false,
+  'shortness of breath': false,
   'chest pain or pressure': false,
   'loss of speech': false,
   'loss of movement': false,
@@ -24,14 +24,12 @@ const seriousstate = {
 const atriskstate = {
   'Older than 64': false,
   'Have Liver Disease': false,
-  'Have HIV or immunocompromised': false,
-
+  'Have a weakened immune system': false,
   'Undergoing chemotherapy': false,
   Diabetic: false,
   'Undergoing dialysis': false,
   'BMI 40 and over': false,
   'In need of organ transplant': false,
-  // https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/people-at-higher-risk.html
 };
 
 const INITIAL_STATE = {
@@ -51,6 +49,9 @@ const diagnosisReducer = (state = INITIAL_STATE, action) => {
         ...state,
         symptoms: { ...state.symptoms, ...action.payload },
       };
+
+    case 'RETAKE_TEST':
+      return INITIAL_STATE;
 
     case 'GENERATE_RESULT':
       return { ...state, showResult: true };

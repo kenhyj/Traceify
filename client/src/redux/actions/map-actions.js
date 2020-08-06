@@ -1,20 +1,15 @@
 import axios from 'axios/index';
 import * as actions from '../constants/action-types';
 
-export const showInfoWindow = (id) => ({
-  type: actions.SHOW_MAP_INFOWINDOW,
-  id: id,
-});
-
-export const showHeatLayer = () => ({
+export const toggleHeatLayer = () => ({
   type: actions.SHOW_HEAT_LAYER,
 });
 
-export const showMarkers = () => ({
+export const toggleMarkers = () => ({
   type: actions.SHOW_MARKERS,
 });
 
-export const showOutbreakMarkers = () => ({
+export const toggleOutbreakMarkers = () => ({
   type: actions.SHOW_OUTBREAK_MARKERS,
 });
 
@@ -46,10 +41,50 @@ export const fetchLocations = () => (dispatch) => {
       })
     )
     .then((res) => {
-      dispatch(fetchLocationsSuccess(res.locations, res.outbreaks));
+      let locationsWithType = [];
+      let outbreaksWithType = [];
+      for (let i = 0; i < res.locations.length; i++) {
+        const newObj = { ...res.locations[i], type: 'location' };
+        locationsWithType.push(newObj);
+      }
+      for (let i = 0; i < res.outbreaks.length; i++) {
+        const newObj = { ...res.outbreaks[i], type: 'outbreak' };
+        outbreaksWithType.push(newObj);
+      }
+      return { locationsWithType, outbreaksWithType };
+    })
+    .then((res) => {
+      dispatch(
+        fetchLocationsSuccess(res.locationsWithType, res.outbreaksWithType)
+      );
     })
     .catch((err) => {
       dispatch(fetchLocationsFailure(err));
       console.log(err);
     });
 };
+
+export const setGlobalMap = (map) => ({
+  type: actions.SET_MAP,
+  payload: map,
+});
+
+export const addMarker = (marker) => ({
+  type: actions.ADD_MARKER,
+  payload: marker,
+});
+
+export const setVisibleMarkers = (markers) => ({
+  type: actions.SET_VISIBLE_MARKERS,
+  payload: markers,
+});
+
+export const setActiveMarker = (markerId) => ({
+  type: actions.SET_ACTIVE_MARKER,
+  payload: markerId,
+});
+
+export const setPanToLocation = (latLng) => ({
+  type: actions.SET_PAN_TO_LOCATION,
+  payload: latLng,
+});

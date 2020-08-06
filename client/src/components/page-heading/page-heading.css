@@ -1,7 +1,8 @@
 .page-heading {
   background: #f2f4f7;
-  padding: 4rem;
+  padding: 3rem;
   margin-bottom: 1rem;
+  position: relative;
 }
 
 @media only screen and (min-width: 1060px) {
@@ -17,6 +18,13 @@
 
   .page-heading-body {
     margin-top: 2rem;
+  }
+
+  .page-heading-contents {
+    position: relative;
+    justify-items: center;
+    max-width: 1060px;
+    margin: 0px auto;
   }
 }
 
@@ -35,4 +43,3 @@
       margin-top: 2rem;
     }
   }
-  

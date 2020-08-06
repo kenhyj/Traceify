@@ -1,68 +1,118 @@
 .Home-main-body {
+  justify-content: center;
+  padding: 0 0 1% 0;
+}
+
+@media only screen and (max-width: 799px) {
+  .Home-main-body {
+    display: flexbox;
+  }
+  
+  .Home-main-body-map {
+    display: block;
+  }
+
+  .Home-main-body-sidebar {
+    display: block;
+  }
+
+  .Home-mobile-toggle-view {
     display: flex;
+    margin: auto;
+    width: 100%;
     justify-content: center;
+  }
 }
 
-.Home-main-body-sidebar {
-    display: inline-block;
-    width: 30%;
-}
-
-.Home-main-body-map {
+@media only screen and (min-width: 800px) {
+  .Home-main-body {
+    display: flex;
+  }
+  .Home-main-body-map {
     display: inline-block;
     width: 70%;
+  }
+
+  .Home-main-body-sidebar {
+    display: inline-block;
+    width: 30%;
+  }
+
+  .Home-mobile-toggle-view {
+    display: none;
+  }
+
+  .sidebar {
+    max-width: 380px;
+  }
 }
 
 .sidebar {
-    margin-left: 1rem;
-    margin-right: 1rem;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+
+.sidebar-accordion {
+  margin-bottom: 16px;
+}
+
+.sidebar-card-list-cards {
+  overflow: auto;
+  margin-top: 8px;
 }
 
 .sidebar-legend {
-    background-color: #F2F4F7;
-    padding: 1rem;
-    border-radius: 3px;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+  background-color: #f2f4f7;
+  padding: 16px;
+  border-radius: 3px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .sidebar-legend-heatmap {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;    
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .sidebar-legend-markers {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .sidebar-legend-heatmap-low {
-    display: inline-block;
-    justify-content: left;
-    width: 50%;
-    text-align: left;
-    /* font-size: 0.7rem; */
+  display: inline-block;
+  justify-content: left;
+  width: 50%;
+  text-align: left;
 }
 
 .sidebar-legend-heatmap-high {
-    display: inline-block;
-    justify-content: right;
-    width: 50%;
-    text-align: right;
-    /* font-size: 0.7rem; */
+  display: inline-block;
+  justify-content: right;
+  width: 50%;
+  text-align: right;
 }
 
-.sidebar-legend-heatmap-words {
+@media screen and (max-width: 400px) {
+  .sidebar-legend-heatmap-words {
+    display: inline-flex;
+    width: 100px;
+  }
+}
+
+@media screen and (min-width: 401px) {
+  .sidebar-legend-heatmap-words {
     display: inline-flex;
     width: 320px;
+  }
 }
 
 .sidebar-title {
-    font-family: Lato, sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    padding-bottom: .5rem;
+  font-family: Lato, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-bottom: 0.5rem;
 }
-

@@ -1,18 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Typography,
-  IconButton,
-  Hidden,
-  Drawer,
-} from '@material-ui/core';
+import { Typography, IconButton, Hidden, Drawer } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 import logo from '../../assets/logoresized.svg';
-import DropdownMenu from './DropdownMenu';
+import DropdownMenu from './dropdown-mobile/DropdownMenu';
 import PagesBar from './PagesBar';
 import { useStyles } from './header.css';
 
-export default function HeaderTitle(props) {
+export default function HeaderTitle() {
   const classes = useStyles();
   const [menuOpen, setMenuOpen] = React.useState(false);
   const toggleMenu = () => {
@@ -51,7 +46,7 @@ export default function HeaderTitle(props) {
               keepMounted: true,
             }}
           >
-            <span style={{height: '5rem'}} />
+            <span style={{ height: '5rem' }} />
             <DropdownMenu toggleMenu={toggleMenu} />
           </Drawer>
         </div>

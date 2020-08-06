@@ -14,6 +14,7 @@ let locationRouter = require('./routes/location-traces');
 let reopeningsRouter = require('./routes/reopenings');
 let exposeRouter = require('./routes/expose');
 let locationOutbreakRouter = require('./routes/location-outbreak');
+let reverseGeocoderRouter = require('./routes/reverse-geocoder');
 let app = express();
 
 // view engine setup
@@ -33,6 +34,7 @@ app.use(adminsRouter);
 app.use(locationRouter);
 app.use(locationOutbreakRouter);
 app.use(reopeningsRouter);
+app.use(reverseGeocoderRouter);
 app.use(bodyParser.json());
 
 // CONNECT TO MONGO DB
@@ -44,7 +46,7 @@ mongoose.connect(process.env.DB_CONNECTION, {
 const db = require('./db');
 db.connect(() => {
   app.listen(process.env.DB_PORT || 5000, function () {
-    console.log(`Listening`);
+    console.log('Listening');
   });
 });
 

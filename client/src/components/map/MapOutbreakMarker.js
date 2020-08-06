@@ -1,68 +1,78 @@
-import React, { Component } from 'react';
-import { Marker, InfoWindow } from '@react-google-maps/api';
+import React from 'react';
 import { connect } from 'react-redux';
-import { showInfoWindow } from '../../redux/actions/map-actions';
+import { Marker, InfoWindow } from '@react-google-maps/api';
 import virusImg from '../../assets/virus.svg';
+import { Typography } from '@material-ui/core';
+import useStyles from './InfoWindowStyles';
+import { setActiveMarker } from '../../redux/actions/map-actions';
 
-class MapOutbreakMarker extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-    };
-  }
+const MapOutbreakMarker = (props) => {
+  const { location, _id, title, date, type, formattedAddress } = props;
+  const formattedDate = date.substring(0, 10);
+  const classes = useStyles();
 
-  handleToggleOpen = () => {
-    this.setState({
-      isOpen: true,
-    });
+  const handleInfoWindowOpen = () => {
+    props.dispatch(setActiveMarker(_id));
   };
 
-  handleToggleClose = () => {
-    this.setState({
-      isOpen: false,
-    });
+  const handleInfoWindowClose = () => {
+    props.dispatch(setActiveMarker(''));
   };
 
-  render() {
-    const { location, id, title, date } = this.props;
-    const formattedDate = new Date(date).toLocaleDateString();
-
-    return (
-      <Marker
-        position={location}
-        onClick={() => this.handleToggleOpen()}
-        icon={virusImg}
-        id={id}
-      >
-        {this.state.isOpen && (
-          <InfoWindow
-            position={location}
-            onCloseClick={() => this.handleToggleClose()}
-          >
-            <div>
-              <h1>
-                <b>Outbreak!</b>
-              </h1>
-              <h1>{title}</h1>
-              <p>Date Declared (M/D/Y): {formattedDate}</p>
+  return (
+    <Marker
+      position={location}
+      onClick={handleInfoWindowOpen}
+      icon={virusImg}
+      id={_id}
+    >
+      {props.mapReducer.activeMarkerId === _id && (
+        <InfoWindow
+          key={`${_id}_infoWindow`}
+          position={location}
+          onCloseClick={handleInfoWindowClose}
+        >
+          <div>
+            <Typography className={classes.infoWindowType}>
+              {type === 'outbreak' ? 'Outbreak' : ''}
+            </Typography>
+            <Typography variant='h6' className={classes.infoWindowTitle}>
+              {title}
+            </Typography>
+            <Typography
+              color='textSecondary'
+              variant='caption'
+              className={classes.address}
+            >
+              {formattedAddress}
+            </Typography>
+            <div style={{ display: 'flex' }}>
+              <Typography
+                color='textSecondary'
+                className={classes.infoWindowLabel}
+              >
+                Date declared (Y/M/D):
+              </Typography>
+              <Typography className={classes.infoWindowData}>
+                {formattedDate}
+              </Typography>
             </div>
-          </InfoWindow>
-        )}
-      </Marker>
-    );
-  }
-}
+          </div>
+        </InfoWindow>
+      )}
+    </Marker>
+  );
+};
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
-    ownProps,
+    mapReducer: state.map,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showInfoWindow: (id) => dispatch(showInfoWindow(id)),
+    setActiveMarker: (_id) => dispatch(setActiveMarker(_id)),
     dispatch,
   };
 };

@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from '@material-ui/core';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 import reducers from './redux';
-import { ThemeProvider } from '@material-ui/core';
 import theme from './MuiTheme';
-import thunk from 'redux-thunk';
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>

@@ -10,6 +10,12 @@
     margin: 50px;
 }
 
+.tabRoot  {
+    display: flex;
+    height: 224px;
+    width: 100%;
+}
+
 .form {
     padding: 5%;
     width: 30%;
@@ -20,13 +26,6 @@
     width: 100%;
     outline: 0;
     border-width: 0 0 1px;
-}
-
-.instruction {
-    background-color: lightsteelblue;
-    padding: 10px;
-    width: fit-content;
-    margin: auto;
 }
 
 .customDatePickerWidth,
@@ -59,4 +58,39 @@ input {
 .tabpanel {
     width: 100%;
     margin-right: 15%;
+}
+
+.leftMenu {
+    width: 15%;
+}
+
+.rightPanel {
+    width: 70%;
+    align-content: center;
+}
+
+@media screen and (max-width: 1059px) {
+    .leftMenu {
+        width: 100%;
+    }
+    
+    .rightPanel {
+        width: 100%;
+    }
+    .tabRoot{
+        display: block;
+    }
+    .form {
+        padding: 5%;
+        width: 40%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .form {
+        padding: 5%;
+        width: 65%;
+        margin: auto;
+    }
 }

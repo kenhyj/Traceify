@@ -1,10 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import {
-  ListItem,
-  ListItemText,
-  Typography,
-} from '@material-ui/core';
+import { ListItem, ListItemText, Typography } from '@material-ui/core';
 import { useStyles } from './DropdownMenu.css';
 
 function DropdownMenuLink(props) {

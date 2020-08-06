@@ -1,75 +1,113 @@
-import React, { Component } from 'react';
-import { Marker, InfoWindow } from '@react-google-maps/api';
+import React from 'react';
 import { connect } from 'react-redux';
-import { showInfoWindow } from '../../redux/actions/map-actions';
-import bluePinImg from '../../assets/blue-pin.svg';
+import { Marker, InfoWindow } from '@react-google-maps/api';
+import { Typography } from '@material-ui/core';
+import useStyles from './InfoWindowStyles';
+import { setActiveMarker } from '../../redux/actions/map-actions';
 
-class MapMarker extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false,
-    };
-  }
-
-  handleToggleOpen = () => {
-    this.setState({
-      isOpen: true,
-    });
+const MapMarker = (props) => {
+  const {
+    location,
+    _id,
+    title,
+    time,
+    date,
+    clusterer,
+    type,
+    formattedAddress,
+  } = props;
+  const classes = useStyles();
+  const formattedDate = date.substring(0, 10);
+  const customIcon = {
+    path:
+      'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z',
+    fillColor: '#2196F3',
+    fillOpacity: 1,
+    scale: 1.5,
+    strokeColor: '#FFFFFF',
+    strokeWeight: 2,
+    strokeOpacity: 0.8,
+    // eslint-disable-next-line no-undef
+    anchor: new google.maps.Point(13, 17),
   };
 
-  handleToggleClose = () => {
-    this.setState({
-      isOpen: false,
-    });
+  const handleInfoWindowOpen = () => {
+    props.dispatch(setActiveMarker(_id));
   };
 
-  render() {
-    const { location, id, title, time, date, clusterer } = this.props;
+  const handleInfoWindowClose = () => {
+    props.dispatch(setActiveMarker(''));
+  };
 
-    const formattedDate = date.substring(0, 10);
-
-    return (
-      <Marker
-        position={location}
-        onClick={() => this.handleToggleOpen()}
-        icon={bluePinImg}
-        id={id}
-        clusterer={clusterer}
-      >
-        {this.state.isOpen && (
-          <InfoWindow
-            position={location}
-            onCloseClick={() => this.handleToggleClose()}
-          >
-            <div>
-              <h1>{title}</h1>
-              <p>Time visited: {time}</p>
-              <p>Date visited (Y/M/D): {formattedDate}</p>
+  return (
+    <Marker
+      position={location}
+      onClick={handleInfoWindowOpen}
+      icon={customIcon}
+      id={_id}
+      clusterer={clusterer}
+      title={_id}
+      // eslint-disable-next-line no-undef
+      animation={google.maps.Animation.DROP}
+    >
+      {props.mapReducer.activeMarkerId === _id && (
+        <InfoWindow
+          key={`${_id}_infoWindow`}
+          position={location}
+          onCloseClick={handleInfoWindowClose}
+        >
+          <div>
+            <Typography className={classes.infoWindowType}>
+              {type === 'location' ? 'Possible Exposure' : ''}
+            </Typography>
+            <Typography variant='h6' className={classes.infoWindowTitle}>
+              {title}
+            </Typography>
+            <Typography
+              color='textSecondary'
+              variant='caption'
+              className={classes.address}
+            >
+              {formattedAddress}
+            </Typography>
+            <div style={{ display: 'flex' }}>
+              <Typography
+                color='textSecondary'
+                className={classes.infoWindowLabel}
+              >
+                Date visited (Y/M/D):
+              </Typography>
+              <Typography className={classes.infoWindowData}>
+                {formattedDate}
+              </Typography>
             </div>
-          </InfoWindow>
-        )}
-      </Marker>
-    );
-  }
-}
+            <div style={{ display: 'flex' }}>
+              <Typography
+                color='textSecondary'
+                className={classes.infoWindowLabel}
+              >
+                Time visited:
+              </Typography>
+              <Typography className={classes.infoWindowData}>{time}</Typography>
+            </div>
+          </div>
+        </InfoWindow>
+      )}
+    </Marker>
+  );
+};
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
-    ownProps,
+    mapReducer: state.map,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    showInfoWindow: (id) => dispatch(showInfoWindow(id)),
+    setActiveMarker: (_id) => dispatch(setActiveMarker(_id)),
     dispatch,
   };
 };
 
-const ConnectedMapMarker = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MapMarker);
-
-export default ConnectedMapMarker;
+export default connect(mapStateToProps, mapDispatchToProps)(MapMarker);

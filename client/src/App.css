@@ -18,11 +18,12 @@
   display: inline-block;
   z-index: 2;
   margin-top: 70px;
-  /* overflow-x: hidden; */
-  /* position: relative; */
 }
 
-{/* This doesn't work for some reason...*/}
+.MuiAlert-message {
+  font-size: 14px;
+}
+
 .App-header {
   position: fixed;
   width: 100%;
@@ -32,5 +33,9 @@
 }
 
 html {
-  overflow-y: scroll;
+  overflow-y: scroll !important;
+}
+
+body {
+  padding-right: 0 !important;
 }

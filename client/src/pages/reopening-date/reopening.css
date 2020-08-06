@@ -5,7 +5,8 @@
   text-align: center;
   border: 2px solid rgb(194, 207, 191);
   padding: 8px;
-  background-color: rgb(188, 213, 243);
+  color: white;
+  background-color: #2196f3;
   font-weight: bold;
 }
 #provtable th:nth-child(1) {
@@ -18,7 +19,6 @@
   border: 1px solid rgb(194, 207, 191);
 }
 #provtable td:nth-child(1) {
-  /* text-decoration: underline; */
   text-align: center;
   white-space: pre-wrap;
 }
@@ -31,7 +31,15 @@
   width: 70%;
   margin: auto;
 }
-
 .label {
   width: 40% !important;
+}
+
+@media screen and (max-width: 992px) {
+  .dropdown {
+    width: 80%;
+  }
+  .label {
+    width: 80% !important;
+  }
 }

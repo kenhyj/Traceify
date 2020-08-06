@@ -1,0 +1,22 @@
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.icon {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.content {
+    background-color: aliceblue;
+}
+
+@media screen and (max-width: 1280px) {
+    .icon {
+        top: -10px;
+        right: -10px;
+    }
+}
