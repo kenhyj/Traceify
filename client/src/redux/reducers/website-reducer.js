@@ -2,7 +2,7 @@ const INITIAL_STATE = {
   isLoggedIn: false,
   accessToken: '',
   user: '',
-  locationTraces: []
+  locationTraces: [],
 };
 
 const websiteReducer = (state = INITIAL_STATE, action) => {
@@ -16,7 +16,7 @@ const websiteReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isLoggedIn: true,
         accessToken: action.accessToken,
-        user: action.user
+        user: action.user,
       };
     case 'LOG_OUT':
       if (sessionStorage.getItem('token') !== null)
@@ -25,12 +25,12 @@ const websiteReducer = (state = INITIAL_STATE, action) => {
         ...state,
         isLoggedIn: false,
         accessToken: '',
-        user: ''
+        user: '',
       };
     case 'SET_LOCATION_TRACES':
       return {
         ...state,
-        locationTraces: action.result
+        locationTraces: action.result,
       };
 
     default:
