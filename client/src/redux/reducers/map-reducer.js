@@ -36,6 +36,7 @@ const mapReducer = (state = initialState, action) => {
         ...state,
         data: action.payload.data,
         outbreaks: action.payload.outbreaks,
+        globalMarkers: [...action.payload.data, ...action.payload.outbreaks],
       };
     case actions.FETCH_LOCATIONS_FAILURE:
       return {
@@ -46,11 +47,6 @@ const mapReducer = (state = initialState, action) => {
       return {
         ...state,
         globalMap: action.payload,
-      };
-    case actions.ADD_MARKER:
-      return {
-        ...state,
-        globalMarkers: [...state.globalMarkers, action.payload],
       };
     case actions.SET_VISIBLE_MARKERS:
       return {

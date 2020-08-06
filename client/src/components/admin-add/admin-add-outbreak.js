@@ -126,7 +126,7 @@ class AdminAddOutbreak extends React.Component {
   render() {
     return (
       <div>
-        <Instruction text='Please input the information of the place where an outbreak occurred. (>10)' />
+        <Instruction text='Please input the information of the place where an outbreak has been declared.' />
         <br />
         <form className='form'>
           <label>

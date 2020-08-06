@@ -108,7 +108,6 @@ class SymptomChecker extends React.Component {
         initial='initial'
         variants={variants}
         transition={transitions}
-        style={pageStyle}
       >
         <div>
           <PageHeading data={pageHeadingData} />

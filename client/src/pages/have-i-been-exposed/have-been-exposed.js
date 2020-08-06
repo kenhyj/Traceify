@@ -145,7 +145,6 @@ const HaveI = () => {
       initial='initial'
       variants={variants}
       transition={transitions}
-      style={pageStyle}
     >
       <div>
         <PageHeading data={pageHeadingData} />
