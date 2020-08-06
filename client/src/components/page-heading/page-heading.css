@@ -5,6 +5,16 @@
   position: relative;
 }
 
+h1::after {
+  background: none repeat scroll 0 0 #2196F3;
+  bottom: -4px;
+  content: '';
+  display: block;
+  height: 4px;
+  position: relative;
+  width: 100px;
+}
+
 @media only screen and (min-width: 1060px) {
   .page-heading-heading {
     font-family: Lato, sans-serif;
