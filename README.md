@@ -118,6 +118,7 @@ Finally our web app project is deployed in heroku at https://staging-traceify.he
 - We stored login information in a browser's **session storage** so that the **login status persists** unless the tab is closed or the user manually logs out
 - We **researched UX style** of government sites and medical sites for **accessibility**, and set to utilize only the **main colour themes** for the website (blue, grey)
 - We allow **various filtering/rendering options** for the **Map**, rather than having only one option to render (i.e., heat map, markers)
+- We **bought a domain and connected with our heroku app** so that it is **hosted on: 'http://traceify.ca'**
 
 
 ## Next Steps
@@ -129,5 +130,5 @@ Finally our web app project is deployed in heroku at https://staging-traceify.he
 
 - d2e2b: Google Map API, Home,
 - e5c0b: Reopening - Database setup, Symptom Checker - Redux and diagnosis, ESLint and prettier, Automated Deployment,
-- k0b0b: Google OAuth Logins (i.e., filtering valid users, persisting login status in session storage), Admin functionalities (i.e., insertion and deletion of trace/outbreak data), Q&A, Styling assist, MongoDB set-up and data generation, Traceify Intro Youtube video
+- k0b0b: I worked on Google OAuth Logins (i.e., filtering valid users, persisting login status in session storage), Admin functionalities (i.e., insertion and deletion of trace/outbreak data), Q&A, Styling assist, MongoDB set-up and data generation, Traceify Intro Youtube video
 - l0y2b: Reopening - Styling, Symptom Checker - Styling, Have I been Exposed - Query exposure result from databse with date and locations, Styling, Thank You Modal as landing page
