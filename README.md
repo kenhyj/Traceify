@@ -127,7 +127,7 @@ Finally our web app project is deployed in heroku at https://staging-traceify.he
 
 ## Contributions
 
-- d2e2b: Google Map API, Home,
+- d2e2b: I worked on leveraging the Google Maps API on the home page, using redux to manage the map state. Also, I spent time researching many websites for UX design and implemented what I found into our application. I also added animations to all the components and made the header mobile friendly on many different screen sizes.
 - e5c0b:
   My contribution to automated deployment to Heroku will detect pushes from our final_project branch and deploy it using the scripts in the root folder's package.json and Procfile and static.json.
   Additionally, I set up eslint and prettier; eslint and prettier will underline any broken rules that I have defined in .eslintrc.json and prettierc will enforce code styles defined in .prettierrc file.
