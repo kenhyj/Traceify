@@ -39,6 +39,9 @@
     "jsx-a11y/label-has-associated-control": [1],
     "import/prefer-default-export": [0],
     "react/forbid-prop-types": [1],
-    "radix": [1]
+    "radix": [1],
+    "react/require-default-props": [1],
+    "no-await-in-loop": [1],
+    "react/jsx-curly-newline": [0]
   }
 }

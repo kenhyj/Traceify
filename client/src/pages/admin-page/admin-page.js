@@ -13,7 +13,7 @@ import AdminAddOutbreak from '../../components/admin-add/admin-add-outbreak';
 import AdminDelete from '../../components/admin-delete/admin-delete-trace';
 import AdminDeleteOutbreak from '../../components/admin-delete/admin-delete-outbreak';
 import PageHeading from '../../components/page-heading/PageHeading';
-import { variants, transitions, pageStyle } from '../motion-settings';
+import { variants, transitions } from '../motion-settings';
 import './admin-page.css';
 import { Hidden } from '@material-ui/core';
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
