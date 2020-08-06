@@ -82,13 +82,13 @@ export default function RowComponent(props) {
         </TableCell>
         <Hidden smDown>
           <TableCell align='center'>
-            <LocationAuto locid='0' idx={key} />
+            <LocationAuto locid='0' idx={key} pos='fixed' />
           </TableCell>
           <TableCell align='center'>
-            <LocationAuto locid='1' idx={key} />
+            <LocationAuto locid='1' idx={key} pos='fixed' />
           </TableCell>
           <TableCell align='center'>
-            <LocationAuto locid='2' idx={key} />
+            <LocationAuto locid='2' idx={key} pos='fixed' />
           </TableCell>
         </Hidden>
       </StyledTableRow>
@@ -102,17 +102,17 @@ export default function RowComponent(props) {
               <TableBody>
                 <TableRow>
                   <TableCell>
-                    <LocationAuto locid='0' idx={key} />
+                    <LocationAuto locid='0' idx={key} pos='relative' />
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>
-                    <LocationAuto locid='1' idx={key} />
+                    <LocationAuto locid='1' idx={key} pos='relative' />
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>
-                    <LocationAuto locid='2' idx={key} />
+                    <LocationAuto locid='2' idx={key} pos='relative' />
                   </TableCell>
                 </TableRow>
               </TableBody>
