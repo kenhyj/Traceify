@@ -1,12 +1,6 @@
-const getTime = () => {
-  let tzoffset = new Date().getTimezoneOffset() * 60000; // offset in milliseconds
-  let localISOTime = new Date(Date.now() - tzoffset);
-  return localISOTime;
-};
-
 const InitialField = [
   {
-    date: getTime(),
+    date: new Date(),
     locations: [{ loc: '' }, { loc: '' }, { loc: '' }],
   },
 ];
@@ -17,7 +11,7 @@ const timeAndLocReducer = (fields = InitialField, action) => {
       return [
         ...fields,
         {
-          date: getTime(),
+          date: new Date(),
           locations: [{ loc: '' }, { loc: '' }, { loc: '' }],
         },
       ];

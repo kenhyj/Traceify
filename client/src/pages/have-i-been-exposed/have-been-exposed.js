@@ -101,6 +101,7 @@ const HaveI = () => {
   const [text, setText] = React.useState('');
   const [open, setOpen] = React.useState(false);
   const [result, setResult] = React.useState([]);
+  const [outResult,setOutResult] = React.useState([]);
 
   const setAlert = (num) => {
     if (num > 4) {
@@ -117,6 +118,7 @@ const HaveI = () => {
 
   const handleSubmit = async () => {
     const places = [];
+    const outbreaks = [];
     for (let i = 0; i < fields.length; i++) {
       const oneRow = fields[i];
       const oneDate = oneRow.date.toISOString();
@@ -124,10 +126,12 @@ const HaveI = () => {
         date: oneDate,
         locations: oneRow.locations,
       });
-      oneResult.data.map((onePlace) => places.push(onePlace));
+      oneResult.data.places.map((onePlace) => places.push(onePlace));
+      oneResult.data.outbreaks.map((oneOutbreak)=>outbreaks.push(oneOutbreak));
     }
     setResult(places);
-    setAlert(places.length);
+    setOutResult(outbreaks);
+    setAlert(places.length + outbreaks.length);
     setOpen(true);
   };
 
@@ -202,6 +206,7 @@ const HaveI = () => {
           </Table>
         </TableContainer>
         <Dialog
+          scroll='paper'
           open={open}
           onClose={handleClose}
           PaperProps={{
@@ -227,6 +232,15 @@ const HaveI = () => {
               <DialogContent key={one.date + index}>
                 <DialogContentText>
                   You visited {one.place} on {one.date}
+                </DialogContentText>
+              </DialogContent>
+            );
+          })}
+          {outResult.map((one, index) => {
+            return (
+              <DialogContent key={one.date + index}>
+                <DialogContentText>
+                  You visited {one.place} on {one.date}<em>There is an outbreak there !</em>
                 </DialogContentText>
               </DialogContent>
             );
