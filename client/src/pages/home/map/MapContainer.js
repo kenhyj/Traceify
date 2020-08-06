@@ -87,7 +87,7 @@ const MapContainer = (props) => {
       panToLocationLatLng.lng
     );
     map.panTo(pos);
-    setZoom(22);
+    setZoom(20);
   };
 
   useEffect(() => {

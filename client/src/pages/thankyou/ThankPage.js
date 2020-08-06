@@ -36,10 +36,10 @@ const ThankPage = () => {
       <Modal open={open}>
         <Container className={classes.content}>
           <div align='center'>
-            <h1 className='thank-title'>
+            <h2 className='thank-title'>
               Thank you to our <em>Essential Workers</em> and <em>You</em> for
               staying at home!
-            </h1>
+            </h2>
             <img
               alt='thankyoupic'
               src={thankpng}
