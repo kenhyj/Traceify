@@ -1,9 +1,6 @@
 import * as actions from '../constants/action-types';
 
 const initialState = {
-  activeMarker: {},
-  selectedPlace: {},
-  infoWindowIsOpen: false,
   data: [],
   outbreaks: [],
   showHeatLayer: true,
@@ -13,6 +10,8 @@ const initialState = {
   globalMap: {},
   globalMarkers: [],
   visibleMarkers: [],
+  activeMarkerId: '',
+  panToLocationLatLng: null,
 };
 
 const mapReducer = (state = initialState, action) => {
@@ -49,13 +48,25 @@ const mapReducer = (state = initialState, action) => {
         globalMap: action.payload,
       };
     case actions.ADD_MARKER:
-      state.globalMarkers.push(action.payload);
-      return state;
-    case actions.ADD_VISIBLE_MARKER:
       return {
         ...state,
-        visibleMarkers: state.visibleMarkers.concat(action.payload.marker),
+        globalMarkers: [...state.globalMarkers, action.payload],
       };
+    case actions.SET_VISIBLE_MARKERS:
+      return {
+        ...state,
+        visibleMarkers: action.payload,
+      };
+    case actions.SET_ACTIVE_MARKER:
+      return {
+        ...state,
+        activeMarkerId: action.payload,
+      };
+    case actions.SET_PAN_TO_LOCATION:
+      return {
+        ...state,
+        panToLocationLatLng: action.payload,
+      }
     default:
       return state;
   }

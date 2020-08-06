@@ -31,6 +31,7 @@ class AdminAddOutbreak extends React.Component {
         },
         city: 'Vancouver',
         date: getTime(new Date()),
+        formattedAddress: '',
       },
     };
   }
@@ -54,7 +55,20 @@ class AdminAddOutbreak extends React.Component {
 
   handleSelect = (address) => {
     geocodeByAddress(address)
-      .then((results) => getLatLng(results[0]))
+      .then((results) => {
+        const addrData = results[0];
+        const formattedAddr = addrData.formatted_address;
+        let temp = this.state.submissionObj;
+        temp = {
+          ...temp,
+          formattedAddress: formattedAddr,
+        };
+        this.setState({
+          submissionObj: temp,
+        });
+        return addrData;
+      })
+      .then((addr) => getLatLng(addr))
       .then((latLng) => {
         let temp = this.state.submissionObj;
         temp = {
@@ -91,7 +105,7 @@ class AdminAddOutbreak extends React.Component {
         city = array[i];
         validSubmission = true;
         for (let j = 0; j < i; j++)
-          j + 1 === i ? (title += array[j]) : (title = title + array[j] + ', ');
+          j + 1 === i ? (title += array[j]) : (title = `${title + array[j]}, `);
       }
     }
     if (validSubmission) {

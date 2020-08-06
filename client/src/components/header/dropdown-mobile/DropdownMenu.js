@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { List, ListItem } from '@material-ui/core';
-import AdminLogin from '../admin-login/admin-login';
+import AdminLogin from '../../admin-login/admin-login';
 import DropdownMenuLink from './DropdownMenuLink';
 
 function DropdownMenu(props) {
@@ -49,7 +49,7 @@ function DropdownMenu(props) {
         <DropdownMenuLink
           to='/qna'
           key='listitem-qna'
-          primary='Q&A'
+          primary='Q&#38;A'
           onClick={toggleMenu}
         />
         {showAdmin()}

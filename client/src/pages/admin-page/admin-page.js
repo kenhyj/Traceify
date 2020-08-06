@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function AdminPage(props) {
-  const vert = isWidthUp('md',props.width)?'vertical':'horizontal';
+  const vert = isWidthUp('md', props.width) ? 'vertical' : 'horizontal';
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -84,45 +84,44 @@ function AdminPage(props) {
       transition={transitions}
       style={pageStyle}
     >
+      <div>
+        <PageHeading data={pageHeadingData} />
+      </div>
       <div className='root'>
-        <div>
-          <PageHeading data={pageHeadingData} />
-        </div>
         <br />
         <br />
         <br />
 
-        <div className='tabRoot' >
-        <div className = 'leftMenu'>
+        <div className='tabRoot'>
+          <div className='leftMenu'>
             <Tabs
-              orientation= {vert}
+              orientation={vert}
               variant='scrollable'
               value={value}
               onChange={handleChange}
               aria-label='Vertical tabs example'
               className={classes.tabs}
-              indicatorColor="primary"
+              indicatorColor='primary'
             >
               <Tab label='Add a New Trace Location' {...a11yProps(0)} />
               <Tab label='Delete a Trace(s)' {...a11yProps(1)} />
               <Tab label='Add a New Outbreak' {...a11yProps(2)} />
               <Tab label='Delete an Outbreak(s)' {...a11yProps(3)} />
             </Tabs>
-
-            </div>
-           <div className = 'rightPanel'>
-          <TabPanel value={value} index={0} className='tabpanel'>
-            <AdminAdd />
-          </TabPanel>
-          <TabPanel value={value} index={1} className='tabpanel'>
-            <AdminDelete />
-          </TabPanel>
-          <TabPanel value={value} index={2} className='tabpanel'>
-            <AdminAddOutbreak />
-          </TabPanel>
-          <TabPanel value={value} index={3} className='tabpanel'>
-            <AdminDeleteOutbreak />
-          </TabPanel>
+          </div>
+          <div className='rightPanel'>
+            <TabPanel value={value} index={0} className='tabpanel'>
+              <AdminAdd />
+            </TabPanel>
+            <TabPanel value={value} index={1} className='tabpanel'>
+              <AdminDelete />
+            </TabPanel>
+            <TabPanel value={value} index={2} className='tabpanel'>
+              <AdminAddOutbreak />
+            </TabPanel>
+            <TabPanel value={value} index={3} className='tabpanel'>
+              <AdminDeleteOutbreak />
+            </TabPanel>
           </div>
         </div>
       </div>

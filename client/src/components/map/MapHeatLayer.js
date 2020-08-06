@@ -19,8 +19,6 @@ function MapHeatLayer(props) {
   );
 }
 
-// export default MapHeatLayer;
-
 const mapStateToProps = (state, ownProps) => {
   return {
     map: state.map,

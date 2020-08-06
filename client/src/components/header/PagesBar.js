@@ -80,7 +80,7 @@ function PagesBar(props) {
                 : classes.pageLinkFancy
             }
           >
-            Q&A
+            Q&#38;A
           </span>
         </Link>
         {showAdmin()}

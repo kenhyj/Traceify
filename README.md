@@ -118,7 +118,7 @@ Finally our web app project is deployed in heroku at https://staging-traceify.he
 - We stored login information in a browser's **session storage** so that the **login status persists** unless the tab is closed or the user manually logs out
 - We **researched UX style** of government sites and medical sites for **accessibility**, and set to utilize only the **main colour themes** for the website (blue, grey)
 - We allow **various filtering/rendering options** for the **Map**, rather than having only one option to render (i.e., heat map, markers)
-
+- We **bought a domain and connected with our heroku app** so that it is **hosted on: 'http://traceify.ca'**
 
 ## Next Steps
 
@@ -128,6 +128,9 @@ Finally our web app project is deployed in heroku at https://staging-traceify.he
 ## Contributions
 
 - d2e2b: Google Map API, Home,
-- e5c0b: Reopening - Database setup, Symptom Checker - Redux and diagnosis, ESLint and prettier, Automated Deployment,
-- k0b0b: Google OAuth Logins (i.e., filtering valid users, persisting login status in session storage), Admin functionalities (i.e., insertion and deletion of trace/outbreak data), Q&A, Styling assist, MongoDB set-up and data generation, Traceify Intro Youtube video
+- e5c0b: <br/>
+  My contriution to automated deployment to Heroku will detect pushes from our final_project branch and deploy it using the scripts in the root folder's package.json and Procfile and static.json. <br/>
+  Additionally, I set up eslint and prettier; eslint and prettier will underline any broken rules that I have defined in .eslintrc.json and prettierc will enforce code styles defined in .prettierrc file. <br/>
+  Lastly, I completed the Reopening data and Symtom Checkers's redux and diagnosis.
+- k0b0b: I worked on Google OAuth Logins (i.e., filtering valid users, persisting login status in session storage), Admin functionalities (i.e., insertion and deletion of trace/outbreak data), Q&A, Styling assist, MongoDB set-up and data generation, Traceify Intro Youtube video
 - l0y2b: I designed the Thank you Modal page as our welcome page. My main work is the Have-I-been-Exposed page. I used PUT request to query data from our database using date and places got from front-end. Then presented the result to user. I also helped design and style responsive components of Symtom Checker and Reopening page. 
