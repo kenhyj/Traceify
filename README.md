@@ -129,9 +129,8 @@ Finally our web app project is deployed in heroku at https://staging-traceify.he
 
 - d2e2b: Google Map API, Home,
 - e5c0b: <br/>
-  I have contributed the following: Reopening - Database setup, Symptom Checker - Redux and diagnosis, ESLint and prettier, Automated Deployment. <br/>
-  Heroku will automatically detect pushes from our final_project branch and deploy it using the scripts in the root folder's package.json and Procfile and static.json. <br/>
-  The Eslint and prettier will underline any broken rules that I have defined in .eslintrc.json and prettierc will enforce code styles defined in .prettierrc file.<br/>
-  The Symptom Checker and Reopening pages were my responsibilities to complete.
+  My contriution to automated deployment to Heroku will detect pushes from our final_project branch and deploy it using the scripts in the root folder's package.json and Procfile and static.json. <br/>
+  Additionally, I set up eslint and prettier; eslint and prettier will underline any broken rules that I have defined in .eslintrc.json and prettierc will enforce code styles defined in .prettierrc file. <br/>
+  Lastly, I completed the Reopening data and Symtom Checkers's redux and diagnosis.
 - k0b0b: I worked on Google OAuth Logins (i.e., filtering valid users, persisting login status in session storage), Admin functionalities (i.e., insertion and deletion of trace/outbreak data), Q&A, Styling assist, MongoDB set-up and data generation, Traceify Intro Youtube video
 - l0y2b: Reopening - Styling, Symptom Checker - Styling, Have I been Exposed - Query exposure result from databse with date and locations, Styling, Thank You Modal as landing page
