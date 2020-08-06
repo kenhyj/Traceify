@@ -15,9 +15,6 @@ export const variants = {
 
 export const transitions = {
   type: 'spring',
-  duration: 0.5,
-};
-
-export const pageStyle = {
-  // position: 'absolute',
+  stiffness: 50,
+  transition: 'linear',
 };

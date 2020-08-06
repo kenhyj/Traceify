@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import MapContainer from './map/MapContainer';
 import Sidebar from '../../components/sidebar/sidebar';
 import PageHeading from '../../components/page-heading/PageHeading';
-import { variants, transitions, pageStyle } from '../motion-settings';
+import { variants, transitions } from '../motion-settings';
 import './home.css';
 
 const Home = () => {
@@ -39,7 +39,6 @@ const Home = () => {
       initial='initial'
       variants={variants}
       transition={transitions}
-      style={pageStyle}
     >
       <div>
         <PageHeading data={pageHeadingData} />

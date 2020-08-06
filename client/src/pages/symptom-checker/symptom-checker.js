@@ -12,7 +12,7 @@ import { Send } from '@material-ui/icons';
 import { motion } from 'framer-motion';
 import SymptomDisclaimer from './symptom-disclaimer';
 import PageHeading from '../../components/page-heading/PageHeading';
-import { variants, transitions, pageStyle } from '../motion-settings';
+import { variants, transitions } from '../motion-settings';
 import Instruction from '../../components/instruction/instruction';
 
 class SymptomChecker extends React.Component {
@@ -108,7 +108,6 @@ class SymptomChecker extends React.Component {
         initial='initial'
         variants={variants}
         transition={transitions}
-        style={pageStyle}
       >
         <div>
           <PageHeading data={pageHeadingData} />

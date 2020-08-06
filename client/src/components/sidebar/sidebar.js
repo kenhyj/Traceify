@@ -46,7 +46,7 @@ const Sidebar = (props) => {
           <div className='sidebar-legend'>
             <div className='sidebar-legend-heatmap'>
               <p>
-                <b>Heatmap</b>
+                <b>Heat Map</b>
               </p>
               {props.windowSize.width >= 401 ? (
                 <HeatmapGradient />

@@ -23,8 +23,7 @@ const MapContainer = (props) => {
   const [clusterCenter, setClusterCenter] = useState(null);
   const [clusterInfoWindowIsOpen, setClusterInfoWindowOpen] = useState(false);
   const [clusterMarkerData, setClusterMarkerData] = useState([]);
-  const [globalMarkers, setGlobalMarkers] = useState([]);
-  const { data, outbreaks, dispatch } = props;
+  const { data, outbreaks, globalMarkers, dispatch } = props;
   const {
     showMarkers,
     showOutbreakMarkers,
@@ -33,17 +32,12 @@ const MapContainer = (props) => {
   const classes = useStyles();
   const clustererOptions = {
     imagePath:
-      'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+      'https://raw.githubusercontent.com/mandywan/google-maps-assets/master/traceify-m',
   };
 
   useEffect(() => {
     dispatch(fetchLocations());
   }, []);
-
-  useEffect(() => {
-    const newArray = [...data, ...outbreaks];
-    setGlobalMarkers(newArray);
-  }, [data, outbreaks]);
 
   const handleClusterClick = (cluster) => {
     const clusterMarkers = cluster.getMarkers();
@@ -93,7 +87,7 @@ const MapContainer = (props) => {
       panToLocationLatLng.lng
     );
     map.panTo(pos);
-    setZoom(22);
+    setZoom(20);
   };
 
   useEffect(() => {
@@ -250,6 +244,7 @@ const mapStateToProps = (state) => {
     mapReducer: state.map,
     data: state.map.data,
     outbreaks: state.map.outbreaks,
+    globalMarkers: state.map.globalMarkers,
   };
 };
 

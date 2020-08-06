@@ -16,7 +16,7 @@ import {
   Snackbar,
 } from '@material-ui/core';
 import { Alert } from '@material-ui/lab/';
-import { variants, transitions, pageStyle } from '../motion-settings';
+import { variants, transitions } from '../motion-settings';
 import PageHeading from '../../components/page-heading/PageHeading';
 
 const useStyles = makeStyles((theme) => ({
@@ -87,7 +87,7 @@ function renderProvinceTwo(obj, chosenphase) {
             fontSize: '1em',
             padding: '2%',
             backgroundColor: '#2196F3',
-            color: 'white'
+            color: 'white',
           }}
         >
           {obj.province} is currently in Stage {obj.current_stage}
@@ -292,7 +292,6 @@ function Reopen() {
       initial='initial'
       variants={variants}
       transition={transitions}
-      style={pageStyle}
     >
       <div>
         <PageHeading data={pageHeadingData} />
