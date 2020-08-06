@@ -29,7 +29,7 @@ import Alert from '@material-ui/lab/Alert';
 import './have-been-exposed.css';
 import { motion } from 'framer-motion';
 import RowComponent from '../../components/have-i-table/row-component';
-import { variants, transitions, pageStyle } from '../motion-settings';
+import { variants, transitions } from '../motion-settings';
 import PageHeading from '../../components/page-heading/PageHeading';
 import { red } from '@material-ui/core/colors/index';
 import CancelIcon from '@material-ui/icons/Cancel';
@@ -101,7 +101,7 @@ const HaveI = () => {
   const [text, setText] = React.useState('');
   const [open, setOpen] = React.useState(false);
   const [result, setResult] = React.useState([]);
-  const [outResult,setOutResult] = React.useState([]);
+  const [outResult, setOutResult] = React.useState([]);
 
   const setAlert = (num) => {
     if (num > 4) {
@@ -127,7 +127,9 @@ const HaveI = () => {
         locations: oneRow.locations,
       });
       oneResult.data.places.map((onePlace) => places.push(onePlace));
-      oneResult.data.outbreaks.map((oneOutbreak)=>outbreaks.push(oneOutbreak));
+      oneResult.data.outbreaks.map((oneOutbreak) =>
+        outbreaks.push(oneOutbreak)
+      );
     }
     setResult(places);
     setOutResult(outbreaks);
@@ -239,7 +241,8 @@ const HaveI = () => {
             return (
               <DialogContent key={one.date + index}>
                 <DialogContentText>
-                  You visited {one.place} on {one.date}<em>There is an outbreak there !</em>
+                  You visited {one.place} on {one.date}
+                  <em>There is an outbreak there !</em>
                 </DialogContentText>
               </DialogContent>
             );

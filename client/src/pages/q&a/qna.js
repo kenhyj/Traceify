@@ -7,7 +7,7 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { motion } from 'framer-motion';
-import { variants, transitions, pageStyle } from '../motion-settings';
+import { variants, transitions } from '../motion-settings';
 import './qna.css';
 import PageHeading from '../../components/page-heading/PageHeading';
 import PageHeader from '../../components/page-header/page-header';
