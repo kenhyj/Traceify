@@ -45,7 +45,6 @@ const QnA = () => {
       initial='initial'
       variants={variants}
       transition={transitions}
-      style={pageStyle}
     >
       <div>
         <PageHeading data={pageHeadingData} />
