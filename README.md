@@ -130,4 +130,4 @@ Finally our web app project is deployed in heroku at https://staging-traceify.he
 - d2e2b: Google Map API, Home,
 - e5c0b: Reopening - Database setup, Symptom Checker - Redux and diagnosis, ESLint and prettier, Automated Deployment,
 - k0b0b: Google OAuth Logins (i.e., filtering valid users, persisting login status in session storage), Admin functionalities (i.e., insertion and deletion of trace/outbreak data), Q&A, Styling assist, MongoDB set-up and data generation, Traceify Intro Youtube video
-- l0y2b: Reopening - Styling, Symptom Checker - Styling, Have I been Exposed, Thank You,
+- l0y2b: I designed the Thank you Modal page as our welcome page. My main work is the Have-I-been-Exposed page. I used PUT request to query data from our database using date and places got from front-end. Then presented the result to user. I also helped design and style responsive components of Symtom Checker and Reopening page. 

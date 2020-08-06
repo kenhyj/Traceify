@@ -29,7 +29,6 @@ router.delete('/api/location-trace', function (req, res) {
     req.body.forEach(id => {
         db.get().collection('locationTraces').remove({ _id: new mongodb.ObjectID(id) })
             .then(() => {
-                console.log('Location trace removal successful.');
                 if (req.body.indexOf(id) === req.body.length-1)
                     res.status(200).send('ok');
             }).catch(() => {

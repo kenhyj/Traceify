@@ -26,7 +26,6 @@ router.delete('/api/location-outbreak', function (req, res) {
     req.body.forEach(id => {
         db.get().collection('locationOutbreak').remove({ _id: new mongodb.ObjectID(id) })
             .then(() => {
-                console.log('Location trace removal successful.');
                 if (req.body.indexOf(id) === req.body.length-1)
                     res.status(200).send('ok');
             }).catch(() => {

@@ -13,6 +13,12 @@ import axios from 'axios/index';
 import Instruction from '../instruction/instruction';
 import { withGoogleMaps } from '../../pages/home/map/MapHOC';
 
+const getTime = (date)=>{
+  let tzoffset = date.getTimezoneOffset() * 60000; //offset in milliseconds
+  let localISOTime = (new Date(date - tzoffset));
+  return localISOTime;
+}
+
 class AdminAdd extends React.Component {
   constructor(props) {
     super(props);
@@ -26,17 +32,16 @@ class AdminAdd extends React.Component {
         },
         city: 'Vancouver',
         time: '12 AM ~ 3 AM',
-        date: new Date(),
+        date: getTime(new Date()),
       },
     };
   }
 
   handleDateChange = (date) => {
-    console.log('DATE: ', date.toISOString());
     let temp = this.state.submissionObj;
     temp = {
       ...temp,
-      date: date,
+      date: date
     };
     this.setState({
       submissionObj: temp,
@@ -61,11 +66,9 @@ class AdminAdd extends React.Component {
   };
 
   handleSelect = (address) => {
-    console.log('ADDRESS: ', address);
     geocodeByAddress(address)
       .then((results) => getLatLng(results[0]))
       .then((latLng) => {
-        console.log('Success', latLng);
         let temp = this.state.submissionObj;
         temp = {
           ...temp,
@@ -115,7 +118,6 @@ class AdminAdd extends React.Component {
         city: city,
         date: temp.date.toISOString(),
       };
-      console.log(temp);
       axios
         .post('/api/location-trace', temp)
         .then(() => alert('Submission Successful'))
@@ -162,7 +164,6 @@ class AdminAdd extends React.Component {
                       const className = suggestion.active
                         ? 'suggestion-item--active'
                         : 'suggestion-item';
-                      // inline style for demonstration purpose
                       const style = suggestion.active
                         ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                         : { backgroundColor: '#ffffff', cursor: 'pointer' };

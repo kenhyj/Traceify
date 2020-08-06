@@ -12,6 +12,12 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios/index';
 import Instruction from '../instruction/instruction';
 
+const getTime = (date)=>{
+  let tzoffset = date.getTimezoneOffset() * 60000; //offset in milliseconds
+  let localISOTime = (new Date(date - tzoffset));
+  return localISOTime;
+}
+
 class AdminAddOutbreak extends React.Component {
   constructor(props) {
     super(props);
@@ -24,13 +30,12 @@ class AdminAddOutbreak extends React.Component {
           lng: 0,
         },
         city: 'Vancouver',
-        date: new Date(),
+        date: getTime(new Date()),
       },
     };
   }
 
   handleDateChange = (date) => {
-    console.log('DATE: ', date.toISOString());
     let temp = this.state.submissionObj;
     temp = {
       ...temp,
@@ -48,11 +53,9 @@ class AdminAddOutbreak extends React.Component {
   };
 
   handleSelect = (address) => {
-    console.log('ADDRESS: ', address);
     geocodeByAddress(address)
       .then((results) => getLatLng(results[0]))
       .then((latLng) => {
-        console.log('Success', latLng);
         let temp = this.state.submissionObj;
         temp = {
           ...temp,
@@ -99,7 +102,6 @@ class AdminAddOutbreak extends React.Component {
         city: city,
         date: temp.date.toISOString(),
       };
-      console.log(temp);
       axios
         .post('/api/location-outbreak', temp)
         .then(() => alert('Submission Successful'))

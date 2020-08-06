@@ -31,15 +31,13 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 export default function RowComponent(props) {
-  const fields = useSelector((state) => state.timeAndLoc);
   const dispatch = useDispatch();
-
   const key = props.fieldKey;
-
-  const selectedDate = fields[props.fieldKey].date;
+  const [date,setDate] = useState(getTime(new Date()));
   const [open, setOpen] = useState(false);
   const handleDateChange = (date) => {
-    dispatch({ type: 'EDIT_ROW_DATE', idx: props.fieldKey, newDate: getTime(date) });
+    setDate(date);
+    dispatch({ type: 'EDIT_ROW_DATE', idx: props.fieldKey, newDate: date });
   };
 
   return (
@@ -70,8 +68,7 @@ export default function RowComponent(props) {
               margin='normal'
               id='date-picker-inline'
               label='Enter date here'
-              value={selectedDate}
-              initialFocusedDate={selectedDate}
+              value={date}
               onChange={handleDateChange}
               KeyboardButtonProps={{
                 'aria-label': 'change date',
