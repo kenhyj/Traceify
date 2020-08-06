@@ -19,7 +19,6 @@ router.get('/api/location-trace', function (req, res) {
 });
 
 router.post('/api/location-trace', function (req, res) {
-  //TODO: Also increment numVisitedByInfected in city collection
   db.get()
     .collection('locationTraces')
     .insertOne(req.body)
