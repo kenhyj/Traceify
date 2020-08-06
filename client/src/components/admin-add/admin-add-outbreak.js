@@ -31,7 +31,6 @@ class AdminAddOutbreak extends React.Component {
   }
 
   handleDateChange = (date) => {
-    console.log('DATE: ', date.toISOString());
     let temp = this.state.submissionObj;
     temp = {
       ...temp,
@@ -49,7 +48,6 @@ class AdminAddOutbreak extends React.Component {
   };
 
   handleSelect = (address) => {
-    console.log('ADDRESS: ', address);
     geocodeByAddress(address)
       .then((results) => {
         const addrData = results[0];
@@ -66,7 +64,6 @@ class AdminAddOutbreak extends React.Component {
       })
       .then((addr) => getLatLng(addr))
       .then((latLng) => {
-        console.log('Success', latLng);
         let temp = this.state.submissionObj;
         temp = {
           ...temp,
@@ -77,6 +74,9 @@ class AdminAddOutbreak extends React.Component {
         };
         this.setState({
           submissionObj: temp,
+        });
+        this.setState({
+          locationSearchField: address,
         });
       })
       .catch((error) => console.error('Error', error));
@@ -113,7 +113,6 @@ class AdminAddOutbreak extends React.Component {
         city: city,
         date: temp.date.toISOString(),
       };
-      console.log(temp);
       axios
         .post('/api/location-outbreak', temp)
         .then(() => alert('Submission Successful'))

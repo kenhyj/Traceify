@@ -19,7 +19,6 @@ router.get('/api/location-trace', function (req, res) {
 });
 
 router.post('/api/location-trace', function (req, res) {
-  //TODO: Also increment numVisitedByInfected in city collection
   db.get()
     .collection('locationTraces')
     .insertOne(req.body)
@@ -37,7 +36,6 @@ router.delete('/api/location-trace', function (req, res) {
       .collection('locationTraces')
       .remove({ _id: new mongodb.ObjectID(id) })
       .then(() => {
-        console.log('Location trace removal successful.');
         if (req.body.indexOf(id) === req.body.length - 1)
           res.status(200).send('ok');
       })

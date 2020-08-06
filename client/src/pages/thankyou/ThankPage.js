@@ -70,7 +70,7 @@ const ThankPage = () => {
               </div>
               <div className='intro-right'>
                 <img src={reopen} alt='reopen' />
-                <p className='title'>What's next</p>
+                <p className='title'>What&#39;s next</p>
                 <div>
                   <p className='intro-text'>
                     Support local retailers and get ready for reopening.

@@ -4,8 +4,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
 import {
-  Typography, Toolbar, Table, TableBody, TableCell, TableRow,
-  TableHead, TableContainer, Dialog, Grid, Container, Hidden, IconButton, DialogActions
+  Typography,
+  Toolbar,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  TableHead,
+  TableContainer,
+  Dialog,
+  Grid,
+  Container,
+  Hidden,
+  IconButton,
+  DialogActions,
 } from '@material-ui/core';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Send from '@material-ui/icons/Send';
@@ -19,7 +31,7 @@ import { motion } from 'framer-motion';
 import RowComponent from '../../components/have-i-table/row-component';
 import { variants, transitions, pageStyle } from '../motion-settings';
 import PageHeading from '../../components/page-heading/PageHeading';
-import {red} from "@material-ui/core/colors/index";
+import { red } from '@material-ui/core/colors/index';
 import CancelIcon from '@material-ui/icons/Cancel';
 
 const StyledTableCell = withStyles(() => ({
@@ -89,6 +101,7 @@ const HaveI = () => {
   const [text, setText] = React.useState('');
   const [open, setOpen] = React.useState(false);
   const [result, setResult] = React.useState([]);
+  const [outResult,setOutResult] = React.useState([]);
 
   const setAlert = (num) => {
     if (num > 4) {
@@ -105,6 +118,7 @@ const HaveI = () => {
 
   const handleSubmit = async () => {
     const places = [];
+    const outbreaks = [];
     for (let i = 0; i < fields.length; i++) {
       const oneRow = fields[i];
       const oneDate = oneRow.date.toISOString();
@@ -112,10 +126,12 @@ const HaveI = () => {
         date: oneDate,
         locations: oneRow.locations,
       });
-      oneResult.data.map((onePlace) => places.push(onePlace));
+      oneResult.data.places.map((onePlace) => places.push(onePlace));
+      oneResult.data.outbreaks.map((oneOutbreak)=>outbreaks.push(oneOutbreak));
     }
     setResult(places);
-    setAlert(places.length);
+    setOutResult(outbreaks);
+    setAlert(places.length + outbreaks.length);
     setOpen(true);
   };
 
@@ -168,7 +184,7 @@ const HaveI = () => {
             <Hidden smDown>
               <TableHead>
                 <StyledTableRow>
-                  <StyledTableCell></StyledTableCell>
+                  <StyledTableCell />
                   <StyledTableCell align='center'>Date</StyledTableCell>
                   <StyledTableCell align='center'>Location</StyledTableCell>
                   <StyledTableCell align='center'>Location</StyledTableCell>
@@ -189,28 +205,42 @@ const HaveI = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <Dialog open={open} onClose={handleClose} PaperProps={{
+        <Dialog
+          scroll='paper'
+          open={open}
+          onClose={handleClose}
+          PaperProps={{
             style: {
-                overflowX: 'hidden'
+              overflowX: 'hidden',
             },
-        }}>
+          }}
+        >
           <DialogTitle>
             <Alert severity={al}>{text}</Alert>
           </DialogTitle>
           <DialogActions className='icons'>
-              <IconButton aria-label='close' onClick={handleClose} CancelIcon>
-                  <CancelIcon
-                      onClick={handleClose}
-                      style={{ color: red[500] }}
-                      justify='right'
-                  />
-              </IconButton>
+            <IconButton aria-label='close' onClick={handleClose} CancelIcon>
+              <CancelIcon
+                onClick={handleClose}
+                style={{ color: red[500] }}
+                justify='right'
+              />
+            </IconButton>
           </DialogActions>
           {result.map((one, index) => {
             return (
               <DialogContent key={one.date + index}>
                 <DialogContentText>
                   You visited {one.place} on {one.date}
+                </DialogContentText>
+              </DialogContent>
+            );
+          })}
+          {outResult.map((one, index) => {
+            return (
+              <DialogContent key={one.date + index}>
+                <DialogContentText>
+                  You visited {one.place} on {one.date}<em>There is an outbreak there !</em>
                 </DialogContentText>
               </DialogContent>
             );

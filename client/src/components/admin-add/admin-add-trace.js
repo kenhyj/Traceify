@@ -33,7 +33,6 @@ class AdminAdd extends React.Component {
   }
 
   handleDateChange = (date) => {
-    console.log('DATE: ', date.toISOString());
     let temp = this.state.submissionObj;
     temp = {
       ...temp,
@@ -62,7 +61,6 @@ class AdminAdd extends React.Component {
   };
 
   handleSelect = (address) => {
-    console.log('ADDRESS: ', address);
     geocodeByAddress(address)
       .then((results) => {
         const addrData = results[0];
@@ -79,7 +77,6 @@ class AdminAdd extends React.Component {
       })
       .then((addr) => getLatLng(addr))
       .then((latLng) => {
-        console.log('Success', latLng);
         let temp = this.state.submissionObj;
         temp = {
           ...temp,
@@ -129,7 +126,6 @@ class AdminAdd extends React.Component {
         city: city,
         date: temp.date.toISOString(),
       };
-      console.log(temp);
       axios
         .post('/api/location-trace', temp)
         .then(() => alert('Submission Successful'))
@@ -176,7 +172,6 @@ class AdminAdd extends React.Component {
                       const className = suggestion.active
                         ? 'suggestion-item--active'
                         : 'suggestion-item';
-                      // inline style for demonstration purpose
                       const style = suggestion.active
                         ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                         : { backgroundColor: '#ffffff', cursor: 'pointer' };

@@ -30,16 +30,25 @@ function App(props) {
           zIndex: '1',
         }}
       >
-        <Header title='Covid 19 - Traceify' style={{ overflowY: 'scroll'}}/>
+        <Header title='Covid 19 - Traceify' style={{ overflowY: 'scroll' }} />
       </div>
       <ThankPage />
       <div className='App-main'>
         <AnimatePresence exitBeforeEnter>
-          <Route key='/' exact path='/' render={() => <Redirect to='/home' />} />
+          <Route
+            key='/'
+            exact
+            path='/'
+            render={() => <Redirect to='/home' />}
+          />
           <Route key='/home' path='/home' component={Home} />
           <Route key='/haveI' path='/have-i-been-exposed' component={HaveI} />
           <Route key='/qna' path='/qna' component={QnA} />
-          <Route key='/symptom' path='/symptom-checker' component={SymptomChecker} />
+          <Route
+            key='/symptom'
+            path='/symptom-checker'
+            component={SymptomChecker}
+          />
           <Route key='/reopen' path='/reopen' component={Reopen} />
           {props.isLoggedIn ? (
             <Route path='/admin' component={AdminPage} />
