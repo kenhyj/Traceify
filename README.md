@@ -11,6 +11,13 @@ Traceify aims to help the general public in Vancouver by providing information a
 
 [![Traceify U2vu](https://i.imgur.com/KdfDccq.png)](https://www.youtube.com/watch?v=8TWWVOtbVD8&feature=emb_title 'U2vu')
 
+<h3>** NOTE **</h3>
+
+**To log in as an Admin user, use the following credentials:**
+
+**email:** traceifyvancouver@gmail.com<br/>
+**password:** cpsc436i<br/>
+
 ## Project Task Requirements:
 
 - 3-5 minimal requirements (will definitely complete)
