@@ -131,6 +131,7 @@ Finally our web app project is deployed in heroku at https://staging-traceify.he
 
 - There are COVID-19 graphs real-time from certain websites. Instead of including links to those websites in our Q&A page, we would have loved to incorporate them into our project with appropriate styling and aesthetics and comfortable usability.
 - If we have more time, we could have used Vancouver's real time data into our Home Page's map component that was just beginning to be offered in late July. Additionally, if other cities provides their data, we would have loved to incoporate them as well.
+- We should include a search box component for Google Maps in our home page so that a user can just search an address and pan there on the map, which make it easier for users to navigate.
 
 ## Contributions
 
