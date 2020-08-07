@@ -129,9 +129,10 @@ Finally our web app project is deployed in heroku at https://staging-traceify.he
 
 ## Next Steps
 
-- There are COVID-19 graphs real-time from certain websites. Instead of including links to those websites in our Q&A page, we would have loved to incorporate them into our project with appropriate styling and aesthetics and comfortable usability.
-- If we have more time, we could have used Vancouver's real time data into our Home Page's map component that was just beginning to be offered in late July. Additionally, if other cities provides their data, we would have loved to incoporate them as well.
-- We should include a search box component for Google Maps in our home page so that a user can just search an address and pan there on the map, which make it easier for users to navigate.
+- There are COVID-19 graphs real-time from certain websites. Instead of including links to those websites in our Q&A page, we would have loved to incorporate them into our project with appropriate styling and aesthetics and comfortable usability. This would involve some HTML parsing. We estimate that this would take around 1 week to implement and test.
+- If we have more time, we could have used Vancouver's real time data into our Home Page's map component that was just beginning to be offered in late July. Additionally, if other cities provides their data, we would have loved to incoporate them as well. This would involve some HTML and/or PDF parsing. We'd have to do some research on how to do this. We estimate that this would take around 2 weeks to implement and test.
+- We should include a search box component for Google Maps in our home page so that a user can just search an address and pan there on the map, which make it easier for users to navigate. There is a component that we can use in the plugin that we are using. We estimate that this would take about 2 days to implement and test.
+- Since some health officials are currently using credit card statements and supermarket rewards cards purchase history to track a patient's whereabouts, we should implement a credit card parser to determine where patients have been according to their credit card statements, which would make the admin's job quicker and more reliable. More research needs to be done in order to implement this functionality. We estimate that this would take around 2 weeks to implement and test.
 
 ## Contributions
 
