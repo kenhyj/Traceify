@@ -12,6 +12,12 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios/index';
 import Instruction from '../instruction/instruction';
 
+const getTime = (date) => {
+  let tzoffset = date.getTimezoneOffset() * 60000; // offset in milliseconds
+  let localISOTime = new Date(date - tzoffset);
+  return localISOTime;
+};
+
 class AdminAddOutbreak extends React.Component {
   constructor(props) {
     super(props);
@@ -111,7 +117,7 @@ class AdminAddOutbreak extends React.Component {
         ...temp,
         title: title,
         city: city,
-        date: temp.date.toISOString(),
+        date: getTime(temp.date).toISOString(),
       };
       axios
         .post('/api/location-outbreak', temp)

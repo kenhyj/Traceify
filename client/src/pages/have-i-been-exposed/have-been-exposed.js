@@ -34,6 +34,12 @@ import PageHeading from '../../components/page-heading/PageHeading';
 import { red } from '@material-ui/core/colors/index';
 import CancelIcon from '@material-ui/icons/Cancel';
 
+const getTime = (date) => {
+  let tzoffset = date.getTimezoneOffset() * 60000; // offset in milliseconds
+  let localISOTime = new Date(date - tzoffset);
+  return localISOTime;
+};
+
 const StyledTableCell = withStyles(() => ({
   head: {
     backgroundColor: '#2196F3',
@@ -121,7 +127,7 @@ const HaveI = () => {
     const outbreaks = [];
     for (let i = 0; i < fields.length; i++) {
       const oneRow = fields[i];
-      const oneDate = oneRow.date.toISOString();
+      const oneDate = getTime(oneRow.date).toISOString();
       const oneResult = await axios.put('/api/expose', {
         date: oneDate,
         locations: oneRow.locations,
